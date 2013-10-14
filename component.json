@@ -1,0 +1,15 @@
+{
+  "name": "rocnikovyprojekt-klient",
+  "version": "0.0.0",
+  "dependencies": {
+    "types": "git://github.com/borisyankov/DefinitelyTyped.git",
+    "json3": "~3.2.4",
+    "bootstrap": "*",
+    "es5-shim": "2.0.2",
+    "angular-resource": "~1.0.5"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.0.5",
+    "angular-scenario": "~1.0.5"
+  }
+}

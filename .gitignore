@@ -1,0 +1,13 @@
+node_modules
+dist
+.tmp
+.sass-cache
+app/components
+
+*.js.map
+*.js
+*.d.ts
+
+!Gruntfile.js
+!testacular.conf.js
+!testacular.unit.conf.js
