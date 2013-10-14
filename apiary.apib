@@ -1,0 +1,43 @@
+HOST: http://localhost/
+
+--- Ročníkový Projekt API ---
+
+---
+Welcome to the our sample API documentation. All comments can be written in (support [Markdown](http://daringfireball.net/projects/markdown/syntax) syntax)
+---
+
+--
+Ucitele Resources
+The following is a section of resources related to Ucitele
+--
+
+Seznam ucitelu
+GET /ucitele
+< 200
+< Content-Type: application/json
+{ "ucitele": [
+    { "id": 1, "jmeno": "Jan", "prijmeni": "Skočdopole", "autoskola-id": 1, "opravneni": ["A", "B"], "pocet-deti" : 2, "datum-prohlidky": "2013-01-01", "url-dokumentu": "/prohlidky/asdasdasdad.pdf"},
+    { "id": 2, "jmeno": "Jon", "prijmeni": "Slezstromu", "autoskola-id": 2, "opravneni": ["T"], "pocet-deti" : 0, "datum-prohlidky": "2013-05-01", "url-dokumentu": "/prohlidky/dddddfd.jpg"}
+] }
+
+Detail ucitele s id 2
+GET /ucitele/2
+< 200
+< Content-Type: application/json
+{ "id": 2, "jmeno": "Jon", "prijmeni": "Slezstromu", "autoskola-id": 2, "opravneni": ["T"], "pocet-deti" 0, "datum-prohlidky": "2013-05-01", "url-dokumentu": "/prohlidky/dddddfd.jpg"}
+
+Vytvoreni noveho ucitele
+POST /ucitele
+> Content-Type: application/json
+{ "jmeno": "Jan", "prijmeni": "Řendiblech", "autoskola-id": 1, "opravneni": ["A", "C"], "pocet-deti" : 0, "datum-prohlidky": "2013-01-01" }
+< 201
+< Content-Type: application/json
+{ "id": 3 }
+
+
+
+
+--
+Autoskoly Resources
+The following is a section of resources related to Autoskoly
+--
