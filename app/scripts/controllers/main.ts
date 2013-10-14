@@ -12,4 +12,4 @@ module app.controller {
 
 }
 
-app.registerController('Main', ['$scope']);
+app.registerController('Main', ['$scope']); 

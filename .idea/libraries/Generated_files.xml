@@ -17,6 +17,7 @@
         <item url="file://$PROJECT_DIR$/app/components/types/d3/plugins/d3.superformula-tests.js" />
         <item url="file://$PROJECT_DIR$/app/components/types/ace/all-tests.js" />
         <item url="file://$PROJECT_DIR$/app/components/types/sinon-chai/sinon-chai-tests.js" />
+        <item url="file://$PROJECT_DIR$/app/scripts/controllers/teachers.js" />
         <item url="file://$PROJECT_DIR$/app/components/types/jszip/jszip-tests.js" />
         <item url="file://$PROJECT_DIR$/app/components/types/ladda/ladda-tests.js" />
         <item url="file://$PROJECT_DIR$/app/components/types/qunit/qunit-tests.js" />
@@ -85,6 +86,7 @@
       <root url="file://$PROJECT_DIR$/app/components/types/d3/plugins/d3.superformula-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/ace/all-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/sinon-chai/sinon-chai-tests.js" />
+      <root url="file://$PROJECT_DIR$/app/scripts/controllers/teachers.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/jszip/jszip-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/ladda/ladda-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/qunit/qunit-tests.js" />

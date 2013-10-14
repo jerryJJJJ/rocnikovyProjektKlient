@@ -8,7 +8,7 @@ module app.controller {
 
 
     constructor(private $scope:ng.IScope, private $http:ng.IHttpService) {
-      $http.get("http://ronkovprojektapi.apiary.io/ucitele").then((response:ng.IHttpPromiseCallbackArg) => {
+      $http.get("/ucitele").then((response:ng.IHttpPromiseCallbackArg) => {
         this.teachers = response.data.ucitele;
       });
     }
