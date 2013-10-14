@@ -26,16 +26,16 @@
       <file leaf-file-name="teachers.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/teachers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="38" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="540">
+            <state line="10" column="38" selection-start="249" selection-end="249" vertical-scroll-proportion="-0.0" vertical-offset="270" max-vertical-offset="540">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teachers.ts" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="teachers.ts" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="5" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="675">
+            <state line="11" column="37" selection-start="317" selection-end="317" vertical-scroll-proportion="0.36397058" vertical-offset="0" max-vertical-offset="816">
               <folding />
             </state>
           </provider>
@@ -44,7 +44,7 @@
       <file leaf-file-name="Gruntfile.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gruntfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="280" column="31" selection-start="6897" selection-end="6897" vertical-scroll-proportion="0.0" vertical-offset="7560" max-vertical-offset="7857">
+            <state line="266" column="14" selection-start="6480" selection-end="6480" vertical-scroll-proportion="0.0" vertical-offset="6829" max-vertical-offset="7857">
               <folding />
             </state>
           </provider>
@@ -53,16 +53,34 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="7" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="891">
+            <state line="9" column="21" selection-start="356" selection-end="356" vertical-scroll-proportion="-7.59375" vertical-offset="0" max-vertical-offset="918">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.ts" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.ts" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/app.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="0.42023346" vertical-offset="0" max-vertical-offset="4185">
+            <state line="55" column="22" selection-start="1731" selection-end="1731" vertical-scroll-proportion="0.0" vertical-offset="1101" max-vertical-offset="4401">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.ts" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="0" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
               <folding />
             </state>
           </provider>
@@ -79,15 +97,20 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/views/ucitele.html" />
-        <option value="$PROJECT_DIR$/app/scripts/controllers/main.ts" />
         <option value="$PROJECT_DIR$/component.json" />
         <option value="$PROJECT_DIR$/app/views/teachers.html" />
-        <option value="$PROJECT_DIR$/app/scripts/controllers/teachers.ts" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/main.ts" />
+        <option value="$PROJECT_DIR$/app/apiary.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/scripts/app.ts" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/teachers.ts" />
       </list>
     </option>
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="Project files Without components" pattern="file:*/&amp;&amp;!file:app/components//*&amp;&amp;!file:node_modules//*" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
@@ -186,6 +209,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RocnikovyProjekt-Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rocnikovyProjektKlient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RocnikovyProjekt-Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rocnikovyProjektKlient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -194,8 +257,8 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="options.lastSelected" value="settings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zdrojak-eshop" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -253,13 +316,13 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13854167" sideWeight="0.6713396" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13854167" sideWeight="0.8" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -283,32 +346,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="31" selection-start="6897" selection-end="6897" vertical-scroll-proportion="0.0" vertical-offset="7560" max-vertical-offset="7857">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="7" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="891">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/app.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="39" selection-start="751" selection-end="751" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="4158">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="34" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/teachers.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="38" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="320" />
@@ -317,16 +354,6 @@
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="24" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="432" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="34" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="320" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="624" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/main.html">
@@ -346,39 +373,98 @@
         <state line="4" column="42" selection-start="123" selection-end="123" vertical-scroll-proportion="0.167979" vertical-offset="0" max-vertical-offset="381" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="5" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apiary.apib">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="784" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="39" selection-start="405" selection-end="405" vertical-scroll-proportion="0.3253012" vertical-offset="0" max-vertical-offset="1053" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="31" selection-start="6897" selection-end="6897" vertical-scroll-proportion="0.0" vertical-offset="4041" max-vertical-offset="4656">
+        <state line="266" column="14" selection-start="6480" selection-end="6480" vertical-scroll-proportion="0.0" vertical-offset="6829" max-vertical-offset="7857">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/apiary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="26" selection-start="394" selection-end="394" vertical-scroll-proportion="0.50435865" vertical-offset="0" max-vertical-offset="1998">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/types/angularjs/angular-mocks.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="34" selection-start="1359" selection-end="1408" vertical-scroll-proportion="0.564951" vertical-offset="376" max-vertical-offset="4131">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="7" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="891">
+        <state line="9" column="21" selection-start="356" selection-end="356" vertical-scroll-proportion="-7.59375" vertical-offset="0" max-vertical-offset="918">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/app.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="0.42023346" vertical-offset="0" max-vertical-offset="4185">
+        <state line="55" column="22" selection-start="1731" selection-end="1731" vertical-scroll-proportion="0.0" vertical-offset="1101" max-vertical-offset="4401">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/types/angularjs/angular.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="555" column="42" selection-start="22088" selection-end="22088" vertical-scroll-proportion="0.5678705" vertical-offset="14448" max-vertical-offset="20601">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="37" selection-start="317" selection-end="317" vertical-scroll-proportion="0.36397058" vertical-offset="0" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <last-edited>Project files Without components</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+          <order>
+            <scope name="Project files Without components" />
+          </order>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
 

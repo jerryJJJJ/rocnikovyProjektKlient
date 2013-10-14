@@ -4,8 +4,6 @@ dist
 .sass-cache
 app/components
 
-*.js.map
-*.js
 *.d.ts
 
 !Gruntfile.js

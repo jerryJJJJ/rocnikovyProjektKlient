@@ -2,228 +2,218 @@
 1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'install',
-1 verbose cli   'apiary-blueprint-parser',
-1 verbose cli   '--force' ]
-2 info using npm@1.3.11
-3 info using node@v0.10.20
+1 verbose cli   'apiary-blueprint-parser' ]
+2 info using npm@1.3.2
+3 info using node@v0.10.13
 4 verbose node symlink C:\Program Files\nodejs\\node.exe
-5 warn using --force I sure hope you know what you are doing.
-6 warn package.json rocnikovyprojekt-klient@0.0.0 No description
-7 warn package.json rocnikovyprojekt-klient@0.0.0 No repository field.
-8 warn package.json rocnikovyprojekt-klient@0.0.0 No README data
-9 warn package.json apiary-blueprint-parser@0.4.4 No repository field.
-10 verbose readDependencies using package.json deps
-11 verbose cache add [ 'apiary-blueprint-parser', null ]
-12 verbose cache add name=undefined spec="apiary-blueprint-parser" args=["apiary-blueprint-parser",null]
-13 verbose parsed url { protocol: null,
-13 verbose parsed url   slashes: null,
-13 verbose parsed url   auth: null,
-13 verbose parsed url   host: null,
-13 verbose parsed url   port: null,
-13 verbose parsed url   hostname: null,
-13 verbose parsed url   hash: null,
-13 verbose parsed url   search: null,
-13 verbose parsed url   query: null,
-13 verbose parsed url   pathname: 'apiary-blueprint-parser',
-13 verbose parsed url   path: 'apiary-blueprint-parser',
-13 verbose parsed url   href: 'apiary-blueprint-parser' }
-14 silly lockFile 92eb5db3-apiary-blueprint-parser apiary-blueprint-parser
-15 verbose lock apiary-blueprint-parser C:\Users\Jakub\AppData\Roaming\npm-cache\92eb5db3-apiary-blueprint-parser.lock
-16 silly lockFile 92eb5db3-apiary-blueprint-parser apiary-blueprint-parser
-17 silly lockFile 92eb5db3-apiary-blueprint-parser apiary-blueprint-parser
-18 verbose addNamed [ 'apiary-blueprint-parser', '' ]
-19 verbose addNamed [ null, '*' ]
-20 silly lockFile 59d51280-apiary-blueprint-parser apiary-blueprint-parser@
-21 verbose lock apiary-blueprint-parser@ C:\Users\Jakub\AppData\Roaming\npm-cache\59d51280-apiary-blueprint-parser.lock
-22 silly addNameRange { name: 'apiary-blueprint-parser', range: '*', hasData: false }
-23 verbose url raw apiary-blueprint-parser
-24 verbose url resolving [ 'https://registry.npmjs.org/', './apiary-blueprint-parser' ]
-25 verbose url resolved https://registry.npmjs.org/apiary-blueprint-parser
-26 info trying registry request attempt 1 at 18:23:06
-27 verbose etag "EWD79XZ7ZXGGJOOTTTPCPGFKX"
-28 http GET https://registry.npmjs.org/apiary-blueprint-parser
-29 http 304 https://registry.npmjs.org/apiary-blueprint-parser
-30 silly registry.get cb [ 304,
-30 silly registry.get   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
-30 silly registry.get     etag: '"EWD79XZ7ZXGGJOOTTTPCPGFKX"',
-30 silly registry.get     date: 'Mon, 14 Oct 2013 16:23:07 GMT',
-30 silly registry.get     'content-length': '0' } ]
-31 verbose etag apiary-blueprint-parser from cache
-32 silly addNameRange number 2 { name: 'apiary-blueprint-parser', range: '*', hasData: true }
-33 silly addNameRange versions [ 'apiary-blueprint-parser',
-33 silly addNameRange   [ '0.1.0',
-33 silly addNameRange     '0.1.1',
-33 silly addNameRange     '0.2.0',
-33 silly addNameRange     '0.3.0',
-33 silly addNameRange     '0.4.0',
-33 silly addNameRange     '0.4.1',
-33 silly addNameRange     '0.4.2',
-33 silly addNameRange     '0.4.3',
-33 silly addNameRange     '0.4.4' ] ]
-34 verbose addNamed [ 'apiary-blueprint-parser', '0.4.4' ]
-35 verbose addNamed [ '0.4.4', '0.4.4' ]
-36 silly lockFile 4e87209d-apiary-blueprint-parser-0-4-4 apiary-blueprint-parser@0.4.4
-37 verbose lock apiary-blueprint-parser@0.4.4 C:\Users\Jakub\AppData\Roaming\npm-cache\4e87209d-apiary-blueprint-parser-0-4-4.lock
-38 silly lockFile e6ddcbfc-piary-blueprint-parser-0-4-4-tgz https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
-39 verbose lock https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz C:\Users\Jakub\AppData\Roaming\npm-cache\e6ddcbfc-piary-blueprint-parser-0-4-4-tgz.lock
-40 verbose addRemoteTarball [ 'https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz',
-40 verbose addRemoteTarball   'e3378c7efe242207164c3ddb7dd44722c851c96d' ]
-41 info retry fetch attempt 1 at 18:23:07
-42 verbose fetch to= C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\tmp.tgz
-43 http GET https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
-44 http 200 https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
-45 verbose tar unpack C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\tmp.tgz
-46 silly lockFile 279af6d2-87414-0-9063643226400018-package tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\package
-47 verbose lock tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\package C:\Users\Jakub\AppData\Roaming\npm-cache\279af6d2-87414-0-9063643226400018-package.lock
-48 silly lockFile f929f046-87414-0-9063643226400018-tmp-tgz tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\tmp.tgz
-49 verbose lock tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\tmp.tgz C:\Users\Jakub\AppData\Roaming\npm-cache\f929f046-87414-0-9063643226400018-tmp-tgz.lock
-50 silly gunzTarPerm modes [ '755', '644' ]
-51 silly gunzTarPerm extractEntry package.json
-52 silly gunzTarPerm extractEntry README.md
-53 silly gunzTarPerm extractEntry LICENSE
-54 silly gunzTarPerm extractEntry CHANGELOG
-55 silly gunzTarPerm extractEntry examples/example.apib
-56 silly gunzTarPerm extractEntry lib/apiary-blueprint-parser.js
-57 silly gunzTarPerm extractEntry lib/ast.js
-58 silly gunzTarPerm extractEntry VERSION
-59 silly lockFile 279af6d2-87414-0-9063643226400018-package tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\package
-60 silly lockFile 279af6d2-87414-0-9063643226400018-package tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\package
-61 silly lockFile f929f046-87414-0-9063643226400018-tmp-tgz tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\tmp.tgz
-62 silly lockFile f929f046-87414-0-9063643226400018-tmp-tgz tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\tmp.tgz
-63 verbose tar pack [ 'C:\\Users\\Jakub\\AppData\\Roaming\\npm-cache\\apiary-blueprint-parser\\0.4.4\\package.tgz',
-63 verbose tar pack   'C:\\Users\\Jakub\\AppData\\Local\\Temp\\npm-6540-SW-Ry9FG\\1381767787414-0.9063643226400018\\package' ]
-64 verbose tarball C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-65 verbose folder C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\package
-66 silly lockFile 279af6d2-87414-0-9063643226400018-package tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\package
-67 verbose lock tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\package C:\Users\Jakub\AppData\Roaming\npm-cache\279af6d2-87414-0-9063643226400018-package.lock
-68 silly lockFile eb0fcc81-ueprint-parser-0-4-4-package-tgz tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-69 verbose lock tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz C:\Users\Jakub\AppData\Roaming\npm-cache\eb0fcc81-ueprint-parser-0-4-4-package-tgz.lock
-70 silly lockFile 279af6d2-87414-0-9063643226400018-package tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\package
-71 silly lockFile 279af6d2-87414-0-9063643226400018-package tar://C:\Users\Jakub\AppData\Local\Temp\npm-6540-SW-Ry9FG\1381767787414-0.9063643226400018\package
-72 silly lockFile eb0fcc81-ueprint-parser-0-4-4-package-tgz tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-73 silly lockFile eb0fcc81-ueprint-parser-0-4-4-package-tgz tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-74 silly lockFile b462d4ee-y-blueprint-parser-0-4-4-package C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
-75 verbose lock C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package C:\Users\Jakub\AppData\Roaming\npm-cache\b462d4ee-y-blueprint-parser-0-4-4-package.lock
-76 silly lockFile b462d4ee-y-blueprint-parser-0-4-4-package C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
-77 silly lockFile b462d4ee-y-blueprint-parser-0-4-4-package C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
-78 verbose tar unpack C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-79 silly lockFile 18f8c69b-y-blueprint-parser-0-4-4-package tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
-80 verbose lock tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package C:\Users\Jakub\AppData\Roaming\npm-cache\18f8c69b-y-blueprint-parser-0-4-4-package.lock
-81 silly lockFile eb0fcc81-ueprint-parser-0-4-4-package-tgz tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-82 verbose lock tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz C:\Users\Jakub\AppData\Roaming\npm-cache\eb0fcc81-ueprint-parser-0-4-4-package-tgz.lock
-83 silly gunzTarPerm modes [ '755', '644' ]
-84 silly gunzTarPerm extractEntry package.json
-85 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
-86 silly gunzTarPerm extractEntry README.md
-87 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
-88 silly gunzTarPerm extractEntry LICENSE
-89 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
-90 silly gunzTarPerm extractEntry CHANGELOG
-91 silly gunzTarPerm modified mode [ 'CHANGELOG', 438, 420 ]
-92 silly gunzTarPerm extractEntry examples/example.apib
-93 silly gunzTarPerm modified mode [ 'examples/example.apib', 438, 420 ]
-94 silly gunzTarPerm extractEntry lib/apiary-blueprint-parser.js
-95 silly gunzTarPerm modified mode [ 'lib/apiary-blueprint-parser.js', 438, 420 ]
-96 silly gunzTarPerm extractEntry lib/ast.js
-97 silly gunzTarPerm modified mode [ 'lib/ast.js', 438, 420 ]
-98 silly gunzTarPerm extractEntry VERSION
-99 silly gunzTarPerm modified mode [ 'VERSION', 438, 420 ]
-100 silly lockFile 18f8c69b-y-blueprint-parser-0-4-4-package tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
-101 silly lockFile 18f8c69b-y-blueprint-parser-0-4-4-package tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
-102 silly lockFile eb0fcc81-ueprint-parser-0-4-4-package-tgz tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-103 silly lockFile eb0fcc81-ueprint-parser-0-4-4-package-tgz tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-104 verbose chmod C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz 644
-105 silly chown skipping for windows C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-106 silly lockFile e6ddcbfc-piary-blueprint-parser-0-4-4-tgz https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
-107 silly lockFile e6ddcbfc-piary-blueprint-parser-0-4-4-tgz https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
-108 silly lockFile 4e87209d-apiary-blueprint-parser-0-4-4 apiary-blueprint-parser@0.4.4
-109 silly lockFile 4e87209d-apiary-blueprint-parser-0-4-4 apiary-blueprint-parser@0.4.4
-110 silly lockFile 59d51280-apiary-blueprint-parser apiary-blueprint-parser@
-111 silly lockFile 59d51280-apiary-blueprint-parser apiary-blueprint-parser@
-112 silly resolved [ { name: 'apiary-blueprint-parser',
-112 silly resolved     version: '0.4.4',
-112 silly resolved     description: 'Apiary blueprint parser',
-112 silly resolved     homepage: 'https://github.com/apiaryio/blueprint-parser',
-112 silly resolved     author:
-112 silly resolved      { name: 'Apiary Ltd.',
-112 silly resolved        email: 'team@apiary.io',
-112 silly resolved        url: 'http://apiary.io/' },
-112 silly resolved     files:
-112 silly resolved      [ 'CHANGELOG',
-112 silly resolved        'LICENSE',
-112 silly resolved        'README.md',
-112 silly resolved        'VERSION',
-112 silly resolved        'examples/example.apib',
-112 silly resolved        'lib/apiary-blueprint-parser.js',
-112 silly resolved        'lib/ast.js' ],
-112 silly resolved     main: 'lib/apiary-blueprint-parser',
-112 silly resolved     scripts: { pretest: 'make', test: 'make test' },
-112 silly resolved     devDependencies:
-112 silly resolved      { 'coffee-script': '= 1.4.0',
-112 silly resolved        pegjs: 'git://github.com/dmajda/pegjs.git#02af83f9b416778878e52e2cbbc22d96e312164e',
-112 silly resolved        mocha: '= 1.7.1',
-112 silly resolved        chai: '= 1.3.0' },
-112 silly resolved     engines: { node: '>= 0.6.18' },
-112 silly resolved     readme: 'Apiary Blueprint Parser\n=======================\n\nA JavaScript parser of [Apiary API blueprints](http://apiary.io/blueprint).\n\nInstallation\n------------\n\n### Node.js\n\n    $ npm install apiary-blueprint-parser\n\nDo not install the parser globally (using the `-g` option), otherwise you won’t be able to use the API.\n\n### Browser\n\nDownload the [latest browser version of the parser](https://apiary-public.s3.amazonaws.com/blueprint-parser/apiary-blueprint-parser-0.4.4.js).\n\nUsage\n-----\n\nIn Node.js, require the module:\n\n```javascript\nvar ApiaryBlueprintParser = require("apiary-blueprint-parser");\n```\n\nIn browser, include the browser version of the parser in your web page or\napplication using the `<script>` tag. The parser will be available in the\n`ApiaryBlueprintParser` global object.\n\nTo parse an API blueprint, just call the `parse` method and pass the blueprint\nas a parameter. The method will return an object representing the parsed\nblueprint or throw an exception if the input is invalid:\n\n```javascript\nvar blueprint = ApiaryBlueprintParser.parse([\n  "Root resource",\n  "GET /",\n  "< 200"\n].join("\\n"));\n\nvar resource = blueprint.sections[0].resources[0];\nconsole.log(resource.description)     // prints "Root resource"\nconsole.log(resource.method)          // prints "GET"\nconsole.log(resource.url)             // prints "/"\nconsole.log(resource.response.status) // prints "200"\n```\n\nSee the `src/ast.coffee` file to get an idea about returned objects and their\ncapabilities.\n\nThe exception thrown in case of error will contain `offset`, `line`, `column`,\n`expected`, `found` and `message` properties with more details about the error.\n\nCompatibility\n-------------\n\nThe parser should run well in the following environments:\n\n  * Node.js 0.6.18+\n  * IE 9+\n  * Firefox\n  * Chrome\n  * Safari\n  * Opera\n\nThe parser should also work in IE 8, but this is not fully tested because the\ntest suite runs correctly only in IE 9+.\n',
-112 silly resolved     readmeFilename: 'README.md',
-112 silly resolved     _id: 'apiary-blueprint-parser@0.4.4',
-112 silly resolved     dist: { shasum: '3eaba22c3d103c82953bb7c080c0ca87cb0c619e' },
-112 silly resolved     _from: 'apiary-blueprint-parser@',
-112 silly resolved     _resolved: 'https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz' } ]
-113 info install apiary-blueprint-parser@0.4.4 into C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client
-114 info installOne apiary-blueprint-parser@0.4.4
-115 info C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client\node_modules\apiary-blueprint-parser unbuild
-116 info preuninstall apiary-blueprint-parser@0.4.4
-117 info uninstall apiary-blueprint-parser@0.4.4
-118 verbose true,C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client\node_modules,C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client\node_modules unbuild apiary-blueprint-parser@0.4.4
-119 info postuninstall apiary-blueprint-parser@0.4.4
-120 verbose tar unpack C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-121 silly lockFile 65d36551--modules-apiary-blueprint-parser tar://C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client\node_modules\apiary-blueprint-parser
-122 verbose lock tar://C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client\node_modules\apiary-blueprint-parser C:\Users\Jakub\AppData\Roaming\npm-cache\65d36551--modules-apiary-blueprint-parser.lock
-123 silly lockFile eb0fcc81-ueprint-parser-0-4-4-package-tgz tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-124 verbose lock tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz C:\Users\Jakub\AppData\Roaming\npm-cache\eb0fcc81-ueprint-parser-0-4-4-package-tgz.lock
-125 silly gunzTarPerm modes [ '755', '644' ]
-126 silly gunzTarPerm extractEntry package.json
-127 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
-128 silly gunzTarPerm extractEntry README.md
-129 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
-130 silly gunzTarPerm extractEntry LICENSE
-131 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
-132 silly gunzTarPerm extractEntry CHANGELOG
-133 silly gunzTarPerm modified mode [ 'CHANGELOG', 438, 420 ]
-134 silly gunzTarPerm extractEntry examples/example.apib
-135 silly gunzTarPerm modified mode [ 'examples/example.apib', 438, 420 ]
-136 silly gunzTarPerm extractEntry lib/apiary-blueprint-parser.js
-137 silly gunzTarPerm modified mode [ 'lib/apiary-blueprint-parser.js', 438, 420 ]
-138 silly gunzTarPerm extractEntry lib/ast.js
-139 silly gunzTarPerm modified mode [ 'lib/ast.js', 438, 420 ]
-140 silly gunzTarPerm extractEntry VERSION
-141 silly gunzTarPerm modified mode [ 'VERSION', 438, 420 ]
-142 silly lockFile 65d36551--modules-apiary-blueprint-parser tar://C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client\node_modules\apiary-blueprint-parser
-143 silly lockFile 65d36551--modules-apiary-blueprint-parser tar://C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client\node_modules\apiary-blueprint-parser
-144 silly lockFile eb0fcc81-ueprint-parser-0-4-4-package-tgz tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-145 silly lockFile eb0fcc81-ueprint-parser-0-4-4-package-tgz tar://C:\Users\Jakub\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
-146 info preinstall apiary-blueprint-parser@0.4.4
-147 verbose readDependencies using package.json deps
-148 verbose readDependencies using package.json deps
-149 silly resolved []
-150 verbose about to build C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client\node_modules\apiary-blueprint-parser
-151 info build C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client\node_modules\apiary-blueprint-parser
-152 verbose linkStuff [ false,
-152 verbose linkStuff   false,
-152 verbose linkStuff   false,
-152 verbose linkStuff   'C:\\Users\\Jakub\\WebstormProjects\\RocnikovyProjekt-Client\\node_modules' ]
-153 info linkStuff apiary-blueprint-parser@0.4.4
-154 verbose linkBins apiary-blueprint-parser@0.4.4
-155 verbose linkMans apiary-blueprint-parser@0.4.4
-156 verbose rebuildBundles apiary-blueprint-parser@0.4.4
-157 info install apiary-blueprint-parser@0.4.4
-158 info postinstall apiary-blueprint-parser@0.4.4
-159 error peerinvalid The package grunt does not satisfy its siblings' peerDependencies requirements!
-160 error System Windows_NT 6.2.9200
-161 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "apiary-blueprint-parser" "--force"
-162 error cwd C:\Users\Jakub\WebstormProjects\RocnikovyProjekt-Client
-163 error node -v v0.10.20
-164 error npm -v 1.3.11
-165 error code EPEERINVALID
-166 verbose exit [ 1, true ]
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'apiary-blueprint-parser', null ]
+7 verbose cache add name=undefined spec="apiary-blueprint-parser" args=["apiary-blueprint-parser",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'apiary-blueprint-parser',
+8 verbose parsed url   path: 'apiary-blueprint-parser',
+8 verbose parsed url   href: 'apiary-blueprint-parser' }
+9 silly lockFile 92eb5db3-apiary-blueprint-parser apiary-blueprint-parser
+10 verbose lock apiary-blueprint-parser C:\Users\the.ufon\AppData\Roaming\npm-cache\92eb5db3-apiary-blueprint-parser.lock
+11 silly lockFile 92eb5db3-apiary-blueprint-parser apiary-blueprint-parser
+12 silly lockFile 92eb5db3-apiary-blueprint-parser apiary-blueprint-parser
+13 verbose addNamed [ 'apiary-blueprint-parser', '' ]
+14 verbose addNamed [ null, '*' ]
+15 silly lockFile 59d51280-apiary-blueprint-parser apiary-blueprint-parser@
+16 verbose lock apiary-blueprint-parser@ C:\Users\the.ufon\AppData\Roaming\npm-cache\59d51280-apiary-blueprint-parser.lock
+17 silly addNameRange { name: 'apiary-blueprint-parser', range: '*', hasData: false }
+18 verbose url raw apiary-blueprint-parser
+19 verbose url resolving [ 'https://registry.npmjs.org/', './apiary-blueprint-parser' ]
+20 verbose url resolved https://registry.npmjs.org/apiary-blueprint-parser
+21 info trying registry request attempt 1 at 20:42:16
+22 http GET https://registry.npmjs.org/apiary-blueprint-parser
+23 http 200 https://registry.npmjs.org/apiary-blueprint-parser
+24 silly registry.get cb [ 200,
+24 silly registry.get   { vary: 'Accept',
+24 silly registry.get     server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+24 silly registry.get     etag: '"EWD79XZ7ZXGGJOOTTTPCPGFKX"',
+24 silly registry.get     date: 'Mon, 14 Oct 2013 18:42:21 GMT',
+24 silly registry.get     'content-type': 'application/json',
+24 silly registry.get     'content-length': '19793' } ]
+25 silly addNameRange number 2 { name: 'apiary-blueprint-parser', range: '*', hasData: true }
+26 silly addNameRange versions [ 'apiary-blueprint-parser',
+26 silly addNameRange   [ '0.1.0',
+26 silly addNameRange     '0.1.1',
+26 silly addNameRange     '0.2.0',
+26 silly addNameRange     '0.3.0',
+26 silly addNameRange     '0.4.0',
+26 silly addNameRange     '0.4.1',
+26 silly addNameRange     '0.4.2',
+26 silly addNameRange     '0.4.3',
+26 silly addNameRange     '0.4.4' ] ]
+27 verbose addNamed [ 'apiary-blueprint-parser', '0.4.4' ]
+28 verbose addNamed [ '0.4.4', '0.4.4' ]
+29 silly lockFile 4e87209d-apiary-blueprint-parser-0-4-4 apiary-blueprint-parser@0.4.4
+30 verbose lock apiary-blueprint-parser@0.4.4 C:\Users\the.ufon\AppData\Roaming\npm-cache\4e87209d-apiary-blueprint-parser-0-4-4.lock
+31 silly lockFile e6ddcbfc-piary-blueprint-parser-0-4-4-tgz https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
+32 verbose lock https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz C:\Users\the.ufon\AppData\Roaming\npm-cache\e6ddcbfc-piary-blueprint-parser-0-4-4-tgz.lock
+33 verbose addRemoteTarball [ 'https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz',
+33 verbose addRemoteTarball   'e3378c7efe242207164c3ddb7dd44722c851c96d' ]
+34 info retry fetch attempt 1 at 20:42:18
+35 verbose fetch to= C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\tmp.tgz
+36 http GET https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
+37 http 200 https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
+38 verbose tar unpack C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\tmp.tgz
+39 silly lockFile d0645806-38497-0-5758063204120845-package tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\package
+40 verbose lock tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\package C:\Users\the.ufon\AppData\Roaming\npm-cache\d0645806-38497-0-5758063204120845-package.lock
+41 silly lockFile 9c1cd44e-38497-0-5758063204120845-tmp-tgz tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\tmp.tgz
+42 verbose lock tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\tmp.tgz C:\Users\the.ufon\AppData\Roaming\npm-cache\9c1cd44e-38497-0-5758063204120845-tmp-tgz.lock
+43 silly gunzTarPerm modes [ '755', '644' ]
+44 silly gunzTarPerm extractEntry package.json
+45 silly gunzTarPerm extractEntry README.md
+46 silly gunzTarPerm extractEntry LICENSE
+47 silly gunzTarPerm extractEntry CHANGELOG
+48 silly gunzTarPerm extractEntry examples/example.apib
+49 silly gunzTarPerm extractEntry lib/apiary-blueprint-parser.js
+50 silly gunzTarPerm extractEntry lib/ast.js
+51 silly gunzTarPerm extractEntry VERSION
+52 silly lockFile d0645806-38497-0-5758063204120845-package tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\package
+53 silly lockFile d0645806-38497-0-5758063204120845-package tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\package
+54 silly lockFile 9c1cd44e-38497-0-5758063204120845-tmp-tgz tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\tmp.tgz
+55 silly lockFile 9c1cd44e-38497-0-5758063204120845-tmp-tgz tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\tmp.tgz
+56 verbose tar pack [ 'C:\\Users\\the.ufon\\AppData\\Roaming\\npm-cache\\apiary-blueprint-parser\\0.4.4\\package.tgz',
+56 verbose tar pack   'C:\\Users\\THE~1.UFO\\AppData\\Local\\Temp\\npm-6128\\1381776138497-0.5758063204120845\\package' ]
+57 verbose tarball C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+58 verbose folder C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\package
+59 silly lockFile d0645806-38497-0-5758063204120845-package tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\package
+60 verbose lock tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\package C:\Users\the.ufon\AppData\Roaming\npm-cache\d0645806-38497-0-5758063204120845-package.lock
+61 silly lockFile 1c81b6bf-ueprint-parser-0-4-4-package-tgz tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+62 verbose lock tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz C:\Users\the.ufon\AppData\Roaming\npm-cache\1c81b6bf-ueprint-parser-0-4-4-package-tgz.lock
+63 silly lockFile d0645806-38497-0-5758063204120845-package tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\package
+64 silly lockFile d0645806-38497-0-5758063204120845-package tar://C:\Users\THE~1.UFO\AppData\Local\Temp\npm-6128\1381776138497-0.5758063204120845\package
+65 silly lockFile 1c81b6bf-ueprint-parser-0-4-4-package-tgz tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+66 silly lockFile 1c81b6bf-ueprint-parser-0-4-4-package-tgz tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+67 silly lockFile be547183-y-blueprint-parser-0-4-4-package C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
+68 verbose lock C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package C:\Users\the.ufon\AppData\Roaming\npm-cache\be547183-y-blueprint-parser-0-4-4-package.lock
+69 silly lockFile be547183-y-blueprint-parser-0-4-4-package C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
+70 silly lockFile be547183-y-blueprint-parser-0-4-4-package C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
+71 verbose tar unpack C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+72 silly lockFile 1d82b4c5-y-blueprint-parser-0-4-4-package tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
+73 verbose lock tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package C:\Users\the.ufon\AppData\Roaming\npm-cache\1d82b4c5-y-blueprint-parser-0-4-4-package.lock
+74 silly lockFile 1c81b6bf-ueprint-parser-0-4-4-package-tgz tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+75 verbose lock tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz C:\Users\the.ufon\AppData\Roaming\npm-cache\1c81b6bf-ueprint-parser-0-4-4-package-tgz.lock
+76 silly gunzTarPerm modes [ '755', '644' ]
+77 silly gunzTarPerm extractEntry package.json
+78 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+79 silly gunzTarPerm extractEntry README.md
+80 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+81 silly gunzTarPerm extractEntry LICENSE
+82 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+83 silly gunzTarPerm extractEntry CHANGELOG
+84 silly gunzTarPerm modified mode [ 'CHANGELOG', 438, 420 ]
+85 silly gunzTarPerm extractEntry examples/example.apib
+86 silly gunzTarPerm modified mode [ 'examples/example.apib', 438, 420 ]
+87 silly gunzTarPerm extractEntry lib/apiary-blueprint-parser.js
+88 silly gunzTarPerm modified mode [ 'lib/apiary-blueprint-parser.js', 438, 420 ]
+89 silly gunzTarPerm extractEntry lib/ast.js
+90 silly gunzTarPerm modified mode [ 'lib/ast.js', 438, 420 ]
+91 silly gunzTarPerm extractEntry VERSION
+92 silly gunzTarPerm modified mode [ 'VERSION', 438, 420 ]
+93 silly lockFile 1d82b4c5-y-blueprint-parser-0-4-4-package tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
+94 silly lockFile 1d82b4c5-y-blueprint-parser-0-4-4-package tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package
+95 silly lockFile 1c81b6bf-ueprint-parser-0-4-4-package-tgz tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+96 silly lockFile 1c81b6bf-ueprint-parser-0-4-4-package-tgz tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+97 verbose chmod C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz 644
+98 silly chown skipping for windows C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+99 silly lockFile e6ddcbfc-piary-blueprint-parser-0-4-4-tgz https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
+100 silly lockFile e6ddcbfc-piary-blueprint-parser-0-4-4-tgz https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz
+101 silly lockFile 4e87209d-apiary-blueprint-parser-0-4-4 apiary-blueprint-parser@0.4.4
+102 silly lockFile 4e87209d-apiary-blueprint-parser-0-4-4 apiary-blueprint-parser@0.4.4
+103 silly lockFile 59d51280-apiary-blueprint-parser apiary-blueprint-parser@
+104 silly lockFile 59d51280-apiary-blueprint-parser apiary-blueprint-parser@
+105 silly resolved [ { name: 'apiary-blueprint-parser',
+105 silly resolved     version: '0.4.4',
+105 silly resolved     description: 'Apiary blueprint parser',
+105 silly resolved     homepage: 'https://github.com/apiaryio/blueprint-parser',
+105 silly resolved     author:
+105 silly resolved      { name: 'Apiary Ltd.',
+105 silly resolved        email: 'team@apiary.io',
+105 silly resolved        url: 'http://apiary.io/' },
+105 silly resolved     files:
+105 silly resolved      [ 'CHANGELOG',
+105 silly resolved        'LICENSE',
+105 silly resolved        'README.md',
+105 silly resolved        'VERSION',
+105 silly resolved        'examples/example.apib',
+105 silly resolved        'lib/apiary-blueprint-parser.js',
+105 silly resolved        'lib/ast.js' ],
+105 silly resolved     main: 'lib/apiary-blueprint-parser',
+105 silly resolved     scripts: { pretest: 'make', test: 'make test' },
+105 silly resolved     devDependencies:
+105 silly resolved      { 'coffee-script': '= 1.4.0',
+105 silly resolved        pegjs: 'git://github.com/dmajda/pegjs.git#02af83f9b416778878e52e2cbbc22d96e312164e',
+105 silly resolved        mocha: '= 1.7.1',
+105 silly resolved        chai: '= 1.3.0' },
+105 silly resolved     engines: { node: '>= 0.6.18' },
+105 silly resolved     readme: 'Apiary Blueprint Parser\n=======================\n\nA JavaScript parser of [Apiary API blueprints](http://apiary.io/blueprint).\n\nInstallation\n------------\n\n### Node.js\n\n    $ npm install apiary-blueprint-parser\n\nDo not install the parser globally (using the `-g` option), otherwise you won’t be able to use the API.\n\n### Browser\n\nDownload the [latest browser version of the parser](https://apiary-public.s3.amazonaws.com/blueprint-parser/apiary-blueprint-parser-0.4.4.js).\n\nUsage\n-----\n\nIn Node.js, require the module:\n\n```javascript\nvar ApiaryBlueprintParser = require("apiary-blueprint-parser");\n```\n\nIn browser, include the browser version of the parser in your web page or\napplication using the `<script>` tag. The parser will be available in the\n`ApiaryBlueprintParser` global object.\n\nTo parse an API blueprint, just call the `parse` method and pass the blueprint\nas a parameter. The method will return an object representing the parsed\nblueprint or throw an exception if the input is invalid:\n\n```javascript\nvar blueprint = ApiaryBlueprintParser.parse([\n  "Root resource",\n  "GET /",\n  "< 200"\n].join("\\n"));\n\nvar resource = blueprint.sections[0].resources[0];\nconsole.log(resource.description)     // prints "Root resource"\nconsole.log(resource.method)          // prints "GET"\nconsole.log(resource.url)             // prints "/"\nconsole.log(resource.response.status) // prints "200"\n```\n\nSee the `src/ast.coffee` file to get an idea about returned objects and their\ncapabilities.\n\nThe exception thrown in case of error will contain `offset`, `line`, `column`,\n`expected`, `found` and `message` properties with more details about the error.\n\nCompatibility\n-------------\n\nThe parser should run well in the following environments:\n\n  * Node.js 0.6.18+\n  * IE 9+\n  * Firefox\n  * Chrome\n  * Safari\n  * Opera\n\nThe parser should also work in IE 8, but this is not fully tested because the\ntest suite runs correctly only in IE 9+.\n',
+105 silly resolved     readmeFilename: 'README.md',
+105 silly resolved     _id: 'apiary-blueprint-parser@0.4.4',
+105 silly resolved     dist: { shasum: 'a210e170641f255ce8a29871cca3841b91d8ea23' },
+105 silly resolved     _from: 'apiary-blueprint-parser@',
+105 silly resolved     _resolved: 'https://registry.npmjs.org/apiary-blueprint-parser/-/apiary-blueprint-parser-0.4.4.tgz' } ]
+106 info install apiary-blueprint-parser@0.4.4 into D:\javascript\rocnikovyProjektKlient
+107 info installOne apiary-blueprint-parser@0.4.4
+108 info D:\javascript\rocnikovyProjektKlient\node_modules\apiary-blueprint-parser unbuild
+109 verbose tar unpack C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+110 silly lockFile 96f0318c--modules-apiary-blueprint-parser tar://D:\javascript\rocnikovyProjektKlient\node_modules\apiary-blueprint-parser
+111 verbose lock tar://D:\javascript\rocnikovyProjektKlient\node_modules\apiary-blueprint-parser C:\Users\the.ufon\AppData\Roaming\npm-cache\96f0318c--modules-apiary-blueprint-parser.lock
+112 silly lockFile 1c81b6bf-ueprint-parser-0-4-4-package-tgz tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+113 verbose lock tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz C:\Users\the.ufon\AppData\Roaming\npm-cache\1c81b6bf-ueprint-parser-0-4-4-package-tgz.lock
+114 silly gunzTarPerm modes [ '755', '644' ]
+115 silly gunzTarPerm extractEntry package.json
+116 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+117 silly gunzTarPerm extractEntry README.md
+118 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+119 silly gunzTarPerm extractEntry LICENSE
+120 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+121 silly gunzTarPerm extractEntry CHANGELOG
+122 silly gunzTarPerm modified mode [ 'CHANGELOG', 438, 420 ]
+123 silly gunzTarPerm extractEntry examples/example.apib
+124 silly gunzTarPerm modified mode [ 'examples/example.apib', 438, 420 ]
+125 silly gunzTarPerm extractEntry lib/apiary-blueprint-parser.js
+126 silly gunzTarPerm modified mode [ 'lib/apiary-blueprint-parser.js', 438, 420 ]
+127 silly gunzTarPerm extractEntry lib/ast.js
+128 silly gunzTarPerm modified mode [ 'lib/ast.js', 438, 420 ]
+129 silly gunzTarPerm extractEntry VERSION
+130 silly gunzTarPerm modified mode [ 'VERSION', 438, 420 ]
+131 silly lockFile 96f0318c--modules-apiary-blueprint-parser tar://D:\javascript\rocnikovyProjektKlient\node_modules\apiary-blueprint-parser
+132 silly lockFile 96f0318c--modules-apiary-blueprint-parser tar://D:\javascript\rocnikovyProjektKlient\node_modules\apiary-blueprint-parser
+133 silly lockFile 1c81b6bf-ueprint-parser-0-4-4-package-tgz tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+134 silly lockFile 1c81b6bf-ueprint-parser-0-4-4-package-tgz tar://C:\Users\the.ufon\AppData\Roaming\npm-cache\apiary-blueprint-parser\0.4.4\package.tgz
+135 info preinstall apiary-blueprint-parser@0.4.4
+136 verbose readDependencies using package.json deps
+137 verbose readDependencies using package.json deps
+138 silly resolved []
+139 verbose about to build D:\javascript\rocnikovyProjektKlient\node_modules\apiary-blueprint-parser
+140 info build D:\javascript\rocnikovyProjektKlient\node_modules\apiary-blueprint-parser
+141 verbose linkStuff [ false,
+141 verbose linkStuff   false,
+141 verbose linkStuff   false,
+141 verbose linkStuff   'D:\\javascript\\rocnikovyProjektKlient\\node_modules' ]
+142 info linkStuff apiary-blueprint-parser@0.4.4
+143 verbose linkBins apiary-blueprint-parser@0.4.4
+144 verbose linkMans apiary-blueprint-parser@0.4.4
+145 verbose rebuildBundles apiary-blueprint-parser@0.4.4
+146 info install apiary-blueprint-parser@0.4.4
+147 info postinstall apiary-blueprint-parser@0.4.4
+148 error peerinvalid The package grunt does not satisfy its siblings' peerDependencies requirements!
+149 error System Windows_NT 6.2.9200
+150 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "apiary-blueprint-parser"
+151 error cwd D:\javascript\rocnikovyProjektKlient
+152 error node -v v0.10.13
+153 error npm -v 1.3.2
+154 error code EPEERINVALID
+155 verbose exit [ 1, true ]
