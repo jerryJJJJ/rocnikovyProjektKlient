@@ -10,17 +10,18 @@ module.exports = function (grunt) {
 
   // configurable paths
   var yeomanConfig = {
-    app: 'app',
+    app:  'app',
     dist: 'dist'
   };
 
   try {
     yeomanConfig.app = require('./component.json').appPath || yeomanConfig.app;
-  } catch (e) {}
+  } catch (e) {
+  }
 
   grunt.initConfig({
-    yeoman: yeomanConfig,
-    watch: {
+    yeoman:        yeomanConfig,
+    watch:         {
       livereload: {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
@@ -31,12 +32,12 @@ module.exports = function (grunt) {
         tasks: ['livereload']
       }
     },
-    connect: {
+    connect:       {
       livereload: {
         options: {
-          port: 9000,
+          port:       9000,
           // Change this to '0.0.0.0' to access the server from outside.
-          hostname: 'localhost',
+          hostname:   'localhost',
           middleware: function (connect) {
             return [
               lrSnippet,
@@ -46,9 +47,9 @@ module.exports = function (grunt) {
           }
         }
       },
-      test: {
+      test:       {
         options: {
-          port: 9000,
+          port:       9000,
           middleware: function (connect) {
             return [
               mountFolder(connect, '.tmp'),
@@ -58,70 +59,70 @@ module.exports = function (grunt) {
         }
       }
     },
-    open: {
+    open:          {
       server: {
         url: 'http://localhost:<%= connect.livereload.options.port %>/#/'
       }
     },
-    clean: {
-      dist: ['.tmp', '<%= yeoman.dist %>/*'],
+    clean:         {
+      dist:   ['.tmp', '<%= yeoman.dist %>/*'],
       server: '.tmp'
     },
-    jshint: {
+    jshint:        {
       options: {
         jshintrc: '.jshintrc'
       },
-      all: [
+      all:     [
         'Gruntfile.js',
         '<%= yeoman.app %>/scripts/{,*/}*.js'
       ]
     },
-    testacular: {
-      all: {
+    testacular:    {
+      all:  {
         configFile: 'testacular.conf.js',
-        singleRun: true
+        singleRun:  true
       },
       unit: {
         configFile: 'testacular.unit.conf.js',
-        singleRun: false,
-        autoWatch: true
+        singleRun:  false,
+        autoWatch:  true
       }
     },
-    typescript: {
+    typescript:    {
       base: {
-        src: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
+        src:     ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
         //dest: 'where/you/want/your/js/files',
         options: {
-          module: 'amd', //or commonjs
-          target: 'es5', //or es3
+          module:      'amd', //or commonjs
+          target:      'es5', //or es3
           //base_path: 'path/to/typescript/files',
-          sourcemap: true,
+          sourcemap:   true,
           declaration: true
         }
       },
       test: {
-        src: ['test/spec/{,*/}*.ts', 'test/e2e/{,*/}*.ts'],
+        src:     ['test/spec/{,*/}*.ts', 'test/e2e/{,*/}*.ts'],
         //dest: 'where/you/want/your/js/files',
         options: {
-          module: 'amd', //or commonjs
-          target: 'es5', //or es3
+          module:      'amd', //or commonjs
+          target:      'es5', //or es3
           //base_path: 'path/to/typescript/files',
-          sourcemap: true,
+          sourcemap:   true,
           declaration: true
         }
       }
     },
-    less: {
+    less:          {
       production: {
         options: {
           paths: ["<%= yeoman.app %>/components/bootstrap/less"]
         },
-        files: {
+        files:   {
           "<%= yeoman.app %>/css/style.css": "<%= yeoman.app %>/less/style.less"
         }
       }
     },
-    concat: {
+    concat:        {
       dist: {
         files: {
           '<%= yeoman.dist %>/scripts/scripts.js': [
@@ -132,29 +133,31 @@ module.exports = function (grunt) {
       }
     },
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html:    '<%= yeoman.app %>/index.html',
       options: {
         dest: '<%= yeoman.dist %>'
       }
     },
-    usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/css/{,*/}*.css'],
+    usemin:        {
+      html:    ['<%= yeoman.dist %>/{,*/}*.html'],
+      css:     ['<%= yeoman.dist %>/css/{,*/}*.css'],
       options: {
         dirs: ['<%= yeoman.dist %>']
       }
     },
-    imagemin: {
+    imagemin:      {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg}',
-          dest: '<%= yeoman.dist %>/images'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd:    '<%= yeoman.app %>/images',
+            src:    '{,*/}*.{png,jpg,jpeg}',
+            dest:   '<%= yeoman.dist %>/images'
+          }
+        ]
       }
     },
-    cssmin: {
+    cssmin:        {
       dist: {
         files: {
           '<%= yeoman.dist %>/css/main.css': [
@@ -164,43 +167,47 @@ module.exports = function (grunt) {
         }
       }
     },
-    htmlmin: {
+    htmlmin:       {
       dist: {
         options: {
           /*removeCommentsFromCDATA: true,
-          // https://github.com/yeoman/grunt-usemin/issues/44
-          //collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeOptionalTags: true*/
+           // https://github.com/yeoman/grunt-usemin/issues/44
+           //collapseWhitespace: true,
+           collapseBooleanAttributes: true,
+           removeAttributeQuotes: true,
+           removeRedundantAttributes: true,
+           useShortDoctype: true,
+           removeEmptyAttributes: true,
+           removeOptionalTags: true*/
         },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
+        files:   [
+          {
+            expand: true,
+            cwd:    '<%= yeoman.app %>',
+            src:    ['*.html', 'views/*.html'],
+            dest:   '<%= yeoman.dist %>'
+          }
+        ]
       }
     },
-    cdnify: {
+    cdnify:        {
       dist: {
         html: ['<%= yeoman.dist %>/*.html']
       }
     },
-    ngmin: {
+    ngmin:         {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>/scripts',
-          src: '*.js',
-          dest: '<%= yeoman.dist %>/scripts'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd:    '<%= yeoman.dist %>/scripts',
+            src:    '*.js',
+            dest:   '<%= yeoman.dist %>/scripts'
+          }
+        ]
       }
     },
-    uglify: {
+    uglify:        {
       dist: {
         files: {
           '<%= yeoman.dist %>/scripts/scripts.js': [
@@ -209,20 +216,22 @@ module.exports = function (grunt) {
         }
       }
     },
-    copy: {
+    copy:          {
       dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.dist %>',
-          src: [
-            '*.{ico,txt}',
-            '.htaccess',
-            'components/**/*',
-            'images/{,*/}*.{gif,webp}'
-          ]
-        }]
+        files: [
+          {
+            expand: true,
+            dot:    true,
+            cwd:    '<%= yeoman.app %>',
+            dest:   '<%= yeoman.dist %>',
+            src:    [
+              '*.{ico,txt}',
+              '.htaccess',
+              'components/**/*',
+              'images/{,*/}*.{gif,webp}'
+            ]
+          }
+        ]
       }
     }
   });
@@ -263,6 +272,14 @@ module.exports = function (grunt) {
     'ngmin',
     'uglify'
   ]);
+
+  grunt.task.registerTask('apiary2js', 'Generate js version of apiary file.', function () {
+    var parser = require('apiary-blueprint-parser');
+    var content = grunt.file.read('apiary.apib');
+    var blueprint = parser.parse(content);
+    var json = JSON.stringify(blueprint.sections, null, 2);
+    grunt.file.write('app/apiary.js', "var apiary = " + json);
+  });
 
   //grunt.registerTask('default', ['build']);
 };
