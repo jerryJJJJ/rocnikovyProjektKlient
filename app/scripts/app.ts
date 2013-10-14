@@ -14,6 +14,7 @@ angular.module('app', [
   'app.service'
 ]);
 
+
 angular.module('app').config(($routeProvider:ng.IRouteProvider) => {
   $routeProvider.when('/', {
     templateUrl:  'views/main.html',

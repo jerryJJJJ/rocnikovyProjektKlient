@@ -26,7 +26,7 @@
       <file leaf-file-name="teachers.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/teachers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="38" selection-start="249" selection-end="249" vertical-scroll-proportion="-6.9565215" vertical-offset="0" max-vertical-offset="320">
+            <state line="10" column="38" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="540">
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
       <file leaf-file-name="teachers.ts" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="5" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
+            <state line="13" column="5" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="675">
               <folding />
             </state>
           </provider>
@@ -44,7 +44,7 @@
       <file leaf-file-name="Gruntfile.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gruntfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="280" column="31" selection-start="6897" selection-end="6897" vertical-scroll-proportion="0.0" vertical-offset="4041" max-vertical-offset="4656">
+            <state line="280" column="31" selection-start="6897" selection-end="6897" vertical-scroll-proportion="0.0" vertical-offset="7560" max-vertical-offset="7857">
               <folding />
             </state>
           </provider>
@@ -53,7 +53,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="7" selection-start="932" selection-end="932" vertical-scroll-proportion="-18.086956" vertical-offset="0" max-vertical-offset="528">
+            <state line="26" column="7" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="891">
               <folding />
             </state>
           </provider>
@@ -62,22 +62,8 @@
       <file leaf-file-name="app.ts" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/app.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="39" selection-start="751" selection-end="751" vertical-scroll-proportion="0.33245382" vertical-offset="354" max-vertical-offset="2080">
+            <state line="16" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="0.42023346" vertical-offset="0" max-vertical-offset="4185">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="teachers.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="448">
-              <folding>
-                <marker date="1381766734990" expanded="true" signature="39:614" placeholder="{...}" />
-                <marker date="1381766734990" expanded="true" signature="68:532" placeholder="{...}" />
-                <marker date="1381766734990" expanded="true" signature="106:482" placeholder="{...}" />
-                <marker date="1381766734990" expanded="true" signature="153:443" placeholder="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -104,10 +90,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1184" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -154,7 +140,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -169,7 +154,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="RocnikovyProjekt-Client" />
+              <option name="myItemId" value="rocnikovyProjektKlient" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -179,11 +164,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="RocnikovyProjekt-Client" />
+              <option name="myItemId" value="rocnikovyProjektKlient" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -193,20 +178,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="RocnikovyProjekt-Client" />
+              <option name="myItemId" value="rocnikovyProjektKlient" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -215,8 +197,8 @@
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -224,24 +206,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="name" value="Dart" />
-      <option name="saveOutputToFile" value="false" />
-      <option name="showConsoleOnStdErr" value="false" />
-      <option name="showConsoleOnStdOut" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
       <envs />
       <method />
@@ -282,18 +246,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1184" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1954612" sideWeight="0.6713396" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13854167" sideWeight="0.6713396" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32866043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -317,6 +283,27 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="280" column="31" selection-start="6897" selection-end="6897" vertical-scroll-proportion="0.0" vertical-offset="7560" max-vertical-offset="7857">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="7" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="891">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/app.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="39" selection-start="751" selection-end="751" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="4158">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="34" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320" />
@@ -349,35 +336,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/teachers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="38" selection-start="249" selection-end="249" vertical-scroll-proportion="-6.9565215" vertical-offset="0" max-vertical-offset="320">
+        <state line="10" column="38" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="540">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/component.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="42" selection-start="123" selection-end="123" vertical-scroll-proportion="0.167979" vertical-offset="0" max-vertical-offset="381">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/types/angularjs/angular.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="518" column="8" selection-start="20699" selection-end="20699" vertical-scroll-proportion="0.33248082" vertical-offset="8110" max-vertical-offset="12208">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="448">
-          <folding>
-            <marker date="1381766734990" expanded="true" signature="39:614" placeholder="{...}" />
-            <marker date="1381766734990" expanded="true" signature="68:532" placeholder="{...}" />
-            <marker date="1381766734990" expanded="true" signature="106:482" placeholder="{...}" />
-            <marker date="1381766734990" expanded="true" signature="153:443" placeholder="{...}" />
-          </folding>
-        </state>
+        <state line="4" column="42" selection-start="123" selection-end="123" vertical-scroll-proportion="0.167979" vertical-offset="0" max-vertical-offset="381" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.ts">
@@ -389,16 +355,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apiary.apib">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="784">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/frontend/apiary.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="48" selection-start="468" selection-end="468" vertical-scroll-proportion="0.6956522" vertical-offset="0" max-vertical-offset="1184">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="784" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
@@ -410,14 +367,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="7" selection-start="932" selection-end="932" vertical-scroll-proportion="-18.086956" vertical-offset="0" max-vertical-offset="528">
+        <state line="26" column="7" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="891">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/app.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="39" selection-start="751" selection-end="751" vertical-scroll-proportion="0.33245382" vertical-offset="354" max-vertical-offset="2080">
+        <state line="16" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="0.42023346" vertical-offset="0" max-vertical-offset="4185">
           <folding />
         </state>
       </provider>
