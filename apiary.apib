@@ -40,6 +40,11 @@ POST /ucitele
 { "id": 3 }
 
 
+--
+Autoskoly Resources
+The following is a section of resources related to Autoskoly
+--
+
 Seznam autoskol
 GET /autoskoly
 < 200
@@ -59,7 +64,7 @@ GET /autoskoly
 ] }
 
 Detail autoskoly s id 1
-GET /autoskola/1
+GET /autoskoly/1
 < 200
 < Content-Type: application/json
 { "id": 1, "nazev": "Aotoskola1", "ucitele" : [
@@ -70,6 +75,11 @@ GET /autoskola/1
     ]
 }
 
+
+--
+Vozidla Resources
+The following is a section of resources related to Vozidla
+--
 
 Seznam vozidel
 GET /vozidla
@@ -100,9 +110,3 @@ GET /jizdy
     { "id": 1, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "doba-jizdy": "02:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 },
     { "id": 2, "datum": "2013-01-01", "ucitel": 1, "vozidlo": 1, "zak": 5, "doba-jizdy": "01:50", "pocet-ujetych-km" : 16, "spotreba" : 7.1 }
 ] }
-
---
-Autoskoly Resources
-The following is a section of resources related to Autoskoly
---
-
