@@ -7,7 +7,7 @@ module app.controller {
     public teachers:Array;
 
 
-    constructor(private $scope:ng.IScope, private $http:ng.IHttpService, private auth) {
+    constructor(private $http:ng.IHttpService, private auth:app.service.Auth) {
       $http.get("/ucitele").then((response:ng.IHttpPromiseCallbackArg) => {
         this.teachers = response.data.ucitele;
       }, (reason) => {
