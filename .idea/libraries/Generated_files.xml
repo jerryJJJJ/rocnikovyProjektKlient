@@ -86,7 +86,7 @@
       <root url="file://$PROJECT_DIR$/app/components/types/d3/plugins/d3.superformula-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/ace/all-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/sinon-chai/sinon-chai-tests.js" />
-      <root url="file://$PROJECT_DIR$/app/scripts/controllers/teachers.js" />
+      <root url="file://$PROJECT_DIR$/app/controllers/teachers.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/jszip/jszip-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/ladda/ladda-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/qunit/qunit-tests.js" />
@@ -133,10 +133,10 @@
       <root url="file://$PROJECT_DIR$/app/components/types/flexSlider/flexSlider-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/jstorage/jstorage-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/jqueryui/jqueryui-tests.js" />
-      <root url="file://$PROJECT_DIR$/app/scripts/services/auth.js" />
+      <root url="file://$PROJECT_DIR$/app/services/auth.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/jquery.menuaim/jquery.menuaim-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/hammerjs/hammerjs-tests.js" />
-      <root url="file://$PROJECT_DIR$/app/scripts/app.js" />
+      <root url="file://$PROJECT_DIR$/app/app.js" />
     </CLASSES>
     <SOURCES />
   </library>

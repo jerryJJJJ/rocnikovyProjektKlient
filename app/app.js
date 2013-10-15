@@ -1,4 +1,4 @@
-/// <reference path="./../components/types/angularjs/angular.d.ts" />
+/// <reference path="./components/types/angularjs/angular.d.ts" />
 'use strict';
 angular.module('app.controller', []);
 angular.module('app.directive', []);
