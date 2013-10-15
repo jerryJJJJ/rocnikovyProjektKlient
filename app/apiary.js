@@ -17,7 +17,7 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"ucitele\": [\n    { \"id\": 1, \"jmeno\": \"Max\", \"prijmeni\": \"Skočdopole\", \"autoskola-id\": 1, \"opravneni\": [\"A\", \"B\"], \"pocet-deti\" : 2, \"datum-prohlidky\": \"2013-01-01\", \"url-dokumentu\": \"/prohlidky/asdasdasdad.pdf\"},\n    { \"id\": 2, \"jmeno\": \"Jon\", \"prijmeni\": \"Slezstromu\", \"autoskola-id\": 2, \"opravneni\": [\"T\"], \"pocet-deti\" : 0, \"datum-prohlidky\": \"2013-05-01\", \"url-dokumentu\": \"/prohlidky/dddddfd.jpg\"}\n] }"
+            "body": "{ \"ucitele\": [\n    { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"Skočdopole\", \"autoskola-id\": 1, \"opravneni\": [\"A\", \"B\"], \"pocet-deti\" : 2, \"datum-prohlidky\": \"2013-01-01\", \"url-dokumentu\": \"/prohlidky/asdasdasdad.pdf\"},\n    { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"Slezstromu\", \"autoskola-id\": 2, \"opravneni\": [\"T\"], \"pocet-deti\" : 0, \"datum-prohlidky\": \"2013-05-01\", \"url-dokumentu\": \"/prohlidky/dddddfd.jpg\"}\n] }"
           }
         ]
       },

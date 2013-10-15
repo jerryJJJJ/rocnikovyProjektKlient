@@ -10,6 +10,8 @@ module app.controller {
     constructor(private $scope:ng.IScope, private $http:ng.IHttpService, private auth) {
       $http.get("/ucitele").then((response:ng.IHttpPromiseCallbackArg) => {
         this.teachers = response.data.ucitele;
+      }, (reason) => {
+        alert('Chyba: ' + reason);
       });
     }
 

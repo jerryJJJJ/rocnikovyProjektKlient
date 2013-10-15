@@ -10,6 +10,8 @@ var app;
                 this.auth = auth;
                 $http.get("/ucitele").then(function (response) {
                     _this.teachers = response.data.ucitele;
+                }, function (reason) {
+                    alert('Chyba: ' + reason);
                 });
             }
             return Teachers;
