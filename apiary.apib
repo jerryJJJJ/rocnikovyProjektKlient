@@ -37,7 +37,31 @@ POST /ucitele
 { "id": 3 }
 
 
+Seznam vozidel
+GET /vozidla
+< 200
+< Content-Type: application/json
+{ "vozidla": [
+    { "id": 1, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1}
+] }
 
+Detail vozidla s id 1
+GET /vozidla/1
+< 200
+< Content-Type: application/json
+{ "id": 1, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1, "pocet-km" : 155555, "datum-stk": "2014-05-01", 
+    "jizdy" : [
+        { "id": 1, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "doba-jizdy": "02:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 },
+        { "id": 2, "datum": "2013-01-01", "ucitel": 1, "vozidlo": 1, "zak": 5, "doba-jizdy": "01:50", "pocet-ujetych-km" : 16, "spotreba" : 7.1 }
+    ]}
+
+Kniha jizdy
+GET /jizdy
+< 200
+< Content-Type: application/json
+{ "ucitele": [
+    { "id": 1, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "doba-jizdy": "02:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 }
+] }
 
 --
 Autoskoly Resources
