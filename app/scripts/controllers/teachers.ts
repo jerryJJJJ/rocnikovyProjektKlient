@@ -11,7 +11,7 @@ module app.controller {
       $http.get("/ucitele").then((response:ng.IHttpPromiseCallbackArg) => {
         this.teachers = response.data.ucitele;
       }, (reason) => {
-        alert('Chyba: ' + reason);
+        alert('Chyba: ' + reason); 
       });
     }
 
