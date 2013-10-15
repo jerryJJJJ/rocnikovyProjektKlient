@@ -25,6 +25,16 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'app.controller.Teachers',
         controllerAs: "teachersCtrl"
     });
+    $routeProvider.when('/autoskoly', {
+        templateUrl: 'views/listDrivingSchools.html',
+        controller: 'app.controller.ListDrivingSchools',
+        controllerAs: "listDrivingSchoolsCtrl"
+    });
+    $routeProvider.when('/autoskola/1', {
+        templateUrl: 'views/drivingSchool.html',
+        controller: 'app.controller.DrivingSchool',
+        controllerAs: "drivingSchoolCtrl"
+    });
     $routeProvider.otherwise({ redirectTo: '/' });
 });
 
