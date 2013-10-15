@@ -23,67 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="teachers.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/teachers.html">
+      <file leaf-file-name="apiary.apib" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apiary.apib">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="28" selection-start="296" selection-end="296" vertical-scroll-proportion="0.35697114" vertical-offset="0" max-vertical-offset="832">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="teachers.ts" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="87" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
-              <folding>
-                <marker date="1381820429773" expanded="true" signature="183:323" placeholder="{...}" />
-                <marker date="1381820429773" expanded="true" signature="259:315" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/less/style.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="47" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="810">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="31" selection-start="990" selection-end="990" vertical-scroll-proportion="-16.90625" vertical-offset="134" max-vertical-offset="945">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auth.ts" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/services/auth.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="6" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="567">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.ts" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="44" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+            <state line="3" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.095182136" vertical-offset="0" max-vertical-offset="1377">
               <folding />
             </state>
           </provider>
@@ -103,7 +46,6 @@
         <option value="$PROJECT_DIR$/component.json" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app/apiary.js" />
         <option value="$PROJECT_DIR$/app/less/style.less" />
         <option value="$PROJECT_DIR$/app/scripts/services/Auth.ts" />
         <option value="$PROJECT_DIR$/app/index.html" />
@@ -112,11 +54,14 @@
         <option value="$PROJECT_DIR$/app/scripts/services/auth.ts" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/main.ts" />
         <option value="$PROJECT_DIR$/app/views/teachers.html" />
+        <option value="$PROJECT_DIR$/app/apiary.js" />
+        <option value="$PROJECT_DIR$/apiary.apib" />
       </list>
     </option>
   </component>
   <component name="NamedScopeManager">
     <scope name="Project files Without components" pattern="file:*/&amp;&amp;!file:app/components//*&amp;&amp;!file:node_modules//*" />
+    <scope name="apiary.apib" pattern="file:apiary.apib" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
@@ -282,7 +227,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="settings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testX" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -338,20 +283,20 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15471698" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23125" sideWeight="0.84528303" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15471698" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15471698" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15471698" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -370,11 +315,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apiary.apib">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="784" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="39" selection-start="405" selection-end="405" vertical-scroll-proportion="0.3253012" vertical-offset="0" max-vertical-offset="1053" />
@@ -392,47 +332,9 @@
         <state line="11" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.36397058" vertical-offset="0" max-vertical-offset="816" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/apiary.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="26" selection-start="252" selection-end="252" vertical-scroll-proportion="0.2689913" vertical-offset="0" max-vertical-offset="1998">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/components/bootstrap/less/forms.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="158" column="22" selection-start="3688" selection-end="3688" vertical-scroll-proportion="0.4642857" vertical-offset="3915" max-vertical-offset="9693" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/less/style.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="47" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="810">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="405">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="31" selection-start="990" selection-end="990" vertical-scroll-proportion="-16.90625" vertical-offset="134" max-vertical-offset="945">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="87" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
-          <folding>
-            <marker date="1381820429773" expanded="true" signature="183:323" placeholder="{...}" />
-            <marker date="1381820429773" expanded="true" signature="259:315" placeholder="{...}" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/types/angularjs/angular-mocks.d.ts">
@@ -458,23 +360,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/services/auth.ts">
+    <entry file="file://$PROJECT_DIR$/app/views/teachers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="6" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="567">
+        <state line="10" column="53" selection-start="267" selection-end="267" vertical-scroll-proportion="0.32451922" vertical-offset="0" max-vertical-offset="832">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="44" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+        <state line="9" column="0" selection-start="115" selection-end="115" vertical-scroll-proportion="0.28125" vertical-offset="0" max-vertical-offset="864">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/teachers.html">
+    <entry file="file://$PROJECT_DIR$/app/scripts/services/auth.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="296" selection-end="296" vertical-scroll-proportion="0.35697114" vertical-offset="0" max-vertical-offset="832">
+        <state line="9" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.28125" vertical-offset="0" max-vertical-offset="864">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/teachers.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="87" selection-start="183" selection-end="183" vertical-scroll-proportion="0.28125" vertical-offset="0" max-vertical-offset="864">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="31" selection-start="990" selection-end="990" vertical-scroll-proportion="0.6754808" vertical-offset="113" max-vertical-offset="945">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="405">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/less/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="42" selection-start="352" selection-end="352" vertical-scroll-proportion="0.48677886" vertical-offset="0" max-vertical-offset="832">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apiary.apib">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.095182136" vertical-offset="0" max-vertical-offset="1377">
           <folding />
         </state>
       </provider>
@@ -484,7 +421,7 @@
     <states>
       <state key="ScopeChooserConfigurable.UI">
         <settings>
-          <last-edited>Project files Without components</last-edited>
+          <last-edited>apiary.apib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -494,6 +431,7 @@
           </splitter-proportions>
           <order>
             <scope name="Project files Without components" />
+            <scope name="apiary.apib" />
           </order>
         </settings>
       </state>

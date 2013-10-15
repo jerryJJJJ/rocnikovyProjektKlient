@@ -53,6 +53,26 @@
       <option name="workingDir" value="$FileDir$" />
       <envs />
     </TaskOptions>
+    <TaskOptions isEnabled="true">
+      <option name="arguments" value="/C grunt apiary2js" />
+      <option name="checkSyntaxErrors" value="true" />
+      <option name="description" value="" />
+      <option name="exitCodeBehavior" value="ERROR" />
+      <option name="fileExtension" value="*" />
+      <option name="immediateSync" value="true" />
+      <option name="name" value="apiary2js" />
+      <option name="output" value="" />
+      <option name="outputFilters">
+        <array />
+      </option>
+      <option name="outputFromStdout" value="false" />
+      <option name="passParentEnvs" value="true" />
+      <option name="program" value="C:/Windows/system32/cmd.exe" />
+      <option name="scopeName" value="apiary.apib" />
+      <option name="trackOnlyRoot" value="false" />
+      <option name="workingDir" value="D:\javascript\rocnikovyProjektKlient" />
+      <envs />
+    </TaskOptions>
   </component>
 </project>
 
