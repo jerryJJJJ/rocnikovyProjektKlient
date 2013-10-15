@@ -44,12 +44,17 @@ Seznam autoskol
 GET /autoskola
 < 200
 < Content-Type: application/json
-{ "autoskola": [
+{ "autoskoly": [
     { "id": 1, "nazev": "Aotoskola1", "ucitele" : [
         { "id": 1, "jmeno": "Martin", "prijmeni": "Skočdopole", "autoskola-id": 1, "opravneni": ["A", "B"], "pocet-deti" : 2, "datum-prohlidky": "2013-01-01", "url-dokumentu": "/prohlidky/asdasdasdad.pdf"},
         { "id": 2, "jmeno": "Jacob", "prijmeni": "Slezstromu", "autoskola-id": 2, "opravneni": ["T"], "pocet-deti" : 0, "datum-prohlidky": "2013-05-01", "url-dokumentu": "/prohlidky/dddddfd.jpg"}
     ], "vozidla": [
         { "id": 1, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1}
+    ]}, { "id": 2, "nazev": "Autoskola2", "ucitele" : [
+        { "id": 1, "jmeno": "Martin", "prijmeni": "Skočdopole", "autoskola-id": 1, "opravneni": ["A", "B"], "pocet-deti" : 2, "datum-prohlidky": "2013-01-01", "url-dokumentu": "/prohlidky/asdasdasdad.pdf"},
+        { "id": 2, "jmeno": "Jacob", "prijmeni": "Slezstromu", "autoskola-id": 2, "opravneni": ["T"], "pocet-deti" : 0, "datum-prohlidky": "2013-05-01", "url-dokumentu": "/prohlidky/dddddfd.jpg"}
+    ], "vozidla": [
+        { "id": 1, "znacka": "Skoda", "model": "Octavia", "vin": "LJP05GFD5548913", "autoskola-id": 2 }
     ]}
 ] }
 
@@ -71,7 +76,8 @@ GET /vozidla
 < 200
 < Content-Type: application/json
 { "vozidla": [
-    { "id": 1, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1}
+    { "id": 1, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1},
+    { "id": 1, "znacka": "Skoda", "model": "Octavia", "vin": "LJP05GFD5548913", "autoskola-id": 2 }
 ] }
 
 
@@ -91,7 +97,8 @@ GET /jizdy
 < 200
 < Content-Type: application/json
 { "ucitele": [
-    { "id": 1, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "doba-jizdy": "02:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 }
+    { "id": 1, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "doba-jizdy": "02:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 },
+    { "id": 2, "datum": "2013-01-01", "ucitel": 1, "vozidlo": 1, "zak": 5, "doba-jizdy": "01:50", "pocet-ujetych-km" : 16, "spotreba" : 7.1 }
 ] }
 
 --
