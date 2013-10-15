@@ -1,3 +1,4 @@
+/// <reference path="./../components/types/angularjs/angular.d.ts" />
 'use strict';
 angular.module('app.controller', []);
 angular.module('app.directive', []);
@@ -8,7 +9,6 @@ angular.module('app', [
     'app.controller',
     'app.directive',
     'ngRoute',
-    'ngResource',
     'ngMockE2E',
     'app.filter',
     'app.service'
@@ -34,10 +34,8 @@ angular.module('app').run(function ($httpBackend) {
         resources.forEach(function (res) {
             var url = res.url;
 
-            //url = url.replace(/{[^}]+}/g, 'ZDROJAK_PARAM');
             //preg_quote pro javascript: http://stackoverflow.com/questions/6828637/escape-regexp-strings
             url = url.replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\' + '' + '-]', 'g'), '\\$&');
-            url = url.replace(/ZDROJAK_PARAM/g, '([^&]*)');
             url = new RegExp(url + '$');
 
             switch (res.method) {
@@ -57,7 +55,7 @@ angular.module('app').run(function ($httpBackend) {
         });
     });
 
-    //nechat projit pozadavky na sablony
+    //nechat projit pozadavky na "view" sablony
     $httpBackend.whenGET(/^\/*views\//).passThrough();
 });
 
@@ -65,64 +63,37 @@ var app;
 (function (app) {
     /**
     * Registrace noveho controlleru.
-    *
-    * @param className
-    * @param services
     */
-    function registerController(className, services) {
-        if (typeof services === "undefined") { services = []; }
-        var controller = 'app.controller.' + className;
-        services.push(app.controller[className]);
-        angular.module('app.controller').controller(controller, services);
+    function registerController(className) {
+        var controller = className.charAt(0).toLowerCase() + className.substr(1);
+        angular.module('app.controller').controller(controller, app.controller[className]);
     }
     app.registerController = registerController;
 
     /**
     * Registrace nove direktivy.
-    *
-    * @param className
-    * @param services
     */
-    function registerDirective(className, services) {
-        if (typeof services === "undefined") { services = []; }
-        var directive = className.toLowerCase();
-        services.push(function () {
-            return new app.directive[className]();
-        });
-        angular.module('app.directive').directive(directive, services);
+    function registerDirective(className) {
+        var directive = className.charAt(0).toLowerCase() + className.substr(1);
+        angular.module('app.directive').directive(directive, app.directive[className]);
     }
     app.registerDirective = registerDirective;
 
     /**
     * Registrace noveho filtru.
-    *
-    * @param className
-    * @param services
     */
-    function registerFilter(className, services) {
-        if (typeof services === "undefined") { services = []; }
-        var filter = className.toLowerCase();
-        services.push(function () {
-            var obj = new app.filter[className]();
-            return obj.filter;
-        });
-        angular.module('app.filter').filter(filter, services);
+    function registerFilter(className) {
+        var filter = className.charAt(0).toLowerCase() + className.substr(1);
+        angular.module('app.filter').filter(filter, app.filter[className]);
     }
     app.registerFilter = registerFilter;
 
     /**
     * Registrace nove sluzby.
-    *
-    * @param className
-    * @param services
     */
-    function registerService(className, services) {
-        if (typeof services === "undefined") { services = []; }
-        var service = className.toLowerCase();
-        services.push(function () {
-            return new app.service[className]();
-        });
-        angular.module('app.service').factory(service, services);
+    function registerService(className) {
+        var service = className.charAt(0).toLowerCase() + className.substr(1);
+        angular.module('app.service').factory(service, app.service[className]);
     }
     app.registerService = registerService;
 })(app || (app = {}));

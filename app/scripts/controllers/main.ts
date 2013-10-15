@@ -4,7 +4,7 @@ module app.controller {
 
   export class Main {
 
-    constructor (private $scope) {
+    constructor (private $scope:ng.IScope) {
 
     }
 
@@ -12,4 +12,4 @@ module app.controller {
 
 }
 
-app.registerController('Main', ['$scope']); 
+app.registerController('Main');

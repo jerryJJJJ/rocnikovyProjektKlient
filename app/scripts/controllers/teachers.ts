@@ -7,7 +7,7 @@ module app.controller {
     public teachers:Array;
 
 
-    constructor(private $scope:ng.IScope, private $http:ng.IHttpService) {
+    constructor(private $scope:ng.IScope, private $http:ng.IHttpService, private auth) {
       $http.get("/ucitele").then((response:ng.IHttpPromiseCallbackArg) => {
         this.teachers = response.data.ucitele;
       });
@@ -17,4 +17,4 @@ module app.controller {
 
 }
 
-app.registerController('Teachers', ['$scope', '$http']);
+app.registerController('Teachers');

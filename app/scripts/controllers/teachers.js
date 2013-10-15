@@ -3,10 +3,11 @@ var app;
 (function (app) {
     (function (controller) {
         var Teachers = (function () {
-            function Teachers($scope, $http) {
+            function Teachers($scope, $http, auth) {
                 var _this = this;
                 this.$scope = $scope;
                 this.$http = $http;
+                this.auth = auth;
                 $http.get("/ucitele").then(function (response) {
                     _this.teachers = response.data.ucitele;
                 });
@@ -18,5 +19,5 @@ var app;
     var controller = app.controller;
 })(app || (app = {}));
 
-app.registerController('Teachers', ['$scope', '$http']);
+app.registerController('Teachers');
 //# sourceMappingURL=teachers.js.map

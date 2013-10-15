@@ -13,5 +13,5 @@ var app;
     var controller = app.controller;
 })(app || (app = {}));
 
-app.registerController('Main', ['$scope']);
+app.registerController('Main');
 //# sourceMappingURL=main.js.map

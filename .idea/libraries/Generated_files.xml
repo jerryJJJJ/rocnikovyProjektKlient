@@ -65,7 +65,7 @@
         <item url="file://$PROJECT_DIR$/app/components/types/jstorage/jstorage-tests.js" />
         <item url="file://$PROJECT_DIR$/app/components/types/jqueryui/jqueryui-tests.js" />
         <item url="file://$PROJECT_DIR$/app/components/types/jquery.menuaim/jquery.menuaim-tests.js" />
-        <item url="file://$PROJECT_DIR$/app/scripts/controllers/teachers.js" />
+        <item url="file://$PROJECT_DIR$/app/scripts/services/Auth.js" />
         <item url="file://$PROJECT_DIR$/app/scripts/app.js" />
         <item url="file://$PROJECT_DIR$/app/components/types/hammerjs/hammerjs-tests.js" />
       </sourceFilesUrls>
@@ -133,7 +133,7 @@
       <root url="file://$PROJECT_DIR$/app/components/types/flexSlider/flexSlider-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/jstorage/jstorage-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/jqueryui/jqueryui-tests.js" />
-      <root url="file://$PROJECT_DIR$/app/scripts/controllers/teachers.js" />
+      <root url="file://$PROJECT_DIR$/app/scripts/services/auth.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/jquery.menuaim/jquery.menuaim-tests.js" />
       <root url="file://$PROJECT_DIR$/app/components/types/hammerjs/hammerjs-tests.js" />
       <root url="file://$PROJECT_DIR$/app/scripts/app.js" />
