@@ -7,7 +7,7 @@ var app;
                 var _this = this;
                 this.$http = $http;
                 this.auth = auth;
-                $http.get("/autoskola/1").then(function (response) {
+                $http.get("/autoskoly/1").then(function (response) {
                     _this.drivingSchool = response.data;
                 }, function (reason) {
                     alert('Chyba: ' + reason);
