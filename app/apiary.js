@@ -58,7 +58,13 @@ var apiary = [
             "body": "{ \"id\": 3 }"
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "name": "Autoskoly Resources",
+    "description": "The following is a section of resources related to Autoskoly",
+    "resources": [
       {
         "description": "Seznam autoskol",
         "method": "GET",
@@ -80,7 +86,7 @@ var apiary = [
       {
         "description": "Detail autoskoly s id 1",
         "method": "GET",
-        "url": "/autoskola/1",
+        "url": "/autoskoly/1",
         "request": {
           "headers": {},
           "body": null
@@ -94,7 +100,13 @@ var apiary = [
             "body": "{ \"id\": 1, \"nazev\": \"Aotoskola1\", \"ucitele\" : [\n        { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"Skočdopole\", \"autoskola-id\": 1, \"opravneni\": [\"A\", \"B\"], \"pocet-deti\" : 2, \"datum-prohlidky\": \"2013-01-01\", \"url-dokumentu\": \"/prohlidky/asdasdasdad.pdf\"},\n        { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"Slezstromu\", \"autoskola-id\": 2, \"opravneni\": [\"T\"], \"pocet-deti\" : 0, \"datum-prohlidky\": \"2013-05-01\", \"url-dokumentu\": \"/prohlidky/dddddfd.jpg\"}\n    ], \"vozidla\": [\n        { \"id\": 1, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1}\n    ]\n}"
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "name": "Vozidla Resources",
+    "description": "The following is a section of resources related to Vozidla",
+    "resources": [
       {
         "description": "Seznam vozidel",
         "method": "GET",
@@ -150,10 +162,5 @@ var apiary = [
         ]
       }
     ]
-  },
-  {
-    "name": "Autoskoly Resources",
-    "description": "The following is a section of resources related to Autoskoly",
-    "resources": []
   }
 ]
