@@ -7,7 +7,7 @@ module app.service {
 
     //TODO prihlasovaci logika
 
-    constructor(private $rootScope:ng.IScope, private $cookies:ng.ICookiesService) {
+    constructor(private $rootScope:ng.IScope, private $cookieStore:ng.ICookieStoreService) {
       $rootScope.auth = this;
     }
 

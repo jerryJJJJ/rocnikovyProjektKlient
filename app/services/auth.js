@@ -3,9 +3,9 @@ var app;
     (function (service) {
         var Auth = (function () {
             //TODO prihlasovaci logika
-            function Auth($rootScope, $cookies) {
+            function Auth($rootScope, $cookieStore) {
                 this.$rootScope = $rootScope;
-                this.$cookies = $cookies;
+                this.$cookieStore = $cookieStore;
                 $rootScope.auth = this;
             }
             return Auth;
