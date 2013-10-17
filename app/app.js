@@ -10,6 +10,7 @@ angular.module('app', [
     'app.directive',
     'ngRoute',
     'ngMockE2E',
+    'ngCookies',
     'app.filter',
     'app.service'
 ]);
@@ -30,7 +31,7 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'app.controller.ListDrivingSchools',
         controllerAs: "listDrivingSchoolsCtrl"
     });
-    $routeProvider.when('/autoskola/1', {
+    $routeProvider.when('/autoskola/:id', {
         templateUrl: 'views/drivingSchool.html',
         controller: 'app.controller.DrivingSchool',
         controllerAs: "drivingSchoolCtrl"
@@ -43,9 +44,11 @@ angular.module('app').run(function ($httpBackend) {
         var resources = section.resources;
         resources.forEach(function (res) {
             var url = res.url;
+            url = url.replace(/{[^}]+}/g, 'ZDROJAK_PARAM');
 
             //preg_quote pro javascript: http://stackoverflow.com/questions/6828637/escape-regexp-strings
             url = url.replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\' + '' + '-]', 'g'), '\\$&');
+            url = url.replace(/ZDROJAK_PARAM/g, '([^&]*)');
             url = new RegExp(url + '$');
 
             switch (res.method) {

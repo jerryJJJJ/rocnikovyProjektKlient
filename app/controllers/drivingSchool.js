@@ -3,11 +3,13 @@ var app;
 (function (app) {
     (function (controller) {
         var DrivingSchool = (function () {
-            function DrivingSchool($http, auth) {
+            function DrivingSchool($http, auth, $routeParams) {
                 var _this = this;
                 this.$http = $http;
                 this.auth = auth;
-                $http.get("/autoskoly/1").then(function (response) {
+                var autoskolaId = $routeParams.id;
+
+                $http.get("/autoskoly/" + autoskolaId).then(function (response) {
                     _this.drivingSchool = response.data;
                 }, function (reason) {
                     alert('Chyba: ' + reason);

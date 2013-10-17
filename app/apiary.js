@@ -22,9 +22,9 @@ var apiary = [
         ]
       },
       {
-        "description": "Detail ucitele s id 2",
+        "description": "Detail ucitele",
         "method": "GET",
-        "url": "/ucitele/2",
+        "url": "/ucitele/{id}",
         "request": {
           "headers": {},
           "body": null
@@ -84,9 +84,9 @@ var apiary = [
         ]
       },
       {
-        "description": "Detail autoskoly s id 1",
+        "description": "Detail autoskoly",
         "method": "GET",
-        "url": "/autoskoly/1",
+        "url": "/autoskoly/{id}",
         "request": {
           "headers": {},
           "body": null
@@ -126,9 +126,9 @@ var apiary = [
         ]
       },
       {
-        "description": "Detail vozidla s id 1",
+        "description": "Detail vozidla",
         "method": "GET",
-        "url": "/vozidla/1",
+        "url": "/vozidla/{id}",
         "request": {
           "headers": {},
           "body": null
