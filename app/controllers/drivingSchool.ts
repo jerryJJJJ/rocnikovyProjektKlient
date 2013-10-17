@@ -6,7 +6,7 @@ module app.controller {
 
     public drivingSchool;
 
-    constructor(private $http:ng.IHttpService, private auth:app.service.Auth, $routeParams:ng.IRouteParamsService) {
+    constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService) {
 
       var autoskolaId:string = $routeParams.id;
 

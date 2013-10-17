@@ -3,10 +3,9 @@ var app;
 (function (app) {
     (function (controller) {
         var DrivingSchool = (function () {
-            function DrivingSchool($http, auth, $routeParams) {
+            function DrivingSchool($http, $routeParams) {
                 var _this = this;
                 this.$http = $http;
-                this.auth = auth;
                 var autoskolaId = $routeParams.id;
 
                 $http.get("/autoskoly/" + autoskolaId).then(function (response) {
