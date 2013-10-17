@@ -24,8 +24,8 @@ GET /ucitele
 ] }
 
 
-Detail ucitele s id 2
-GET /ucitele/2
+Detail ucitele
+GET /ucitele/{id}
 < 200
 < Content-Type: application/json
 { "id": 2, "jmeno": "Jon", "prijmeni": "Slezstromu", "autoskola-id": 2, "opravneni": ["T"], "pocet-deti" 0, "datum-prohlidky": "2013-05-01", "url-dokumentu": "/prohlidky/dddddfd.jpg"}
@@ -63,8 +63,8 @@ GET /autoskoly
     ]}
 ] }
 
-Detail autoskoly s id 1
-GET /autoskoly/1
+Detail autoskoly
+GET /autoskoly/{id}
 < 200
 < Content-Type: application/json
 { "id": 1, "nazev": "Aotoskola1", "ucitele" : [
@@ -91,8 +91,8 @@ GET /vozidla
 ] }
 
 
-Detail vozidla s id 1
-GET /vozidla/1
+Detail vozidla
+GET /vozidla/{id}
 < 200
 < Content-Type: application/json
 { "id": 1, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1, "pocet-km" : 155555, "datum-stk": "2014-05-01", 
