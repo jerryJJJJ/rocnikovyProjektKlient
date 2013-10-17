@@ -2,8 +2,11 @@ var app;
 (function (app) {
     (function (service) {
         var Auth = (function () {
-            function Auth() {
-                //TODO prihlasovaci logika
+            //TODO prihlasovaci logika
+            function Auth($rootScope, $cookies) {
+                this.$rootScope = $rootScope;
+                this.$cookies = $cookies;
+                $rootScope.auth = this;
             }
             return Auth;
         })();
