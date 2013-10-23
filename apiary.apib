@@ -87,7 +87,7 @@ GET /vozidla
 < Content-Type: application/json
 { "vozidla": [
     { "id": 1, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1},
-    { "id": 1, "znacka": "Skoda", "model": "Octavia", "vin": "LJP05GFD5548913", "autoskola-id": 2 }
+    { "id": 2, "znacka": "Skoda", "model": "Octavia", "vin": "LJP05GFD5541111", "autoskola-id": 2 }
 ] }
 
 
@@ -101,6 +101,21 @@ GET /vozidla/{id}
     { "id": 2, "datum": "2013-01-01", "ucitel": 1, "vozidlo": 1, "zak": 5, "doba-jizdy": "01:50", "pocet-ujetych-km" : 16, "spotreba" : 7.1 }
 ] }
 
+Vytvoreni noveho vozidla
+POST /vozidla
+> Content-Type: application/json
+{ "id": 3, "znacka": "Ford", "model": "Mondeo", "vin": "LJP05GFD5542222", "autoskola-id": 1 }
+< 201
+< Content-Type: application/json
+{ "id": 3 }
+
+Odstraneni vozidla
+POST /vozidla/{id}
+> Content-Type: application/json
+{ "id": 3, "znacka": "Ford", "model": "Mondeo", "vin": "LJP05GFD5542222", "autoskola-id": 1 }
+< 201
+< Content-Type: application/json
+{ "id": 3 }
 
 Kniha jizdy
 GET /jizdy
