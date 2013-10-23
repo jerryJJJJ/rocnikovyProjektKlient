@@ -1,16 +1,18 @@
 <h1>{{drivingSchoolCtrl.drivingSchool.nazev}}</h1>
-
 <h3>seznam vozidel</h3>
+<button onclick="createVehicle()">Pridat vozidlo</button>
 <table class="table">
     <tr>
         <th>znacka</th>
         <th>model</th>
         <th>vin</th>
+        <th></th>
     </tr>
     <tr ng-repeat="vehicle in drivingSchoolCtrl.drivingSchool.vozidla">
         <td>{{vehicle.znacka}}</td>
         <td>{{vehicle.model}}</td>
         <td>{{vehicle.vin}}</td>
+        <td><button ng-click="drivingSchoolCtrl.deleteVehicle(name)" name="{{vehicle.vin}}">Odstarnit</button></td>
     </tr>
 </table>
 

@@ -13,6 +13,10 @@ var app;
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
+
+                function deleteVehicle(vin) {
+                    alert(vin);
+                }
             }
             return DrivingSchool;
         })();

@@ -16,10 +16,11 @@ module app.controller {
         alert('Chyba: ' + reason);
       });
 
+      function deleteVehicle(vin) {
+        alert(vin);
+      }
     }
-
   }
-
 }
 
 app.registerController('DrivingSchool');
