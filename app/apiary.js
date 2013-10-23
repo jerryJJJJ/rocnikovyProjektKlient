@@ -165,7 +165,7 @@ var apiary = [
       },
       {
         "description": "Odstraneni vozidla",
-        "method": "POST",
+        "method": "DELETE",
         "url": "/vozidla/{id}",
         "request": {
           "headers": {
@@ -175,7 +175,7 @@ var apiary = [
         },
         "responses": [
           {
-            "status": 201,
+            "status": 200,
             "headers": {
               "Content-Type": "application/json"
             },

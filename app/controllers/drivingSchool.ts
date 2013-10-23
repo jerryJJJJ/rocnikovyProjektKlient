@@ -15,10 +15,10 @@ module app.controller {
       }, (reason) => {
         alert('Chyba: ' + reason);
       });
-
-      function deleteVehicle(vin) {
-        alert(vin);
-      }
+    }
+    
+    deleteVehicle(vin) {
+      alert(vin);
     }
   }
 }

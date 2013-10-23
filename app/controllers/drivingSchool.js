@@ -13,11 +13,10 @@ var app;
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
-
-                function deleteVehicle(vin) {
-                    alert(vin);
-                }
             }
+            DrivingSchool.prototype.deleteVehicle = function (vin) {
+                alert(vin);
+            };
             return DrivingSchool;
         })();
         controller.DrivingSchool = DrivingSchool;
