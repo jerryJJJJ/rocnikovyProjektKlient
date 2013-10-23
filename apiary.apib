@@ -110,10 +110,10 @@ POST /vozidla
 { "id": 3 }
 
 Odstraneni vozidla
-POST /vozidla/{id}
+DELETE /vozidla/{id}
 > Content-Type: application/json
 { "id": 3, "znacka": "Ford", "model": "Mondeo", "vin": "LJP05GFD5542222", "autoskola-id": 1 }
-< 201
+< 200
 < Content-Type: application/json
 { "id": 3 }
 
