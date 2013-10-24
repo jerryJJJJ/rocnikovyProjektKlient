@@ -7,11 +7,10 @@ var app;
                 var _this = this;
                 this.$http = $http;
                 var autoskolaId = $routeParams.id;
-                this.http = $http;
 
                 $http.get("/autoskoly/" + autoskolaId).then(function (response) {
                     _this.drivingSchool = response.data;
-                    _this.vehicles = _this.drivingSchool.vehicle;
+                    _this.vehicles = new app.lib.IndexedArray(_this.drivingSchool.vozidla);
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
@@ -25,14 +24,11 @@ var app;
             };
 
             DrivingSchool.prototype.deleteVehicle = function (vehicle) {
-                this.http.delete("/vozidla/" + vehicle.id).then(function (response) {
+                this.$http.delete("/vozidla/" + vehicle.id).then(function (response) {
                     alert(response.status);
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
-            };
-
-            DrivingSchool.prototype.createVehicle = function () {
             };
             return DrivingSchool;
         })();

@@ -31,7 +31,17 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'app.controller.DrivingSchool',
         controllerAs: "drivingSchoolCtrl"
     });
-    $routeProvider.when('/vozidlo/:id', {
+    $routeProvider.when('/autoskola/:id/:listType', {
+        templateUrl: 'views/drivingSchool.html',
+        controller: 'app.controller.DrivingSchool',
+        controllerAs: "drivingSchoolCtrl"
+    });
+    $routeProvider.when('/autoskola/:autoskolaId/vozidla/nove', {
+        templateUrl: 'views/vehicleDetail.html',
+        controller: 'app.controller.VehicleDetail',
+        controllerAs: "vehicleDetailCtrl"
+    });
+    $routeProvider.when('/autoskola/:autoskolaId/vozidla/:id', {
         templateUrl: 'views/vehicleDetail.html',
         controller: 'app.controller.VehicleDetail',
         controllerAs: "vehicleDetailCtrl"

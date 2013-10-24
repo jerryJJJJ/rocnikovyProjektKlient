@@ -3,18 +3,38 @@ var app;
 (function (app) {
     (function (controller) {
         var VehicleDetail = (function () {
-            function VehicleDetail($http, auth) {
+            function VehicleDetail($http, $routeParams) {
                 var _this = this;
                 this.$http = $http;
-                this.auth = auth;
-                this.http = $http;
-
-                $http.get("/autoskoly").then(function (response) {
-                    _this.vehicle = response.data.autoskoly;
+                $http.get("/autoskoly/" + $routeParams.autoskolaId).then(function (response) {
+                    _this.drivingSchool = response.data;
                 }, function (reason) {
-                    alert('Chyba: ' + reason);
+                    alert('Nepodarilo se nacist autoskolu: ' + reason);
                 });
+
+                if ($routeParams.id) {
+                    this.isNew = false;
+
+                    //mame presne idecko -> jedna se o editaci existujiciho, takze ho nacteme
+                    $http.get("/vozidla/" + $routeParams.id).then(function (response) {
+                        _this.vehicle = response.data;
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist vozidlo: ' + reason);
+                    });
+                } else {
+                    this.isNew = true;
+
+                    //jedna se o nove auto - nastavime defaultni hodnoty
+                    this.vehicle = {
+                        "pocatecni-stav-km": 0
+                    };
+                }
             }
+            VehicleDetail.prototype.save = function () {
+                //nyni se musi poslat pres metodu PUT na api v pripade ze se vozidlo upravuje zaroven s ideckem
+                //nebo POST v pripade ze se vozidlo vytvari
+                //tady je jedna tabulka kde to je krasne videt jak se ma REST API navrhovat http://cs.wikipedia.org/wiki/Representational_State_Transfer
+            };
             return VehicleDetail;
         })();
         controller.VehicleDetail = VehicleDetail;

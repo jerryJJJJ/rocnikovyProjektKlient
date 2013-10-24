@@ -1,28 +1,29 @@
-<h1>{{drivingSchoolCtrl.getVehicle(1).znacka}}, {{drivingSchoolCtrl.getVehicle(1).model}}</h1>
-<h3>{{drivingSchoolCtrl.drivingSchool.nazev}}</h3>
-<button ng-click="drivingSchoolCtrl.deleteVehicle(vehicle)">Smazat vozidlo</button>
+<h1 ng-if="!vehicleDetailCtrl.isNew">{{vehicleDetailCtrl.vehicle.znacka}}, {{vehicleDetailCtrl.vehicle.model}}</h1>
+<h1 ng-if="vehicleDetailCtrl.isNew">Nové vozidlo</h1>
+<h3>{{vehicleDetailCtrl.drivingSchool.nazev}}</h3>
+<button ng-click="vehicleDetailCtrl.deleteVehicle(vehicle)">Smazat vozidlo</button>
 
-znacka<input type="text" /><br>
-model<input type="text" /><br>
+znacka<input type="text" ng-model="vehicleDetailCtrl.vehicle.znacka" /><br>
+model<input type="text" ng-model="vehicleDetailCtrl.vehicle.model" /><br>
 typ<input type="text" /><br>
 vin<input type="text" /><br>
-rok vyroby<input type="text" /><br>
+rok vyroby<input type="number" /><br>
 spz<input type="text" /><br>
-posledni STK<input type="text" /><br>
-pocatecni stav km<input type="text" /><br>
+posledni STK<input type="date" /><br>
+pocatecni stav km<input type="number" ng-model="vehicleDetailCtrl.vehicle['pocatecni-stav-km']" /><br>
 
 <h3>Kniha jizd</h3>
 <table class="table">
     <tr>
-        <th>znacka</th>
-        <th>model</th>
-        <th>vin</th>
-        <th></th>
+        <th>xx</th>
+        <th>xx</th>
+        <th>xx</th>
+        <th>xx</th>
     </tr>
-    <tr ng-repeat="vehicle in drivingSchoolCtrl.drivingSchool.vozidla">
-        <td>{{vehicle.znacka}}</td>
-        <td>{{vehicle.model}}</td>
-        <td>{{vehicle.vin}}</td>
-        <td><button ng-click="drivingSchoolCtrl.deleteVehicle(vehicle)">Odstarnit</button></td>
+    <tr ng-repeat="ride in vehicleDetailCtrl.vehicle.jizdy">
+        <td>{{"yyy"}}</td>
+        <td>{{"yyy"}}</td>
+        <td>{{"yyy"}}</td>
+        <td>{{"yyy"}}</td>
     </tr>
 </table>

@@ -6,7 +6,7 @@ module app.controller {
 
     public listSchools;
 
-    constructor(private $http:ng.IHttpService, private auth:app.service.Auth) {
+    constructor(private $http:ng.IHttpService) {
       $http.get("/autoskoly").then((response:ng.IHttpPromiseCallbackArg) => {
         this.listSchools = response.data.autoskoly;
       }, (reason) => {

@@ -3,10 +3,9 @@ var app;
 (function (app) {
     (function (controller) {
         var ListDrivingSchools = (function () {
-            function ListDrivingSchools($http, auth) {
+            function ListDrivingSchools($http) {
                 var _this = this;
                 this.$http = $http;
-                this.auth = auth;
                 $http.get("/autoskoly").then(function (response) {
                     _this.listSchools = response.data.autoskoly;
                 }, function (reason) {

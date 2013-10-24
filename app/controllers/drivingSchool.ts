@@ -6,16 +6,14 @@ module app.controller {
 
     public drivingSchool;
     public vehicles;
-    private http;
 
     constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService) {
 
       var autoskolaId:string = $routeParams.id;
-      this.http = $http;
 
       $http.get("/autoskoly/" + autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
         this.drivingSchool = response.data;
-        this.vehicles = this.drivingSchool.vehicle;
+        this.vehicles = new app.lib.IndexedArray(this.drivingSchool.vozidla);
       }, (reason) => {
         alert('Chyba: ' + reason);
       });
@@ -30,16 +28,13 @@ module app.controller {
     }
 
     deleteVehicle(vehicle) {
-       this.http.delete("/vozidla/" + vehicle.id).then((response:ng.IHttpPromiseCallbackArg) => {
+       this.$http.delete("/vozidla/" + vehicle.id).then((response:ng.IHttpPromiseCallbackArg) => {
         alert(response.status);
       }, (reason) => {
         alert('Chyba: ' + reason);
       });
     }
 
-    createVehicle() {
-
-    }
   }
 }
 
