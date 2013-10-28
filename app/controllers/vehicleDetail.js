@@ -13,8 +13,6 @@ var app;
                 });
 
                 if ($routeParams.id) {
-                    this.isNew = false;
-
                     //mame presne idecko -> jedna se o editaci existujiciho, takze ho nacteme
                     $http.get("/vozidla/" + $routeParams.id).then(function (response) {
                         _this.vehicle = response.data;
@@ -22,8 +20,6 @@ var app;
                         alert('Nepodarilo se nacist vozidlo: ' + reason);
                     });
                 } else {
-                    this.isNew = true;
-
                     //jedna se o nove auto - nastavime defaultni hodnoty
                     this.vehicle = {
                         "pocatecni-stav-km": 0
@@ -34,6 +30,10 @@ var app;
                 //nyni se musi poslat pres metodu PUT na api v pripade ze se vozidlo upravuje zaroven s ideckem
                 //nebo POST v pripade ze se vozidlo vytvari
                 //tady je jedna tabulka kde to je krasne videt jak se ma REST API navrhovat http://cs.wikipedia.org/wiki/Representational_State_Transfer
+            };
+
+            VehicleDetail.prototype.checkNumber = function () {
+                alert("check");
             };
             return VehicleDetail;
         })();
