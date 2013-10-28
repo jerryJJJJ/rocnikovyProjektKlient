@@ -19,14 +19,6 @@ module app.controller {
       });
     }
 
-    getVehicle(idVehicle) {
-      for(var i=0; i<this.vehicles.length; i++) {
-        if(this.vehicles[i].id == idVehicle)
-          return this.vehicles[i];
-      }
-      return null;
-    }
-
     deleteVehicle(vehicle) {
        this.$http.delete("/vozidla/" + vehicle.id).then((response:ng.IHttpPromiseCallbackArg) => {
         alert(response.status);
@@ -34,7 +26,6 @@ module app.controller {
         alert('Chyba: ' + reason);
       });
     }
-
   }
 }
 

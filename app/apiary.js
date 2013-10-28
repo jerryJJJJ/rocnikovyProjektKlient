@@ -139,7 +139,7 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"id\": 1, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1, \"pocet-km\" : 155555, \"datum-stk\": \"2014-05-01\", \"pocatecni-stav-km\": 30000,\n  \"jizdy\" : [\n    { \"id\": 1, \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"doba-jizdy\": \"02:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 },\n    { \"id\": 2, \"datum\": \"2013-01-01\", \"ucitel\": 1, \"vozidlo\": 1, \"zak\": 5, \"doba-jizdy\": \"01:50\", \"pocet-ujetych-km\" : 16, \"spotreba\" : 7.1 }\n] }"
+            "body": "{ \"id\": 1, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1, \"pocet-km\" : 155555, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\",\n  \"jizdy\" : [\n    { \"id\": 1, \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"doba-jizdy\": \"02:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 },\n    { \"id\": 2, \"datum\": \"2013-01-01\", \"ucitel\": 1, \"vozidlo\": 1, \"zak\": 5, \"doba-jizdy\": \"01:50\", \"pocet-ujetych-km\" : 16, \"spotreba\" : 7.1 }\n] }"
           }
         ]
       },
@@ -168,18 +168,14 @@ var apiary = [
         "method": "DELETE",
         "url": "/vozidla/{id}",
         "request": {
-          "headers": {
-            "Content-Type": "application/json"
-          },
-          "body": "{ \"id\": 3, \"znacka\": \"Ford\", \"model\": \"Mondeo\", \"vin\": \"LJP05GFD5542222\", \"autoskola-id\": 1, \"pocatecni-stav-km\": 30000 }"
+          "headers": {},
+          "body": null
         },
         "responses": [
           {
             "status": 200,
-            "headers": {
-              "Content-Type": "application/json"
-            },
-            "body": "{ \"id\": 3 }"
+            "headers": {},
+            "body": null
           }
         ]
       },
