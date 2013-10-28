@@ -41,6 +41,40 @@ POST /ucitele
 
 
 --
+Studenti Resources
+The following is a section of resources related to Studenti
+--
+
+
+Seznam studentu
+GET /studenti
+< 200
+< Content-Type: application/json
+{ "ucitele": [
+    { "id": 1, "jmeno": "Martin", "prijmeni": "ZborilGaraz", "autoskola-id": 1, "matricni-cislo": 26549562 },
+    { "id": 2, "jmeno": "Jacob", "prijmeni": "VjelDoPole", "autoskola-id": 1, "matricni-cislo": 26549562 },
+    { "id": 3, "jmeno": "Lukas", "prijmeni": "SrazilChodce", "autoskola-id": 1, "matricni-cislo": 26549562 },
+    { "id": 4, "jmeno": "Lukas", "prijmeni": "SrazilChodce", "autoskola-id": 2, "matricni-cislo": 26549562 }
+] }
+
+
+Detail studenta
+GET /studenti/{id}
+< 200
+< Content-Type: application/json
+{ "id": 1, "jmeno": "Martin", "prijmeni": "ZborilGaraz", "autoskola-id": 1, "matricni-cislo": 26549562 }
+
+
+Vytvoreni noveho studenta
+POST /studenti
+> Content-Type: application/json
+{ "jmeno": "Martin", "prijmeni": "ZborilGaraz", "autoskola-id": 1, "matricni-cislo": 26549562 }
+< 201
+< Content-Type: application/json
+{ "id": 3 }
+
+
+--
 Autoskoly Resources
 The following is a section of resources related to Autoskoly
 --
@@ -72,6 +106,10 @@ GET /autoskoly/{id}
         { "id": 2, "jmeno": "Jacob", "prijmeni": "Slezstromu", "autoskola-id": 2, "opravneni": ["T"], "pocet-deti" : 0, "datum-prohlidky": "2013-05-01", "url-dokumentu": "/prohlidky/dddddfd.jpg"}
     ], "vozidla": [
         { "id": 1, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1}
+    ], "studenti": [
+        { "id": 1, "jmeno": "Martin", "prijmeni": "ZborilGaraz", "autoskola-id": 1, "matricni-cislo": 26549562 },
+        { "id": 2, "jmeno": "Jacob", "prijmeni": "VjelDoPole", "autoskola-id": 1, "matricni-cislo": 26549562 },
+        { "id": 3, "jmeno": "Lukas", "prijmeni": "SrazilChodce", "autoskola-id": 1, "matricni-cislo": 26549562 }
     ]
 }
 
