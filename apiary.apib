@@ -106,7 +106,7 @@ GET /autoskoly/{id}
         { "id": 2, "jmeno": "Jacob", "prijmeni": "Slezstromu", "autoskola-id": 2, "opravneni": ["T"], "pocet-deti" : 0, "datum-prohlidky": "2013-05-01", "url-dokumentu": "/prohlidky/dddddfd.jpg"}
     ], "vozidla": [
         { "id": 1, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1}
-    ], "studenti" : [
+    ], "aktualni-studenti" : [
         { "id": 1, "jmeno": "Martin", "prijmeni": "ZborilGaraz", "autoskola-id": 1, "matricni-cislo": 26549562},
         { "id": 2, "jmeno": "Jacob", "prijmeni": "VjelDoPole", "autoskola-id": 1, "matricni-cislo": 26549562},
         { "id": 3, "jmeno": "Lukas", "prijmeni": "SrazilChodce", "autoskola-id": 1, "matricni-cislo": 26549562}
@@ -139,8 +139,8 @@ GET /vozidla/{id}
     { "id": 1, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "cas-od": "15:00", "cas-do": "17:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 },
     { "id": 2, "datum": "2013-01-01", "ucitel": 1, "vozidlo": 1, "zak": 5, "cas-od": "17:00", "cas-do": "18:50", "pocet-ujetych-km" : 16, "spotreba" : 7.1 }
   ], "dokumenty" : [
-    { "nazev" : "STK a emise", "datum-vlozeni" : "2011-05-01" },
-    { "nazev" : "STK a emise 2", "datum-vlozeni" : "2013-05-01" }
+    { "id": 1, "nazev" : "STK a emise", "datum-vlozeni" : "2011-05-01" },
+    { "id": 2, "nazev" : "STK a emise 2", "datum-vlozeni" : "2013-05-01" }
   ] }
 
 Vytvoreni noveho vozidla
@@ -165,6 +165,11 @@ PUT /vozidla/{id}
 
 Odstraneni vozidla
 DELETE /vozidla/{id}
+< 200
+
+
+Odstraneni dokumentu
+DELETE /vozidla/{id}/dokumenty/{id}
 < 200
 
 
