@@ -115,6 +115,33 @@ GET /autoskoly/{id}
 
 
 --
+Kurzy Resources
+The following is a section of resources related to Vozidla
+--
+
+Seznam kurzu
+GET /autoskoly/{id}/kurzy
+< 200
+< Content-Type: application/json
+{ "kurzy": [
+    { "id": 1, "identifikacni-cislo": "A201301", "nazev-autoskoly": 1, "typ": "A", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01",
+      "hodiny-teorie": [
+          {"datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak" "typ-vyuky": "teorie"},
+          {"datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova" "typ-vyuky": "zdravoveda"}
+    ]},
+    { "id": 1, "identifikacni-cislo": "B201302", "nazev-autoskoly": 1, "typ": "B", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01",
+      "hodiny-teorie": [
+          {"datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak" "typ-vyuky": "teorie"},
+          {"datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova" "typ-vyuky": "zdravoveda"}
+    ]},
+    { "id": 1, "identifikacni-cislo": "T201305", "nazev-autoskoly": 1, "typ": "T", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01",
+      "hodiny-teorie": [
+          {"datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak" "typ-vyuky": "teorie"},
+          {"datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova" "typ-vyuky": "zdravoveda"}
+    ]}
+] }
+
+--
 Vozidla Resources
 The following is a section of resources related to Vozidla
 --
@@ -185,10 +212,10 @@ GET /jizdy
 Vytvoreni nove jizdy
 POST /jizdy
 > Content-Type: application/json
-{ "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "doba-jizdy": "02:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 },
+{ "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "cas-od": "15:00", "cas-do": "17:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 },
 < 201
 < Content-Type: application/json
-{ "id": 3, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "doba-jizdy": "02:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 }
+{ "id": 3, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "cas-od": "15:00", "cas-do": "17:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 }
 
 Odstraneni jizdy
 DELETE /jizdy/{id}
