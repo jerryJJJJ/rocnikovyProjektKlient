@@ -160,7 +160,7 @@ PUT /vozidla/{id}
   "pocatecni-stav-km": 30000, "typ" : "osobní automobil", "rok-vyroby" : 2007, "spz" : "2E2 2222" }
 < 200
 < Content-Type: application/json
-{ "znacka": "Ford", "model": "FocusVracen", "vin": "LJP05GFD5548913", "autoskola-id": 1, "datum-stk": "2014-05-01", 
+{ "znacka": "Ford", "model": "Focus", "vin": "vracene vin", "autoskola-id": 1, "datum-stk": "2014-05-01", 
   "pocatecni-stav-km": 30000, "typ" : "osobní automobil", "rok-vyroby" : 2007, "spz" : "2E2 2222" }
 
 Odstraneni vozidla
@@ -185,6 +185,6 @@ POST /jizdy
 < Content-Type: application/json
 { "id": 3, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "doba-jizdy": "02:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 }
 
-Odstraneni vozidla
+Odstraneni jizdy
 DELETE /jizdy/{id}
 < 200
