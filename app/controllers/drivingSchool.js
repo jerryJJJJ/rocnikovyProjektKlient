@@ -15,6 +15,12 @@ var app;
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
+
+                $http.get("/autoskoly/" + autoskolaId + "/kurzy").then(function (response) {
+                    _this.courses = response.data;
+                }, function (reason) {
+                    alert('Chyba: ' + reason);
+                });
             }
             DrivingSchool.prototype.deleteVehicle = function (vehicle) {
                 this.$http.delete("/vozidla/" + vehicle.id).then(function (response) {

@@ -16,16 +16,23 @@
 @import '../components/bootstrap/less/bootstrap';
 @import '../components/bootstrap/less/forms';
 
+@icon-font-path:          "/fonts/";
+@import '../components/bootstrap/less/glyphicons';
+
 /*!
  * Custom css
  */
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
 
 h1 {
   color: #0000ff;
 }
 
 input {
-  width: 130px;
+  width: 10px;
 }
 
 .value {
@@ -37,7 +44,7 @@ input {
   margin-top: -85px;
 }
 
-.delete {
+.delete-object {
   float: left;
   margin-left: 250px;
   margin-top: -85px;
@@ -46,4 +53,8 @@ input {
 .documents {
   float: right;
   margin-top: -50px;
+}
+
+.right {
+  text-align: right;
 }

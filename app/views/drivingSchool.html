@@ -8,7 +8,7 @@
     <li ng-class="{active: drivingSchoolCtrl.listType == 'kurzy'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/kurzy">Kurzy</a></li>
 </ul>
 
-<table class="table" ng-if="drivingSchoolCtrl.listType == 'vozidla'">
+<table class="table" ng-if="drivingSchoolCtrl.listType == 'vozidla' || true">
     <tr>
         <th>znacka</th>
         <th>model</th>
@@ -32,5 +32,19 @@
     <tr ng-repeat="teacher in drivingSchoolCtrl.drivingSchool.ucitele">
         <td>{{teacher.jmeno}}</td>
         <td>{{teacher.prijmeni}}</td>
+    </tr>
+</table>
+
+<h3>kurzy</h3>
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th>datum otevření</th>
+        <th>stav</th>
+    </tr>
+    <tr ng-repeat="course in drivingSchoolCtrl.courses">
+        <td>{{course['identifikacni-cislo']}}</td>
+        <td>{{course['datum-od']}}</td>
+        <td>{{course.stav}}</td>
     </tr>
 </table>
