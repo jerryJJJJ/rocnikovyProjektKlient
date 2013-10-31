@@ -116,7 +116,7 @@ var app;
     */
     function registerService(className) {
         var service = className.charAt(0).toLowerCase() + className.substr(1);
-        angular.module('app.service').factory(service, app.service[className]);
+        angular.module('app.service').service(service, app.service[className]);
     }
     app.registerService = registerService;
 })(app || (app = {}));

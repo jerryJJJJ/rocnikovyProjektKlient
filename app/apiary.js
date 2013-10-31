@@ -159,7 +159,31 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"id\": 1, \"nazev\": \"Aotoskola1\", \"ucitele\" : [\n        { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"Skočdopole\", \"autoskola-id\": 1, \"opravneni\": [\"A\", \"B\"], \"pocet-deti\" : 2, \"datum-prohlidky\": \"2013-01-01\", \"url-dokumentu\": \"/prohlidky/asdasdasdad.pdf\"},\n        { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"Slezstromu\", \"autoskola-id\": 2, \"opravneni\": [\"T\"], \"pocet-deti\" : 0, \"datum-prohlidky\": \"2013-05-01\", \"url-dokumentu\": \"/prohlidky/dddddfd.jpg\"}\n    ], \"vozidla\": [\n        { \"id\": 1, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1}\n    ], \"studenti\" : [\n        { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"ZborilGaraz\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562},\n        { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"VjelDoPole\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562},\n        { \"id\": 3, \"jmeno\": \"Lukas\", \"prijmeni\": \"SrazilChodce\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562}\n    ]\n}"
+            "body": "{ \"id\": 1, \"nazev\": \"Aotoskola1\", \"ucitele\" : [\n        { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"Skočdopole\", \"autoskola-id\": 1, \"opravneni\": [\"A\", \"B\"], \"pocet-deti\" : 2, \"datum-prohlidky\": \"2013-01-01\", \"url-dokumentu\": \"/prohlidky/asdasdasdad.pdf\"},\n        { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"Slezstromu\", \"autoskola-id\": 2, \"opravneni\": [\"T\"], \"pocet-deti\" : 0, \"datum-prohlidky\": \"2013-05-01\", \"url-dokumentu\": \"/prohlidky/dddddfd.jpg\"}\n    ], \"vozidla\": [\n        { \"id\": 1, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1}\n    ], \"aktualni-studenti\" : [\n        { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"ZborilGaraz\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562},\n        { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"VjelDoPole\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562},\n        { \"id\": 3, \"jmeno\": \"Lukas\", \"prijmeni\": \"SrazilChodce\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562}\n    ]\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Kurzy Resources",
+    "description": "The following is a section of resources related to Vozidla",
+    "resources": [
+      {
+        "description": "Seznam kurzu",
+        "method": "GET",
+        "url": "/autoskoly/{id}/kurzy",
+        "request": {
+          "headers": {},
+          "body": null
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ \"kurzy\": [\n    { \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"nazev-autoskoly\": 1, \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\" \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\" \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 2, \"identifikacni-cislo\": \"B201302\", \"nazev-autoskoly\": 1, \"typ\": \"B\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\" \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\" \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 3, \"identifikacni-cislo\": \"T201305\", \"nazev-autoskoly\": 1, \"typ\": \"T\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\" \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\" \"typ-vyuky\": \"zdravoveda\"}\n    ]}\n] }"
           }
         ]
       }
@@ -201,7 +225,7 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"id\": 1, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1, \"pocet-km\" : 155555, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\", \"prumerna-spotreba\" : 6.8,\n  \"jizdy\" : [\n    { \"id\": 1, \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"cas-od\": \"15:00\", \"cas-do\": \"17:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 },\n    { \"id\": 2, \"datum\": \"2013-01-01\", \"ucitel\": 1, \"vozidlo\": 1, \"zak\": 5, \"cas-od\": \"17:00\", \"cas-do\": \"18:50\", \"pocet-ujetych-km\" : 16, \"spotreba\" : 7.1 }\n  ], \"dokumenty\" : [\n    { \"nazev\" : \"STK a emise\", \"datum-vlozeni\" : \"2011-05-01\" },\n    { \"nazev\" : \"STK a emise 2\", \"datum-vlozeni\" : \"2013-05-01\" }\n  ] }"
+            "body": "{ \"id\": 1, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1, \"pocet-km\" : 155555, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\", \"prumerna-spotreba\" : 6.8,\n  \"jizdy\" : [\n    { \"id\": 1, \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"cas-od\": \"15:00\", \"cas-do\": \"17:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 },\n    { \"id\": 2, \"datum\": \"2013-01-01\", \"ucitel\": 1, \"vozidlo\": 1, \"zak\": 5, \"cas-od\": \"17:00\", \"cas-do\": \"18:50\", \"pocet-ujetych-km\" : 16, \"spotreba\" : 7.1 }\n  ], \"dokumenty\" : [\n    { \"id\": 1, \"nazev\" : \"STK a emise\", \"datum-vlozeni\" : \"2011-05-01\" },\n    { \"id\": 2, \"nazev\" : \"STK a emise 2\", \"datum-vlozeni\" : \"2013-05-01\" }\n  ] }"
           }
         ]
       },
@@ -213,7 +237,7 @@ var apiary = [
           "headers": {
             "Content-Type": "application/json"
           },
-          "body": "{ \"id\": 3, \"znacka\": \"Ford\", \"model\": \"Mondeo\", \"vin\": \"LJP05GFD5542222\", \"autoskola-id\": 1 }"
+          "body": "{ \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\" }"
         },
         "responses": [
           {
@@ -221,7 +245,27 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"id\": 3 }"
+            "body": "{ \"id\": 3, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\" }"
+          }
+        ]
+      },
+      {
+        "description": "Upraveni vozidla",
+        "method": "PUT",
+        "url": "/vozidla/{id}",
+        "request": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": "{ \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\" }"
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"vracene vin\", \"autoskola-id\": 1, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\" }"
           }
         ]
       },
@@ -242,6 +286,28 @@ var apiary = [
         ]
       },
       {
+        "description": "Odstraneni dokumentu",
+        "method": "DELETE",
+        "url": "/vozidla/{id}/dokumenty/{id}",
+        "request": {
+          "headers": {},
+          "body": null
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {},
+            "body": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Vozidla Resources",
+    "description": "The following is a section of resources related to Vozidla",
+    "resources": [
+      {
         "description": "Kniha jizdy",
         "method": "GET",
         "url": "/jizdy",
@@ -255,7 +321,43 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"ucitele\": [\n    { \"id\": 1, \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"doba-jizdy\": \"02:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 },\n    { \"id\": 2, \"datum\": \"2013-01-01\", \"ucitel\": 1, \"vozidlo\": 1, \"zak\": 5, \"doba-jizdy\": \"01:50\", \"pocet-ujetych-km\" : 16, \"spotreba\" : 7.1 }\n] }"
+            "body": "{ \"jizdy\": [\n    { \"id\": 1, \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"doba-jizdy\": \"02:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 },\n    { \"id\": 2, \"datum\": \"2013-01-01\", \"ucitel\": 1, \"vozidlo\": 1, \"zak\": 5, \"doba-jizdy\": \"01:50\", \"pocet-ujetych-km\" : 16, \"spotreba\" : 7.1 }\n] }"
+          }
+        ]
+      },
+      {
+        "description": "Vytvoreni nove jizdy",
+        "method": "POST",
+        "url": "/jizdy",
+        "request": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": "{ \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"cas-od\": \"15:00\", \"cas-do\": \"17:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 },"
+        },
+        "responses": [
+          {
+            "status": 201,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ \"id\": 3, \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"cas-od\": \"15:00\", \"cas-do\": \"17:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 }"
+          }
+        ]
+      },
+      {
+        "description": "Odstraneni jizdy",
+        "method": "DELETE",
+        "url": "/jizdy/{id}",
+        "request": {
+          "headers": {},
+          "body": null
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {},
+            "body": null
           }
         ]
       }

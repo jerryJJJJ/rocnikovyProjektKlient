@@ -6,6 +6,7 @@ module app.controller {
 
     public drivingSchool;
     public vehicles;
+    public courses;
 
     constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService) {
 
@@ -14,6 +15,12 @@ module app.controller {
       $http.get("/autoskoly/" + autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
         this.drivingSchool = response.data;
         this.vehicles = new app.lib.IndexedArray(this.drivingSchool.vozidla);
+      }, (reason) => {
+        alert('Chyba: ' + reason);
+      });
+
+      $http.get("/autoskoly/" + autoskolaId + "/kurzy").then((response:ng.IHttpPromiseCallbackArg) => {
+        this.courses = response.data;
       }, (reason) => {
         alert('Chyba: ' + reason);
       });

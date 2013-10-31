@@ -27,3 +27,17 @@
         <td>{{teacher.prijmeni}}</td>
     </tr>
 </table>
+
+<h3>kurzy</h3>
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th>datum otevření</th>
+        <th>stav</th>
+    </tr>
+    <tr ng-repeat="course in drivingSchoolCtrl.courses">
+        <td>{{course['identifikacni-cislo']}}</td>
+        <td>{{course['datum-od']}}</td>
+        <td>{{course.stav}}</td>
+    </tr>
+</table>
