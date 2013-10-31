@@ -4,12 +4,15 @@ module app.controller {
 
   export class DrivingSchool {
 
+
     public drivingSchool;
     public vehicles;
+    public listType:string;
 
     constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService) {
 
       var autoskolaId:string = $routeParams.id;
+      this.listType = $routeParams.listType ? $routeParams.listType : 'vozidla';
 
       $http.get("/autoskoly/" + autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
         this.drivingSchool = response.data;

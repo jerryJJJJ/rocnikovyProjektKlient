@@ -7,6 +7,7 @@ var app;
                 var _this = this;
                 this.$http = $http;
                 var autoskolaId = $routeParams.id;
+                this.listType = $routeParams.listType ? $routeParams.listType : 'vozidla';
 
                 $http.get("/autoskoly/" + autoskolaId).then(function (response) {
                     _this.drivingSchool = response.data;

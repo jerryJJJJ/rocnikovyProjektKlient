@@ -1,7 +1,14 @@
 <h1>{{drivingSchoolCtrl.drivingSchool.nazev}}</h1>
 <h3>seznam vozidel</h3>
 <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/vozidla/nove">Pridat vozidlo</a>
-<table class="table">
+
+<ul>
+    <li ng-class="{active: drivingSchoolCtrl.listType == 'vozidla'}"><a>Vozidla</a></li>
+    <li ng-class="{active: drivingSchoolCtrl.listType == 'ucitele'}"><a>Ucitele</a></li>
+    <li ng-class="{active: drivingSchoolCtrl.listType == 'kurzy'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/kurzy">Kurzy</a></li>
+</ul>
+
+<table class="table" ng-if="drivingSchoolCtrl.listType == 'vozidla'">
     <tr>
         <th>znacka</th>
         <th>model</th>
