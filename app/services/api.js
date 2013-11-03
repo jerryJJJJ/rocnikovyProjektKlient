@@ -26,7 +26,7 @@ var app;
             };
 
             Api.prototype.deleteDocument = function (vehicle, document) {
-                return this.$http.delete("/vozidla/" + vehicle.id + "/dokumenty/" + document.id);
+                return this.$http.delete("/dokumenty/" + document.id);
             };
             return Api;
         })();

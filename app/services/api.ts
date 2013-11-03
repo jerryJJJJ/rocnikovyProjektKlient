@@ -28,7 +28,7 @@ module app.service {
     }
 
     public deleteDocument(vehicle, document) {
-      return this.$http.delete("/vozidla/" + vehicle.id + "/dokumenty/" + document.id);
+      return this.$http.delete("/dokumenty/" + document.id);
     }
   }
 }
