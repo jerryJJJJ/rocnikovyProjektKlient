@@ -7,7 +7,7 @@ Welcome to the our sample API documentation. All comments can be written in (sup
 ---
 
 --
-Ucitele Resources
+Ucitele Resources 
 The following is a section of resources related to Ucitele
 --
 
@@ -139,6 +139,15 @@ GET /kurzy?autoskola_id={id}
           {"datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
           {"datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
     ]}
+] }
+
+GET /kurzy/{id}
+< 200
+< Content-Type: application/json
+{ "id": 1, "identifikacni-cislo": "A201301", "typ": "A", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01",
+      "hodiny-teorie": [
+          {"datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
+          {"datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
 ] }
 
 --
