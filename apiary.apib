@@ -50,7 +50,7 @@ Seznam studentu
 GET /studenti
 < 200
 < Content-Type: application/json
-{ "ucitele": [
+{ "studenti": [
     { "id": 1, "jmeno": "Martin", "prijmeni": "ZborilGaraz", "autoskola-id": 1, "matricni-cislo": 26549562 },
     { "id": 2, "jmeno": "Jacob", "prijmeni": "VjelDoPole", "autoskola-id": 1, "matricni-cislo": 26549562 },
     { "id": 3, "jmeno": "Lukas", "prijmeni": "SrazilChodce", "autoskola-id": 1, "matricni-cislo": 26549562 },
@@ -147,10 +147,14 @@ GET /kurzy/{id}
 < Content-Type: application/json
 { "id": 1, "identifikacni-cislo": "A201301", "autoskola-id": 1, "nazev-autoskoly": "AutoskolaABCD", "typ": "A", "stav": "otevreny", 
   "datum-od": "2013-01-01", "datum-do": "2013-04-01", "pocet-studentu": 15,
-      "hodiny-teorie": [
-          {"datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
-          {"datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
-], "dokumenty" : [ { "id": 1, "nazev" : "Prihlaska PDF", "datum-vlozeni" : "2011-05-01" } ]
+  "hodiny-teorie": [
+        {"datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
+        {"datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
+  ], "studenti": [
+        { "id": 1, "jmeno": "Martin", "prijmeni": "ZborilGaraz", "autoskola-id": 1, "matricni-cislo": 26549562 },
+        { "id": 2, "jmeno": "Jacob", "prijmeni": "VjelDoPole", "autoskola-id": 1, "matricni-cislo": 26549562 },
+        { "id": 3, "jmeno": "Lukas", "prijmeni": "SrazilChodce", "autoskola-id": 1, "matricni-cislo": 26549562 }
+  ], "dokumenty" : [ { "id": 1, "nazev" : "Prihlaska PDF", "datum-vlozeni" : "2011-05-01" } ]
 }
 
 --
