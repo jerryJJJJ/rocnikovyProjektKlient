@@ -38,6 +38,7 @@
 </table>
 
 <h3 ng-if="drivingSchoolCtrl.listType == 'ucitele'">seznam ucitelu</h3>
+<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/ucitele/nove" ng-if="drivingSchoolCtrl.listType == 'ucitele'">Pridat ucitele</a>
 <table class="table" ng-if="drivingSchoolCtrl.listType == 'ucitele'">
     <tr>
         <th>jmeno</th>
@@ -50,6 +51,7 @@
 </table>
 
 <h3 ng-if="drivingSchoolCtrl.listType == 'kurzy'">kurzy</h3>
+<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/kurzy/nove" ng-if="drivingSchoolCtrl.listType == 'kurzy'">Pridat kurz</a>
 <table class="table" ng-if="drivingSchoolCtrl.listType == 'kurzy'">
     <tr>
         <th>id</th>

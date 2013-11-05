@@ -1,6 +1,6 @@
 <h1>Kurz {{courseDetailCtrl.course['identifikacni-cislo']}}</h1>
 <h3>{{courseDetailCtrl.course['nazev-autoskoly']}}</h3>
-<span class="delete-object">
+<span class="delete-object" ng-if="!courseDetailCtrl.isNew">
     <button ng-click="courseDetailCtrl.deleteCourse(courseDetailCtrl.course)"
             class="btn btn-danger btn-xs">
         <span class="glyphicon glyphicon-remove"></span> Smazat kurz</button>
@@ -53,7 +53,7 @@
     </tr>
 </table>
 
-<div ng-if="!vehicleDetailCtrl.isNew">
+<div ng-if="!courseDetailCtrl.isNew">
     <h3>Hodiny teorie</h3>
     <form novalidate class="css-form">
         <table class="table">
@@ -86,25 +86,56 @@
                 <td>
                     <input id="toTime" type="time" ng-model="courseDetailCtrl.newLesson['cas-do']" class="form-control">
                 </td>
-                <td><input type="number" class="form-control" ng-model="vehicleDetailCtrl.newRide['pocet-ujetych-km']"
-                           placeholder="vzdálenost" step="0.5" min="0"></td>
-                <td><input type="number" class="form-control" ng-model="vehicleDetailCtrl.newRide['spotreba']"
-                           placeholder="spotřeba" step="0.1" min="0"></td>
                 <td>
                     <select name="selectTeachers" class="form-control">
-                        <option ng-repeat="teacher in vehicleDetailCtrl.drivingSchool.ucitele">{{teacher.prijmeni}}</option>
+                        <option ng-repeat="teacher in courseDetailCtrl.drivingSchool.ucitele">{{teacher.prijmeni}}</option>
                     </select>
                 </td>
                 <td colspan="2">
                     <select name="selectStudents" class="form-control">
-                        <option ng-repeat="student in vehicleDetailCtrl.drivingSchool['aktualni-studenti']">{{student.prijmeni}}</option>
+                        <option ng-repeat="student in courseDetailCtrl.drivingSchool['aktualni-studenti']">{{student.prijmeni}}</option>
                     </select>
                 </td>
             </tr>
             <tr>
+                <td colspan="6" class="right">
+                    <button ng-click="courseDetailCtrl.createLesson(ride)" class="btn btn-success">
+                        <span class="glyphicon glyphicon-floppy-save"></span> Uložit hodinu</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <h3>Seznam žáků</h3>
+    <form novalidate class="css-form">
+        <table class="table">
+            <tr>
+                <th>příjmení</th>
+                <th>jméno</th>
+                <th>matriční číslo</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="student in courseDetailCtrl.course['studenti']">
+                <td>{{student.prijmeni}}</td>
+                <td>{{student.jmeno}}</td>
+                <td>{{student['matricni-cislo']}}</td>
+                <td class="right">
+                    <button ng-click="courseDetailCtrl.deleteStudent(student)" class="btn btn-danger btn-xs">
+                        <span class="glyphicon glyphicon-remove"></span></button>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" ng-model="vehicleDetailCtrl.newStudent['prijmeni']"
+                           placeholder="příjmení"></td>
+                <td><input type="text" class="form-control" ng-model="vehicleDetailCtrl.newStudent['jmeno']"
+                           placeholder="jméno"></td>
+                <td colspan="2"><input type="text" class="form-control" ng-model="vehicleDetailCtrl.newStudent['matricni-cislo']"
+                           placeholder="matriční číslo"></td>
+            </tr>
+            <tr>
                 <td colspan="8" class="right">
                     <button ng-click="vehicleDetailCtrl.createRide(ride)" class="btn btn-success">
-                        <span class="glyphicon glyphicon-floppy-save"></span> Uložit jízdu</button>
+                        <span class="glyphicon glyphicon-floppy-save"></span> Uložit žáka</button>
                 </td>
             </tr>
         </table>

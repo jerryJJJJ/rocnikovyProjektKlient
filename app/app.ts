@@ -56,6 +56,11 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider) => {
     controller:   'app.controller.CourseDetail',
     controllerAs: "courseDetailCtrl"
   });
+  $routeProvider.when('/autoskola/:autoskolaId/kurzy/nove', {
+    templateUrl:  'views/courseDetail.html',
+    controller:   'app.controller.CourseDetail',
+    controllerAs: "courseDetailCtrl"
+  });
   $routeProvider.otherwise({ redirectTo: '/'});
 
 });

@@ -7,12 +7,24 @@ var app;
                 this.$http = $http;
                 this.api = api;
                 this.auth = auth;
-                $http.get("/kurzy/" + $routeParams.id).then(function (response) {
-                    _this.course = response.data;
+                if ($routeParams.id != "nove") {
+                    this.isNew = false;
+                    $http.get("/kurzy/" + $routeParams.id).then(function (response) {
+                        _this.course = response.data;
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist kurz: ' + reason);
+                    });
+                } else {
+                    this.isNew = true;
+                }
+
+                $http.get("/autoskoly/" + $routeParams.autoskolaId).then(function (response) {
+                    _this.drivingSchool = response.data;
                 }, function (reason) {
-                    alert('Nepodarilo se nacist kurz: ' + reason);
+                    alert('Nepodarilo se nacist autoskolu: ' + reason);
                 });
 
+                alert(this.isNew);
                 var nowDate = new Date();
                 var month = (nowDate.getMonth() + 1 < 10 ? '0' : '') + (nowDate.getMonth() + 1);
                 var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();

@@ -79,7 +79,7 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"ucitele\": [\n    { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"ZborilGaraz\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n    { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"VjelDoPole\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n    { \"id\": 3, \"jmeno\": \"Lukas\", \"prijmeni\": \"SrazilChodce\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n    { \"id\": 4, \"jmeno\": \"Lukas\", \"prijmeni\": \"SrazilChodce\", \"autoskola-id\": 2, \"matricni-cislo\": 26549562 }\n] }"
+            "body": "{ \"studenti\": [\n    { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"ZborilGaraz\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n    { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"VjelDoPole\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n    { \"id\": 3, \"jmeno\": \"Lukas\", \"prijmeni\": \"SrazilChodce\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n    { \"id\": 4, \"jmeno\": \"Lukas\", \"prijmeni\": \"SrazilChodce\", \"autoskola-id\": 2, \"matricni-cislo\": 26549562 }\n] }"
           }
         ]
       },
@@ -201,7 +201,7 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"autoskola-id\": 1, \"nazev-autoskoly\": \"AutoskolaABCD\", \"typ\": \"A\", \"stav\": \"otevreny\", \n  \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\", \"pocet-studentu\": 15,\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n], \"dokumenty\" : [ { \"id\": 1, \"nazev\" : \"Prihlaska PDF\", \"datum-vlozeni\" : \"2011-05-01\" } ]\n}"
+            "body": "{ \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"autoskola-id\": 1, \"nazev-autoskoly\": \"AutoskolaABCD\", \"typ\": \"A\", \"stav\": \"otevreny\", \n  \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\", \"pocet-studentu\": 15,\n  \"hodiny-teorie\": [\n        {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n        {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n  ], \"studenti\": [\n        { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"ZborilGaraz\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n        { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"VjelDoPole\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n        { \"id\": 3, \"jmeno\": \"Lukas\", \"prijmeni\": \"SrazilChodce\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 }\n  ], \"dokumenty\" : [ { \"id\": 1, \"nazev\" : \"Prihlaska PDF\", \"datum-vlozeni\" : \"2011-05-01\" } ]\n}"
           }
         ]
       }

@@ -4,7 +4,6 @@ module app.controller {
 
   export class DrivingSchool {
 
-
     public drivingSchool;
     public vehicles;
     public listType:string;
