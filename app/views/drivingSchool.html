@@ -57,7 +57,7 @@
         <th>stav</th>
     </tr>
     <tr ng-repeat="course in drivingSchoolCtrl.courses">
-        <td>{{course['identifikacni-cislo']}}</td>
+        <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/kurzy/{{course.id}}">{{course['identifikacni-cislo']}}</a></td>
         <td>{{course['datum-od']}}</td>
         <td>{{course.stav}}</td>
     </tr>
