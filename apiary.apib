@@ -101,7 +101,7 @@ Detail autoskoly
 GET /autoskoly/{id}
 < 200
 < Content-Type: application/json
-{ "id": 1, "nazev": "Aotoskola1", "ucitele" : [
+{ "id": 1, "nazev": "Aotoskola1", "pocet-ucitelu": 3, "pocet-vozidel": 5, "pocet-aktivnich-kurzu": 4, "ucitele": [
         { "id": 1, "jmeno": "Martin", "prijmeni": "Skočdopole", "autoskola-id": 1, "opravneni": ["A", "B"], "pocet-deti" : 2, "datum-prohlidky": "2013-01-01", "url-dokumentu": "/prohlidky/asdasdasdad.pdf"},
         { "id": 2, "jmeno": "Jacob", "prijmeni": "Slezstromu", "autoskola-id": 2, "opravneni": ["T"], "pocet-deti" : 0, "datum-prohlidky": "2013-05-01", "url-dokumentu": "/prohlidky/dddddfd.jpg"}
     ], "vozidla": [
