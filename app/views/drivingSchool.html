@@ -1,14 +1,28 @@
 <h1>{{drivingSchoolCtrl.drivingSchool.nazev}}</h1>
-<h3>seznam vozidel</h3>
-<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/vozidla/nove">Pridat vozidlo</a>
+<table class="detail-table">
+    <tr>
+        <td>počet učitelů</td>
+        <td>{{drivingSchoolCtrl.drivingSchool['pocet-ucitelu']}}</td>
+    </tr>
+    <tr>
+        <td>počet vozidel</td>
+        <td>{{drivingSchoolCtrl.drivingSchool['pocet-vozidel']}}</td>
+    </tr>
+    <tr>
+        <td>počet akt. kurzů</td>
+        <td>{{drivingSchoolCtrl.drivingSchool['pocet-aktivnich-kurzu']}}</td>
+    </tr>
+</table>
 
 <ul>
-    <li ng-class="{active: drivingSchoolCtrl.listType == 'vozidla'}"><a>Vozidla</a></li>
-    <li ng-class="{active: drivingSchoolCtrl.listType == 'ucitele'}"><a>Ucitele</a></li>
+    <li ng-class="{active: drivingSchoolCtrl.listType == 'vozidla'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/vozidla">Vozidla</a></li>
+    <li ng-class="{active: drivingSchoolCtrl.listType == 'ucitele'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/ucitele">Ucitele</a></li>
     <li ng-class="{active: drivingSchoolCtrl.listType == 'kurzy'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/kurzy">Kurzy</a></li>
 </ul>
 
-<table class="table" ng-if="drivingSchoolCtrl.listType == 'vozidla' || true">
+<h3 ng-if="drivingSchoolCtrl.listType == 'vozidla'">seznam vozidel</h3>
+<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/vozidla/nove" ng-if="drivingSchoolCtrl.listType == 'vozidla'">Pridat vozidlo</a>
+<table class="table" ng-if="drivingSchoolCtrl.listType == 'vozidla'">
     <tr>
         <th>znacka</th>
         <th>model</th>
@@ -23,8 +37,8 @@
     </tr>
 </table>
 
-<h3>seznam ucitelu</h3>
-<table class="table">
+<h3 ng-if="drivingSchoolCtrl.listType == 'ucitele'">seznam ucitelu</h3>
+<table class="table" ng-if="drivingSchoolCtrl.listType == 'ucitele'">
     <tr>
         <th>jmeno</th>
         <th>prijmeni</th>
@@ -35,8 +49,8 @@
     </tr>
 </table>
 
-<h3>kurzy</h3>
-<table class="table">
+<h3 ng-if="drivingSchoolCtrl.listType == 'kurzy'">kurzy</h3>
+<table class="table" ng-if="drivingSchoolCtrl.listType == 'kurzy'">
     <tr>
         <th>id</th>
         <th>datum otevření</th>
