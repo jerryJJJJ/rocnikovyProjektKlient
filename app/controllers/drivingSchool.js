@@ -16,8 +16,14 @@ var app;
                     alert('Chyba: ' + reason);
                 });
 
-                $http.get("/autoskoly/" + autoskolaId + "/kurzy").then(function (response) {
-                    _this.courses = response.data;
+                //NOTE hazeli se ti spatna data (ze spatny metody API) protoze chybelo v Blueprintu carek.. chyba z nepozornosti
+                //NOTE ale kdyz nevis tak se to spatne hleda :)
+                //NOTE domluvili jsme se, ze budeme mit striktne rozdelene resources.. tedy adresu z /autoskoly/{id}/kurzy
+                //NOTE jsem zmenil na /kurzy?autoskola_id={id}
+                $http.get("/kurzy?autoskola_id=" + autoskolaId).then(function (response) {
+                    //NOTE puvodne bylo   "this.courses = response.data;"
+                    //NOTE kurzy jsou ale v odpovedi v property "kurzy" tak jak je to navrzeno v API
+                    _this.courses = response.data.kurzy;
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });

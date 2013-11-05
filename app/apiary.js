@@ -170,9 +170,9 @@ var apiary = [
     "description": "The following is a section of resources related to Vozidla",
     "resources": [
       {
-        "description": "Seznam kurzu    HOTOVO",
+        "description": "Seznam kurzu    ",
         "method": "GET",
-        "url": "/autoskoly/{id}/kurzy",
+        "url": "/kurzy?autoskola_id={id}",
         "request": {
           "headers": {},
           "body": null
@@ -183,7 +183,7 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"kurzy\": [\n    { \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\" \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\" \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 2, \"identifikacni-cislo\": \"B201302\", \"typ\": \"B\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\" \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\" \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 3, \"identifikacni-cislo\": \"T201305\", \"typ\": \"T\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\" \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\" \"typ-vyuky\": \"zdravoveda\"}\n    ]}\n] }"
+            "body": "{ \"kurzy\": [\n    { \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 2, \"identifikacni-cislo\": \"B201302\", \"typ\": \"B\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 3, \"identifikacni-cislo\": \"T201305\", \"typ\": \"T\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]}\n] }"
           }
         ]
       }
