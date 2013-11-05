@@ -1,6 +1,6 @@
 var apiary = [
   {
-    "name": "Ucitele Resources",
+    "name": "Ucitele Resources ",
     "description": "The following is a section of resources related to Ucitele",
     "resources": [
       {
@@ -184,6 +184,24 @@ var apiary = [
               "Content-Type": "application/json"
             },
             "body": "{ \"kurzy\": [\n    { \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 2, \"identifikacni-cislo\": \"B201302\", \"typ\": \"B\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 3, \"identifikacni-cislo\": \"T201305\", \"typ\": \"T\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]}\n] }"
+          }
+        ]
+      },
+      {
+        "description": "Detail kurzu",
+        "method": "GET",
+        "url": "/kurzy/{id}",
+        "request": {
+          "headers": {},
+          "body": null
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"autoskola-id\": 1, \"nazev-autoskoly\": \"AutoskolaABCD\", \"typ\": \"A\", \"stav\": \"otevreny\", \n  \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\", \"pocet-studentu\": 15,\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n], \"dokumenty\" : [ { \"id\": 1, \"nazev\" : \"Prihlaska PDF\", \"datum-vlozeni\" : \"2011-05-01\" } ]\n}"
           }
         ]
       }
