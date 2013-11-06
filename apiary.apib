@@ -119,7 +119,7 @@ Kurzy Resources
 The following is a section of resources related to Vozidla
 --
 
-Seznam kurzu    
+Seznam kurzu    HOTOVO
 GET /kurzy?autoskola_id={id}
 < 200
 < Content-Type: application/json
@@ -141,12 +141,11 @@ GET /kurzy?autoskola_id={id}
     ]}
 ] }
 
-Detail kurzu
+Detail kurzu    HOTOVO
 GET /kurzy/{id}
 < 200
 < Content-Type: application/json
-{ "id": 1, "identifikacni-cislo": "A201301", "autoskola-id": 1, "nazev-autoskoly": "AutoskolaABCD", "typ": "A", "stav": "otevreny", 
-  "datum-od": "2013-01-01", "datum-do": "2013-04-01", "pocet-studentu": 15,
+{ "id": 1, "identifikacni-cislo": "A201301", "typ": "A", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01", "pocet-studentu": 15,
   "hodiny-teorie": [
         {"datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
         {"datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
@@ -156,6 +155,19 @@ GET /kurzy/{id}
         { "id": 3, "jmeno": "Lukas", "prijmeni": "SrazilChodce", "autoskola-id": 1, "matricni-cislo": 26549562 }
   ], "dokumenty" : [ { "id": 1, "nazev" : "Prihlaska PDF", "datum-vlozeni" : "2011-05-01" } ]
 }
+
+Vytvoreni kurzu
+POST /kurzy
+> Content-Type: application/json
+{ "typ": "A", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01", "pocet-studentu": 15 },
+< 201
+< Content-Type: application/json
+{ "id": 1, "identifikacni-cislo": "A201301", "typ": "A", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01", "pocet-studentu": 15 }
+
+Odstraneni kurzu    HOTOVO
+DELETE /kurzy/{id}
+< 200
+
 
 --
 Vozidla Resources
@@ -226,8 +238,8 @@ GET /jizdy
 < 200
 < Content-Type: application/json
 { "jizdy": [
-    { "id": 1, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "doba-jizdy": "02:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 },
-    { "id": 2, "datum": "2013-01-01", "ucitel": 1, "vozidlo": 1, "zak": 5, "doba-jizdy": "01:50", "pocet-ujetych-km" : 16, "spotreba" : 7.1 }
+    { "id": 1, "datum": "2013-01-01", "ucitel": 2, "vozidlo": 1, "zak": 1, "cas-od": "15:00", "cas-do": "17:00", "pocet-ujetych-km" : 15, "spotreba" : 6.7 },
+    { "id": 2, "datum": "2013-01-01", "ucitel": 1, "vozidlo": 1, "zak": 5, "cas-od": "15:00", "cas-do": "17:00", "pocet-ujetych-km" : 16, "spotreba" : 7.1 }
 ] }
 
 Vytvoreni nove jizdy    HOTOVO
