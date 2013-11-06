@@ -2,11 +2,13 @@ var app;
 (function (app) {
     (function (controller) {
         var VehicleDetail = (function () {
-            function VehicleDetail($http, $routeParams, api, auth) {
+            function VehicleDetail($http, $routeParams, api, auth, $location) {
                 var _this = this;
                 this.$http = $http;
                 this.api = api;
                 this.auth = auth;
+                this.$location = $location;
+                //TODO reqest patri Api service
                 $http.get("/autoskoly/" + $routeParams.autoskolaId).then(function (response) {
                     _this.drivingSchool = response.data;
                 }, function (reason) {
@@ -15,6 +17,8 @@ var app;
 
                 if ($routeParams.id) {
                     this.isNew = false;
+
+                    //TODO reqest patri Api service
                     $http.get("/vozidla/" + $routeParams.id).then(function (response) {
                         _this.vehicle = response.data;
                     }, function (reason) {
@@ -38,6 +42,7 @@ var app;
             }
             VehicleDetail.prototype.saveVehicle = function (vehicle) {
                 var _this = this;
+                //NOTE byl bych pro klasickou podminku a prikazy na jednotlivy radky tohle se neda cist :))
                 (this.isNew) ? this.api.createVehicle(vehicle).then(function (response) {
                     _this.vehicle = response.data;
                     _this.isNew = false;
@@ -61,7 +66,7 @@ var app;
             VehicleDetail.prototype.deleteVehicle = function (vehicle) {
                 var _this = this;
                 this.api.deleteVehicle(vehicle).then(function () {
-                    window.location.assign("/#/autoskola/" + _this.drivingSchool.id + "/vozidla");
+                    _this.$location.path("/autoskola/" + _this.drivingSchool.id + "/vozidla");
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });

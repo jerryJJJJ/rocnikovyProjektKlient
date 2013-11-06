@@ -7,8 +7,10 @@ module app.controller {
     public newRide;
     public isNew;
 
-    constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api, private auth) {
+    constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api,
+                private auth, private $location:ng.ILocationService) {
 
+      //TODO reqest patri Api service
       $http.get("/autoskoly/"+$routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
         this.drivingSchool = response.data;
       }, (reason) => {
@@ -17,6 +19,7 @@ module app.controller {
 
       if($routeParams.id) {
         this.isNew = false;
+        //TODO reqest patri Api service
         $http.get("/vozidla/"+$routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
           this.vehicle = response.data;
         }, (reason) => {
@@ -41,6 +44,7 @@ module app.controller {
     }
 
     public saveVehicle(vehicle) {
+      //NOTE byl bych pro klasickou podminku a prikazy na jednotlivy radky tohle se neda cist :))
       (this.isNew) ? this.api.createVehicle(vehicle).then((response) => { this.vehicle = response.data; this.isNew = false; }, (reason) => { alert('Chyba: ' + reason); })
                    : this.api.updateVehicle(vehicle).then((response) => { this.vehicle = response.data; }, (reason) => { alert("Chyba: " + reason); });
     }
@@ -50,7 +54,9 @@ module app.controller {
     }
 
     public deleteVehicle(vehicle) {
-      this.api.deleteVehicle(vehicle).then(() => { window.location.assign("/#/autoskola/" + this.drivingSchool.id + "/vozidla"); }, (reason) => { alert('Chyba: ' + reason); });
+      this.api.deleteVehicle(vehicle).then(() => {
+        this.$location.path("/autoskola/" + this.drivingSchool.id + "/vozidla");
+      }, (reason) => { alert('Chyba: ' + reason); });
     }
 
     public deleteRide(ride) {

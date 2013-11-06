@@ -2,11 +2,12 @@ var app;
 (function (app) {
     (function (controller) {
         var CourseDetail = (function () {
-            function CourseDetail($http, $routeParams, api, auth) {
+            function CourseDetail($http, $routeParams, api, auth, $location) {
                 var _this = this;
                 this.$http = $http;
                 this.api = api;
                 this.auth = auth;
+                this.$location = $location;
                 if ($routeParams.id != "nove") {
                     this.isNew = false;
                     $http.get("/kurzy/" + $routeParams.id).then(function (response) {
@@ -26,6 +27,7 @@ var app;
                     };
                 }
 
+                //FIXME prendat request do Api service
                 $http.get("/autoskoly/" + $routeParams.autoskolaId).then(function (response) {
                     _this.drivingSchool = response.data;
                 }, function (reason) {
@@ -75,7 +77,7 @@ var app;
             CourseDetail.prototype.deleteCourse = function (course) {
                 var _this = this;
                 this.api.deleteCourse(course).then(function () {
-                    window.location.assign("/#/autoskola/" + _this.drivingSchool.id + "/kurzy");
+                    _this.$location.path("/autoskola/" + _this.drivingSchool.id + "/kurzy");
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });

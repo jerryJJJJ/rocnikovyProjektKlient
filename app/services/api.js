@@ -4,57 +4,58 @@ var app;
         var Api = (function () {
             function Api($http) {
                 this.$http = $http;
+                this.url = "http://ronkovprojektapi.apiary.io";
             }
             Api.prototype.createVehicle = function (vehicle) {
-                return this.$http.post("/vozidla", vehicle);
+                return this.$http.post(this.url + "/vozidla", vehicle);
             };
 
             Api.prototype.createRide = function (ride) {
-                return this.$http.post("/jizdy", ride);
+                return this.$http.post(this.url + "/jizdy", ride);
             };
 
             Api.prototype.createLesson = function (lesson) {
-                return this.$http.post("/teorie", lesson);
+                return this.$http.post(this.url + "/teorie", lesson);
             };
 
             Api.prototype.createStudent = function (student) {
-                return this.$http.post("/studenti", student);
+                return this.$http.post(this.url + "/studenti", student);
             };
 
             Api.prototype.createCourse = function (course) {
-                return this.$http.post("/kurzy", course);
+                return this.$http.post(this.url + "/kurzy", course);
             };
 
             Api.prototype.updateVehicle = function (vehicle) {
-                return this.$http.put("/vozidla/" + vehicle.id, vehicle);
+                return this.$http.put(this.url + "/vozidla/" + vehicle.id, vehicle);
             };
 
             Api.prototype.updateCourse = function (course) {
-                return this.$http.put("/kurzy/" + course.id, course);
+                return this.$http.put(this.url + "/kurzy/" + course.id, course);
             };
 
             Api.prototype.deleteVehicle = function (vehicle) {
-                return this.$http.delete("/vozidla/" + vehicle.id);
+                return this.$http.delete(this.url + "/vozidla/" + vehicle.id);
             };
 
             Api.prototype.deleteRide = function (ride) {
-                return this.$http.delete("/jizdy/" + ride.id);
+                return this.$http.delete(this.url + "/jizdy/" + ride.id);
             };
 
             Api.prototype.deleteDocument = function (document) {
-                return this.$http.delete("/dokumenty/" + document.id);
+                return this.$http.delete(this.url + "/dokumenty/" + document.id);
             };
 
             Api.prototype.deleteCourse = function (course) {
-                return this.$http.delete("/kurzy/" + course.id);
+                return this.$http.delete(this.url + "/kurzy/" + course.id);
             };
 
             Api.prototype.deleteLesson = function (lesson) {
-                return this.$http.delete("/teorie/" + lesson.id);
+                return this.$http.delete(this.url + "/teorie/" + lesson.id);
             };
 
             Api.prototype.deleteStudent = function (student) {
-                return this.$http.delete("/studenti/" + student.id);
+                return this.$http.delete(this.url + "/studenti/" + student.id);
             };
             return Api;
         })();

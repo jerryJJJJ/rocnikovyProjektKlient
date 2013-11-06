@@ -8,7 +8,8 @@ module app.controller {
     public newStudent;
     public isNew;
 
-    constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api, private auth) {
+    constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api,
+                private auth, private $location:ng.ILocationService) {
 
       if($routeParams.id != "nove") {
         this.isNew = false;
@@ -29,6 +30,7 @@ module app.controller {
         };
       }
 
+      //FIXME prendat request do Api service
       $http.get("/autoskoly/"+$routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
         this.drivingSchool = response.data;
       }, (reason) => {
@@ -47,7 +49,9 @@ module app.controller {
     }
 
     public saveCourse(course) {
-      (this.isNew) ? this.api.createCourse(course).then((response) => { this.course = response.data; this.isNew = false; }, (reason) => { alert('Chyba: ' + reason); })
+      (this.isNew) ? this.api.createCourse(course).then((response) => {
+        this.course = response.data; this.isNew = false;
+      }, (reason) => { alert('Chyba: ' + reason); })
         : this.api.updateCourse(course).then((response) => { this.course = response.data; }, (reason) => { alert("Chyba: " + reason); });
     }
 
@@ -60,7 +64,9 @@ module app.controller {
     }
 
     public deleteCourse(course) {
-      this.api.deleteCourse(course).then(() => { window.location.assign("/#/autoskola/" + this.drivingSchool.id + "/kurzy"); }, (reason) => { alert('Chyba: ' + reason); });
+      this.api.deleteCourse(course).then(() => {
+        this.$location.path( "/autoskola/" + this.drivingSchool.id + "/kurzy" );
+      }, (reason) => { alert('Chyba: ' + reason); });
     }
 
     public deleteDocument(document) {

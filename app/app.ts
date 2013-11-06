@@ -12,14 +12,17 @@ angular.module('app', [
   'app.controller',
   'app.directive',
   'ngRoute',
-  'ngMockE2E',
+  //'ngMockE2E',
   'ngCookies',
   'app.filter',
   'app.service'
 ]);
 
 
-angular.module('app').config(($routeProvider:ng.IRouteProvider) => {
+angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng.IHttpProvider) => {
+
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
   $routeProvider.when('/', {
     templateUrl:  'views/main.html',
@@ -67,8 +70,7 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider) => {
 
 
 angular.module('app').run(($httpBackend:ng.IHttpBackendService) => {
-
-
+  /*
   apiary.forEach(function (section) {
     var resources = section.resources;
     resources.forEach(function (res) {
@@ -98,7 +100,7 @@ angular.module('app').run(($httpBackend:ng.IHttpBackendService) => {
 
   //nechat projit pozadavky na "view" sablony
   $httpBackend.whenGET(/^\/*views\//).passThrough();
-
+*/
 });
 
 module app {

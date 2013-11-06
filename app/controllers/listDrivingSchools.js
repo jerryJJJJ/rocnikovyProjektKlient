@@ -6,6 +6,7 @@ var app;
             function ListDrivingSchools($http) {
                 var _this = this;
                 this.$http = $http;
+                //TODO reqest do Api service
                 $http.get("/autoskoly").then(function (response) {
                     _this.listSchools = response.data.autoskoly;
                 }, function (reason) {
