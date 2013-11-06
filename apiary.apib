@@ -169,6 +169,14 @@ DELETE /kurzy/{id}
 < 200
 
 
+Upraveni kurzu    HOTOVO
+PUT /kurzy/{id}
+> Content-Type: application/json
+{ "id": 1, "identifikacni-cislo": "A201301", "typ": "A", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01", "pocet-studentu": 15 }
+< 200
+< Content-Type: application/json
+{ "id": 1, "identifikacni-cislo": "A201301", "typ": "A", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01", "pocet-studentu": 150 }
+
 --
 Vozidla Resources
 The following is a section of resources related to Vozidla
@@ -211,11 +219,11 @@ POST /vozidla
 Upraveni vozidla    HOTOVO
 PUT /vozidla/{id}
 > Content-Type: application/json
-{ "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1, "datum-stk": "2014-05-01", 
+{ "id": 3, "znacka": "Ford", "model": "Focus", "vin": "LJP05GFD5548913", "autoskola-id": 1, "datum-stk": "2014-05-01", 
   "pocatecni-stav-km": 30000, "typ" : "osobní automobil", "rok-vyroby" : 2007, "spz" : "2E2 2222" }
 < 200
 < Content-Type: application/json
-{ "znacka": "Ford", "model": "Focus", "vin": "vracene vin", "autoskola-id": 1, "datum-stk": "2014-05-01", 
+{ "id": 3, "znacka": "Ford", "model": "Focus", "vin": "upraveno", "autoskola-id": 1, "datum-stk": "2014-05-01", 
   "pocatecni-stav-km": 30000, "typ" : "osobní automobil", "rok-vyroby" : 2007, "spz" : "2E2 2222" }
 
 Odstraneni vozidla    HOTOVO
