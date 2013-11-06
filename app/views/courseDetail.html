@@ -1,57 +1,74 @@
-<h1>Kurz {{courseDetailCtrl.course['identifikacni-cislo']}}</h1>
-<h3>{{courseDetailCtrl.course['nazev-autoskoly']}}</h3>
+<div id="header">
+    <h1 ng-if="!courseDetailCtrl.isNew">Kurz {{courseDetailCtrl.course['identifikacni-cislo']}}</h1>
+    <h1 ng-if="courseDetailCtrl.isNew">Nový kurz</h1>
+    <h3>{{courseDetailCtrl.drivingSchool['nazev']}}</h3>
 <span class="delete-object" ng-if="!courseDetailCtrl.isNew">
     <button ng-click="courseDetailCtrl.deleteCourse(courseDetailCtrl.course)"
             class="btn btn-danger btn-xs">
         <span class="glyphicon glyphicon-remove"></span> Smazat kurz</button>
 </span>
-<div id="logout">
-    <a href="/#/autoskola/{{courseDetailCtrl.course['autoskola-id']}}">Zpět na výpis</a>
-    <a href="">Odhlásit</a>
-</div>
-<div class="documents">
-    <h3>Dokumenty</h3>
-    <table class="table">
+    <div id="logout">
+        <a href="/#/autoskola/{{courseDetailCtrl.drivingSchool.id}}/kurzy">Zpět na výpis  |</a>
+        <a href="">Odhlásit</a>
+    </div>
+    <div class="documents">
+        <h3>Dokumenty</h3>
+        <table class="table">
+            <tr>
+                <th>název</th>
+                <th>datum vložení</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="document in courseDetailCtrl.course.dokumenty">
+                <td>{{document.nazev}}</td>
+                <td>{{document['datum-vlozeni']}}</td>
+                <td><button ng-click="courseDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs">
+                    <span class="glyphicon glyphicon-remove"></span></button></td>
+            </tr>
+        </table>
+    </div>
+    <table class="detail-table">
         <tr>
-            <th>název</th>
-            <th>datum vložení</th>
-            <th></th>
+            <td>typ</td>
+            <td ng-if="!courseDetailCtrl.isNew">{{courseDetailCtrl.course['typ']}}</td>
+            <td ng-if="courseDetailCtrl.isNew">
+                <select name="selectGroup" class="form-control" ng-model="courseDetailCtrl.course['typ']">
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>T</option>
+                </select>
+            </td>
+            <td>stav</td>
+            <td>
+                <select name="selectState" class="form-control" ng-model="courseDetailCtrl.course['stav']">
+                    <option>{{courseDetailCtrl.course['stav']}}</option>
+                </select>
+            </td>
         </tr>
-        <tr ng-repeat="document in courseDetailCtrl.course.dokumenty">
-            <td>{{document.nazev}}</td>
-            <td>{{document['datum-vlozeni']}}</td>
-            <td><button ng-click="courseDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs">
-                <span class="glyphicon glyphicon-remove"></span></button></td>
+        <tr>
+            <td>id</td>
+            <td>{{courseDetailCtrl.course['identifikacni-cislo']}}</td>
+            <td>od</td>
+            <td><input type="date" ng-model="courseDetailCtrl.course['datum-od']" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>počet studentů</td>
+            <td><input type="number" min="0" ng-model="courseDetailCtrl.course['pocet-studentu']" class="form-control"
+                       placeholder="počet studentů" /></td>
+            <td>do</td>
+            <td><input type="date" ng-model="courseDetailCtrl.course['datum-do']" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button ng-click="courseDetailCtrl.saveCourse(courseDetailCtrl.course)" class="btn btn-success">
+                <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button></td>
         </tr>
     </table>
 </div>
-<table class="detail-table">
-    <tr>
-        <td>typ</td>
-        <td>{{courseDetailCtrl.course['typ']}}</td>
-        <td>stav</td>
-        <td>{{courseDetailCtrl.course['stav']}}</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>{{courseDetailCtrl.course['identifikacni-cislo']}}</td>
-        <td>od</td>
-        <td><input type="date" ng-model="courseDetailCtrl.course['datum-od']" class="form-control"/></td>
-    </tr>
-    <tr>
-        <td>počet studentů</td>
-        <td>{{courseDetailCtrl.course['pocet-studentu']}}</td>
-        <td>do</td>
-        <td><input type="date" ng-model="courseDetailCtrl.course['datum-do']" class="form-control"/></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button ng-click="courseDetailCtrl.saveCourse(courseDetailCtrl.course)" class="btn btn-success">
-            <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button></td>
-    </tr>
-</table>
 
 <div ng-if="!courseDetailCtrl.isNew">
     <h3>Hodiny teorie</h3>
@@ -67,8 +84,8 @@
             </tr>
             <tr ng-repeat="lesson in courseDetailCtrl.course['hodiny-teorie']">
                 <td>{{lesson.datum}}</td>
-                <td>{{lesson['zacatek']}}</td>
-                <td>{{lesson['konec']}}</td>
+                <td>{{lesson['cas-od']}}</td>
+                <td>{{lesson['cas-do']}}</td>
                 <td>{{lesson['vyucujici']}}</td>
                 <td>{{lesson['typ-vyuky']}}</td>
                 <td class="right">
@@ -78,13 +95,13 @@
             </tr>
             <tr>
                 <td>
-                    <input id="date" type="date" ng-model="courseDetailCtrl.newLesson['datum']" class="form-control">
+                    <input type="date" ng-model="courseDetailCtrl.newLesson['datum']" class="form-control">
                 </td>
                 <td>
-                    <input id="fromTime" type="time" ng-model="courseDetailCtrl.newLesson['cas-od']" class="form-control">
+                    <input type="time" ng-model="courseDetailCtrl.newLesson['cas-od']" class="form-control">
                 </td>
                 <td>
-                    <input id="toTime" type="time" ng-model="courseDetailCtrl.newLesson['cas-do']" class="form-control">
+                    <input type="time" ng-model="courseDetailCtrl.newLesson['cas-do']" class="form-control">
                 </td>
                 <td>
                     <select name="selectTeachers" class="form-control">
@@ -99,7 +116,7 @@
             </tr>
             <tr>
                 <td colspan="6" class="right">
-                    <button ng-click="courseDetailCtrl.createLesson(ride)" class="btn btn-success">
+                    <button ng-click="courseDetailCtrl.createLesson(lesson)" class="btn btn-success">
                         <span class="glyphicon glyphicon-floppy-save"></span> Uložit hodinu</button>
                 </td>
             </tr>
@@ -134,7 +151,7 @@
             </tr>
             <tr>
                 <td colspan="8" class="right">
-                    <button ng-click="vehicleDetailCtrl.createRide(ride)" class="btn btn-success">
+                    <button ng-click="courseDetailCtrl.createStudent(student)" class="btn btn-success">
                         <span class="glyphicon glyphicon-floppy-save"></span> Uložit žáka</button>
                 </td>
             </tr>

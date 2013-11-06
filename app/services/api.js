@@ -13,8 +13,24 @@ var app;
                 return this.$http.post("/jizdy", ride);
             };
 
+            Api.prototype.createLesson = function (lesson) {
+                return this.$http.post("/teorie", lesson);
+            };
+
+            Api.prototype.createStudent = function (student) {
+                return this.$http.post("/studenti", student);
+            };
+
+            Api.prototype.createCourse = function (course) {
+                return this.$http.post("/kurzy", course);
+            };
+
             Api.prototype.updateVehicle = function (vehicle) {
                 return this.$http.put("/vozidla/" + vehicle.id, vehicle);
+            };
+
+            Api.prototype.updateCourse = function (course) {
+                return this.$http.put("/kurzy/" + course.id, course);
             };
 
             Api.prototype.deleteVehicle = function (vehicle) {
@@ -25,8 +41,20 @@ var app;
                 return this.$http.delete("/jizdy/" + ride.id);
             };
 
-            Api.prototype.deleteDocument = function (vehicle, document) {
+            Api.prototype.deleteDocument = function (document) {
                 return this.$http.delete("/dokumenty/" + document.id);
+            };
+
+            Api.prototype.deleteCourse = function (course) {
+                return this.$http.delete("/kurzy/" + course.id);
+            };
+
+            Api.prototype.deleteLesson = function (lesson) {
+                return this.$http.delete("/teorie/" + lesson.id);
+            };
+
+            Api.prototype.deleteStudent = function (student) {
+                return this.$http.delete("/studenti/" + student.id);
             };
             return Api;
         })();

@@ -36,13 +36,13 @@ module app.controller {
       this.newRide = {
         "datum": nowDate.getFullYear() + "-" + month + "-" + day,
         "cas-od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-        "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
+        "cas-do": (((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
       };
     }
 
     public saveVehicle(vehicle) {
       (this.isNew) ? this.api.createVehicle(vehicle).then((response) => { this.vehicle = response.data; this.isNew = false; }, (reason) => { alert('Chyba: ' + reason); })
-                   : this.api.updateVehicle(vehicle).then((response) => { this.vehicle = response.data; }, () => { alert("n"); });
+                   : this.api.updateVehicle(vehicle).then((response) => { this.vehicle = response.data; }, (reason) => { alert("Chyba: " + reason); });
     }
 
     public createRide(ride) {
@@ -50,7 +50,7 @@ module app.controller {
     }
 
     public deleteVehicle(vehicle) {
-      this.api.deleteVehicle(vehicle).then(() => { window.location.assign("/#/autoskola/" + this.drivingSchool.id); }, (reason) => { alert('Chyba: ' + reason); });
+      this.api.deleteVehicle(vehicle).then(() => { window.location.assign("/#/autoskola/" + this.drivingSchool.id + "/vozidla"); }, (reason) => { alert('Chyba: ' + reason); });
     }
 
     public deleteRide(ride) {
@@ -58,7 +58,7 @@ module app.controller {
     }
 
     public deleteDocument(document) {
-      this.api.deleteDocument(document, this.vehicle).then(angular.noop, (reason) => { alert('Chyba: ' + reason); });
+      this.api.deleteDocument(document).then(angular.noop, (reason) => { alert('Chyba: ' + reason); });
     }
   }
 

@@ -1,89 +1,93 @@
-<h1 ng-if="!vehicleDetailCtrl.isNew">{{vehicleDetailCtrl.vehicle.znacka}} {{vehicleDetailCtrl.vehicle.model}}</h1>
-<h1 ng-if="vehicleDetailCtrl.isNew">Nové vozidlo</h1>
-<h3>{{vehicleDetailCtrl.drivingSchool.nazev}}</h3>
-<span class="delete-object">
+<div id="header">
+    <h1 ng-if="!vehicleDetailCtrl.isNew">{{vehicleDetailCtrl.vehicle.znacka}} {{vehicleDetailCtrl.vehicle.model}}</h1>
+    <h1 ng-if="vehicleDetailCtrl.isNew">Nové vozidlo</h1>
+    <h3>{{vehicleDetailCtrl.drivingSchool.nazev}}</h3>
+    <span class="delete-object">
     <button ng-click="vehicleDetailCtrl.deleteVehicle(vehicleDetailCtrl.vehicle)"
-        ng-if="!vehicleDetailCtrl.isNew" class="btn btn-danger btn-xs">
+            ng-if="!vehicleDetailCtrl.isNew" class="btn btn-danger btn-xs">
         <span class="glyphicon glyphicon-remove"></span> Smazat vozidlo</button>
-</span>
-<div id="logout">
-    <a href="/#/autoskola/{{vehicleDetailCtrl.drivingSchool.id}}">Zpět na výpis</a>
-    <a href="">Odhlásit</a>
-</div>
-<div class="documents">
-    <h3>Dokumenty</h3>
-    <table class="table">
-        <tr>
-            <th>název</th>
-            <th>datum vložení</th>
-            <th></th>
-        </tr>
-        <tr ng-repeat="document in vehicleDetailCtrl.vehicle.dokumenty">
-            <td>{{document.nazev}}</td>
-            <td>{{document['datum-vlozeni']}}</td>
-            <td><button ng-click="vehicleDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs">
+    </span>
+    <div id="logout">
+        <a href="/#/autoskola/{{vehicleDetailCtrl.drivingSchool.id}}/vozidla">Zpět na výpis  |</a>
+        <a href="">Odhlásit</a>
+    </div>
+    <div class="documents">
+        <h3>Dokumenty</h3>
+        <table class="table">
+            <tr>
+                <th>název</th>
+                <th colspan="2">datum vložení</th>
+            </tr>
+            <tr ng-repeat="document in vehicleDetailCtrl.vehicle.dokumenty">
+                <td>{{document.nazev}}</td>
+                <td>{{document['datum-vlozeni']}}</td>
+                <td><button ng-click="vehicleDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs">
                     <span class="glyphicon glyphicon-remove"></span></button></td>
-        </tr>
-    </table>
+            </tr>
+        </table>
+    </div>
+    <form novalidate class="css-form">
+        <table class="detail-table">
+            <tr class="right">
+                <td>značka</td>
+                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control"/></td>
+                <td class="wider">rok výroby</td>
+                <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['rok-vyroby']" class="form-control"/></td>
+                <td class="wider">počet km</td>
+                <td class="left" class="wider">{{vehicleDetailCtrl.vehicle['pocet-km']}}</td>
+            </tr>
+            <tr class="right">
+                <td>model</td>
+                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.model" class="form-control"/></td>
+                <td>spz</td>
+                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle['spz']" class="form-control"/></td>
+                <td>spotřeba</td>
+                <td class="left">{{vehicleDetailCtrl.vehicle['prumerna-spotreba']}}</td>
+            </tr>
+            <tr class="right">
+                <td>typ</td>
+                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.typ" class="form-control"/>
+                <td>příští stk</td>
+                <td><input type="date" ng-model="vehicleDetailCtrl.vehicle['datum-stk']" class="form-control"/></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="right">
+                <td>vin</td>
+                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.vin" class="form-control"/></td>
+                <td>poč. stav km</td>
+                <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['pocatecni-stav-km']" class="form-control"/></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="right">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
+                            ng-if="!vehicleDetailCtrl.isNew" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
+                    <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
+                            ng-if="vehicleDetailCtrl.isNew" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-floppy-save"></span> Vytvořit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
-<table class="detail-table">
-    <tr>
-        <td>značka</td>
-        <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control"/></td>
-        <td>rok výroby</td>
-        <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['rok-vyroby']" class="form-control"/></td>
-        <td>počet km</td>
-        <td>{{vehicleDetailCtrl.vehicle['pocet-km']}}</td>
-    </tr>
-    <tr>
-        <td>model</td>
-        <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.model" class="form-control"/></td>
-        <td>spz</td>
-        <td><input type="text" ng-model="vehicleDetailCtrl.vehicle['spz']" class="form-control"/></td>
-        <td>spotřeba</td>
-        <td>{{vehicleDetailCtrl.vehicle['prumerna-spotreba']}}</td>
-    </tr>
-    <tr>
-        <td>typ</td>
-        <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.typ" class="form-control"/>
-        <td>příští stk</td>
-        <td><input type="date" ng-model="vehicleDetailCtrl.vehicle['datum-stk']" class="form-control"/></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>vin</td>
-        <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.vin" class="form-control"/></td>
-        <td>počáteční stav km</td>
-        <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['pocatecni-stav-km']" class="form-control"/></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
-                ng-if="!vehicleDetailCtrl.isNew" class="btn btn-success">
-                <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
-            <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
-                ng-if="vehicleDetailCtrl.isNew" class="btn btn-success">
-                <span class="glyphicon glyphicon-floppy-save"></span> Vytvořit</button>
-        </td>
-    </tr>
-</table>
+
 
 <div ng-if="!vehicleDetailCtrl.isNew">
     <h3>Kniha jízd</h3>
     <form novalidate class="css-form">
         <table class="table">
             <tr>
-                <th>datum</th>
+                <th class="date">datum</th>
                 <th>od<span class="value">[hh:mm]</span></th>
                 <th>do<span class="value">[hh:mm]</span></th>
-                <th>ujetá vzdálenost<span class="value">[km]</span></th>
-                <th>spotřeba<span class="value">[l/100km]</span></th>
+                <th class="distance">ujetá vzdálenost<span class="value">[km]</span></th>
+                <th class="consumption">spotřeba<span class="value">[l/100km]</span></th>
                 <th>učitel</th>
                 <th>žák</th>
                 <th></th>
@@ -103,13 +107,13 @@
             </tr>
             <tr>
                 <td>
-                    <input id="date" type="date" ng-model="vehicleDetailCtrl.newRide['datum']" class="form-control">
+                    <input type="date" ng-model="vehicleDetailCtrl.newRide['datum']" class="form-control">
                 </td>
                 <td>
-                    <input id="fromTime" type="time" ng-model="vehicleDetailCtrl.newRide['cas-od']" class="form-control">
+                    <input type="time" ng-model="vehicleDetailCtrl.newRide['cas-od']" class="form-control">
                 </td>
                 <td>
-                    <input id="toTime" type="time" ng-model="vehicleDetailCtrl.newRide['cas-do']" class="form-control">
+                    <input type="time" ng-model="vehicleDetailCtrl.newRide['cas-do']" class="form-control">
                 </td>
                 <td><input type="number" class="form-control" ng-model="vehicleDetailCtrl.newRide['pocet-ujetych-km']"
                            placeholder="vzdálenost" step="0.5" min="0"></td>
@@ -128,7 +132,7 @@
             </tr>
             <tr>
                 <td colspan="8" class="right">
-                    <button ng-click="vehicleDetailCtrl.createRide(ride)" class="btn btn-success">
+                    <button ng-click="vehicleDetailCtrl.createRide(ride)" class="btn btn-primary">
                         <span class="glyphicon glyphicon-floppy-save"></span> Uložit jízdu</button>
                 </td>
             </tr>

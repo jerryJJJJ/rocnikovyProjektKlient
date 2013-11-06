@@ -120,6 +120,22 @@ var apiary = [
             "body": "{ \"id\": 3 }"
           }
         ]
+      },
+      {
+        "description": "Odstraneni studenta    HOTOVO",
+        "method": "DELETE",
+        "url": "/studenti/{id}",
+        "request": {
+          "headers": {},
+          "body": null
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {},
+            "body": null
+          }
+        ]
       }
     ]
   },
@@ -170,7 +186,7 @@ var apiary = [
     "description": "The following is a section of resources related to Vozidla",
     "resources": [
       {
-        "description": "Seznam kurzu    ",
+        "description": "Seznam kurzu    HOTOVO",
         "method": "GET",
         "url": "/kurzy?autoskola_id={id}",
         "request": {
@@ -183,12 +199,12 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"kurzy\": [\n    { \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 2, \"identifikacni-cislo\": \"B201302\", \"typ\": \"B\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 3, \"identifikacni-cislo\": \"T201305\", \"typ\": \"T\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]}\n] }"
+            "body": "{ \"kurzy\": [\n    { \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"id\": 1, \"datum\": \"2013-01-01\", \"cas-od\": \"13:00\", \"cas-do\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"id\": 2, \"datum\": \"2013-01-02\", \"cas-od\": \"14:00\", \"cas-do\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 2, \"identifikacni-cislo\": \"B201302\", \"typ\": \"B\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"id\": 3, \"datum\": \"2013-01-01\", \"cas-od\": \"13:00\", \"cas-do\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"id\": 4, \"datum\": \"2013-01-02\", \"cas-od\": \"14:00\", \"cas-do\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]},\n    { \"id\": 3, \"identifikacni-cislo\": \"T201305\", \"typ\": \"T\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\",\n      \"hodiny-teorie\": [\n          {\"id\": 5, \"datum\": \"2013-01-01\", \"cas-od\": \"13:00\", \"cas-do\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n          {\"id\": 6, \"datum\": \"2013-01-02\", \"cas-od\": \"14:00\", \"cas-do\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n    ]}\n] }"
           }
         ]
       },
       {
-        "description": "Detail kurzu",
+        "description": "Detail kurzu    HOTOVO",
         "method": "GET",
         "url": "/kurzy/{id}",
         "request": {
@@ -201,7 +217,123 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"autoskola-id\": 1, \"nazev-autoskoly\": \"AutoskolaABCD\", \"typ\": \"A\", \"stav\": \"otevreny\", \n  \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\", \"pocet-studentu\": 15,\n  \"hodiny-teorie\": [\n        {\"datum\": \"2013-01-01\", \"zacatek\": \"13:00\", \"konec\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n        {\"datum\": \"2013-01-02\", \"zacatek\": \"14:00\", \"konec\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n  ], \"studenti\": [\n        { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"ZborilGaraz\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n        { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"VjelDoPole\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n        { \"id\": 3, \"jmeno\": \"Lukas\", \"prijmeni\": \"SrazilChodce\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 }\n  ], \"dokumenty\" : [ { \"id\": 1, \"nazev\" : \"Prihlaska PDF\", \"datum-vlozeni\" : \"2011-05-01\" } ]\n}"
+            "body": "{ \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\", \"pocet-studentu\": 15,\n  \"hodiny-teorie\": [\n        {\"datum\": \"2013-01-01\", \"cas-od\": \"13:00\", \"cas-do\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\"},\n        {\"datum\": \"2013-01-02\", \"cas-od\": \"14:00\", \"cas-do\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\"}\n  ], \"studenti\": [\n        { \"id\": 1, \"jmeno\": \"Martin\", \"prijmeni\": \"ZborilGaraz\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n        { \"id\": 2, \"jmeno\": \"Jacob\", \"prijmeni\": \"VjelDoPole\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 },\n        { \"id\": 3, \"jmeno\": \"Lukas\", \"prijmeni\": \"SrazilChodce\", \"autoskola-id\": 1, \"matricni-cislo\": 26549562 }\n  ], \"dokumenty\" : [ { \"id\": 1, \"nazev\" : \"Prihlaska PDF\", \"datum-vlozeni\" : \"2011-05-01\" } ]\n}"
+          }
+        ]
+      },
+      {
+        "description": "Vytvoreni kurzu",
+        "method": "POST",
+        "url": "/kurzy",
+        "request": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": "{ \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\", \"pocet-studentu\": 15 },"
+        },
+        "responses": [
+          {
+            "status": 201,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\", \"pocet-studentu\": 15 }"
+          }
+        ]
+      },
+      {
+        "description": "Odstraneni kurzu    HOTOVO",
+        "method": "DELETE",
+        "url": "/kurzy/{id}",
+        "request": {
+          "headers": {},
+          "body": null
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {},
+            "body": null
+          }
+        ]
+      },
+      {
+        "description": "Upraveni kurzu    HOTOVO",
+        "method": "PUT",
+        "url": "/kurzy/{id}",
+        "request": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": "{ \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\", \"pocet-studentu\": 15 }"
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ \"id\": 1, \"identifikacni-cislo\": \"A201301\", \"typ\": \"A\", \"stav\": \"otevreny\", \"datum-od\": \"2013-01-01\", \"datum-do\": \"2013-04-01\", \"pocet-studentu\": 150 }"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Teorie Resources",
+    "description": "The following is a section of resources related to Vozidla",
+    "resources": [
+      {
+        "description": "Seznam hodin teorie",
+        "method": "GET",
+        "url": "/teorie",
+        "request": {
+          "headers": {},
+          "body": null
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ \"teorie\": [\n    { \"id\": 3, \"datum\": \"2013-01-01\", \"cas-od\": \"13:00\", \"cas-do\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\" },\n    { \"datum\": \"2013-01-02\", \"cas-od\": \"14:00\", \"cas-do\": \"16:00\", \"vyucujici\": \"Novakova\", \"typ-vyuky\": \"zdravoveda\" }\n] }"
+          }
+        ]
+      },
+      {
+        "description": "Vytvoreni nove hodiny teorie",
+        "method": "POST",
+        "url": "/teorie",
+        "request": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": "{ \"datum\": \"2013-01-01\", \"cas-od\": \"13:00\", \"cas-do\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\" },"
+        },
+        "responses": [
+          {
+            "status": 201,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ \"id\": 3, \"datum\": \"2013-01-01\", \"cas-od\": \"13:00\", \"cas-do\": \"15:00\", \"vyucujici\": \"Novak\", \"typ-vyuky\": \"teorie\" }"
+          }
+        ]
+      },
+      {
+        "description": "Odstraneni hodiny teorie",
+        "method": "DELETE",
+        "url": "/teorie/{id}",
+        "request": {
+          "headers": {},
+          "body": null
+        },
+        "responses": [
+          {
+            "status": 200,
+            "headers": {},
+            "body": null
           }
         ]
       }
@@ -275,7 +407,7 @@ var apiary = [
           "headers": {
             "Content-Type": "application/json"
           },
-          "body": "{ \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\" }"
+          "body": "{ \"id\": 3, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"LJP05GFD5548913\", \"autoskola-id\": 1, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\" }"
         },
         "responses": [
           {
@@ -283,7 +415,7 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"vracene vin\", \"autoskola-id\": 1, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\" }"
+            "body": "{ \"id\": 3, \"znacka\": \"Ford\", \"model\": \"Focus\", \"vin\": \"upraveno\", \"autoskola-id\": 1, \"datum-stk\": \"2014-05-01\", \n  \"pocatecni-stav-km\": 30000, \"typ\" : \"osobní automobil\", \"rok-vyroby\" : 2007, \"spz\" : \"2E2 2222\" }"
           }
         ]
       },
@@ -322,7 +454,7 @@ var apiary = [
     ]
   },
   {
-    "name": "Vozidla Resources",
+    "name": "Jizdy Resources",
     "description": "The following is a section of resources related to Vozidla",
     "resources": [
       {
@@ -339,7 +471,7 @@ var apiary = [
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{ \"jizdy\": [\n    { \"id\": 1, \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"doba-jizdy\": \"02:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 },\n    { \"id\": 2, \"datum\": \"2013-01-01\", \"ucitel\": 1, \"vozidlo\": 1, \"zak\": 5, \"doba-jizdy\": \"01:50\", \"pocet-ujetych-km\" : 16, \"spotreba\" : 7.1 }\n] }"
+            "body": "{ \"jizdy\": [\n    { \"id\": 1, \"datum\": \"2013-01-01\", \"ucitel\": 2, \"vozidlo\": 1, \"zak\": 1, \"cas-od\": \"15:00\", \"cas-do\": \"17:00\", \"pocet-ujetych-km\" : 15, \"spotreba\" : 6.7 },\n    { \"id\": 2, \"datum\": \"2013-01-01\", \"ucitel\": 1, \"vozidlo\": 1, \"zak\": 5, \"cas-od\": \"15:00\", \"cas-do\": \"17:00\", \"pocet-ujetych-km\" : 16, \"spotreba\" : 7.1 }\n] }"
           }
         ]
       },

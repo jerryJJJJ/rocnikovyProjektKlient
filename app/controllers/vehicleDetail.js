@@ -33,7 +33,7 @@ var app;
                 this.newRide = {
                     "datum": nowDate.getFullYear() + "-" + month + "-" + day,
                     "cas-od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-                    "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
+                    "cas-do": (((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
                 };
             }
             VehicleDetail.prototype.saveVehicle = function (vehicle) {
@@ -45,8 +45,8 @@ var app;
                     alert('Chyba: ' + reason);
                 }) : this.api.updateVehicle(vehicle).then(function (response) {
                     _this.vehicle = response.data;
-                }, function () {
-                    alert("n");
+                }, function (reason) {
+                    alert("Chyba: " + reason);
                 });
             };
 
@@ -61,7 +61,7 @@ var app;
             VehicleDetail.prototype.deleteVehicle = function (vehicle) {
                 var _this = this;
                 this.api.deleteVehicle(vehicle).then(function () {
-                    window.location.assign("/#/autoskola/" + _this.drivingSchool.id);
+                    window.location.assign("/#/autoskola/" + _this.drivingSchool.id + "/vozidla");
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
@@ -74,7 +74,7 @@ var app;
             };
 
             VehicleDetail.prototype.deleteDocument = function (document) {
-                this.api.deleteDocument(document, this.vehicle).then(angular.noop, function (reason) {
+                this.api.deleteDocument(document).then(angular.noop, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };
