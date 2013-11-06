@@ -130,18 +130,18 @@ GET /kurzy?autoskola_id={id}
 { "kurzy": [
     { "id": 1, "identifikacni-cislo": "A201301", "typ": "A", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01",
       "hodiny-teorie": [
-          {"id": 1, "datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
-          {"id": 2, "datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
+          {"id": 1, "datum": "2013-01-01", "cas-od": "13:00", "cas-do": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
+          {"id": 2, "datum": "2013-01-02", "cas-od": "14:00", "cas-do": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
     ]},
     { "id": 2, "identifikacni-cislo": "B201302", "typ": "B", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01",
       "hodiny-teorie": [
-          {"id": 3, "datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
-          {"id": 4, "datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
+          {"id": 3, "datum": "2013-01-01", "cas-od": "13:00", "cas-do": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
+          {"id": 4, "datum": "2013-01-02", "cas-od": "14:00", "cas-do": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
     ]},
     { "id": 3, "identifikacni-cislo": "T201305", "typ": "T", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01",
       "hodiny-teorie": [
-          {"id": 5, "datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
-          {"id": 6, "datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
+          {"id": 5, "datum": "2013-01-01", "cas-od": "13:00", "cas-do": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
+          {"id": 6, "datum": "2013-01-02", "cas-od": "14:00", "cas-do": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
     ]}
 ] }
 
@@ -151,8 +151,8 @@ GET /kurzy/{id}
 < Content-Type: application/json
 { "id": 1, "identifikacni-cislo": "A201301", "typ": "A", "stav": "otevreny", "datum-od": "2013-01-01", "datum-do": "2013-04-01", "pocet-studentu": 15,
   "hodiny-teorie": [
-        {"datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
-        {"datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
+        {"datum": "2013-01-01", "cas-od": "13:00", "cas-do": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie"},
+        {"datum": "2013-01-02", "cas-od": "14:00", "cas-do": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda"}
   ], "studenti": [
         { "id": 1, "jmeno": "Martin", "prijmeni": "ZborilGaraz", "autoskola-id": 1, "matricni-cislo": 26549562 },
         { "id": 2, "jmeno": "Jacob", "prijmeni": "VjelDoPole", "autoskola-id": 1, "matricni-cislo": 26549562 },
@@ -192,17 +192,17 @@ GET /teorie
 < 200
 < Content-Type: application/json
 { "teorie": [
-    { "id": 3, "datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie" },
-    { "datum": "2013-01-02", "zacatek": "14:00", "konec": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda" }
+    { "id": 3, "datum": "2013-01-01", "cas-od": "13:00", "cas-do": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie" },
+    { "datum": "2013-01-02", "cas-od": "14:00", "cas-do": "16:00", "vyucujici": "Novakova", "typ-vyuky": "zdravoveda" }
 ] }
 
 Vytvoreni nove hodiny teorie
 POST /teorie
 > Content-Type: application/json
-{ "datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie" },
+{ "datum": "2013-01-01", "cas-od": "13:00", "cas-do": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie" },
 < 201
 < Content-Type: application/json
-{ "id": 3, "datum": "2013-01-01", "zacatek": "13:00", "konec": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie" }
+{ "id": 3, "datum": "2013-01-01", "cas-od": "13:00", "cas-do": "15:00", "vyucujici": "Novak", "typ-vyuky": "teorie" }
 
 Odstraneni hodiny teorie
 DELETE /teorie/{id}
