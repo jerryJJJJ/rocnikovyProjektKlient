@@ -18,19 +18,19 @@ var app;
                     });
 
                     this.api.getLessons($routeParams.id).then(function (response) {
-                        _this.lessons = response.data.teorie;
+                        _this.lessons = new app.lib.IndexedArray('teorie_id', response.data.teorie);
                     }, function (reason) {
                         alert('Nepodarilo se nacist kurz: ' + reason);
                     });
 
                     this.api.getStudents($routeParams.id).then(function (response) {
-                        _this.students = response.data.studenti;
+                        _this.students = new app.lib.IndexedArray('student_id', response.data.studenti);
                     }, function (reason) {
                         alert('Nepodarilo se nacist kurz: ' + reason);
                     });
 
                     this.api.getTeachers($routeParams.autoskolaId).then(function (response) {
-                        _this.teachers = response.data.ucitele;
+                        _this.teachers = new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
                     }, function (reason) {
                         alert('Nepodarilo se nacist kurz: ' + reason);
                     });
@@ -41,8 +41,8 @@ var app;
                     var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
 
                     this.course = {
-                        "datum-od": nowDate.getFullYear() + "-" + month + "-" + day,
-                        "datum-do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
+                        "datum_od": nowDate.getFullYear() + "-" + month + "-" + day,
+                        "datum_do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
                     };
 
                     this.setUpNewLesson();
@@ -61,9 +61,9 @@ var app;
 
                 this.newLesson = {
                     "datum": nowDate.getFullYear() + "-" + month + "-" + day,
-                    "cas-od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-                    "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-                    "kurz-id": this.course.id
+                    "od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
+                    "do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
+                    "kurz_id": this.course.id
                 };
             };
 
@@ -71,8 +71,7 @@ var app;
                 var _this = this;
                 if (this.isNew) {
                     this.api.createCourse(course).then(function (response) {
-                        _this.course = response.data;
-                        _this.isNew = false;
+                        _this.$location.path('/autoskola/' + _this.drivingSchool.id + '/kurzy/' + response.data.id);
                     }, function (reason) {
                         alert('Chyba: ' + reason);
                     });

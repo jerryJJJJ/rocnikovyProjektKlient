@@ -7,7 +7,8 @@
         <span class="glyphicon glyphicon-remove"></span> Smazat žáka</button>
     </span>
     <div id="logout">
-        <a href="/#/autoskola/{{studentDetailCtrl.drivingSchool.id}}/kurzy/{{studentDetailCtrl.student['kurz-id']}}">Zpět na výpis  |</a>
+        <a href="/#/autoskola/{{studentDetailCtrl.drivingSchool.id}}/kurzy/{{studentDetailCtrl.student['kurz_id']}}"
+                style="font-color: red;">FIX MEE!!!!  |</a>
         <a href="">Odhlásit</a>
     </div>
     <table class="detail-table">
@@ -21,11 +22,11 @@
         </tr>
         <tr>
             <td>matriční číslo</td>
-            <td><input type="text" ng-model="studentDetailCtrl.student.[matricni-cislo]" class="form-control"/></td>
+            <td><input type="text" ng-model="studentDetailCtrl.student.[matricni_cislo]" class="form-control"/></td>
         </tr>
         <tr>
             <td>kurz</td>
-            <td>{{studentDetailCtrl.student['identifikacni-cislo-kurzu']}}</td>
+            <td>{{studentDetailCtrl.student['identifikacni-cislo-kurzu']}} NEMUZE TU BYT!!!!!!!!!!!!!!!!!</td>
         </tr>
         <tr>
             <td colspan="2" class="right">
@@ -48,10 +49,10 @@
         </tr>
         <tr ng-repeat="lesson in studentDetailCtrl.lessons">
             <td>{{lesson.datum}}</td>
-            <td>{{lesson['cas-od']}}</td>
-            <td>{{lesson['cas-do']}}</td>
-            <td>{{lesson['vyucujici']}}</td>
-            <td>{{lesson['typ-vyuky']}}</td>
+            <td>{{lesson['cas_od']}}</td>
+            <td>{{lesson['cas_do']}}</td>
+            <td>{{studentDetailCtrl.teachers.find(lesson['ucitel_id']).prijmeni}}</td>
+            <td>{{lesson['typ']}}</td>
         </tr>
     </table>
 
@@ -66,9 +67,9 @@
         </tr>
         <tr ng-repeat="ride in studentDetailCtrl.rides">
             <td>{{ride.datum}}</td>
-            <td>{{ride['cas-od']}}</td>
-            <td>{{ride['cas-do']}}</td>
-            <td>{{ride['pocet-ujetych-km']}}</td>
+            <td>{{ride['cas_od']}}</td>
+            <td>{{ride['cas_do']}}</td>
+            <td>{{ride['najeto']}}</td>
             <td>{{ride['ucitel']}}</td>
         </tr>
     </table>

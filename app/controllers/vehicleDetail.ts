@@ -27,13 +27,13 @@ module app.controller {
         });
 
         this.api.getRides($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.rides = response.data.jizdy;
+          this.rides = new app.lib.IndexedArray('jizda_id', response.data.jizdy);
         }, (reason) => {
           alert('Nepodarilo se nacist jizdy: ' + reason);
         });
 
         this.api.getVehicleDocuments($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.documents = response.data.dokumenty;
+          this.documents = new app.lib.IndexedArray('stk_id', response.data.dokumenty);
         }, (reason) => {
           alert('Nepodarilo se nacist dokumenty: ' + reason);
         });
@@ -53,8 +53,8 @@ module app.controller {
 
       this.newRide = {
         "datum": nowDate.getFullYear() + "-" + month + "-" + day,
-        "cas-od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-        "cas-do": (((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
+        "od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
+        "do": (((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
       };
     }
 

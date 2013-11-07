@@ -24,19 +24,19 @@ module app.controller {
         });
 
         this.api.getLessons($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.lessons = response.data.teorie;
+          this.lessons = new app.lib.IndexedArray('teorie_id', response.data.teorie);
         }, (reason) => {
           alert('Nepodarilo se nacist kurz: ' + reason);
         });
 
         this.api.getStudents($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.students = response.data.studenti;
+          this.students = new app.lib.IndexedArray('student_id', response.data.studenti);
         }, (reason) => {
           alert('Nepodarilo se nacist kurz: ' + reason);
         });
 
         this.api.getTeachers($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.teachers = response.data.ucitele;
+          this.teachers =  new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
         }, (reason) => {
           alert('Nepodarilo se nacist kurz: ' + reason);
         });
@@ -48,8 +48,8 @@ module app.controller {
         var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
 
         this.course = {
-          "datum-od": nowDate.getFullYear() + "-" + month + "-" + day,
-          "datum-do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
+          "datum_od": nowDate.getFullYear() + "-" + month + "-" + day,
+          "datum_do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
         };
 
         this.setUpNewLesson();
@@ -69,16 +69,16 @@ module app.controller {
 
       this.newLesson = {
         "datum": nowDate.getFullYear() + "-" + month + "-" + day,
-        "cas-od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-        "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-        "kurz-id": this.course.id
+        "od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
+        "do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
+        "kurz_id": this.course.id
       };
     }
 
     public saveCourse(course) {
       if(this.isNew) {
         this.api.createCourse(course).then((response) => {
-          this.course = response.data; this.isNew = false;
+          this.$location.path('/autoskola/'+this.drivingSchool.id + '/kurzy/'+response.data.id);
         }, (reason) => {
           alert('Chyba: ' + reason);
         });

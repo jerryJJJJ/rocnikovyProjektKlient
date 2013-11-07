@@ -15,12 +15,11 @@ module app.lib {
      *
      * @param extend {function} - funkce pro extendovani objektu
      */
-      constructor(...args:T[]);
-    constructor() {
+    constructor(private prop:string = "id", values?:Array<T>) {
       this.index = {};
       this.length = 0;
-      if (arguments.length) {
-        this.pushArray(arguments);
+      if (values) {
+        this.pushArray(values);
       }
     }
 
@@ -44,11 +43,11 @@ module app.lib {
     public remove(...items:T[]) : number;
     public remove() : number {
       for (var i = arguments.length - 1; i >= 0; i--) {
-        if (!!this.index[arguments[i].id]) {
+        if (!!this.index[arguments[i][this.prop]]) {
           if ((index = this.indexOf(arguments[i])) > -1) {
             Array.prototype.splice.call(this, index, 1);
           }
-          delete this.index[arguments[i].id];
+          delete this.index[arguments[i][this.prop]];
         }
       }
       return this.length;
@@ -69,7 +68,7 @@ module app.lib {
       for (var i = arguments.length - 1; i >= 0; i--) {
         if (!!this.index[arguments[i]]) {
           if ((index = goog.array.findIndex(this, (item:IIndexable) => {
-            return item.id === arguments[i];
+            return item[this.prop] === arguments[i];
           })) > -1) {
             Array.prototype.splice.call(this, index, 1);
           }
@@ -87,7 +86,7 @@ module app.lib {
       for (var i = this.length - 1; i >= 0; i--) {
         if(callback.call(null, this[i])) {
           var item = Array.prototype.splice.call(this, i, 1)[0];
-          delete this.index[item.id];
+          delete this.index[item[this.prop]];
         }
       }
     }
@@ -144,14 +143,14 @@ module app.lib {
       //odebereme elementy z pozice
       var removed = Array.prototype.splice.call(this, arguments[0], arguments[1]);
       for (var i = removed.length - 1; i >= 0; i--) { // odindexujeme odebrane
-        delete this.index[removed[i].id];
+        delete this.index[removed[i][this.prop]];
       }
 
       //zaindexujeme pridavane a zkontrolujeme unikatnost
       if(toAdd.length) {
         for (var i = toAdd.length - 1; i >= 0; i--) {
-          if(!this.index[toAdd[i].id]) {
-            this.index[toAdd[i].id] = toAdd[i];
+          if(!this.index[toAdd[i][this.prop]]) {
+            this.index[toAdd[i][this.prop]] = toAdd[i];
           } else {
             toAdd.splice(i, 1);
           }
@@ -161,7 +160,7 @@ module app.lib {
 
         //ty z odebranych, ktere se znovu pridali NEvracime jako odebrane
         for (var i = removed.length - 1; i >= 0; i--) {
-          if(!!this.index[removed[i].id]) {
+          if(!!this.index[removed[i][this.prop]]) {
             removed.splice(i, 1);
           }
         }
@@ -183,7 +182,7 @@ module app.lib {
      */
     public shift() : T {
       var element = Array.prototype.shift.call(this);
-      delete this.index[element.id];
+      delete this.index[element[this.prop]];
       return element;
     }
 
@@ -191,10 +190,10 @@ module app.lib {
     public unshift() : number {
       var args = Array.prototype.slice.call(arguments, 0);
       for (var i = args.length - 1; i >= 0; i--) {
-        if(!!this.index[args[i].id]) {
+        if(!!this.index[args[i][this.prop]]) {
           args.splice(i, 1);
         } else {
-          this.index[args[i].id] = args[i];
+          this.index[args[i][this.prop]] = args[i];
         }
       }
       return Array.prototype.unshift.apply(this, args);
@@ -211,7 +210,7 @@ module app.lib {
 
     public pop() : T {
       var item:T = Array.prototype.pop.call(this);
-      delete this.index[item.id];
+      delete this.index[item[this.prop]];
       return item;
     }
 
@@ -220,8 +219,8 @@ module app.lib {
       if (arguments.length) {
         var elements = Array.prototype.slice.call(arguments, 0);
         for (var i = elements.length - 1; i >= 0; i--) {
-          if(!this.index[elements[i].id]) {
-            this.index[elements[i].id] = arguments[i];
+          if(!this.index[elements[i][this.prop]]) {
+            this.index[elements[i][this.prop]] = arguments[i];
           } else {
             elements.splice(i, 1);
           }
@@ -303,11 +302,11 @@ module app.lib {
      * @returns {boolean}
      */
     public contains(entity: T) : bool {
-      return !!this.index[entity.id];
+      return !!this.index[entity[this.prop]];
     }
 
     public indexOf(entity: T, fromIndex?:number) : number {
-      if(!this.index[entity.id]) {
+      if(!this.index[entity[this.prop]]) {
         return -1;
       }
       return Array.prototype.indexOf.apply(this, Array.prototype.slice.call(arguments, 0));

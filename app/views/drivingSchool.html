@@ -19,14 +19,14 @@
         </tr>
     </table>
     <ul class="nav nav-tabs">
-        <li ng-class="{active: drivingSchoolCtrl.listType == 'vozidla'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/vozidla">Vozidla</a></li>
-        <li ng-class="{active: drivingSchoolCtrl.listType == 'ucitele'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/ucitele">Ucitele</a></li>
-        <li ng-class="{active: drivingSchoolCtrl.listType == 'kurzy'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/kurzy">Kurzy</a></li>
+        <li ng-class="{active: drivingSchoolCtrl.listType == 'vozidla'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla">Vozidla</a></li>
+        <li ng-class="{active: drivingSchoolCtrl.listType == 'ucitele'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele">Ucitele</a></li>
+        <li ng-class="{active: drivingSchoolCtrl.listType == 'kurzy'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy">Kurzy</a></li>
     </ul>
 </div>
 
 <h3 ng-if="drivingSchoolCtrl.listType == 'vozidla'">seznam vozidel</h3>
-<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/vozidla/nove"
+<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla/nove"
    ng-if="drivingSchoolCtrl.listType == 'vozidla'">Pridat vozidlo</a>
 <table class="table" ng-if="drivingSchoolCtrl.listType == 'vozidla'">
     <tr>
@@ -36,7 +36,7 @@
         <th></th>
     </tr>
     <tr ng-repeat="vehicle in drivingSchoolCtrl.vehicles">
-        <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/vozidla/{{vehicle.id}}">{{vehicle.znacka}}</a></td>
+        <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchoolautoskola_id}}/vozidla/{{vehicle.vozidlo_id}}">{{vehicle.znacka}}</a></td>
         <td>{{vehicle.model}}</td>
         <td>{{vehicle.vin}}</td>
         <td><button ng-click="drivingSchoolCtrl.deleteVehicle(vehicle)">Odstranit</button></td>
@@ -44,7 +44,7 @@
 </table>
 
 <h3 ng-if="drivingSchoolCtrl.listType == 'ucitele'">seznam ucitelu</h3>
-<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/ucitele/nove"
+<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele/nove"
    ng-if="drivingSchoolCtrl.listType == 'ucitele'">Pridat ucitele</a>
 <table class="table" ng-if="drivingSchoolCtrl.listType == 'ucitele'">
     <tr>
@@ -58,7 +58,7 @@
 </table>
 
 <h3 ng-if="drivingSchoolCtrl.listType == 'kurzy'">kurzy</h3>
-<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/kurzy/nove"
+<a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/nove"
    ng-if="drivingSchoolCtrl.listType == 'kurzy'">Pridat kurz</a>
 <table class="table" ng-if="drivingSchoolCtrl.listType == 'kurzy'">
     <tr>
@@ -67,8 +67,8 @@
         <th>stav</th>
     </tr>
     <tr ng-repeat="course in drivingSchoolCtrl.courses">
-        <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/kurzy/{{course.id}}">{{course['identifikacni-cislo']}}</a></td>
-        <td>{{course['datum-od']}}</td>
+        <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/{{course.kurz_id}}">{{course['identifikacni_cislo']}}</a></td>
+        <td>{{course['datum_od']}}</td>
         <td>{{course.stav}}</td>
     </tr>
 </table>
