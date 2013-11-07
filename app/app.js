@@ -18,6 +18,7 @@ angular.module('app').config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
+    //$httpProvider.defaults.headers.post['X-Content-Type'] = 'application/json';
     $routeProvider.when('/', {
         templateUrl: 'views/main.html',
         controller: 'app.controller.Main',
@@ -48,12 +49,12 @@ angular.module('app').config(function ($routeProvider, $httpProvider) {
         controller: 'app.controller.VehicleDetail',
         controllerAs: "vehicleDetailCtrl"
     });
-    $routeProvider.when('/autoskola/:autoskolaId/kurzy/:id', {
+    $routeProvider.when('/autoskola/:autoskolaId/kurzy/nove', {
         templateUrl: 'views/courseDetail.html',
         controller: 'app.controller.CourseDetail',
         controllerAs: "courseDetailCtrl"
     });
-    $routeProvider.when('/autoskola/:autoskolaId/kurzy/nove', {
+    $routeProvider.when('/autoskola/:autoskolaId/kurzy/:id', {
         templateUrl: 'views/courseDetail.html',
         controller: 'app.controller.CourseDetail',
         controllerAs: "courseDetailCtrl"

@@ -8,12 +8,14 @@ var app;
                 this.api = api;
                 this.auth = auth;
                 this.$location = $location;
-                if ($routeParams.id != "nove") {
+                if ($routeParams.id) {
                     this.isNew = false;
                     this.api.getCourse($routeParams.id).then(function (response) {
                         _this.course = response.data;
                     }, function (reason) {
                         alert('Nepodarilo se nacist kurz: ' + reason);
+                    }).then(function () {
+                        _this.setUpNewLesson();
                     });
 
                     this.api.getLessons($routeParams.id).then(function (response) {
@@ -43,6 +45,8 @@ var app;
                         "datum-od": nowDate.getFullYear() + "-" + month + "-" + day,
                         "datum-do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
                     };
+
+                    this.setUpNewLesson();
                 }
 
                 this.api.getDrivingSchool($routeParams.autoskolaId).then(function (response) {
@@ -50,7 +54,8 @@ var app;
                 }, function (reason) {
                     alert('Nepodarilo se nacist autoskolu: ' + reason);
                 });
-
+            }
+            CourseDetail.prototype.setUpNewLesson = function () {
                 var nowDate = new Date();
                 var month = (nowDate.getMonth() + 1 < 10 ? '0' : '') + (nowDate.getMonth() + 1);
                 var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
@@ -58,9 +63,11 @@ var app;
                 this.newLesson = {
                     "datum": nowDate.getFullYear() + "-" + month + "-" + day,
                     "cas-od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-                    "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
+                    "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
+                    "kurz-id": this.course.id
                 };
-            }
+            };
+
             CourseDetail.prototype.saveCourse = function (course) {
                 var _this = this;
                 if (this.isNew) {
@@ -80,7 +87,10 @@ var app;
             };
 
             CourseDetail.prototype.createLesson = function (lesson) {
-                this.api.createLesson(lesson).then(angular.noop, function (reason) {
+                var _this = this;
+                this.api.createLesson(lesson).then(function (response) {
+                    _this.lessons.push(response.data);
+                }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };

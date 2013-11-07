@@ -14,12 +14,14 @@ module app.controller {
     constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api,
                 private auth, private $location:ng.ILocationService) {
 
-      if($routeParams.id != "nove") {
+      if($routeParams.id) {
         this.isNew = false;
         this.api.getCourse($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
           this.course = response.data;
         }, (reason) => {
           alert('Nepodarilo se nacist kurz: ' + reason);
+        }).then(() => {
+          this.setUpNewLesson();
         });
 
         this.api.getLessons($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
@@ -50,6 +52,8 @@ module app.controller {
           "datum-od": nowDate.getFullYear() + "-" + month + "-" + day,
           "datum-do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
         };
+
+        this.setUpNewLesson();
       }
 
       this.api.getDrivingSchool($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
@@ -57,7 +61,9 @@ module app.controller {
       }, (reason) => {
         alert('Nepodarilo se nacist autoskolu: ' + reason);
       });
+    }
 
+    private setUpNewLesson() {
       var nowDate = new Date();
       var month = (nowDate.getMonth() + 1 < 10 ? '0' : '') + (nowDate.getMonth() + 1);
       var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
@@ -65,8 +71,8 @@ module app.controller {
       this.newLesson = {
         "datum": nowDate.getFullYear() + "-" + month + "-" + day,
         "cas-od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-        "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())//,
-       // "kurz-id": this.course.id
+        "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
+        "kurz-id": this.course.id
       };
     }
 
@@ -87,7 +93,9 @@ module app.controller {
     }
 
     public createLesson(lesson) {
-      this.api.createLesson(lesson).then(angular.noop, (reason) => { alert('Chyba: ' + reason); });
+      this.api.createLesson(lesson).then((response) => {
+        this.lessons.push(response.data);
+      }, (reason) => { alert('Chyba: ' + reason); });
     }
 
     public createStudent(student) {
