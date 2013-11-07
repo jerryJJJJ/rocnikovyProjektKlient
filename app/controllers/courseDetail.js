@@ -12,10 +12,9 @@ var app;
                     this.isNew = false;
                     this.api.getCourse($routeParams.id).then(function (response) {
                         _this.course = response.data;
+                        _this.setUpNewLesson();
                     }, function (reason) {
                         alert('Nepodarilo se nacist kurz: ' + reason);
-                    }).then(function () {
-                        _this.setUpNewLesson();
                     });
 
                     this.api.getLessons($routeParams.id).then(function (response) {

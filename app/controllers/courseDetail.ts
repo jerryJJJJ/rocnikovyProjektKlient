@@ -18,10 +18,9 @@ module app.controller {
         this.isNew = false;
         this.api.getCourse($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
           this.course = response.data;
+          this.setUpNewLesson();
         }, (reason) => {
           alert('Nepodarilo se nacist kurz: ' + reason);
-        }).then(() => {
-          this.setUpNewLesson();
         });
 
         this.api.getLessons($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
