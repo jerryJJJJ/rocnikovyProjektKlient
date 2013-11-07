@@ -8,8 +8,7 @@ var app;
                 this.api = api;
                 this.auth = auth;
                 this.$location = $location;
-                //TODO reqest patri Api service
-                $http.get("/autoskoly/" + $routeParams.autoskolaId).then(function (response) {
+                this.api.getDrivingSchool($routeParams.autoskolaId).then(function (response) {
                     _this.drivingSchool = response.data;
                 }, function (reason) {
                     alert('Nepodarilo se nacist autoskolu: ' + reason);
@@ -17,17 +16,29 @@ var app;
 
                 if ($routeParams.id) {
                     this.isNew = false;
-
-                    //TODO reqest patri Api service
-                    $http.get("/vozidla/" + $routeParams.id).then(function (response) {
+                    this.api.getVehicle($routeParams.id).then(function (response) {
                         _this.vehicle = response.data;
                     }, function (reason) {
                         alert('Nepodarilo se nacist vozidlo: ' + reason);
                     });
+
+                    this.api.getRides($routeParams.id).then(function (response) {
+                        _this.rides = response.data.jizdy;
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist jizdy: ' + reason);
+                    });
+
+                    this.api.getVehicleDocuments($routeParams.id).then(function (response) {
+                        _this.documents = response.data.dokumenty;
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist dokumenty: ' + reason);
+                    });
                 } else {
                     this.isNew = true;
                     this.vehicle = {
-                        "pocatecni-stav-km": 0
+                        "pocatecni-stav-km": 0,
+                        "prumerna-spotreba": 0,
+                        "pocet-km": 0
                     };
                 }
                 var nowDate = new Date();
@@ -42,17 +53,20 @@ var app;
             }
             VehicleDetail.prototype.saveVehicle = function (vehicle) {
                 var _this = this;
-                //NOTE byl bych pro klasickou podminku a prikazy na jednotlivy radky tohle se neda cist :))
-                (this.isNew) ? this.api.createVehicle(vehicle).then(function (response) {
-                    _this.vehicle = response.data;
-                    _this.isNew = false;
-                }, function (reason) {
-                    alert('Chyba: ' + reason);
-                }) : this.api.updateVehicle(vehicle).then(function (response) {
-                    _this.vehicle = response.data;
-                }, function (reason) {
-                    alert("Chyba: " + reason);
-                });
+                if (this.isNew) {
+                    this.api.createVehicle(vehicle).then(function (response) {
+                        _this.vehicle = response.data;
+                        _this.isNew = false;
+                    }, function (reason) {
+                        alert('Chyba: ' + reason);
+                    });
+                } else {
+                    this.api.updateVehicle(vehicle).then(function (response) {
+                        _this.vehicle = response.data;
+                    }, function (reason) {
+                        alert("Chyba: " + reason);
+                    });
+                }
             };
 
             VehicleDetail.prototype.createRide = function (ride) {

@@ -3,8 +3,11 @@ module app.controller {
   export class CourseDetail {
 
     public course;
-    public newLesson;
     public drivingSchool;
+    public lessons;
+    public students;
+    public teachers;
+    public newLesson;
     public newStudent;
     public isNew;
 
@@ -13,11 +16,30 @@ module app.controller {
 
       if($routeParams.id != "nove") {
         this.isNew = false;
-        $http.get("/kurzy/"+$routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
+        this.api.getCourse($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
           this.course = response.data;
         }, (reason) => {
           alert('Nepodarilo se nacist kurz: ' + reason);
         });
+
+        this.api.getLessons($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
+          this.lessons = response.data.teorie;
+        }, (reason) => {
+          alert('Nepodarilo se nacist kurz: ' + reason);
+        });
+
+        this.api.getStudents($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
+          this.students = response.data.studenti;
+        }, (reason) => {
+          alert('Nepodarilo se nacist kurz: ' + reason);
+        });
+
+        this.api.getTeachers($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
+          this.teachers = response.data.ucitele;
+        }, (reason) => {
+          alert('Nepodarilo se nacist kurz: ' + reason);
+        });
+
       } else {
         this.isNew = true;
         var nowDate = new Date();
@@ -30,8 +52,7 @@ module app.controller {
         };
       }
 
-      //FIXME prendat request do Api service
-      $http.get("/autoskoly/"+$routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
+      this.api.getDrivingSchool($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
         this.drivingSchool = response.data;
       }, (reason) => {
         alert('Nepodarilo se nacist autoskolu: ' + reason);
@@ -44,23 +65,33 @@ module app.controller {
       this.newLesson = {
         "datum": nowDate.getFullYear() + "-" + month + "-" + day,
         "cas-od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-        "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
+        "cas-do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())//,
+       // "kurz-id": this.course.id
       };
     }
 
     public saveCourse(course) {
-      (this.isNew) ? this.api.createCourse(course).then((response) => {
-        this.course = response.data; this.isNew = false;
-      }, (reason) => { alert('Chyba: ' + reason); })
-        : this.api.updateCourse(course).then((response) => { this.course = response.data; }, (reason) => { alert("Chyba: " + reason); });
+      if(this.isNew) {
+        this.api.createCourse(course).then((response) => {
+          this.course = response.data; this.isNew = false;
+        }, (reason) => {
+          alert('Chyba: ' + reason);
+        });
+      } else {
+        this.api.updateCourse(course).then((response) => {
+          this.course = response.data;
+        }, (reason) => {
+          alert("Chyba: " + reason);
+        });
+      }
     }
 
     public createLesson(lesson) {
-      this.api.createLesson(lesson).then(() => {alert("vytvoreno");}, (reason) => { alert('Chyba: ' + reason); });
+      this.api.createLesson(lesson).then(angular.noop, (reason) => { alert('Chyba: ' + reason); });
     }
 
     public createStudent(student) {
-      this.api.createStudent(student).then(() => {alert("vytvoreno");}, (reason) => { alert('Chyba: ' + reason); });
+      this.api.createStudent(student).then(angular.noop, (reason) => { alert('Chyba: ' + reason); });
     }
 
     public deleteCourse(course) {

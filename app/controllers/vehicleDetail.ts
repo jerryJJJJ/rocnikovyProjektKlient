@@ -4,14 +4,15 @@ module app.controller {
 
     public drivingSchool;
     public vehicle;
+    public rides;
+    public documents;
     public newRide;
     public isNew;
 
     constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api,
                 private auth, private $location:ng.ILocationService) {
 
-      //TODO reqest patri Api service
-      $http.get("/autoskoly/"+$routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
+      this.api.getDrivingSchool($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
         this.drivingSchool = response.data;
       }, (reason) => {
         alert('Nepodarilo se nacist autoskolu: ' + reason);
@@ -19,16 +20,30 @@ module app.controller {
 
       if($routeParams.id) {
         this.isNew = false;
-        //TODO reqest patri Api service
-        $http.get("/vozidla/"+$routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
+        this.api.getVehicle($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
           this.vehicle = response.data;
         }, (reason) => {
           alert('Nepodarilo se nacist vozidlo: ' + reason);
         });
+
+        this.api.getRides($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
+          this.rides = response.data.jizdy;
+        }, (reason) => {
+          alert('Nepodarilo se nacist jizdy: ' + reason);
+        });
+
+        this.api.getVehicleDocuments($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
+          this.documents = response.data.dokumenty;
+        }, (reason) => {
+          alert('Nepodarilo se nacist dokumenty: ' + reason);
+        });
+
       } else {
         this.isNew = true;
         this.vehicle = {
-          "pocatecni-stav-km": 0
+          "pocatecni-stav-km": 0,
+          "prumerna-spotreba": 0,
+          "pocet-km": 0
         };
       }
       var nowDate = new Date();
@@ -44,9 +59,19 @@ module app.controller {
     }
 
     public saveVehicle(vehicle) {
-      //NOTE byl bych pro klasickou podminku a prikazy na jednotlivy radky tohle se neda cist :))
-      (this.isNew) ? this.api.createVehicle(vehicle).then((response) => { this.vehicle = response.data; this.isNew = false; }, (reason) => { alert('Chyba: ' + reason); })
-                   : this.api.updateVehicle(vehicle).then((response) => { this.vehicle = response.data; }, (reason) => { alert("Chyba: " + reason); });
+      if(this.isNew) {
+        this.api.createVehicle(vehicle).then((response) => {
+          this.vehicle = response.data; this.isNew = false;
+        }, (reason) => {
+          alert('Chyba: ' + reason);
+        });
+      } else {
+        this.api.updateVehicle(vehicle).then((response) => {
+          this.vehicle = response.data;
+        }, (reason) => {
+          alert("Chyba: " + reason);
+        });
+      }
     }
 
     public createRide(ride) {

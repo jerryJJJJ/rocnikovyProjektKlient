@@ -1,0 +1,75 @@
+<div id="header">
+    <h1>{{studentDetailCtrl.student.jmeno}} {{studentDetailCtrl.student.prijmeni}}</h1>
+    <h3>{{studentDetailCtrl.drivingSchool['nazev']}}</h3>
+    <span class="delete-object">
+    <button ng-click="studentDetailCtrl.deleteStudent(studentDetailCtrl.student)"
+            class="btn btn-danger btn-xs">
+        <span class="glyphicon glyphicon-remove"></span> Smazat žáka</button>
+    </span>
+    <div id="logout">
+        <a href="/#/autoskola/{{studentDetailCtrl.drivingSchool.id}}/kurzy/{{studentDetailCtrl.student['kurz-id']}}">Zpět na výpis  |</a>
+        <a href="">Odhlásit</a>
+    </div>
+    <table class="detail-table">
+        <tr>
+            <td>jméno</td>
+            <td><input type="text" ng-model="studentDetailCtrl.student.jmeno" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>příjmení</td>
+            <td><input type="text" ng-model="studentDetailCtrl.student.prijmeni" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>matriční číslo</td>
+            <td><input type="text" ng-model="studentDetailCtrl.student.[matricni-cislo]" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>kurz</td>
+            <td>{{studentDetailCtrl.student['identifikacni-cislo-kurzu']}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="right">
+                <button ng-click="studentDetailCtrl.saveStudent(student)" class="btn btn-success">
+                    <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <h3>Hodiny teorie</h3>
+    <table class="table">
+        <tr>
+            <th>datum</th>
+            <th>od<span class="value">[hh:mm]</span></th>
+            <th>do<span class="value">[hh:mm]</span></th>
+            <th>učitel</th>
+            <th>typ výuky</th>
+        </tr>
+        <tr ng-repeat="lesson in studentDetailCtrl.lessons">
+            <td>{{lesson.datum}}</td>
+            <td>{{lesson['cas-od']}}</td>
+            <td>{{lesson['cas-do']}}</td>
+            <td>{{lesson['vyucujici']}}</td>
+            <td>{{lesson['typ-vyuky']}}</td>
+        </tr>
+    </table>
+
+    <h3>Kniha jízd</h3>
+    <table class="table">
+        <tr>
+            <th>datum</th>
+            <th>od<span class="value">[hh:mm]</span></th>
+            <th>do<span class="value">[hh:mm]</span></th>
+            <th>ujetá vzdálenost<span class="value">[km]</span></th>
+            <th>učitel</th>
+        </tr>
+        <tr ng-repeat="ride in studentDetailCtrl.rides">
+            <td>{{ride.datum}}</td>
+            <td>{{ride['cas-od']}}</td>
+            <td>{{ride['cas-do']}}</td>
+            <td>{{ride['pocet-ujetych-km']}}</td>
+            <td>{{ride['ucitel']}}</td>
+        </tr>
+    </table>
+</div>

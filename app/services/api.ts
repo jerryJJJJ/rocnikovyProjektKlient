@@ -10,6 +10,58 @@ module app.service {
 
     }
 
+    public getDrivingSchool(drivingSchoolId) {
+      return this.$http.get(this.url + "/autoskoly/" + drivingSchoolId);
+    }
+
+    public getTeachers(drivingSchoolId) {
+      return this.$http.get(this.url + "/ucitele?autoskola_id=" + drivingSchoolId);
+    }
+
+    public getVehicles(drivingSchoolId) {
+      return this.$http.get(this.url + "/vozidla?autoskola_id=" + drivingSchoolId);
+    }
+
+    public getVehicle(vehicleId) {
+      return this.$http.get(this.url + "/vozidla/" + vehicleId);
+    }
+
+    public getCourse(courseId) {
+      return this.$http.get(this.url + "/kurzy/" + courseId);
+    }
+
+    public getCourses(drivingSchoolId) {
+      return this.$http.get(this.url + "/kurzy?autoskola_id=" + drivingSchoolId);
+    }
+
+    public getRides(vehicleId) {
+      return this.$http.get(this.url + "/jizdy?vozidlo_id=" + vehicleId);
+    }
+
+    public getStudentRides(studentId) {
+      return this.$http.get(this.url + "/jizdy?student_id=" + studentId);
+    }
+
+    public getStudentLessons(studentId) {
+      return this.$http.get(this.url + "/teorie?student_id=" + studentId);
+    }
+
+    public getVehicleDocuments(vehicleId) {
+      return this.$http.get(this.url + "/dumenty-vozidla?vozidlo_id=" + vehicleId);
+    }
+
+    public getLessons(courseId) {
+      return this.$http.get(this.url + "/teorie?kurz_id=" + courseId);
+    }
+
+    public getStudents(courseId) {
+      return this.$http.get(this.url + "/studenti?kurz_id=" + courseId);
+    }
+
+    public getStudent(studentId) {
+      return this.$http.get(this.url + "/studenti/" + studentId);
+    }
+
     public createVehicle(vehicle) {
       return this.$http.post(this.url + "/vozidla", vehicle);
     }

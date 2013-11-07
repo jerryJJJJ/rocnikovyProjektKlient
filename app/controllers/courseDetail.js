@@ -10,8 +10,26 @@ var app;
                 this.$location = $location;
                 if ($routeParams.id != "nove") {
                     this.isNew = false;
-                    $http.get("/kurzy/" + $routeParams.id).then(function (response) {
+                    this.api.getCourse($routeParams.id).then(function (response) {
                         _this.course = response.data;
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist kurz: ' + reason);
+                    });
+
+                    this.api.getLessons($routeParams.id).then(function (response) {
+                        _this.lessons = response.data.teorie;
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist kurz: ' + reason);
+                    });
+
+                    this.api.getStudents($routeParams.id).then(function (response) {
+                        _this.students = response.data.studenti;
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist kurz: ' + reason);
+                    });
+
+                    this.api.getTeachers($routeParams.autoskolaId).then(function (response) {
+                        _this.teachers = response.data.ucitele;
                     }, function (reason) {
                         alert('Nepodarilo se nacist kurz: ' + reason);
                     });
@@ -27,8 +45,7 @@ var app;
                     };
                 }
 
-                //FIXME prendat request do Api service
-                $http.get("/autoskoly/" + $routeParams.autoskolaId).then(function (response) {
+                this.api.getDrivingSchool($routeParams.autoskolaId).then(function (response) {
                     _this.drivingSchool = response.data;
                 }, function (reason) {
                     alert('Nepodarilo se nacist autoskolu: ' + reason);
@@ -46,30 +63,30 @@ var app;
             }
             CourseDetail.prototype.saveCourse = function (course) {
                 var _this = this;
-                (this.isNew) ? this.api.createCourse(course).then(function (response) {
-                    _this.course = response.data;
-                    _this.isNew = false;
-                }, function (reason) {
-                    alert('Chyba: ' + reason);
-                }) : this.api.updateCourse(course).then(function (response) {
-                    _this.course = response.data;
-                }, function (reason) {
-                    alert("Chyba: " + reason);
-                });
+                if (this.isNew) {
+                    this.api.createCourse(course).then(function (response) {
+                        _this.course = response.data;
+                        _this.isNew = false;
+                    }, function (reason) {
+                        alert('Chyba: ' + reason);
+                    });
+                } else {
+                    this.api.updateCourse(course).then(function (response) {
+                        _this.course = response.data;
+                    }, function (reason) {
+                        alert("Chyba: " + reason);
+                    });
+                }
             };
 
             CourseDetail.prototype.createLesson = function (lesson) {
-                this.api.createLesson(lesson).then(function () {
-                    alert("vytvoreno");
-                }, function (reason) {
+                this.api.createLesson(lesson).then(angular.noop, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };
 
             CourseDetail.prototype.createStudent = function (student) {
-                this.api.createStudent(student).then(function () {
-                    alert("vytvoreno");
-                }, function (reason) {
+                this.api.createStudent(student).then(angular.noop, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };

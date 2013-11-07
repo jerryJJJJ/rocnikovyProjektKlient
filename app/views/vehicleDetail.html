@@ -18,7 +18,7 @@
                 <th>název</th>
                 <th colspan="2">datum vložení</th>
             </tr>
-            <tr ng-repeat="document in vehicleDetailCtrl.vehicle.dokumenty">
+            <tr ng-repeat="document in vehicleDetailCtrl.documents">
                 <td>{{document.nazev}}</td>
                 <td>{{document['datum-vlozeni']}}</td>
                 <td><button ng-click="vehicleDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs">
@@ -92,7 +92,7 @@
                 <th>žák</th>
                 <th></th>
             </tr>
-            <tr ng-repeat="ride in vehicleDetailCtrl.vehicle.jizdy">
+            <tr ng-repeat="ride in vehicleDetailCtrl.rides">
                 <td>{{ride.datum}}</td>
                 <td>{{ride['cas-od']}}</td>
                 <td>{{ride['cas-do']}}</td>

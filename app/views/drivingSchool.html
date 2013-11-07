@@ -7,15 +7,15 @@
     <table class="detail-table">
         <tr>
             <td>počet učitelů</td>
-            <td class="wider">{{drivingSchoolCtrl.drivingSchool['pocet-ucitelu']}}</td>
+            <td class="wider">{{drivingSchoolCtrl.teachers.length}}</td>
         </tr>
         <tr>
             <td>počet vozidel</td>
-            <td class="wider">{{drivingSchoolCtrl.drivingSchool['pocet-vozidel']}}</td>
+            <td class="wider">{{drivingSchoolCtrl.vehicles.length}}</td>
         </tr>
         <tr>
             <td>počet akt. kurzů</td>
-            <td class="wider">{{drivingSchoolCtrl.drivingSchool['pocet-aktivnich-kurzu']}}</td>
+            <td class="wider">{{drivingSchoolCtrl.courses.length}}</td>
         </tr>
     </table>
     <ul class="nav nav-tabs">
@@ -35,7 +35,7 @@
         <th>vin</th>
         <th></th>
     </tr>
-    <tr ng-repeat="vehicle in drivingSchoolCtrl.drivingSchool.vozidla">
+    <tr ng-repeat="vehicle in drivingSchoolCtrl.vehicles">
         <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.id}}/vozidla/{{vehicle.id}}">{{vehicle.znacka}}</a></td>
         <td>{{vehicle.model}}</td>
         <td>{{vehicle.vin}}</td>
@@ -51,7 +51,7 @@
         <th>jmeno</th>
         <th>prijmeni</th>
     </tr>
-    <tr ng-repeat="teacher in drivingSchoolCtrl.drivingSchool.ucitele">
+    <tr ng-repeat="teacher in drivingSchoolCtrl.teachers">
         <td>{{teacher.jmeno}}</td>
         <td>{{teacher.prijmeni}}</td>
     </tr>

@@ -64,6 +64,11 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
     controller:   'app.controller.CourseDetail',
     controllerAs: "courseDetailCtrl"
   });
+  $routeProvider.when('/autoskola/:autoskolaId/studenti/:id', {
+    templateUrl:  'views/studentDetail.html',
+    controller:   'app.controller.StudentDetail',
+    controllerAs: "studentDetailCtrl"
+  });
   $routeProvider.otherwise({ redirectTo: '/'});
 
 });
