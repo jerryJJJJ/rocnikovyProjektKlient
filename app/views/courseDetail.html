@@ -116,7 +116,9 @@
                 </td>
                 <td>
                     <select name="selectTeachers" class="form-control" ng-model="courseDetailCtrl.newLesson.ucitel_id">
-                        <option ng-repeat="teacher in courseDetailCtrl.teachers" ng-value="teacher.ucitel_id">{{teacher.prijmeni}}</option>
+                        <option ng-repeat="teacher in courseDetailCtrl.teachers" ng-value="teacher.ucitel_id">
+                            {{teacher.prijmeni}}
+                        </option>
                     </select>
                 </td>
                 <td colspan="2">
@@ -128,7 +130,8 @@
             </tr>
             <tr>
                 <td colspan="6" class="right">
-                    <button ng-click="courseDetailCtrl.createLesson(courseDetailCtrl.newLesson)" class="btn btn-primary">
+                    <button ng-click="courseDetailCtrl.createLesson(courseDetailCtrl.newLesson)"
+                            class="btn btn-primary">
                         <span class="glyphicon glyphicon-floppy-save"></span> Uložit hodinu
                     </button>
                 </td>
@@ -138,39 +141,48 @@
 
     <h3>Seznam studentů</h3>
 
-    <form novalidate class="css-form">
+    <form novalidate class="css-form" name="zakForm">
         <table class="table">
-            <tr>
-                <th>příjmení</th>
-                <th>jméno</th>
-                <th>matriční číslo</th>
-                <th></th>
-            </tr>
-            <tr ng-repeat="student in courseDetailCtrl.students">
-                <td><a href="#/autoskola/{{courseDetailCtrl.drivingSchool.autoskola_id}}/kurzy/{{courseDetailCtrl.course.kurz_id}}/studenti/{{student.student_id}}">{{student.prijmeni}}</a>
-                </td>
-                <td>{{student.jmeno}}</td>
-                <td>{{student['matricni_cislo']}}</td>
-                <td class="right">
-                    <button ng-click="courseDetailCtrl.deleteStudent(student)" class="btn btn-danger btn-xs">
-                        <span class="glyphicon glyphicon-remove"></span></button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['prijmeni']"
-                           placeholder="příjmení"></td>
-                <td><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['jmeno']"
-                           placeholder="jméno"></td>
-                <td colspan="2"><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['matricni_cislo']"
-                                       placeholder="matriční číslo"></td>
-            </tr>
-            <tr>
-                <td colspan="8" class="right">
-                    <button ng-click="courseDetailCtrl.createStudent(courseDetailCtrl.newStudent)" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-floppy-save"></span> Uložit studenta
-                    </button>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>příjmení</th>
+                    <th>jméno</th>
+                    <th>matriční číslo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="student in courseDetailCtrl.students">
+                    <td>
+                        <a href="#/autoskola/{{courseDetailCtrl.drivingSchool.autoskola_id}}/kurzy/{{courseDetailCtrl.course.kurz_id}}/studenti/{{student.student_id}}">{{student.prijmeni}}</a>
+                    </td>
+                    <td>{{student.jmeno}}</td>
+                    <td>{{student['matricni_cislo']}}</td>
+                    <td class="right">
+                        <button ng-click="courseDetailCtrl.deleteStudent(student)" class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-remove"></span></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['prijmeni']"
+                               placeholder="příjmení" required></td>
+                    <td><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['jmeno']"
+                               placeholder="jméno" required name="jmeno"></td>
+                    <td colspan="2" ng-class="{'has-error': zakForm.matricniCislo.$invalid && zakForm.matricniCislo.$dirty}">
+                        <input type="text" class="form-control" ng-pattern="/^[0-9 -]*$/" name="matricniCislo"
+                                           ng-model="courseDetailCtrl.newStudent['matricni_cislo']"
+                                           placeholder="matriční číslo" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8" class="right">
+                        <button ng-click="courseDetailCtrl.createStudent(courseDetailCtrl.newStudent)"
+                                class="btn btn-primary" ng-disabled="!zakForm.$valid">
+                            <span class="glyphicon glyphicon-floppy-save"></span> Uložit studenta
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </form>
 </div>
