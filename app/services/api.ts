@@ -83,35 +83,39 @@ module app.service {
     }
 
     public updateVehicle(vehicle) {
-      return this.$http.put(this.url + "/vozidla/" + vehicle.id, vehicle);
+      return this.$http.put(this.url + "/vozidla/" + vehicle.vozidlo_id, vehicle);
     }
 
     public updateCourse(course) {
-      return this.$http.put(this.url + "/kurzy/" + course.id, course);
+      return this.$http.put(this.url + "/kurzy/" + course.kurz_id, course);
+    }
+
+    public updateStudent(student) {
+      return this.$http.put(this.url + "/studenti/" + student.student_id, student);
     }
 
     public deleteVehicle(vehicle) {
-       return this.$http.delete(this.url + "/vozidla/" + vehicle.id);
+       return this.$http.delete(this.url + "/vozidla/" + vehicle.vozidlo_id);
     }
 
     public deleteRide(ride) {
-      return this.$http.delete(this.url + "/jizdy/" + ride.id);
+      return this.$http.delete(this.url + "/jizdy/" + ride.jizda_id);
     }
 
     public deleteDocument(document) {
-      return this.$http.delete(this.url + "/dokumenty/" + document.id);
+      return this.$http.delete(this.url + "/dokumenty/" + document.dokument_id);
     }
 
     public deleteCourse(course) {
-      return this.$http.delete(this.url + "/kurzy/" + course.id);
+      return this.$http.delete(this.url + "/kurzy/" + course.kurz_id);
     }
 
     public deleteLesson(lesson) {
-      return this.$http.delete(this.url + "/teorie/" + lesson.id);
+      return this.$http.delete(this.url + "/teorie/" + lesson.teorie_id);
     }
 
     public deleteStudent(student) {
-      return this.$http.delete(this.url + "/studenti/" + student.id);
+      return this.$http.delete(this.url + "/studenti/" + student.student_id);
     }
   }
 }

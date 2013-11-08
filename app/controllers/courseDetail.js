@@ -8,6 +8,7 @@ var app;
                 this.api = api;
                 this.auth = auth;
                 this.$location = $location;
+                this.newStudent = {};
                 if ($routeParams.id) {
                     this.isNew = false;
                     this.api.getCourse($routeParams.id).then(function (response) {
@@ -20,19 +21,19 @@ var app;
                     this.api.getLessons($routeParams.id).then(function (response) {
                         _this.lessons = new app.lib.IndexedArray('teorie_id', response.data.teorie);
                     }, function (reason) {
-                        alert('Nepodarilo se nacist kurz: ' + reason);
+                        alert('Nepodarilo se nacist hodiny teorie: ' + reason);
                     });
 
                     this.api.getStudents($routeParams.id).then(function (response) {
                         _this.students = new app.lib.IndexedArray('student_id', response.data.studenti);
                     }, function (reason) {
-                        alert('Nepodarilo se nacist kurz: ' + reason);
+                        alert('Nepodarilo se nacist studenty: ' + reason);
                     });
 
                     this.api.getTeachers($routeParams.autoskolaId).then(function (response) {
                         _this.teachers = new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
                     }, function (reason) {
-                        alert('Nepodarilo se nacist kurz: ' + reason);
+                        alert('Nepodarilo se nacist ucitele: ' + reason);
                     });
                 } else {
                     this.isNew = true;
@@ -44,8 +45,6 @@ var app;
                         "datum_od": nowDate.getFullYear() + "-" + month + "-" + day,
                         "datum_do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
                     };
-
-                    this.setUpNewLesson();
                 }
 
                 this.api.getDrivingSchool($routeParams.autoskolaId).then(function (response) {
@@ -58,11 +57,14 @@ var app;
                 var nowDate = new Date();
                 var month = (nowDate.getMonth() + 1 < 10 ? '0' : '') + (nowDate.getMonth() + 1);
                 var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
+                var hours = (nowDate.getHours() < 10 ? '0' : '') + nowDate.getHours();
+                var minutes = (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes();
+                var hoursTo = (((nowDate.getHours() + 2) % 24 < 10) ? '0' : '') + (nowDate.getHours() + 2) % 24;
 
                 this.newLesson = {
                     "datum": nowDate.getFullYear() + "-" + month + "-" + day,
-                    "od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-                    "do": ((nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
+                    "cas_od": hours + ":" + minutes,
+                    "cas_do": hoursTo + ":" + minutes,
                     "kurz_id": this.course.id
                 };
             };
@@ -71,7 +73,7 @@ var app;
                 var _this = this;
                 if (this.isNew) {
                     this.api.createCourse(course).then(function (response) {
-                        _this.$location.path('/autoskola/' + _this.drivingSchool.id + '/kurzy/' + response.data.id);
+                        _this.$location.path('/autoskola/' + _this.drivingSchool.autoskola_id + '/kurzy/' + response.data.kurz_id);
                     }, function (reason) {
                         alert('Chyba: ' + reason);
                     });
@@ -94,7 +96,10 @@ var app;
             };
 
             CourseDetail.prototype.createStudent = function (student) {
-                this.api.createStudent(student).then(angular.noop, function (reason) {
+                var _this = this;
+                this.api.createStudent(student).then(function (response) {
+                    _this.students.push(response.data);
+                }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };
@@ -102,26 +107,26 @@ var app;
             CourseDetail.prototype.deleteCourse = function (course) {
                 var _this = this;
                 this.api.deleteCourse(course).then(function () {
-                    _this.$location.path("/autoskola/" + _this.drivingSchool.id + "/kurzy");
+                    _this.$location.path("/autoskola/" + _this.drivingSchool.autoskola_id + "/kurzy");
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };
 
-            CourseDetail.prototype.deleteDocument = function (document) {
-                this.api.deleteDocument(document).then(angular.noop, function (reason) {
-                    alert('Chyba: ' + reason);
-                });
-            };
-
             CourseDetail.prototype.deleteLesson = function (lesson) {
-                this.api.deleteLesson(lesson).then(angular.noop, function (reason) {
+                var _this = this;
+                this.api.deleteLesson(lesson).then(function () {
+                    _this.lessons.remove(lesson);
+                }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };
 
             CourseDetail.prototype.deleteStudent = function (student) {
-                this.api.deleteStudent(student).then(angular.noop, function (reason) {
+                var _this = this;
+                this.api.deleteStudent(student).then(function () {
+                    _this.students.remove(student);
+                }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };

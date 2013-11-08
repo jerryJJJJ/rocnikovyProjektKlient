@@ -59,7 +59,12 @@ angular.module('app').config(function ($routeProvider, $httpProvider) {
         controller: 'app.controller.CourseDetail',
         controllerAs: "courseDetailCtrl"
     });
-    $routeProvider.when('/autoskola/:autoskolaId/studenti/:id', {
+    $routeProvider.when('/autoskola/:autoskolaId/kurzy/:kurzId/studenti/:id', {
+        templateUrl: 'views/studentDetail.html',
+        controller: 'app.controller.StudentDetail',
+        controllerAs: "studentDetailCtrl"
+    });
+    $routeProvider.when('/autoskola/:autoskolaId/vozidla/:vozidloId/studenti/:id', {
         templateUrl: 'views/studentDetail.html',
         controller: 'app.controller.StudentDetail',
         controllerAs: "studentDetailCtrl"

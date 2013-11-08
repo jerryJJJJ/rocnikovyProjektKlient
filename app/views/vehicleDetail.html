@@ -1,84 +1,87 @@
 <div id="header">
-    <h1 ng-if="!vehicleDetailCtrl.isNew">{{vehicleDetailCtrl.vehicle.znacka}} {{vehicleDetailCtrl.vehicle.model}}</h1>
-    <h1 ng-if="vehicleDetailCtrl.isNew">Nové vozidlo</h1>
-    <h3>{{vehicleDetailCtrl.drivingSchool.nazev}}</h3>
+    <div class="container">
+        <h1 ng-if="!vehicleDetailCtrl.isNew">{{vehicleDetailCtrl.vehicle.znacka}} {{vehicleDetailCtrl.vehicle.model}}</h1>
+        <h1 ng-if="vehicleDetailCtrl.isNew">Nové vozidlo</h1>
+        <h3>{{vehicleDetailCtrl.drivingSchool.nazev}}</h3>
     <span class="delete-object">
     <button ng-click="vehicleDetailCtrl.deleteVehicle(vehicleDetailCtrl.vehicle)"
             ng-if="!vehicleDetailCtrl.isNew" class="btn btn-danger btn-xs">
         <span class="glyphicon glyphicon-remove"></span> Smazat vozidlo</button>
     </span>
-    <div id="logout">
-        <a href="/#/autoskola/{{vehicleDetailCtrl.drivingSchool.id}}/vozidla">Zpět na výpis  |</a>
-        <a href="">Odhlásit</a>
+        <div id="logout">
+            <a href="/#/autoskola/{{vehicleDetailCtrl.drivingSchool.id}}/vozidla">Zpět na výpis  |</a>
+            <a href="">Odhlásit</a>
+        </div>
+        <div class="documents">
+            <h3>Dokumenty</h3>
+            <table class="table">
+                <tr>
+                    <th>název</th>
+                    <th colspan="2">datum vložení</th>
+                </tr>
+                <tr ng-repeat="document in vehicleDetailCtrl.documents">
+                    <td>{{document.nazev}}</td>
+                    <td>{{document['datum_vlozeni']}}</td>
+                    <td><button ng-click="vehicleDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs">
+                        <span class="glyphicon glyphicon-remove"></span></button></td>
+                </tr>
+            </table>
+        </div>
+        <form novalidate class="css-form">
+            <table class="detail-table">
+                <tr class="right">
+                    <td>značka</td>
+                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control"/></td>
+                    <td class="wider">rok výroby</td>
+                    <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['rok_vyroby']" class="form-control"/></td>
+                    <td class="wider">počet km</td>
+                    <td class="left" class="wider">{{vehicleDetailCtrl.vehicle['najeto']}}</td>
+                </tr>
+                <tr class="right">
+                    <td>model</td>
+                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.model" class="form-control"/></td>
+                    <td>spz</td>
+                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle['spz']" class="form-control"/></td>
+                    <td>spotřeba</td>
+                    <td class="left">{{vehicleDetailCtrl.vehicle['prumerna']}}</td>
+                </tr>
+                <tr class="right">
+                    <td>typ</td>
+                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.vozidlo_typ" class="form-control"/>
+                    <td>příští stk</td>
+                    <td><input type="date" ng-model="vehicleDetailCtrl.vehicle['datum_stk']" class="form-control"/></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="right">
+                    <td>vin</td>
+                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.vin" class="form-control"/></td>
+                    <td>poč. stav km</td>
+                    <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['pocatecni_stav_km']" class="form-control"/></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="right">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
+                                ng-if="!vehicleDetailCtrl.isNew" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
+                        <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
+                                ng-if="vehicleDetailCtrl.isNew" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-floppy-save"></span> Vytvořit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
-    <div class="documents">
-        <h3>Dokumenty</h3>
-        <table class="table">
-            <tr>
-                <th>název</th>
-                <th colspan="2">datum vložení</th>
-            </tr>
-            <tr ng-repeat="document in vehicleDetailCtrl.documents">
-                <td>{{document.nazev}}</td>
-                <td>{{document['datum_vlozeni']}}</td>
-                <td><button ng-click="vehicleDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs">
-                    <span class="glyphicon glyphicon-remove"></span></button></td>
-            </tr>
-        </table>
-    </div>
-    <form novalidate class="css-form">
-        <table class="detail-table">
-            <tr class="right">
-                <td>značka</td>
-                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control"/></td>
-                <td class="wider">rok výroby</td>
-                <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['rok_vyroby']" class="form-control"/></td>
-                <td class="wider">počet km</td>
-                <td class="left" class="wider">{{vehicleDetailCtrl.vehicle['najeto']}}</td>
-            </tr>
-            <tr class="right">
-                <td>model</td>
-                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.model" class="form-control"/></td>
-                <td>spz</td>
-                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle['spz']" class="form-control"/></td>
-                <td>spotřeba</td>
-                <td class="left">{{vehicleDetailCtrl.vehicle['prumerna']}}</td>
-            </tr>
-            <tr class="right">
-                <td>typ</td>
-                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.vozidlo_typ" class="form-control"/>
-                <td>příští stk</td>
-                <td><input type="date" ng-model="vehicleDetailCtrl.vehicle['datum_stk']" class="form-control"/></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr class="right">
-                <td>vin</td>
-                <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.vin" class="form-control"/></td>
-                <td>poč. stav km</td>
-                <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['pocatecni_stav_km']" class="form-control"/></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr class="right">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
-                            ng-if="!vehicleDetailCtrl.isNew" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
-                    <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
-                            ng-if="vehicleDetailCtrl.isNew" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-floppy-save"></span> Vytvořit</button>
-                </td>
-            </tr>
-        </table>
-    </form>
 </div>
 
 
-<div ng-if="!vehicleDetailCtrl.isNew">
+
+<div class="container" ng-if="!vehicleDetailCtrl.isNew">
     <h3>Kniha jízd</h3>
     <form novalidate class="css-form">
         <table class="table">

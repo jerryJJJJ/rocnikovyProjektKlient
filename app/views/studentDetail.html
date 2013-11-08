@@ -1,43 +1,43 @@
 <div id="header">
-    <h1>{{studentDetailCtrl.student.jmeno}} {{studentDetailCtrl.student.prijmeni}}</h1>
-    <h3>{{studentDetailCtrl.drivingSchool['nazev']}}</h3>
+    <div class="container">
+        <h1>{{studentDetailCtrl.student.jmeno}} {{studentDetailCtrl.student.prijmeni}}</h1>
+        <h3>{{studentDetailCtrl.drivingSchool['nazev']}}</h3>
     <span class="delete-object">
     <button ng-click="studentDetailCtrl.deleteStudent(studentDetailCtrl.student)"
             class="btn btn-danger btn-xs">
         <span class="glyphicon glyphicon-remove"></span> Smazat žáka</button>
     </span>
-    <div id="logout">
-        <a href="/#/autoskola/{{studentDetailCtrl.drivingSchool.id}}/kurzy/{{studentDetailCtrl.student['kurz_id']}}"
-                style="font-color: red;">FIX MEE!!!!  |</a>
-        <a href="">Odhlásit</a>
+        <div id="logout">
+            <a ng-if="studentDetailCtrl.courseId" href="/#/autoskola/{{studentDetailCtrl.drivingSchool.autoskola_id}}/kurzy/{{studentDetailCtrl.courseId}}">
+                Zpět na kurzy  |</a>
+            <a ng-if="studentDetailCtrl.vehicleId" href="/#/autoskola/{{studentDetailCtrl.drivingSchool.autoskola_id}}/vozidla/{{studentDetailCtrl.vehicleId}}">
+                Zpět na vozidla  |</a>
+            <a href="">Odhlásit</a>
+        </div>
+        <table class="detail-table">
+            <tr>
+                <td>jméno</td>
+                <td><input type="text" ng-model="studentDetailCtrl.student.jmeno" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>příjmení</td>
+                <td><input type="text" ng-model="studentDetailCtrl.student.prijmeni" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>matriční číslo</td>
+                <td><input type="text" ng-model="studentDetailCtrl.student.matricni_cislo" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="right">
+                    <button ng-click="studentDetailCtrl.saveStudent(studentDetailCtrl.student)" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
+                </td>
+            </tr>
+        </table>
     </div>
-    <table class="detail-table">
-        <tr>
-            <td>jméno</td>
-            <td><input type="text" ng-model="studentDetailCtrl.student.jmeno" class="form-control"/></td>
-        </tr>
-        <tr>
-            <td>příjmení</td>
-            <td><input type="text" ng-model="studentDetailCtrl.student.prijmeni" class="form-control"/></td>
-        </tr>
-        <tr>
-            <td>matriční číslo</td>
-            <td><input type="text" ng-model="studentDetailCtrl.student.[matricni_cislo]" class="form-control"/></td>
-        </tr>
-        <tr>
-            <td>kurz</td>
-            <td>{{studentDetailCtrl.student['identifikacni-cislo-kurzu']}} NEMUZE TU BYT!!!!!!!!!!!!!!!!!</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="right">
-                <button ng-click="studentDetailCtrl.saveStudent(student)" class="btn btn-success">
-                    <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
-            </td>
-        </tr>
-    </table>
 </div>
 
-<div>
+<div class="container">
     <h3>Hodiny teorie</h3>
     <table class="table">
         <tr>
@@ -70,7 +70,7 @@
             <td>{{ride['cas_od']}}</td>
             <td>{{ride['cas_do']}}</td>
             <td>{{ride['najeto']}}</td>
-            <td>{{ride['ucitel']}}</td>
+            <td>{{studentDetailCtrl.teachers.find(ride['ucitel_id']).prijmeni}}</td>
         </tr>
     </table>
 </div>

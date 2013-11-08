@@ -79,35 +79,39 @@ var app;
             };
 
             Api.prototype.updateVehicle = function (vehicle) {
-                return this.$http.put(this.url + "/vozidla/" + vehicle.id, vehicle);
+                return this.$http.put(this.url + "/vozidla/" + vehicle.vozidlo_id, vehicle);
             };
 
             Api.prototype.updateCourse = function (course) {
-                return this.$http.put(this.url + "/kurzy/" + course.id, course);
+                return this.$http.put(this.url + "/kurzy/" + course.kurz_id, course);
+            };
+
+            Api.prototype.updateStudent = function (student) {
+                return this.$http.put(this.url + "/studenti/" + student.student_id, student);
             };
 
             Api.prototype.deleteVehicle = function (vehicle) {
-                return this.$http.delete(this.url + "/vozidla/" + vehicle.id);
+                return this.$http.delete(this.url + "/vozidla/" + vehicle.vozidlo_id);
             };
 
             Api.prototype.deleteRide = function (ride) {
-                return this.$http.delete(this.url + "/jizdy/" + ride.id);
+                return this.$http.delete(this.url + "/jizdy/" + ride.jizda_id);
             };
 
             Api.prototype.deleteDocument = function (document) {
-                return this.$http.delete(this.url + "/dokumenty/" + document.id);
+                return this.$http.delete(this.url + "/dokumenty/" + document.dokument_id);
             };
 
             Api.prototype.deleteCourse = function (course) {
-                return this.$http.delete(this.url + "/kurzy/" + course.id);
+                return this.$http.delete(this.url + "/kurzy/" + course.kurz_id);
             };
 
             Api.prototype.deleteLesson = function (lesson) {
-                return this.$http.delete(this.url + "/teorie/" + lesson.id);
+                return this.$http.delete(this.url + "/teorie/" + lesson.teorie_id);
             };
 
             Api.prototype.deleteStudent = function (student) {
-                return this.$http.delete(this.url + "/studenti/" + student.id);
+                return this.$http.delete(this.url + "/studenti/" + student.student_id);
             };
             return Api;
         })();

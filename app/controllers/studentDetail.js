@@ -2,12 +2,16 @@ var app;
 (function (app) {
     (function (controller) {
         var StudentDetail = (function () {
-            function StudentDetail($http, $routeParams, api, auth, $location) {
+            function StudentDetail($scope, $http, $routeParams, api, auth, $location) {
                 var _this = this;
+                this.$scope = $scope;
                 this.$http = $http;
+                this.$routeParams = $routeParams;
                 this.api = api;
                 this.auth = auth;
                 this.$location = $location;
+                this.courseId = this.$routeParams.kurzId;
+                this.vehicleId = this.$routeParams.vozidloId;
                 this.api.getDrivingSchool($routeParams.autoskolaId).then(function (response) {
                     _this.drivingSchool = response.data;
                 }, function (reason) {
@@ -26,6 +30,12 @@ var app;
                     alert('Nepodarilo se nacist jizdy: ' + reason);
                 });
 
+                this.api.getTeachers($routeParams.autoskolaId).then(function (response) {
+                    _this.teachers = new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
+                }, function (reason) {
+                    alert('Nepodarilo se nacist jizdy: ' + reason);
+                });
+
                 this.api.getStudentLessons($routeParams.id).then(function (response) {
                     _this.lessons = response.data.teorie;
                 }, function (reason) {
@@ -33,8 +43,18 @@ var app;
                 });
             }
             StudentDetail.prototype.saveStudent = function (student) {
-                this.api.updateStudent(student).then(function () {
-                    alert("vytvoreno");
+                var _this = this;
+                this.api.updateStudent(student).then(function (response) {
+                    _this.student = response.data;
+                }, function (reason) {
+                    alert("Chyba: " + reason);
+                });
+            };
+
+            StudentDetail.prototype.deleteStudent = function (student) {
+                var _this = this;
+                this.api.deleteStudent(student).then(function () {
+                    _this.$location.path("/autoskola/" + _this.drivingSchool.autoskola_id + "/kurzy/" + _this.courseId);
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
