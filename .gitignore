@@ -4,6 +4,7 @@ dist
 .sass-cache
 .idea
 app/components
+!app/components/angular
 npm-debug.log
 
 
