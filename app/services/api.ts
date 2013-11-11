@@ -14,6 +14,10 @@ module app.service {
       return this.$http.get(this.url + "/autoskoly/" + drivingSchoolId);
     }
 
+    public getDrivingSchools() {
+      return this.$http.get(this.url + "/autoskoly");
+    }
+
     public getTeachers(drivingSchoolId) {
       return this.$http.get(this.url + "/ucitele?autoskola_id=" + drivingSchoolId);
     }

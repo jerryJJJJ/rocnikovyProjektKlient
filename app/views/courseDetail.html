@@ -67,7 +67,7 @@
                     <td></td>
                     <td class="right">
                         <button ng-click="courseDetailCtrl.saveCourse(courseDetailCtrl.course)"
-                                ng-if="!courseDetailCtrl.isNew" class="btn btn-primary" ng-disabled="!courseForm.$valid">
+                                ng-if="!courseDetailCtrl.isNew" class="btn btn-primary" ng-disabled="courseForm.$dirty && !courseForm.$valid">
                             <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny
                         </button>
                         <button ng-click="courseDetailCtrl.saveCourse(courseDetailCtrl.course)"

@@ -3,11 +3,11 @@ var app;
 (function (app) {
     (function (controller) {
         var ListDrivingSchools = (function () {
-            function ListDrivingSchools($http) {
+            function ListDrivingSchools($http, api) {
                 var _this = this;
                 this.$http = $http;
-                //TODO reqest do Api service
-                $http.get("/autoskoly").then(function (response) {
+                this.api = api;
+                this.api.getDrivingSchools().then(function (response) {
                     _this.listSchools = response.data.autoskoly;
                 }, function (reason) {
                     alert('Chyba: ' + reason);

@@ -74,7 +74,7 @@
                     <td></td>
                     <td>
                         <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
-                                ng-if="!vehicleDetailCtrl.isNew" class="btn btn-primary" ng-disabled="!vehicleForm.$dirty && !vehicleForm.$valid">
+                                ng-if="!vehicleDetailCtrl.isNew" class="btn btn-primary" ng-disabled="vehicleForm.$dirty && !vehicleForm.$valid">
                             <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
                         <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
                                 ng-if="vehicleDetailCtrl.isNew" class="btn btn-primary" ng-disabled="!vehicleForm.$valid">

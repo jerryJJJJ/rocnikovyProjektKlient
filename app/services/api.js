@@ -10,6 +10,10 @@ var app;
                 return this.$http.get(this.url + "/autoskoly/" + drivingSchoolId);
             };
 
+            Api.prototype.getDrivingSchools = function () {
+                return this.$http.get(this.url + "/autoskoly");
+            };
+
             Api.prototype.getTeachers = function (drivingSchoolId) {
                 return this.$http.get(this.url + "/ucitele?autoskola_id=" + drivingSchoolId);
             };

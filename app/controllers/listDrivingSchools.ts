@@ -6,15 +6,13 @@ module app.controller {
 
     public listSchools;
 
-    constructor(private $http:ng.IHttpService) {
-      //TODO reqest do Api service
-      $http.get("/autoskoly").then((response:ng.IHttpPromiseCallbackArg) => {
+    constructor(private $http:ng.IHttpService, private api:app.service.Api) {
+      this.api.getDrivingSchools().then((response) => {
         this.listSchools = response.data.autoskoly;
       }, (reason) => {
         alert('Chyba: ' + reason);
       });
     }
-
   }
 
 }
