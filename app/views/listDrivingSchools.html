@@ -1,25 +1,33 @@
-<div id="header">
-    <div class="container">
-        <h1>{{drivingSchoolCtrl.drivingSchool.nazev}}</h1>
-        <div id="logoutMainPage">
-            <a href="">Nastavení  |</a>
-            <a href="">Odhlásit</a>
+<div>
+    <div id="header">
+        <div class="container">
+            <h1>Seznam autoškol</h1>
+            <div id="logoutMainPage">
+                <a href="">Nastavení  |</a>
+                <a href="">Odhlásit</a>
+            </div>
+            <h3 class="fixedHeight120">IS Autoškola</h3>
         </div>
-
-        <h1 class="fixedHeight">Seznam autoškol</h1>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>id autoškoly</th>
+                <th>název</th>
+                <th>město</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="school in listDrivingSchoolsCtrl.listSchools">
+                <td>
+                    <a href="#/autoskola/{{school.autoskola_id}}}}">{{school['autoskola_id']}}</a>
+                </td>
+                <td>{{school.nazev}}</td>
+                <td>{{school['adresa_mesto']}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<div class="container">
-    <table class="table">
-        <tr>
-            <th>id autoškoly</th>
-            <th>název</th>
-            <th>město</th>
-        </tr>
-        <tr ng-repeat="school in listDrivingSchoolsCtrl.listSchools">
-            <td>{{school.autoskola_id}}</td>
-            <td>{{school.nazev}}</td>
-            <td>{{school.adresa_mesto}}</td>
-        </tr>
-    </table>
-</div>
+
