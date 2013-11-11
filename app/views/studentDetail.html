@@ -14,26 +14,29 @@
                 Zpět na vozidla  |</a>
             <a href="">Odhlásit</a>
         </div>
-        <table class="detail-table">
-            <tr>
-                <td>jméno</td>
-                <td><input type="text" ng-model="studentDetailCtrl.student.jmeno" class="form-control"/></td>
-            </tr>
-            <tr>
-                <td>příjmení</td>
-                <td><input type="text" ng-model="studentDetailCtrl.student.prijmeni" class="form-control"/></td>
-            </tr>
-            <tr>
-                <td>matriční číslo</td>
-                <td><input type="text" ng-model="studentDetailCtrl.student.matricni_cislo" class="form-control"/></td>
-            </tr>
-            <tr>
-                <td colspan="2" class="right">
-                    <button ng-click="studentDetailCtrl.saveStudent(studentDetailCtrl.student)" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
-                </td>
-            </tr>
-        </table>
+        <form name="studentForm">
+            <table class="detail-table">
+                <tr>
+                    <td>jméno</td>
+                    <td><input type="text" ng-model="studentDetailCtrl.student.jmeno" class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <td>příjmení</td>
+                    <td><input type="text" ng-model="studentDetailCtrl.student.prijmeni" class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <td>matriční číslo</td>
+                    <td><input type="text" ng-model="studentDetailCtrl.student.matricni_cislo" class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="right">
+                        <button ng-click="studentDetailCtrl.saveStudent(studentDetailCtrl.student)"
+                                class="btn btn-primary" ng-disabled="!studentForm.$valid">
+                            <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 </div>
 

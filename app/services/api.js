@@ -98,8 +98,8 @@ var app;
                 return this.$http.delete(this.url + "/jizdy/" + ride.jizda_id);
             };
 
-            Api.prototype.deleteDocument = function (document) {
-                return this.$http.delete(this.url + "/dokumenty/" + document.dokument_id);
+            Api.prototype.deleteVehicleDocument = function (document) {
+                return this.$http.delete(this.url + "/dokumenty-vozidla/" + document.stk_id);
             };
 
             Api.prototype.deleteCourse = function (course) {

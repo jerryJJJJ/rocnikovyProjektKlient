@@ -40,13 +40,21 @@ module app.controller {
       });
     }
 
-    deleteVehicle(vehicle) {
-      this.api.deleteVehicle(vehicle).then((response:ng.IHttpPromiseCallbackArg) => {
-        this.$location.path("/autoskola/" + this.drivingSchool.id + "/vozidla");
+    public deleteVehicle(vehicle) {
+      this.api.deleteVehicle(vehicle).then(() => {
+        this.vehicles.remove(vehicle);
       }, (reason) => {
         alert('Chyba: ' + reason);
       });
     }
+
+    public deleteCourse(course) {
+      alert("smazat kurz");
+      this.api.deleteCourse(course).then(() => {
+        this.courses.remove(course);
+      }, (reason) => {
+        alert('Chyba: ' + reason);
+      });
   }
 }
 

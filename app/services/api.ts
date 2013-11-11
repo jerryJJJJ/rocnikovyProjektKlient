@@ -102,8 +102,8 @@ module app.service {
       return this.$http.delete(this.url + "/jizdy/" + ride.jizda_id);
     }
 
-    public deleteDocument(document) {
-      return this.$http.delete(this.url + "/dokumenty/" + document.dokument_id);
+    public deleteVehicleDocument(document) {
+      return this.$http.delete(this.url + "/dokumenty-vozidla/" + document.stk_id);
     }
 
     public deleteCourse(course) {

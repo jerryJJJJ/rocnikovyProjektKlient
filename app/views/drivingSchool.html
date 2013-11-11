@@ -7,16 +7,26 @@
         </div>
         <table class="detail-table">
             <tr>
-                <td>počet učitelů</td>
-                <td class="wider">{{drivingSchoolCtrl.teachers.length}}</td>
+                <td class="bold">město</td>
+                <td>{{drivingSchoolCtrl.drivingSchool['adresa_mesto']}}</td>
+                <td class="bold">počet učitelů</td>
+                <td>{{drivingSchoolCtrl.teachers.length}}</td>
             </tr>
             <tr>
-                <td>počet vozidel</td>
-                <td class="wider">{{drivingSchoolCtrl.vehicles.length}}</td>
+                <td class="bold">ulice</td>
+                <td>{{drivingSchoolCtrl.drivingSchool['adresa_ulice']}}</td>
+                <td class="bold">počet vozidel</td>
+                <td>{{drivingSchoolCtrl.vehicles.length}}</td>
             </tr>
             <tr>
-                <td>počet akt. kurzů</td>
-                <td class="wider">{{drivingSchoolCtrl.courses.length}}</td>
+                <td class="bold">číslo pop.</td>
+                <td>{{drivingSchoolCtrl.drivingSchool['adresa_cp']}}</td>
+                <td class="bold">počet akt. kurzů</td>
+                <td>{{drivingSchoolCtrl.courses.length}}</td>
+            </tr>
+            <tr>
+                <td class="bold">psč</td>
+                <td>{{drivingSchoolCtrl.drivingSchool['adresa_psc']}}</td>
             </tr>
         </table>
         <ul class="nav nav-tabs">
@@ -28,31 +38,34 @@
 </div>
 
 <div class="container">
-    <h3 ng-if="drivingSchoolCtrl.listType == 'vozidla'">seznam vozidel</h3>
+    <h3 ng-if="drivingSchoolCtrl.listType == 'vozidla'">Seznam vozidel</h3>
     <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla/nove"
        ng-if="drivingSchoolCtrl.listType == 'vozidla'">Pridat vozidlo</a>
     <table class="table" ng-if="drivingSchoolCtrl.listType == 'vozidla'">
         <tr>
-            <th>znacka</th>
+            <th>značka</th>
             <th>model</th>
             <th>vin</th>
             <th></th>
         </tr>
         <tr ng-repeat="vehicle in drivingSchoolCtrl.vehicles">
-            <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchoolautoskola_id}}/vozidla/{{vehicle.vozidlo_id}}">{{vehicle.znacka}}</a></td>
+            <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla/{{vehicle.vozidlo_id}}">{{vehicle.znacka}}</a></td>
             <td>{{vehicle.model}}</td>
             <td>{{vehicle.vin}}</td>
-            <td><button ng-click="drivingSchoolCtrl.deleteVehicle(vehicle)">Odstranit</button></td>
+            <td class="right">
+                <button ng-click="drivingSchoolCtrl.deleteVehicle(vehicle)" class="btn btn-danger btn-xs">
+                    <span class="glyphicon glyphicon-remove"></span></button>
+            </td>
         </tr>
     </table>
 
-    <h3 ng-if="drivingSchoolCtrl.listType == 'ucitele'">seznam ucitelu</h3>
+    <h3 ng-if="drivingSchoolCtrl.listType == 'ucitele'">Seznam učitelů</h3>
     <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele/nove"
        ng-if="drivingSchoolCtrl.listType == 'ucitele'">Pridat ucitele</a>
     <table class="table" ng-if="drivingSchoolCtrl.listType == 'ucitele'">
         <tr>
-            <th>jmeno</th>
-            <th>prijmeni</th>
+            <th>jméno</th>
+            <th>příjmení</th>
         </tr>
         <tr ng-repeat="teacher in drivingSchoolCtrl.teachers">
             <td>{{teacher.jmeno}}</td>
@@ -60,19 +73,23 @@
         </tr>
     </table>
 
-    <h3 ng-if="drivingSchoolCtrl.listType == 'kurzy'">kurzy</h3>
+    <h3 ng-if="drivingSchoolCtrl.listType == 'kurzy'">Seznam kurzů</h3>
     <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/nove"
        ng-if="drivingSchoolCtrl.listType == 'kurzy'">Pridat kurz</a>
     <table class="table" ng-if="drivingSchoolCtrl.listType == 'kurzy'">
         <tr>
             <th>id</th>
             <th>datum otevření</th>
-            <th>stav</th>
+            <th colspan="2">stav</th>
         </tr>
         <tr ng-repeat="course in drivingSchoolCtrl.courses">
             <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/{{course.kurz_id}}">{{course['identifikacni_cislo']}}</a></td>
             <td>{{course['datum_od']}}</td>
             <td>{{course.stav}}</td>
+            <td class="right">
+                <button ng-click="$parent.$parent.drivingSchoolCtrl.deleteCourse(course)" class="btn btn-danger btn-xs">
+                <span class="glyphicon glyphicon-remove"></span></button>
+            </td>
         </tr>
     </table>
 </div>

@@ -33,6 +33,18 @@ var app;
                     }, function (reason) {
                         alert('Nepodarilo se nacist dokumenty: ' + reason);
                     });
+
+                    this.api.getStudents($routeParams.id).then(function (response) {
+                        _this.students = new app.lib.IndexedArray('student_id', response.data.studenti);
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist studenty: ' + reason);
+                    });
+
+                    this.api.getTeachers($routeParams.autoskolaId).then(function (response) {
+                        _this.teachers = new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist ucitele: ' + reason);
+                    });
                 } else {
                     this.isNew = true;
                     this.vehicle = {
@@ -70,8 +82,9 @@ var app;
             };
 
             VehicleDetail.prototype.createRide = function (ride) {
-                this.api.createRide(ride).then(function () {
-                    alert("vytvoreno");
+                var _this = this;
+                this.api.createRide(ride).then(function (response) {
+                    _this.rides.push(response.data);
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
@@ -80,20 +93,26 @@ var app;
             VehicleDetail.prototype.deleteVehicle = function (vehicle) {
                 var _this = this;
                 this.api.deleteVehicle(vehicle).then(function () {
-                    _this.$location.path("/autoskola/" + _this.drivingSchool.id + "/vozidla");
+                    _this.$location.path("/autoskola/" + _this.drivingSchool.autoskola_id + "/vozidla");
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };
 
             VehicleDetail.prototype.deleteRide = function (ride) {
-                this.api.deleteRide(ride).then(angular.noop, function (reason) {
+                var _this = this;
+                this.api.deleteRide(ride).then(function () {
+                    _this.rides.remove(ride);
+                }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };
 
             VehicleDetail.prototype.deleteDocument = function (document) {
-                this.api.deleteDocument(document).then(angular.noop, function (reason) {
+                var _this = this;
+                this.api.deleteVehicleDocument(document).then(function () {
+                    _this.documents.remove(document);
+                }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
             };

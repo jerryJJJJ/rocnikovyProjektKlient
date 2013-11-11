@@ -26,64 +26,65 @@
                 </tr>
             </table>
         </div>
-        <table class="detail-table">
-            <tr>
-                <td>typ</td>
-                <td ng-if="!courseDetailCtrl.isNew">{{courseDetailCtrl.course['typ']}}</td>
-                <td ng-if="courseDetailCtrl.isNew">
-                    <select name="selectGroup" class="form-control" ng-model="courseDetailCtrl.course['typ']">
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>T</option>
-                    </select>
-                </td>
-                <td>stav</td>
-                <td>
-                    <select name="selectState" class="form-control" ng-model="courseDetailCtrl.course['stav']">
-                        <option value="neotevreny">neotevřený</option>
-                        <option value="probihajici">probíhající</option>
-                        <option value="jde_ke_zkousce">jde ke zkoušce</option>
-                        <option value="ukonceny">ukončený</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>id</td>
-                <td>{{courseDetailCtrl.course['identifikacni_cislo']}}</td>
-                <td>od</td>
-                <td><input type="date" ng-model="courseDetailCtrl.course['datum_od']" class="form-control"/></td>
-            </tr>
-            <tr>
-                <td>počet studentů</td>
-                <td>{{courseDetailCtrl.students.length}}</td>
-                <td>do</td>
-                <td><input type="date" ng-model="courseDetailCtrl.course['datum_do']" class="form-control"/></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="right">
-                    <button ng-click="courseDetailCtrl.saveCourse(courseDetailCtrl.course)"
-                            ng-if="!courseDetailCtrl.isNew" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny
-                    </button>
-                    <button ng-click="courseDetailCtrl.saveCourse(courseDetailCtrl.course)"
-                            ng-if="courseDetailCtrl.isNew" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-floppy-save"></span> Vytvořit
-                    </button>
-                </td>
-            </tr>
-        </table>
+        <form novalidate class="css-form" name="courseForm">
+            <table class="detail-table">
+                <tr>
+                    <td class="bold">počet studentů</td>
+                    <td>{{courseDetailCtrl.students.length}}</td>
+                    <td class="bold right">stav</td>
+                    <td>
+                        <select name="selectState" class="form-control" ng-model="courseDetailCtrl.course['stav']" required>
+                            <option value="neotevreny">neotevřený</option>
+                            <option value="probihajici">probíhající</option>
+                            <option value="jde_ke_zkousce">jde ke zkoušce</option>
+                            <option value="ukonceny">ukončený</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bold right">typ kurzu</td>
+                    <td>
+                        <select name="selectGroup" class="form-control" ng-disabled="!courseDetailCtrl.isNew" ng-model="courseDetailCtrl.course['typ']" required>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                            <option>T</option>
+                        </select>
+                    </td>
+                    <td class="bold">od</td>
+                    <td><input type="date" ng-model="courseDetailCtrl.course['datum_od']" class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <td class="bold right">id kurzu</td>
+                    <td>{{courseDetailCtrl.course['identifikacni_cislo']}}</td>
+                    <td class="bold">do</td>
+                    <td><input type="date" ng-model="courseDetailCtrl.course['datum_do']" class="form-control" required/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="right">
+                        <button ng-click="courseDetailCtrl.saveCourse(courseDetailCtrl.course)"
+                                ng-if="!courseDetailCtrl.isNew" class="btn btn-primary" ng-disabled="!courseForm.$valid">
+                            <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny
+                        </button>
+                        <button ng-click="courseDetailCtrl.saveCourse(courseDetailCtrl.course)"
+                                ng-if="courseDetailCtrl.isNew" class="btn btn-primary" ng-disabled="!courseForm.$valid">
+                            <span class="glyphicon glyphicon-floppy-save"></span> Vytvořit
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 </div>
 
 <div ng-if="!courseDetailCtrl.isNew" class="container">
     <h3>Hodiny teorie</h3>
 
-    <form novalidate class="css-form">
+    <form novalidate class="css-form" name="lessonForm">
         <table class="table">
             <tr>
                 <th>datum</th>
@@ -106,23 +107,23 @@
             </tr>
             <tr>
                 <td>
-                    <input type="date" ng-model="courseDetailCtrl.newLesson['datum']" class="form-control">
+                    <input type="date" ng-model="courseDetailCtrl.newLesson['datum']" class="form-control" required>
                 </td>
                 <td>
-                    <input type="time" ng-model="courseDetailCtrl.newLesson['cas_od']" class="form-control">
+                    <input type="time" ng-model="courseDetailCtrl.newLesson['cas_od']" class="form-control" required>
                 </td>
                 <td>
-                    <input type="time" ng-model="courseDetailCtrl.newLesson['cas_do']" class="form-control">
+                    <input type="time" ng-model="courseDetailCtrl.newLesson['cas_do']" class="form-control" required>
                 </td>
                 <td>
-                    <select name="selectTeachers" class="form-control" ng-model="courseDetailCtrl.newLesson.ucitel_id">
+                    <select name="selectTeachers" class="form-control" ng-model="courseDetailCtrl.newLesson.ucitel_id" required>
                         <option ng-repeat="teacher in courseDetailCtrl.teachers" ng-value="teacher.ucitel_id">
                             {{teacher.prijmeni}}
                         </option>
                     </select>
                 </td>
                 <td colspan="2">
-                    <select name="selectStudents" class="form-control" ng-model="courseDetailCtrl.newLesson['typ']">
+                    <select name="selectStudents" class="form-control" ng-model="courseDetailCtrl.newLesson['typ']" required>
                         <option>teorie</option>
                         <option>zdravověda</option>
                     </select>
@@ -131,7 +132,7 @@
             <tr>
                 <td colspan="6" class="right">
                     <button ng-click="courseDetailCtrl.createLesson(courseDetailCtrl.newLesson)"
-                            class="btn btn-primary">
+                            class="btn btn-primary" ng-disabled="!lessonForm.$valid">
                         <span class="glyphicon glyphicon-floppy-save"></span> Uložit hodinu
                     </button>
                 </td>
@@ -141,7 +142,7 @@
 
     <h3>Seznam studentů</h3>
 
-    <form novalidate class="css-form" name="zakForm">
+    <form novalidate class="css-form" name="studentForm">
         <table class="table">
             <thead>
                 <tr>
@@ -168,7 +169,7 @@
                                placeholder="příjmení" required></td>
                     <td><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['jmeno']"
                                placeholder="jméno" required name="jmeno"></td>
-                    <td colspan="2" ng-class="{'has-error': zakForm.matricniCislo.$invalid && zakForm.matricniCislo.$dirty}">
+                    <td colspan="2" ng-class="{'has-error': studentForm.matricniCislo.$invalid && studentForm.matricniCislo.$dirty}">
                         <input type="text" class="form-control" ng-pattern="/^[0-9 -]*$/" name="matricniCislo"
                                            ng-model="courseDetailCtrl.newStudent['matricni_cislo']"
                                            placeholder="matriční číslo" required>
@@ -177,7 +178,7 @@
                 <tr>
                     <td colspan="8" class="right">
                         <button ng-click="courseDetailCtrl.createStudent(courseDetailCtrl.newStudent)"
-                                class="btn btn-primary" ng-disabled="!zakForm.$valid">
+                                class="btn btn-primary" ng-disabled="!studentForm.$valid">
                             <span class="glyphicon glyphicon-floppy-save"></span> Uložit studenta
                         </button>
                     </td>

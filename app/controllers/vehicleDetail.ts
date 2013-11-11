@@ -5,6 +5,8 @@ module app.controller {
     public drivingSchool;
     public vehicle;
     public rides;
+    public students;
+    public teachers;
     public documents;
     public newRide;
     public isNew;
@@ -36,6 +38,18 @@ module app.controller {
           this.documents = new app.lib.IndexedArray('stk_id', response.data.dokumenty);
         }, (reason) => {
           alert('Nepodarilo se nacist dokumenty: ' + reason);
+        });
+
+        this.api.getStudents($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
+          this.students = new app.lib.IndexedArray('student_id', response.data.studenti);
+        }, (reason) => {
+          alert('Nepodarilo se nacist studenty: ' + reason);
+        });
+
+        this.api.getTeachers($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
+          this.teachers =  new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
+        }, (reason) => {
+          alert('Nepodarilo se nacist ucitele: ' + reason);
         });
 
       } else {
@@ -75,21 +89,33 @@ module app.controller {
     }
 
     public createRide(ride) {
-      this.api.createRide(ride).then(() => {alert("vytvoreno");}, (reason) => { alert('Chyba: ' + reason); });
+      this.api.createRide(ride).then((response) => {
+        this.rides.push(response.data);
+      }, (reason) => {
+        alert('Chyba: ' + reason);
+      });
     }
 
     public deleteVehicle(vehicle) {
       this.api.deleteVehicle(vehicle).then(() => {
-        this.$location.path("/autoskola/" + this.drivingSchool.id + "/vozidla");
+        this.$location.path("/autoskola/" + this.drivingSchool.autoskola_id + "/vozidla");
       }, (reason) => { alert('Chyba: ' + reason); });
     }
 
     public deleteRide(ride) {
-      this.api.deleteRide(ride).then(angular.noop, (reason) => { alert('Chyba: ' + reason); });
+      this.api.deleteRide(ride).then(() => {
+        this.rides.remove(ride);
+      }, (reason) => {
+        alert('Chyba: ' + reason);
+      });
     }
 
     public deleteDocument(document) {
-      this.api.deleteDocument(document).then(angular.noop, (reason) => { alert('Chyba: ' + reason); });
+      this.api.deleteVehicleDocument(document).then(() => {
+        this.documents.remove(document);
+      }, (reason) => {
+        alert('Chyba: ' + reason);
+      });
     }
   }
 
