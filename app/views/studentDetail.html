@@ -31,7 +31,7 @@
                 <tr>
                     <td colspan="2" class="right">
                         <button ng-click="studentDetailCtrl.saveStudent(studentDetailCtrl.student)"
-                                class="btn btn-primary" ng-disabled="!studentForm.$valid">
+                                class="btn btn-primary" ng-disabled="!studentForm.$dirty || !studentForm.$valid">
                             <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
                     </td>
                 </tr>

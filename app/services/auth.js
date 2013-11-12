@@ -6,8 +6,22 @@ var app;
             function Auth($rootScope, $cookieStore) {
                 this.$rootScope = $rootScope;
                 this.$cookieStore = $cookieStore;
+                this.user = {
+                    name: "user1",
+                    role: "jednatel"
+                };
                 $rootScope.auth = this;
             }
+            Auth.prototype.login = function (role) {
+                this.user = {
+                    name: "user1",
+                    role: role
+                };
+            };
+
+            Auth.prototype.logout = function () {
+                this.user = null;
+            };
             return Auth;
         })();
         service.Auth = Auth;

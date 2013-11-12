@@ -43,7 +43,7 @@
     <div class="container">
         <h3 ng-if="drivingSchoolCtrl.listType == 'vozidla'">Seznam vozidel</h3>
         <button id="createObject" ng-click="$parent.drivingSchoolCtrl.createVehicle()" class="btn btn-primary"
-                ng-if="drivingSchoolCtrl.listType == 'vozidla'">
+                ng-if="drivingSchoolCtrl.listType == 'vozidla' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat vozidlo
         </button>
         <table class="table" ng-if="drivingSchoolCtrl.listType == 'vozidla'">
@@ -65,8 +65,10 @@
         </table>
 
         <h3 ng-if="drivingSchoolCtrl.listType == 'ucitele'">Seznam učitelů</h3>
-        <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele/nove"
-           ng-if="drivingSchoolCtrl.listType == 'ucitele'">Pridat ucitele</a>
+        <button id="createObject" ng-click="$parent.drivingSchoolCtrl.createTeacher()" class="btn btn-primary"
+                ng-if="drivingSchoolCtrl.listType == 'ucitele'">
+            <span class="glyphicon glyphicon-floppy-save"></span> Přidat učitele
+        </button>
         <table class="table" ng-if="drivingSchoolCtrl.listType == 'ucitele'">
             <tr>
                 <th>jméno</th>
@@ -79,8 +81,10 @@
         </table>
 
         <h3 ng-if="drivingSchoolCtrl.listType == 'kurzy'">Seznam kurzů</h3>
-        <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/nove"
-           ng-if="drivingSchoolCtrl.listType == 'kurzy'">Pridat kurz</a>
+        <button id="createObject" ng-click="$parent.drivingSchoolCtrl.createCourse()" class="btn btn-primary"
+                ng-if="drivingSchoolCtrl.listType == 'kurzy'">
+            <span class="glyphicon glyphicon-floppy-save"></span> Přidat kurz
+        </button>
         <table class="table" ng-if="drivingSchoolCtrl.listType == 'kurzy'">
             <tr>
                 <th>id</th>

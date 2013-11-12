@@ -58,6 +58,14 @@ module app.controller {
       this.$location.path( "/autoskola/" + this.drivingSchool.autoskola_id + "/vozidla/nove" );
     }
 
+    public createTeacher() {
+      this.$location.path( "/autoskola/" + this.drivingSchool.autoskola_id + "/ucitele/nove" );
+    }
+
+    public createCourse() {
+      this.$location.path( "/autoskola/" + this.drivingSchool.autoskola_id + "/kurzy/nove" );
+    }
+
     public deleteCourse(course) {
       this.api.deleteCourse(course).then(() => {
         this.courses.remove(course);

@@ -53,7 +53,8 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
   $routeProvider.when('/autoskola/:autoskolaId/vozidla/nove', {
     templateUrl:  'views/vehicleDetail.html',
     controller:   'app.controller.VehicleDetail',
-    controllerAs: "vehicleDetailCtrl"
+    controllerAs: "vehicleDetailCtrl",
+    resolve: app.controller.VehicleDetail.resolve
   });
   $routeProvider.when('/autoskola/:autoskolaId/vozidla/:id', {
     templateUrl:  'views/vehicleDetail.html',
@@ -64,7 +65,8 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
   $routeProvider.when('/autoskola/:autoskolaId/kurzy/nove', {
     templateUrl:  'views/courseDetail.html',
     controller:   'app.controller.CourseDetail',
-    controllerAs: "courseDetailCtrl"
+    controllerAs: "courseDetailCtrl",
+    resolve: app.controller.CourseDetail.resolve
   });
   $routeProvider.when('/autoskola/:autoskolaId/kurzy/:id', {
     templateUrl:  'views/courseDetail.html',
@@ -89,7 +91,7 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
 });
 
 
-angular.module('app').run(($httpBackend:ng.IHttpBackendService) => {
+angular.module('app').run(($httpBackend:ng.IHttpBackendService, auth) => {
   /*
   apiary.forEach(function (section) {
     var resources = section.resources;

@@ -21,7 +21,8 @@
             <table class="table">
                 <tr>
                     <td>
-                        <a ng-if="!courseDetailCtrl.isNew" href="">Přihláška do kurzu (.pdf)</a>
+                        <a ng-if="!courseDetailCtrl.isNew"
+                           href="{{serverUrl}}/kurzy-prihlaska-pdf?kurz_id={{courseDetailCtrl.course.kurz_id}}">Přihláška do kurzu (.pdf)</a>
                     </td>
                 </tr>
             </table>

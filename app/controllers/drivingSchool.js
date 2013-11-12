@@ -30,6 +30,14 @@ var app;
                 this.$location.path("/autoskola/" + this.drivingSchool.autoskola_id + "/vozidla/nove");
             };
 
+            DrivingSchool.prototype.createTeacher = function () {
+                this.$location.path("/autoskola/" + this.drivingSchool.autoskola_id + "/ucitele/nove");
+            };
+
+            DrivingSchool.prototype.createCourse = function () {
+                this.$location.path("/autoskola/" + this.drivingSchool.autoskola_id + "/kurzy/nove");
+            };
+
             DrivingSchool.prototype.deleteCourse = function (course) {
                 var _this = this;
                 this.api.deleteCourse(course).then(function () {
