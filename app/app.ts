@@ -15,7 +15,8 @@ angular.module('app', [
   'ngCookies',
   'app.filter',
   'app.service',
-  'ngUpload'
+  'ngUpload',
+  'upload.button'
 ]);
 
 

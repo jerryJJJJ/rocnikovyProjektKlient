@@ -11,7 +11,8 @@ angular.module('app', [
     'ngCookies',
     'app.filter',
     'app.service',
-    'ngUpload'
+    'ngUpload',
+    'upload.button'
 ]);
 
 angular.module('app').config(function ($routeProvider, $httpProvider) {
