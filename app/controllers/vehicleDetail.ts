@@ -1,57 +1,49 @@
+
 module app.controller {
 
   export class VehicleDetail {
 
-    public drivingSchool;
-    public vehicle;
-    public rides;
-    public students;
-    public teachers;
-    public documents;
     public newRide;
     public isNew;
 
-    constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api,
-                private auth, private $location:ng.ILocationService) {
+    public static resolve : any = {
+      'drivingSchool': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getDrivingSchool($route.current.params.id).then((response) => response.data);
+      },
+      'vehicle': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getVehicle($route.current.params.id).then((response) => {
+          return response.data;
+        });
+      },
+      'students': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getStudents($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('student_id', response.data['studenti']);
+        });
+      },
+      'teachers': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getTeachers($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
+        });
+      },
+      'rides': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getRides($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
+        });
+      },
+      'documents': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getVehicleDocuments($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('stk_id', response.data['dokumenty']);
+        });
+      }
+    };
 
-      this.api.getDrivingSchool($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
-        this.drivingSchool = response.data;
-      }, (reason) => {
-        alert('Nepodarilo se nacist autoskolu: ' + reason);
-      });
+    constructor(private $http:ng.IHttpService, $routeParams:RouteParamsVehicleDetail,
+                private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
+                public vehicle:Object, public students:app.lib.IndexedArray,  public teachers:app.lib.IndexedArray,
+                public rides:app.lib.IndexedArray, public documents:app.lib.IndexedArray) {
 
       if($routeParams.id) {
         this.isNew = false;
-        this.api.getVehicle($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.vehicle = response.data;
-        }, (reason) => {
-          alert('Nepodarilo se nacist vozidlo: ' + reason);
-        });
-
-        this.api.getRides($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.rides = new app.lib.IndexedArray('jizda_id', response.data.jizdy);
-        }, (reason) => {
-          alert('Nepodarilo se nacist jizdy: ' + reason);
-        });
-
-        this.api.getVehicleDocuments($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.documents = new app.lib.IndexedArray('stk_id', response.data.dokumenty);
-        }, (reason) => {
-          alert('Nepodarilo se nacist dokumenty: ' + reason);
-        });
-
-        this.api.getStudents($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.students = new app.lib.IndexedArray('student_id', response.data.studenti);
-        }, (reason) => {
-          alert('Nepodarilo se nacist studenty: ' + reason);
-        });
-
-        this.api.getTeachers($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.teachers =  new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
-        }, (reason) => {
-          alert('Nepodarilo se nacist ucitele: ' + reason);
-        });
-
       } else {
         this.isNew = true;
         this.vehicle = {
@@ -60,6 +52,7 @@ module app.controller {
           "pocet-km": 0
         };
       }
+
       var nowDate = new Date();
       var month = (nowDate.getMonth() + 1 < 10 ? '0' : '') + (nowDate.getMonth() + 1);
       var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();

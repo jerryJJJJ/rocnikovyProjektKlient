@@ -2,46 +2,44 @@ module app.controller {
 
   export class CourseDetail {
 
-    public course;
-    public drivingSchool;
-    public lessons;
-    public students;
-    public teachers;
     public newLesson;
     public newStudent={};
     public isNew;
 
+    public static resolve : any = {
+      'drivingSchool': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getDrivingSchool($route.current.params.id).then((response) => response.data);
+      },
+      'course': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getCourse($route.current.params.id).then((response) => {
+          return response.data;
+        });
+      },
+      'students': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getStudents($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('student_id', response.data['studenti']);
+        });
+      },
+      'teachers': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getTeachers($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
+        });
+      },
+      'lessons': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getLessons($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
+        });
+      }
+    };
 
-    constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api,
-                private auth, private $location:ng.ILocationService) {
+    constructor(private $http:ng.IHttpService, $routeParams:RouteParamsCourseDetail,
+                private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
+                public course:Object, public students:app.lib.IndexedArray,  public teachers:app.lib.IndexedArray,
+                public lessons:app.lib.IndexedArray) {
 
       if($routeParams.id) {
         this.isNew = false;
-        this.api.getCourse($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.course = response.data;
-          this.setUpNewLesson();
-        }, (reason) => {
-          alert('Nepodarilo se nacist kurz: ' + reason);
-        });
-
-        this.api.getLessons($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.lessons = new app.lib.IndexedArray('teorie_id', response.data.teorie);
-        }, (reason) => {
-          alert('Nepodarilo se nacist hodiny teorie: ' + reason);
-        });
-
-        this.api.getStudents($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.students = new app.lib.IndexedArray('student_id', response.data.studenti);
-        }, (reason) => {
-          alert('Nepodarilo se nacist studenty: ' + reason);
-        });
-
-        this.api.getTeachers($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.teachers =  new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
-        }, (reason) => {
-          alert('Nepodarilo se nacist ucitele: ' + reason);
-        });
-
+        this.setUpNewLesson();
       } else {
         this.isNew = true;
         var nowDate = new Date();

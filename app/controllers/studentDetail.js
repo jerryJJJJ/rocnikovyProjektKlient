@@ -2,45 +2,17 @@ var app;
 (function (app) {
     (function (controller) {
         var StudentDetail = (function () {
-            function StudentDetail($scope, $http, $routeParams, api, auth, $location) {
-                var _this = this;
-                this.$scope = $scope;
+            function StudentDetail($http, $routeParams, api, $location, drivingSchool, student, teachers, rides, lessons) {
                 this.$http = $http;
-                this.$routeParams = $routeParams;
                 this.api = api;
-                this.auth = auth;
                 this.$location = $location;
+                this.drivingSchool = drivingSchool;
+                this.student = student;
+                this.teachers = teachers;
+                this.rides = rides;
+                this.lessons = lessons;
                 this.courseId = this.$routeParams.kurzId;
                 this.vehicleId = this.$routeParams.vozidloId;
-                this.api.getDrivingSchool($routeParams.autoskolaId).then(function (response) {
-                    _this.drivingSchool = response.data;
-                }, function (reason) {
-                    alert('Nepodarilo se nacist autoskolu: ' + reason);
-                });
-
-                this.api.getStudent($routeParams.id).then(function (response) {
-                    _this.student = response.data;
-                }, function (reason) {
-                    alert('Nepodarilo se nacist studenta: ' + reason);
-                });
-
-                this.api.getStudentRides($routeParams.id).then(function (response) {
-                    _this.rides = response.data.jizdy;
-                }, function (reason) {
-                    alert('Nepodarilo se nacist jizdy: ' + reason);
-                });
-
-                this.api.getTeachers($routeParams.autoskolaId).then(function (response) {
-                    _this.teachers = new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
-                }, function (reason) {
-                    alert('Nepodarilo se nacist jizdy: ' + reason);
-                });
-
-                this.api.getStudentLessons($routeParams.id).then(function (response) {
-                    _this.lessons = response.data.teorie;
-                }, function (reason) {
-                    alert('Nepodarilo se nacist lekce: ' + reason);
-                });
             }
             StudentDetail.prototype.saveStudent = function (student) {
                 var _this = this;
@@ -64,6 +36,33 @@ var app;
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
+            };
+            StudentDetail.resolve = {
+                'drivingSchool': function (api, $route) {
+                    return api.getDrivingSchool($route.current.params.id).then(function (response) {
+                        return response.data;
+                    });
+                },
+                'lessons': function (api, $route) {
+                    return api.getLessons($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
+                    });
+                },
+                'student': function (api, $route) {
+                    return api.getStudent($route.current.params.id).then(function (response) {
+                        return response.data;
+                    });
+                },
+                'teachers': function (api, $route) {
+                    return api.getTeachers($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
+                    });
+                },
+                'rides': function (api, $route) {
+                    return api.getRides($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
+                    });
+                }
             };
             return StudentDetail;
         })();

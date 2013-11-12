@@ -34,7 +34,8 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
   $routeProvider.when('/autoskoly', {
     templateUrl:  'views/listDrivingSchools.html',
     controller:   'app.controller.ListDrivingSchools',
-    controllerAs: "listDrivingSchoolsCtrl"
+    controllerAs: "listDrivingSchoolsCtrl",
+    resolve: app.controller.ListDrivingSchools.resolve
   });
   $routeProvider.when('/autoskola/:id', {
     templateUrl:  'views/drivingSchool.html',
@@ -56,7 +57,8 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
   $routeProvider.when('/autoskola/:autoskolaId/vozidla/:id', {
     templateUrl:  'views/vehicleDetail.html',
     controller:   'app.controller.VehicleDetail',
-    controllerAs: "vehicleDetailCtrl"
+    controllerAs: "vehicleDetailCtrl",
+    resolve: app.controller.VehicleDetail.resolve
   });
   $routeProvider.when('/autoskola/:autoskolaId/kurzy/nove', {
     templateUrl:  'views/courseDetail.html',
@@ -66,17 +68,20 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
   $routeProvider.when('/autoskola/:autoskolaId/kurzy/:id', {
     templateUrl:  'views/courseDetail.html',
     controller:   'app.controller.CourseDetail',
-    controllerAs: "courseDetailCtrl"
+    controllerAs: "courseDetailCtrl",
+    resolve: app.controller.CourseDetail.resolve
   });
   $routeProvider.when('/autoskola/:autoskolaId/vozidla/:vozidloId/studenti/:id', {
     templateUrl:  'views/studentDetail.html',
     controller:   'app.controller.StudentDetail',
-    controllerAs: "studentDetailCtrl"
+    controllerAs: "studentDetailCtrl",
+    resolve: app.controller.StudentDetail.resolve
   });
   $routeProvider.when('/autoskola/:autoskolaId/kurzy/:kurzId/studenti/:id', {
     templateUrl:  'views/studentDetail.html',
     controller:   'app.controller.StudentDetail',
-    controllerAs: "studentDetailCtrl"
+    controllerAs: "studentDetailCtrl",
+    resolve: app.controller.StudentDetail.resolve
   });
   $routeProvider.otherwise({ redirectTo: '/'});
 
