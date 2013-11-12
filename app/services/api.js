@@ -2,9 +2,10 @@ var app;
 (function (app) {
     (function (service) {
         var Api = (function () {
-            function Api($http) {
+            function Api($http, $rootScope) {
                 this.$http = $http;
                 this.url = "http://ronkovprojektapi.apiary.io";
+                $rootScope.serverUrl = this.url;
             }
             Api.prototype.getDrivingSchool = function (drivingSchoolId) {
                 return this.$http.get(this.url + "/autoskoly/" + drivingSchoolId);

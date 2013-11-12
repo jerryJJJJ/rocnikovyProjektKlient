@@ -117,6 +117,19 @@ module app.controller {
         alert('Chyba: ' + reason);
       });
     }
+
+    public uploadResults(content, completed) {
+      if (completed && content.length > 0) {
+        this.api.getVehicleDocuments($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
+          this.documents = new app.lib.IndexedArray('stk_id', response.data.dokumenty);
+        }, (reason) => {
+          alert('Nepodarilo se nacist dokumenty: ' + reason);
+        });
+      } else {
+        // 1. ignore content and adjust your model to show/hide UI snippets; or
+        // 2. show content as an _operation progress_ information
+      }
+    }
   }
 
 }

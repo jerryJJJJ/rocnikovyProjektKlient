@@ -6,8 +6,8 @@ module app.service {
     private url : string = "http://ronkovprojektapi.apiary.io";
 
 
-    constructor(private $http:ng.IHttpService) {
-
+    constructor(private $http:ng.IHttpService, $rootScope:ng.IRootScopeService) {
+      $rootScope.serverUrl = this.url;
     }
 
     public getDrivingSchool(drivingSchoolId) {

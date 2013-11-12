@@ -116,6 +116,20 @@ var app;
                     alert('Chyba: ' + reason);
                 });
             };
+
+            VehicleDetail.prototype.uploadResults = function (content, completed) {
+                var _this = this;
+                if (completed && content.length > 0) {
+                    this.api.getVehicleDocuments($routeParams.id).then(function (response) {
+                        _this.documents = new app.lib.IndexedArray('stk_id', response.data.dokumenty);
+                    }, function (reason) {
+                        alert('Nepodarilo se nacist dokumenty: ' + reason);
+                    });
+                } else {
+                    // 1. ignore content and adjust your model to show/hide UI snippets; or
+                    // 2. show content as an _operation progress_ information
+                }
+            };
             return VehicleDetail;
         })();
         controller.VehicleDetail = VehicleDetail;

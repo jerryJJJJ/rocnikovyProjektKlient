@@ -14,7 +14,8 @@ angular.module('app', [
   //'ngMockE2E',
   'ngCookies',
   'app.filter',
-  'app.service'
+  'app.service',
+  'ngUpload'
 ]);
 
 
@@ -22,6 +23,7 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
 
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
   //$httpProvider.defaults.headers.post['X-Content-Type'] = 'application/json';
 
   $routeProvider.when('/', {

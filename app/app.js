@@ -10,7 +10,8 @@ angular.module('app', [
     'ngRoute',
     'ngCookies',
     'app.filter',
-    'app.service'
+    'app.service',
+    'ngUpload'
 ]);
 
 angular.module('app').config(function ($routeProvider, $httpProvider) {
