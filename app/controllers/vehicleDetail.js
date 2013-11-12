@@ -2,49 +2,18 @@ var app;
 (function (app) {
     (function (controller) {
         var VehicleDetail = (function () {
-            function VehicleDetail($http, $routeParams, api, auth, $location) {
-                var _this = this;
+            function VehicleDetail($http, $routeParams, api, $location, drivingSchool, vehicle, students, teachers, rides, documents) {
                 this.$http = $http;
                 this.api = api;
-                this.auth = auth;
                 this.$location = $location;
-                this.api.getDrivingSchool($routeParams.autoskolaId).then(function (response) {
-                    _this.drivingSchool = response.data;
-                }, function (reason) {
-                    alert('Nepodarilo se nacist autoskolu: ' + reason);
-                });
-
+                this.drivingSchool = drivingSchool;
+                this.vehicle = vehicle;
+                this.students = students;
+                this.teachers = teachers;
+                this.rides = rides;
+                this.documents = documents;
                 if ($routeParams.id) {
                     this.isNew = false;
-                    this.api.getVehicle($routeParams.id).then(function (response) {
-                        _this.vehicle = response.data;
-                    }, function (reason) {
-                        alert('Nepodarilo se nacist vozidlo: ' + reason);
-                    });
-
-                    this.api.getRides($routeParams.id).then(function (response) {
-                        _this.rides = new app.lib.IndexedArray('jizda_id', response.data.jizdy);
-                    }, function (reason) {
-                        alert('Nepodarilo se nacist jizdy: ' + reason);
-                    });
-
-                    this.api.getVehicleDocuments($routeParams.id).then(function (response) {
-                        _this.documents = new app.lib.IndexedArray('stk_id', response.data.dokumenty);
-                    }, function (reason) {
-                        alert('Nepodarilo se nacist dokumenty: ' + reason);
-                    });
-
-                    this.api.getStudents($routeParams.id).then(function (response) {
-                        _this.students = new app.lib.IndexedArray('student_id', response.data.studenti);
-                    }, function (reason) {
-                        alert('Nepodarilo se nacist studenty: ' + reason);
-                    });
-
-                    this.api.getTeachers($routeParams.autoskolaId).then(function (response) {
-                        _this.teachers = new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
-                    }, function (reason) {
-                        alert('Nepodarilo se nacist ucitele: ' + reason);
-                    });
                 } else {
                     this.isNew = true;
                     this.vehicle = {
@@ -53,6 +22,7 @@ var app;
                         "pocet-km": 0
                     };
                 }
+
                 var nowDate = new Date();
                 var month = (nowDate.getMonth() + 1 < 10 ? '0' : '') + (nowDate.getMonth() + 1);
                 var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
@@ -128,6 +98,38 @@ var app;
                 } else {
                     // 1. ignore content and adjust your model to show/hide UI snippets; or
                     // 2. show content as an _operation progress_ information
+                }
+            };
+            VehicleDetail.resolve = {
+                'drivingSchool': function (api, $route) {
+                    return api.getDrivingSchool($route.current.params.id).then(function (response) {
+                        return response.data;
+                    });
+                },
+                'vehicle': function (api, $route) {
+                    return api.getVehicle($route.current.params.id).then(function (response) {
+                        return response.data;
+                    });
+                },
+                'students': function (api, $route) {
+                    return api.getStudents($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('student_id', response.data['studenti']);
+                    });
+                },
+                'teachers': function (api, $route) {
+                    return api.getTeachers($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
+                    });
+                },
+                'rides': function (api, $route) {
+                    return api.getRides($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
+                    });
+                },
+                'documents': function (api, $route) {
+                    return api.getVehicleDocuments($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('stk_id', response.data['dokumenty']);
+                    });
                 }
             };
             return VehicleDetail;

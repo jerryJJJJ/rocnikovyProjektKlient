@@ -2,45 +2,37 @@ module app.controller {
 
   export class StudentDetail {
 
-    public drivingSchool;
-    public student;
-    public lessons;
-    public rides;
     public courseId=this.$routeParams.kurzId;
     public vehicleId=this.$routeParams.vozidloId;
-    public teachers;
 
-    constructor(private $scope, private $http:ng.IHttpService, private $routeParams:ng.IRouteParamsService, private api:app.service.Api,
-                private auth, private $location:ng.ILocationService) {
-      this.api.getDrivingSchool($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
-        this.drivingSchool = response.data;
-      }, (reason) => {
-        alert('Nepodarilo se nacist autoskolu: ' + reason);
-      });
+    public static resolve : any = {
+      'drivingSchool': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getDrivingSchool($route.current.params.id).then((response) => response.data);
+      },
+      'lessons': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getLessons($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
+        });
+      },
+      'student': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getStudent($route.current.params.id).then((response) => response.data);
+      },
+      'teachers': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getTeachers($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
+        });
+      },
+      'rides': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getRides($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
+        });
+      }
+    };
 
-      this.api.getStudent($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-        this.student = response.data;
-      }, (reason) => {
-        alert('Nepodarilo se nacist studenta: ' + reason);
-      });
-
-      this.api.getStudentRides($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-        this.rides = response.data.jizdy;
-      }, (reason) => {
-        alert('Nepodarilo se nacist jizdy: ' + reason);
-      });
-
-      this.api.getTeachers($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
-        this.teachers = new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
-      }, (reason) => {
-        alert('Nepodarilo se nacist jizdy: ' + reason);
-      });
-
-      this.api.getStudentLessons($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-        this.lessons = response.data.teorie;
-      }, (reason) => {
-        alert('Nepodarilo se nacist lekce: ' + reason);
-      });
+    constructor(private $http:ng.IHttpService, public $routeParams:RouteParamsStudentDetail, 
+                private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
+                public student:Object, public teachers:app.lib.IndexedArray, public rides:app.lib.IndexedArray,
+                public lessons:app.lib.IndexedArray) {
     }
 
     public saveStudent(student) {

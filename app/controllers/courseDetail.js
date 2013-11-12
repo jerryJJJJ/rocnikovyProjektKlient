@@ -2,39 +2,20 @@ var app;
 (function (app) {
     (function (controller) {
         var CourseDetail = (function () {
-            function CourseDetail($http, $routeParams, api, auth, $location) {
+            function CourseDetail($http, $routeParams, api, $location, drivingSchool, course, students, teachers, lessons) {
                 var _this = this;
                 this.$http = $http;
                 this.api = api;
-                this.auth = auth;
                 this.$location = $location;
+                this.drivingSchool = drivingSchool;
+                this.course = course;
+                this.students = students;
+                this.teachers = teachers;
+                this.lessons = lessons;
                 this.newStudent = {};
                 if ($routeParams.id) {
                     this.isNew = false;
-                    this.api.getCourse($routeParams.id).then(function (response) {
-                        _this.course = response.data;
-                        _this.setUpNewLesson();
-                    }, function (reason) {
-                        alert('Nepodarilo se nacist kurz: ' + reason);
-                    });
-
-                    this.api.getLessons($routeParams.id).then(function (response) {
-                        _this.lessons = new app.lib.IndexedArray('teorie_id', response.data.teorie);
-                    }, function (reason) {
-                        alert('Nepodarilo se nacist hodiny teorie: ' + reason);
-                    });
-
-                    this.api.getStudents($routeParams.id).then(function (response) {
-                        _this.students = new app.lib.IndexedArray('student_id', response.data.studenti);
-                    }, function (reason) {
-                        alert('Nepodarilo se nacist studenty: ' + reason);
-                    });
-
-                    this.api.getTeachers($routeParams.autoskolaId).then(function (response) {
-                        _this.teachers = new app.lib.IndexedArray('ucitel_id', response.data.ucitele);
-                    }, function (reason) {
-                        alert('Nepodarilo se nacist ucitele: ' + reason);
-                    });
+                    this.setUpNewLesson();
                 } else {
                     this.isNew = true;
                     var nowDate = new Date();
@@ -129,6 +110,33 @@ var app;
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
+            };
+            CourseDetail.resolve = {
+                'drivingSchool': function (api, $route) {
+                    return api.getDrivingSchool($route.current.params.id).then(function (response) {
+                        return response.data;
+                    });
+                },
+                'course': function (api, $route) {
+                    return api.getCourse($route.current.params.id).then(function (response) {
+                        return response.data;
+                    });
+                },
+                'students': function (api, $route) {
+                    return api.getStudents($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('student_id', response.data['studenti']);
+                    });
+                },
+                'teachers': function (api, $route) {
+                    return api.getTeachers($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
+                    });
+                },
+                'lessons': function (api, $route) {
+                    return api.getLessons($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
+                    });
+                }
             };
             return CourseDetail;
         })();
