@@ -44,7 +44,7 @@
                 <tr>
                     <td class="bold right">typ kurzu</td>
                     <td>
-                        <select name="selectGroup" class="form-control" ng-disabled="!courseDetailCtrl.isNew" ng-model="courseDetailCtrl.course['typ']" required>
+                        <select name="selectGroup" class="form-control fixedWidth80" ng-disabled="!courseDetailCtrl.isNew" ng-model="courseDetailCtrl.course['typ']" required>
                             <option>A</option>
                             <option>B</option>
                             <option>C</option>
@@ -123,7 +123,7 @@
                     </select>
                 </td>
                 <td colspan="2">
-                    <select name="selectStudents" class="form-control" ng-model="courseDetailCtrl.newLesson['typ']" required>
+                    <select name="selectKind" class="form-control" ng-model="courseDetailCtrl.newLesson['typ']" required>
                         <option>teorie</option>
                         <option>zdravověda</option>
                     </select>

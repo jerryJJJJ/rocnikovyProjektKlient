@@ -46,7 +46,15 @@ body {
   font-size: 25pt;
 }
 
-.fixedHeight120 {
+#header .form-control {
+  width: 170px;
+}
+
+#header .fixedWidth80 {
+  width: 80px;
+}
+
+#header .fixedHeight120 {
   margin: 0 0 120px 0;
 }
 
@@ -96,12 +104,6 @@ td {
   font-size: 25pt;
 }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
-  color: #428bca;
-}
-
 input {
   width: 10px;
 }
@@ -140,7 +142,35 @@ button {
   text-decoration: none;
 }
 
+#headerTab a {
+  color: #ffffff;
+  font-size: 17pt;
+  padding: 4px;
+  margin: 0 30px 0 0;
+  font-family: 'Segoe UI Light', Arial, sans-serif;
+}
+
+#headerTab .nav-tabs > li.active > a,
+#headerTab .nav-tabs > li.active > a:hover,
+#headerTab .nav-tabs > li.active > a:focus {
+  color: #438cca;
+}
+
+#headerTab a:hover {
+  color: #438cca;
+  font-size: 17pt;
+  padding: 4px;
+  margin: 0 30px 0 0;
+  font-family: 'Segoe UI Light', Arial, sans-serif;
+  text-decoration: none;
+}
+
 #logoutMainPage {
+  float: right;
+  margin-top: -40px;
+}
+
+#createObject {
   float: right;
   margin-top: -40px;
 }

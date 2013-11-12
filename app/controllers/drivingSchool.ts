@@ -10,7 +10,8 @@ module app.controller {
     public courses;
     public listType:string;
 
-    constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api) {
+    constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService,
+                private api:app.service.Api, private $location:ng.ILocationService) {
 
       var autoskolaId:string = $routeParams.id;
       this.listType = $routeParams.listType ? $routeParams.listType : 'vozidla';
@@ -46,6 +47,11 @@ module app.controller {
       }, (reason) => {
         alert('Chyba: ' + reason);
       });
+    }
+
+    public createVehicle() {
+      alert("create");
+      this.$location.path( "/autoskola/" + this.drivingSchool.autoskola_id + "/vozidla/nove" );
     }
 
     public deleteCourse(course) {

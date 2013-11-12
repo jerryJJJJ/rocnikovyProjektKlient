@@ -26,6 +26,27 @@
                         <span class="glyphicon glyphicon-remove"></span></button></td>
                 </tr>
             </table>
+
+
+            <form name="form" id="uploadForm" ng-upload action="/galerie/account/uploadImage/" class="fileupload fileupload-new" data-provides="fileupload">
+                <div class="input-append">
+                    <div class="uneditable-input span3">
+                        <i class="icon-file fileupload-exists"></i>
+                        <span class="fileupload-preview"></span>
+                    </div>
+                <span class="btn btn-file">
+                    <span class="fileupload-new">Nový obrázek</span>
+                    <span class="fileupload-exists">Změnit</span>
+                    <input name="image" type="file" accept="image/*"/>
+                </span>
+                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Odstranit</a>
+                </div>
+                <input name="title" type="text" class="fileupload-exists" placeholder="Název obrázku" required="required"/>
+                <input ng-disabled="form.$invalid" disabled value="Nahrát" type="submit" class="btn btn-success fileupload-exists"
+                       upload-submit="uploadComplete(uploadResponse, completed)"/>
+            </form>
+
+
         </div>
         <form novalidate class="css-form" name="vehicleForm">
             <table class="detail-table">
@@ -109,7 +130,10 @@
                 <td>{{ride['najeto']}}</td>
                 <td>{{ride.spotreba}}</td>
                 <td>{{vehicleDetailCtrl.teachers.find(ride['ucitel_id']).prijmeni}}</td>
-                <td>{{vehicleDetailCtrl.teachers.find(ride['student_id']).prijmeni}}</td>
+                <td>
+                    <a href="#/autoskola/{{vehicleDetailCtrl.drivingSchool.autoskola_id}}/vozidla/{{vehicleDetailCtrl.vehicle.vozidlo_id}}/studenti/{{vehicleDetailCtrl.students.find(ride['student_id']).student_id}}">
+                        {{vehicleDetailCtrl.students.find(ride['student_id']).prijmeni}}</a>
+                </td>
                 <td class="right">
                     <button ng-click="vehicleDetailCtrl.deleteRide(ride)" class="btn btn-danger btn-xs">
                         <span class="glyphicon glyphicon-remove"></span></button>

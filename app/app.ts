@@ -65,12 +65,12 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
     controller:   'app.controller.CourseDetail',
     controllerAs: "courseDetailCtrl"
   });
-  $routeProvider.when('/autoskola/:autoskolaId/kurzy/:kurzId/studenti/:id', {
+  $routeProvider.when('/autoskola/:autoskolaId/vozidla/:vozidloId/studenti/:id', {
     templateUrl:  'views/studentDetail.html',
     controller:   'app.controller.StudentDetail',
     controllerAs: "studentDetailCtrl"
   });
-  $routeProvider.when('/autoskola/:autoskolaId/vozidla/:vozidloId/studenti/:id', {
+  $routeProvider.when('/autoskola/:autoskolaId/kurzy/:kurzId/studenti/:id', {
     templateUrl:  'views/studentDetail.html',
     controller:   'app.controller.StudentDetail',
     controllerAs: "studentDetailCtrl"
