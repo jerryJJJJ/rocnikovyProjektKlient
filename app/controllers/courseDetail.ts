@@ -11,6 +11,7 @@ module app.controller {
     public newStudent={};
     public isNew;
 
+
     constructor(private $http:ng.IHttpService, $routeParams:ng.IRouteParamsService, private api:app.service.Api,
                 private auth, private $location:ng.ILocationService) {
 

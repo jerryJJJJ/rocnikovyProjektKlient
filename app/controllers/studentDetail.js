@@ -54,7 +54,13 @@ var app;
             StudentDetail.prototype.deleteStudent = function (student) {
                 var _this = this;
                 this.api.deleteStudent(student).then(function () {
-                    _this.$location.path("/autoskola/" + _this.drivingSchool.autoskola_id + "/kurzy/" + _this.courseId);
+                    var path;
+                    if (_this.courseId) {
+                        path = "/autoskola/" + _this.drivingSchool.autoskola_id + "/kurzy/" + _this.courseId;
+                    } else {
+                        path = "/autoskola/" + _this.drivingSchool.autoskola_id + "/vozidla/" + _this.vehicleId;
+                    }
+                    _this.$location.path(path);
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });

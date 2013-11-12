@@ -12,7 +12,7 @@
             <a href="/#/autoskola/{{vehicleDetailCtrl.drivingSchool.autoskola_id}}/vozidla">Zpět na výpis  |</a>
             <a href="">Odhlásit</a>
         </div>
-        <div class="documents">
+        <div class="documents" ng-if="!vehicleDetailCtrl.isNew">
             <h3>Dokumenty</h3>
             <table class="table">
                 <tr>
@@ -95,11 +95,9 @@
                     <td></td>
                     <td>
                         <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
-                                ng-if="!vehicleDetailCtrl.isNew" class="btn btn-primary" ng-disabled="vehicleForm.$dirty && !vehicleForm.$valid">
-                            <span class="glyphicon glyphicon-floppy-save"></span> Uložit změny</button>
-                        <button ng-click="vehicleDetailCtrl.saveVehicle(vehicleDetailCtrl.vehicle)"
-                                ng-if="vehicleDetailCtrl.isNew" class="btn btn-primary" ng-disabled="!vehicleForm.$valid">
-                            <span class="glyphicon glyphicon-floppy-save"></span> Vytvořit</button>
+                                class="btn btn-primary" ng-disabled="!vehicleForm.$dirty || !vehicleForm.$valid">
+                            <span class="glyphicon glyphicon-floppy-save"></span> {{vehicleDetailCtrl.isNew ? 'Vytvořit' : 'Uložit změny'}}
+                        </button>
                     </td>
                 </tr>
             </table>

@@ -1,4 +1,3 @@
-/// <reference path="./components/types/angularjs/angular.d.ts" />
 'use strict';
 angular.module('app.controller', []);
 angular.module('app.directive', []);
@@ -32,12 +31,14 @@ angular.module('app').config(function ($routeProvider, $httpProvider) {
     $routeProvider.when('/autoskola/:id', {
         templateUrl: 'views/drivingSchool.html',
         controller: 'app.controller.DrivingSchool',
-        controllerAs: "drivingSchoolCtrl"
+        controllerAs: "drivingSchoolCtrl",
+        resolve: app.controller.DrivingSchool.resolve
     });
     $routeProvider.when('/autoskola/:id/:listType', {
         templateUrl: 'views/drivingSchool.html',
         controller: 'app.controller.DrivingSchool',
-        controllerAs: "drivingSchoolCtrl"
+        controllerAs: "drivingSchoolCtrl",
+        resolve: app.controller.DrivingSchool.resolve
     });
     $routeProvider.when('/autoskola/:autoskolaId/vozidla/nove', {
         templateUrl: 'views/vehicleDetail.html',

@@ -53,7 +53,13 @@ module app.controller {
 
     public deleteStudent(student) {
       this.api.deleteStudent(student).then(() => {
-        this.$location.path( "/autoskola/" + this.drivingSchool.autoskola_id + "/kurzy/" + this.courseId );
+        var path;
+        if(this.courseId) {
+          path = "/autoskola/" + this.drivingSchool.autoskola_id + "/kurzy/" + this.courseId;
+        } else {
+          path = "/autoskola/" + this.drivingSchool.autoskola_id + "/vozidla/" + this.vehicleId;
+        }
+        this.$location.path( path );
       }, (reason) => {
         alert('Chyba: ' + reason);
       });
