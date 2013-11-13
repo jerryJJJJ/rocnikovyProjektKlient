@@ -7,7 +7,7 @@
         <h3>{{courseDetailCtrl.drivingSchool['nazev']}}</h3>
 <span class="delete-object" ng-if="!courseDetailCtrl.isNew">
     <button ng-click="courseDetailCtrl.deleteCourse(courseDetailCtrl.course)"
-            class="btn btn-danger btn-xs">
+            class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
         <span class="glyphicon glyphicon-remove"></span> Smazat kurz
     </button>
 </span>
@@ -34,7 +34,7 @@
                     <td>{{courseDetailCtrl.students.length}}</td>
                     <td class="bold right">stav</td>
                     <td>
-                        <select name="selectState" class="form-control" ng-model="courseDetailCtrl.course['stav']" required>
+                        <select name="selectState" class="form-control" ng-model="courseDetailCtrl.course['stav']" ng-disabled="auth.user.role != 'jednatel'" required>
                             <option value="neotevreny">neotevřený</option>
                             <option value="probihajici">probíhající</option>
                             <option value="jde_ke_zkousce">jde ke zkoušce</option>
@@ -54,13 +54,13 @@
                         </select>
                     </td>
                     <td class="bold">od</td>
-                    <td><input type="date" ng-model="courseDetailCtrl.course['datum_od']" class="form-control" required/></td>
+                    <td><input type="date" ng-model="courseDetailCtrl.course['datum_od']" ng-disabled="auth.user.role != 'jednatel'" class="form-control" required/></td>
                 </tr>
                 <tr>
                     <td class="bold right">id kurzu</td>
                     <td>{{courseDetailCtrl.course['identifikacni_cislo']}}</td>
                     <td class="bold">do</td>
-                    <td><input type="date" ng-model="courseDetailCtrl.course['datum_do']" class="form-control" required/></td>
+                    <td><input type="date" ng-model="courseDetailCtrl.course['datum_do']" ng-disabled="auth.user.role != 'jednatel'" class="form-control" required/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -96,13 +96,15 @@
                 <td>{{lesson['cas_od']}}</td>
                 <td>{{lesson['cas_do']}}</td>
                 <td>{{courseDetailCtrl.teachers.find(lesson['ucitel_id']).prijmeni}}</td>
-                <td>{{lesson['typ']}}</td>
+                <td ng-if="lesson['typ'] == 'pravidla_provozu'">pravidla provozu</td>
+                <td ng-if="lesson['typ'] == 'udrzba'">údržba vozidla</td>
+                <td ng-if="lesson['typ'] == 'zdravoveda'">zdravověda</td>
                 <td class="right">
-                    <button ng-click="courseDetailCtrl.deleteLesson(lesson)" class="btn btn-danger btn-xs">
+                    <button ng-click="courseDetailCtrl.deleteLesson(lesson)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
                         <span class="glyphicon glyphicon-remove"></span></button>
                 </td>
             </tr>
-            <tr>
+            <tr ng-if="auth.user.role == 'jednatel'">
                 <td>
                     <input type="date" ng-model="courseDetailCtrl.newLesson['datum']" class="form-control" required>
                 </td>
@@ -121,12 +123,13 @@
                 </td>
                 <td colspan="2">
                     <select name="selectKind" class="form-control" ng-model="courseDetailCtrl.newLesson['typ']" required>
-                        <option>teorie</option>
-                        <option>zdravověda</option>
+                        <option value="pravidla_provozu">pravidla provozu</option>
+                        <option value="udrzba">údržba vozidla</option>
+                        <option value="zdravoveda">zdravověda</option>
                     </select>
                 </td>
             </tr>
-            <tr>
+            <tr ng-if="auth.user.role == 'jednatel'">
                 <td colspan="6" class="right">
                     <button ng-click="courseDetailCtrl.createLesson(courseDetailCtrl.newLesson)"
                             class="btn btn-primary" ng-disabled="!lessonForm.$valid">
@@ -157,22 +160,22 @@
                     <td>{{student.jmeno}}</td>
                     <td>{{student['matricni_cislo']}}</td>
                     <td class="right">
-                        <button ng-click="courseDetailCtrl.deleteStudent(student)" class="btn btn-danger btn-xs">
+                        <button ng-click="courseDetailCtrl.deleteStudent(student)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
                             <span class="glyphicon glyphicon-remove"></span></button>
                     </td>
                 </tr>
-                <tr>
+                <tr ng-if="auth.user.role == 'jednatel'">
                     <td><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['prijmeni']"
                                placeholder="příjmení" required></td>
                     <td><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['jmeno']"
                                placeholder="jméno" required name="jmeno"></td>
                     <td colspan="2" ng-class="{'has-error': studentForm.matricniCislo.$invalid && studentForm.matricniCislo.$dirty}">
-                        <input type="text" class="form-control" ng-pattern="/^[0-9 -]*$/" name="matricniCislo"
+                        <input type="text" class="form-control" ng-pattern="/^[0-9]*$/" name="matricniCislo" maxlength="6"
                                            ng-model="courseDetailCtrl.newStudent['matricni_cislo']"
                                            placeholder="matriční číslo" required>
                     </td>
                 </tr>
-                <tr>
+                <tr ng-if="auth.user.role == 'jednatel'">
                     <td colspan="8" class="right">
                         <button ng-click="courseDetailCtrl.createStudent(courseDetailCtrl.newStudent)"
                                 class="btn btn-primary" ng-disabled="!studentForm.$valid">

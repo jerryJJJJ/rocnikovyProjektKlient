@@ -4,7 +4,7 @@
         <h3>{{studentDetailCtrl.drivingSchool['nazev']}}</h3>
     <span class="delete-object">
     <button ng-click="studentDetailCtrl.deleteStudent(studentDetailCtrl.student)"
-            class="btn btn-danger btn-xs">
+            class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
         <span class="glyphicon glyphicon-remove"></span> Smazat žáka</button>
     </span>
         <div id="logout">
@@ -18,15 +18,15 @@
             <table class="detail-table">
                 <tr>
                     <td>jméno</td>
-                    <td><input type="text" ng-model="studentDetailCtrl.student.jmeno" class="form-control" required/></td>
+                    <td><input type="text" ng-model="studentDetailCtrl.student.jmeno" class="form-control" ng-disabled="auth.user.role != 'jednatel'" required/></td>
                 </tr>
                 <tr>
                     <td>příjmení</td>
-                    <td><input type="text" ng-model="studentDetailCtrl.student.prijmeni" class="form-control" required/></td>
+                    <td><input type="text" ng-model="studentDetailCtrl.student.prijmeni" class="form-control" ng-disabled="auth.user.role != 'jednatel'" required/></td>
                 </tr>
                 <tr>
                     <td>matriční číslo</td>
-                    <td><input type="text" ng-model="studentDetailCtrl.student.matricni_cislo" class="form-control" required/></td>
+                    <td><input type="text" ng-model="studentDetailCtrl.student.matricni_cislo" class="form-control" ng-disabled="auth.user.role != 'jednatel'" required/></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="right">

@@ -10,12 +10,19 @@
         </div>
     </div>
     <div class="container">
+        <h3>Seznam autoškol</h3>
+        <button id="createObject" ng-click="listDrivingSchoolsCtrl.createDrivingSchool()" class="btn btn-primary"
+                ng-if="auth.user.role == 'spravce'">
+            <span class="glyphicon glyphicon-floppy-save"></span> Přidat autoškolu
+        </button>
         <table class="table">
             <thead>
             <tr>
                 <th>id autoškoly</th>
                 <th>název</th>
                 <th>město</th>
+                <th>ulice</th>
+                <th>číslo popisné</th>
             </tr>
             </thead>
             <tbody>
@@ -25,6 +32,8 @@
                 </td>
                 <td>{{school.nazev}}</td>
                 <td>{{school['adresa_mesto']}}</td>
+                <td>{{school['adresa_ulice']}}</td>
+                <td>{{school['adresa_cp']}}</td>
             </tr>
             </tbody>
         </table>

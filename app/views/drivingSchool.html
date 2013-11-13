@@ -50,15 +50,19 @@
             <tr>
                 <th>značka</th>
                 <th>model</th>
+                <th>spz</th>
+                <th ng-if="auth.user.role == 'urednik'">stk</th>
                 <th>vin</th>
                 <th></th>
             </tr>
             <tr ng-repeat="vehicle in drivingSchoolCtrl.vehicles">
                 <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla/{{vehicle.vozidlo_id}}">{{vehicle.znacka}}</a></td>
                 <td>{{vehicle.model}}</td>
+                <td>{{vehicle.spz}}</td>
+                <td ng-if="auth.user.role == 'urednik'">{{vehicle['datum_stk']}}</td>
                 <td>{{vehicle.vin}}</td>
                 <td class="right">
-                    <button ng-click="drivingSchoolCtrl.deleteVehicle(vehicle)" class="btn btn-danger btn-xs">
+                    <button ng-click="drivingSchoolCtrl.deleteVehicle(vehicle)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
                         <span class="glyphicon glyphicon-remove"></span></button>
                 </td>
             </tr>
@@ -66,7 +70,7 @@
 
         <h3 ng-if="drivingSchoolCtrl.listType == 'ucitele'">Seznam učitelů</h3>
         <button id="createObject" ng-click="$parent.drivingSchoolCtrl.createTeacher()" class="btn btn-primary"
-                ng-if="drivingSchoolCtrl.listType == 'ucitele'">
+                ng-if="drivingSchoolCtrl.listType == 'ucitele' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat učitele
         </button>
         <table class="table" ng-if="drivingSchoolCtrl.listType == 'ucitele'">
@@ -82,7 +86,7 @@
 
         <h3 ng-if="drivingSchoolCtrl.listType == 'kurzy'">Seznam kurzů</h3>
         <button id="createObject" ng-click="$parent.drivingSchoolCtrl.createCourse()" class="btn btn-primary"
-                ng-if="drivingSchoolCtrl.listType == 'kurzy'">
+                ng-if="drivingSchoolCtrl.listType == 'kurzy' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat kurz
         </button>
         <table class="table" ng-if="drivingSchoolCtrl.listType == 'kurzy'">
@@ -96,7 +100,7 @@
                 <td>{{course['datum_od']}}</td>
                 <td>{{course.stav}}</td>
                 <td class="right">
-                    <button ng-click="$parent.$parent.drivingSchoolCtrl.deleteCourse(course)" class="btn btn-danger btn-xs">
+                    <button ng-click="$parent.$parent.drivingSchoolCtrl.deleteCourse(course)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
                         <span class="glyphicon glyphicon-remove"></span></button>
                 </td>
             </tr>

@@ -3,7 +3,7 @@
         <h1 ng-if="!vehicleDetailCtrl.isNew">{{vehicleDetailCtrl.vehicle.znacka}} {{vehicleDetailCtrl.vehicle.model}}</h1>
         <h1 ng-if="vehicleDetailCtrl.isNew">Nové vozidlo</h1>
         <h3>{{vehicleDetailCtrl.drivingSchool.nazev}}</h3>
-    <span class="delete-object">
+    <span class="delete-object" ng-if="auth.user.role == 'jednatel'">
     <button ng-click="vehicleDetailCtrl.deleteVehicle(vehicleDetailCtrl.vehicle)"
             ng-if="!vehicleDetailCtrl.isNew" class="btn btn-danger btn-xs">
         <span class="glyphicon glyphicon-remove"></span> Smazat vozidlo</button>
@@ -22,12 +22,12 @@
                 <tr ng-repeat="document in vehicleDetailCtrl.documents">
                     <td>{{document.dokument_nazev}}</td>
                     <td>{{document['datum_vlozeni']}}</td>
-                    <td><button ng-click="vehicleDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs">
+                    <td><button ng-click="vehicleDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
                         <span class="glyphicon glyphicon-remove"></span></button></td>
                 </tr>
             </table>
 
-            <upload-button class="btn btn-default" complete="vehicleDetailCtrl.uploadResults($data, $status)"
+            <upload-button class="btn btn-default" complete="vehicleDetailCtrl.uploadResults($data, $status)" ng-disabled="auth.user.role != 'jednatel'"
                            action="{{serverUrl}}/dokumenty-vozidla?vozidlo_id={{vehicleDetailCtrl.vehicle.vozidlo_id}}">
                 Nahrát soubor
             </upload-button>
@@ -38,24 +38,24 @@
             <table class="detail-table">
                 <tr class="right">
                     <td class="bold">značka</td>
-                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control" required/></td>
+                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control" ng-disabled="auth.user.role != 'jednatel'" required/></td>
                     <td class="bold">rok výroby</td>
-                    <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['rok_vyroby']" class="form-control" required/></td>
+                    <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['rok_vyroby']" ng-disabled="auth.user.role != 'jednatel'" class="form-control" required/></td>
                     <td class="bold">počet km</td>
                     <td class="left" class="wider">{{vehicleDetailCtrl.vehicle['pocet_km']}}</td>
                 </tr>
                 <tr class="right">
                     <td class="bold">model</td>
-                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.model" class="form-control" required/></td>
+                    <td><input type="text" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle.model" class="form-control" required/></td>
                     <td class="bold">spz</td>
-                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle['spz']" class="form-control" required/></td>
+                    <td><input type="text" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle['spz']" class="form-control" required/></td>
                     <td class="bold">spotřeba</td>
                     <td class="left">{{vehicleDetailCtrl.vehicle['prumerna_spotreba']}}</td>
                 </tr>
                 <tr class="right">
                     <td class="bold">typ</td>
                     <td>
-                        <select name="selectState" class="form-control" ng-model="vehicleDetailCtrl.vehicle['vozidlo_typ']" required>
+                        <select name="selectState" ng-disabled="auth.user.role != 'jednatel'" class="form-control" ng-model="vehicleDetailCtrl.vehicle['vozidlo_typ']" required>
                             <option value="motorka">motocykl</option>
                             <option value="osobni">osobní automobil</option>
                             <option value="nakladni">nákladní automobil</option>
@@ -63,15 +63,15 @@
                         </select>
                     </td>
                     <td class="bold">příští stk</td>
-                    <td><input type="date" ng-model="vehicleDetailCtrl.vehicle['datum_stk']" class="form-control" required/></td>
+                    <td><input type="date" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle['datum_stk']" class="form-control" required/></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr class="right">
                     <td class="bold">vin</td>
-                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.vin" class="form-control" required/></td>
+                    <td><input type="text" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle.vin" class="form-control" required/></td>
                     <td class="bold">poč. stav km</td>
-                    <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['pocatecni_stav_km']" class="form-control" required/></td>
+                    <td><input type="number" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle['pocatecni_stav_km']" class="form-control" required/></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -116,14 +116,14 @@
                 <td>{{vehicleDetailCtrl.teachers.find(ride['ucitel_id']).prijmeni}}</td>
                 <td>
                     <a href="#/autoskola/{{vehicleDetailCtrl.drivingSchool.autoskola_id}}/vozidla/{{vehicleDetailCtrl.vehicle.vozidlo_id}}/studenti/{{vehicleDetailCtrl.students.find(ride['student_id']).student_id}}">
-                        {{vehicleDetailCtrl.students.find(ride['student_id']).prijmeni}}</a>
+                        {{vehicleDetailCtrl.students.find(ride['student_id']).prijmeni}} ({{vehicleDetailCtrl.students.find(ride['student_id'])['matricni_cislo']}})</a>
                 </td>
                 <td class="right">
-                    <button ng-click="vehicleDetailCtrl.deleteRide(ride)" class="btn btn-danger btn-xs">
+                    <button ng-click="vehicleDetailCtrl.deleteRide(ride)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
                         <span class="glyphicon glyphicon-remove"></span></button>
                 </td>
             </tr>
-            <tr>
+            <tr ng-if="auth.user.role == 'jednatel'">
                 <td>
                     <input type="date" ng-model="vehicleDetailCtrl.newRide['datum']" class="form-control" required>
                 </td>
@@ -144,11 +144,11 @@
                 </td>
                 <td colspan="2">
                     <select name="selectStudents" class="form-control" required>
-                        <option ng-repeat="student in vehicleDetailCtrl.students">{{student.prijmeni}}</option>
+                        <option ng-repeat="student in vehicleDetailCtrl.students">{{student.prijmeni}} ({{student['matricni_cislo']}})</option>
                     </select>
                 </td>
             </tr>
-            <tr>
+            <tr ng-if="auth.user.role == 'jednatel'">
                 <td colspan="8" class="right">
                     <button ng-click="vehicleDetailCtrl.createRide(ride)" class="btn btn-primary" ng-disabled="!rideForm.$valid">
                         <span class="glyphicon glyphicon-floppy-save"></span> Uložit jízdu</button>

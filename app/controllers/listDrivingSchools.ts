@@ -16,10 +16,13 @@ module app.controller {
     }
 
     constructor(private $http:ng.IHttpService, $routeParams:RouteParamsListDrivingSchools, private api:app.service.Api,
-                public listSchools:app.lib.IndexedArray) {
+                public listSchools:app.lib.IndexedArray, private $location:ng.ILocationService) {
+    }
+
+    public createDrivingSchool() {
+      this.$location.path("/autoskola/nove");
     }
   }
-
 }
 
 app.registerController('ListDrivingSchools');

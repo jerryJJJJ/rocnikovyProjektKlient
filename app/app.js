@@ -31,6 +31,11 @@ angular.module('app').config(function ($routeProvider, $httpProvider) {
         controllerAs: "listDrivingSchoolsCtrl",
         resolve: app.controller.ListDrivingSchools.resolve
     });
+    $routeProvider.when('/autoskola/nove', {
+        templateUrl: 'views/createDrivingSchool.html',
+        controller: 'app.controller.DrivingSchool',
+        controllerAs: "drivingSchoolCtrl"
+    });
     $routeProvider.when('/autoskola/:id', {
         templateUrl: 'views/drivingSchool.html',
         controller: 'app.controller.DrivingSchool',

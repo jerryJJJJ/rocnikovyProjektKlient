@@ -6,11 +6,15 @@ var app;
     /// <reference path="../app.ts"/>
     (function (controller) {
         var ListDrivingSchools = (function () {
-            function ListDrivingSchools($http, $routeParams, api, listSchools) {
+            function ListDrivingSchools($http, $routeParams, api, listSchools, $location) {
                 this.$http = $http;
                 this.api = api;
                 this.listSchools = listSchools;
+                this.$location = $location;
             }
+            ListDrivingSchools.prototype.createDrivingSchool = function () {
+                this.$location.path("/autoskola/nove");
+            };
             ListDrivingSchools.resolve = {
                 'listSchools': function (api) {
                     return api.getDrivingSchools().then(function (response) {
