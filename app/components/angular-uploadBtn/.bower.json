@@ -1,0 +1,24 @@
+{
+  "name": "angular-upload-button",
+  "version": "0.0.9",
+  "main": "upload-button.js",
+  "dependencies": {
+    "angular": "~1.x"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "homepage": "https://github.com/twilson63/angular-uploadBtn",
+  "_release": "0.0.9",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.9",
+    "commit": "6b6ec699bbc614db6c9b903d22760abb4a660d90"
+  },
+  "_source": "git://github.com/twilson63/angular-uploadBtn.git",
+  "_target": "~0.0.9",
+  "_originalSource": "angular-uploadBtn",
+  "_direct": true
+}

@@ -1,0 +1,13 @@
+{
+  "name": "angular-upload-button",
+  "version": "0.0.8",
+  "main": "upload-button.js",
+  "dependencies": {
+    "angular": "~1.x"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
