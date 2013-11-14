@@ -40,8 +40,8 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
   });
   $routeProvider.when('/autoskola/nove', {
     templateUrl:  'views/createDrivingSchool.html',
-    controller:   'app.controller.DrivingSchool',
-    controllerAs: "drivingSchoolCtrl"
+    controller:   'app.controller.CreateDrivingSchool',
+    controllerAs: "createDrivingSchoolCtrl"
   });
   $routeProvider.when('/autoskola/:id', {
     templateUrl:  'views/drivingSchool.html',

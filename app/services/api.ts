@@ -86,6 +86,14 @@ module app.service {
       return this.$http.post(this.url + "/kurzy", course);
     }
 
+    public createDrivingSchool(drivingSchool) {
+      return this.$http.post(this.url + "/autoskoly", drivingSchool);
+    }
+
+    public createUser(user) {
+      return this.$http.post(this.url + "/uzivatele", user);
+    }
+
     public updateVehicle(vehicle) {
       return this.$http.put(this.url + "/vozidla/" + vehicle.vozidlo_id, vehicle);
     }

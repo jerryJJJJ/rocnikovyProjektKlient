@@ -83,6 +83,14 @@ var app;
                 return this.$http.post(this.url + "/kurzy", course);
             };
 
+            Api.prototype.createDrivingSchool = function (drivingSchool) {
+                return this.$http.post(this.url + "/autoskoly", drivingSchool);
+            };
+
+            Api.prototype.createUser = function (user) {
+                return this.$http.post(this.url + "/uzivatele", user);
+            };
+
             Api.prototype.updateVehicle = function (vehicle) {
                 return this.$http.put(this.url + "/vozidla/" + vehicle.vozidlo_id, vehicle);
             };

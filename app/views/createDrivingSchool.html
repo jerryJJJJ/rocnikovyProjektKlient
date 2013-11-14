@@ -9,32 +9,39 @@
             <table class="detail-table">
                 <tr>
                     <td class="bold">název autoškoly</td>
-                    <td><input class="form-control" ng-model="drivingSchoolCtrl.drivingSchool['nazev']" required></td>
+                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['nazev']" required></td>
                     <td class="bold">město</td>
-                    <td><input class="form-control" ng-model="drivingSchoolCtrl.drivingSchool['adresa_mesto']" required></td>
+                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_mesto']" required></td>
                 </tr>
                 <tr>
-                    <td class="bold">jednatel</td>
-                    <td><input class="form-control" ng-model="" required></td>
+                    <td class="bold">uživatel</td>
+                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.user['uzivatelske_jmeno']" required></td>
                     <td class="bold">ulice</td>
-                    <td><input class="form-control" ng-model="drivingSchoolCtrl.drivingSchool['adresa_ulice']" required></td>
+                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_ulice']" required></td>
                 </tr>
                 <tr>
-                    <td class="bold">heslo jednatele</td>
-                    <td><input class="form-control" ng-model="" required></td>
+                    <td class="bold">heslo uživatele</td>
+                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.user['heslo']" required></td>
                     <td class="bold">číslo pop.</td>
-                    <td><input class="form-control" ng-model="drivingSchoolCtrl.drivingSchool['adresa_cp']" required></td>
+                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_cp']" required></td>
                 </tr>
                 <tr>
+                    <td class="bold">role uživatele</td>
+                    <td>
+                        <select class="form-control" ng-model="createDrivingSchoolCtrl.user['role']" required>
+                            <option ng-value="jednatel">jednatel</option>
+                            <option ng-value="urednik">úředník</option>
+                        </select>
+                    </td>
                     <td class="bold">psč</td>
-                    <td><input class="form-control" ng-model="drivingSchoolCtrl.drivingSchool['adresa_psc']" required></td>
+                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_psc']" required></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td class="right">
-                        <button ng-click="drivingSchoolCtrl.saveDrivingSchool()"
+                        <button ng-click="createDrivingSchoolCtrl.saveDrivingSchool(createDrivingSchoolCtrl.drivingSchool, createDrivingSchoolCtrl.user)"
                                 class="btn btn-primary" ng-disabled="!drivingSchoolForm.$valid">
                             <span class="glyphicon glyphicon-floppy-save"></span>
                             Vytvořit
