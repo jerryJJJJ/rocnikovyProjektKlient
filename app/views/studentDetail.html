@@ -18,15 +18,25 @@
             <table class="detail-table">
                 <tr>
                     <td>jméno</td>
-                    <td><input type="text" ng-model="studentDetailCtrl.student.jmeno" class="form-control" ng-disabled="auth.user.role != 'jednatel'" required/></td>
+                    <td ng-class="{'has-error': studentForm.firstname.$invalid && studentForm.firstname.$dirty}">
+                        <input type="text" name="firstname" ng-model="studentDetailCtrl.student.jmeno" class="form-control"
+                               ng-disabled="auth.user.role != 'jednatel'" placeholder="jméno" ng-pattern="/[Á-Žá-žA-Za-z]{2,30}$/" required/>
+                    </td>
                 </tr>
                 <tr>
                     <td>příjmení</td>
-                    <td><input type="text" ng-model="studentDetailCtrl.student.prijmeni" class="form-control" ng-disabled="auth.user.role != 'jednatel'" required/></td>
+                    <td ng-class="{'has-error': studentForm.surname.$invalid && studentForm.surname.$dirty}">
+                        <input type="text" name="surname" ng-model="studentDetailCtrl.student.prijmeni" class="form-control"
+                               ng-disabled="auth.user.role != 'jednatel'" placeholder="příjmení" ng-pattern="/[Á-Žá-žA-Za-z]{2,30}$/" required/>
+                    </td>
                 </tr>
                 <tr>
                     <td>matriční číslo</td>
-                    <td><input type="text" ng-model="studentDetailCtrl.student.matricni_cislo" class="form-control" ng-disabled="auth.user.role != 'jednatel'" required/></td>
+                    <td ng-class="{'has-error': studentForm.matNumber.$invalid && studentForm.matNumber.$dirty}">
+                        <input type="text" name="matNumber" ng-model="studentDetailCtrl.student.matricni_cislo" class="form-control"
+                               ng-disabled="auth.user.role != 'jednatel'" ng-pattern="/^[0-9]*$/" maxlength="6"
+                               placeholder="matriční číslo" required/>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2" class="right">

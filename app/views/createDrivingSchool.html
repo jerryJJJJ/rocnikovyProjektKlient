@@ -9,32 +9,45 @@
             <table class="detail-table">
                 <tr>
                     <td class="bold">název autoškoly</td>
-                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['nazev']" required></td>
-                    <td class="bold">město</td>
-                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_mesto']" required></td>
-                </tr>
-                <tr>
-                    <td class="bold">uživatel</td>
-                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.user['uzivatelske_jmeno']" required></td>
-                    <td class="bold">ulice</td>
-                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_ulice']" required></td>
-                </tr>
-                <tr>
-                    <td class="bold">heslo uživatele</td>
-                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.user['heslo']" required></td>
-                    <td class="bold">číslo pop.</td>
-                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_cp']" required></td>
-                </tr>
-                <tr>
-                    <td class="bold">role uživatele</td>
-                    <td>
-                        <select class="form-control" ng-model="createDrivingSchoolCtrl.user['role']" required>
-                            <option ng-value="jednatel">jednatel</option>
-                            <option ng-value="urednik">úředník</option>
-                        </select>
+                    <td ng-class="{'has-error': drivingSchoolForm.name.$invalid && drivingSchoolForm.name.$dirty}">
+                        <input class="form-control" name="name" ng-model="createDrivingSchoolCtrl.drivingSchool['nazev']"
+                               placeholder="název autoškoly" maxlength="30" required>
                     </td>
+                    <td class="bold">město</td>
+                    <td ng-class="{'has-error': drivingSchoolForm.city.$invalid && drivingSchoolForm.city.$dirty}">
+                        <input class="form-control" name="city" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_mesto']"
+                               placeholder="město" ng-pattern="/[Á-Žá-žA-Za-z]{2,30}$/" maxlength="30" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bold">jednatel</td>
+                    <td ng-class="{'has-error': drivingSchoolForm.secretery.$invalid && drivingSchoolForm.secretery.$dirty}">
+                        <input class="form-control" name="secretery" ng-model="createDrivingSchoolCtrl.user['uzivatelske_jmeno']"
+                               placeholder="jednatel autoškoly" ng-pattern="/[Á-Žá-žA-Za-z]{2,30}$/" maxlength="30" required></td>
+                    <td class="bold">ulice</td>
+                    <td ng-class="{'has-error': drivingSchoolForm.street.$invalid && drivingSchoolForm.street.$dirty}">
+                        <input class="form-control" name="street" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_ulice']"
+                               placeholder="ulice" ng-pattern="/[Á-Žá-žA-Za-z.]{2,30}$/" maxlength="30" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bold">heslo jednatele</td>
+                    <td ng-class="{'has-error': drivingSchoolForm.password.$invalid && drivingSchoolForm.password.$dirty}">
+                        <input class="form-control" name="password" ng-model="createDrivingSchoolCtrl.user['heslo']" ng-pattern="/.{5,50}/"
+                               placeholder="heslo jednatele" required>
+                    </td>
+                    <td class="bold">číslo pop.</td>
+                    <td ng-class="{'has-error': drivingSchoolForm.number.$invalid && drivingSchoolForm.number.$dirty}">
+                        <input class="form-control" name="number" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_cp']"
+                               placeholder="číslo popisné" ng-pattern="/[0-9]{1,5}/" maxlength="5" required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
                     <td class="bold">psč</td>
-                    <td><input class="form-control" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_psc']" required></td>
+                    <td ng-class="{'has-error': drivingSchoolForm.psc.$invalid && drivingSchoolForm.psc.$dirty}">
+                        <input class="form-control" name="psc" ng-model="createDrivingSchoolCtrl.drivingSchool['adresa_psc']"
+                               placeholder="poštovní směrovací číslo" ng-pattern="/[0-9]{5}/" maxlength="5" required></td>
                 </tr>
                 <tr>
                     <td></td>

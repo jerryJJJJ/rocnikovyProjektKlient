@@ -38,24 +38,38 @@
             <table class="detail-table">
                 <tr class="right">
                     <td class="bold">značka</td>
-                    <td><input type="text" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control" ng-disabled="auth.user.role != 'jednatel'" required/></td>
+                    <td ng-class="{'has-error': vehicleForm.mark.$invalid && vehicleForm.mark.$dirty}">
+                        <input type="text" name="mark" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control" ng-pattern="/^[A-Za-z0-9]*$/"
+                               ng-disabled="auth.user.role != 'jednatel'" maxlength="15" placeholder="značka vozidla" required/>
+                    </td>
                     <td class="bold">rok výroby</td>
-                    <td><input type="number" ng-model="vehicleDetailCtrl.vehicle['rok_vyroby']" ng-disabled="auth.user.role != 'jednatel'" class="form-control" required/></td>
+                    <td ng-class="{'has-error': vehicleForm.year.$invalid && vehicleForm.year.$dirty}">
+                        <input type="number" class="form-control" ng-pattern="/^[0-9]*$/" name="year" max="2100" min="1950"
+                               ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle['rok_vyroby']"
+                               placeholder="rok výroby" required>
+                    </td>
                     <td class="bold">počet km</td>
                     <td class="left" class="wider">{{vehicleDetailCtrl.vehicle['pocet_km']}}</td>
                 </tr>
                 <tr class="right">
                     <td class="bold">model</td>
-                    <td><input type="text" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle.model" class="form-control" required/></td>
+                    <td ng-class="{'has-error': vehicleForm.model.$invalid && vehicleForm.model.$dirty}">
+                        <input type="text" name="model" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle.model"
+                               class="form-control" placeholder="model vozidla" maxlength="15" ng-pattern="/^[A-Za-z0-9]*$/" required/>
+                    </td>
                     <td class="bold">spz</td>
-                    <td><input type="text" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle['spz']" class="form-control" required/></td>
+                    <td ng-class="{'has-error': vehicleForm.spz.$invalid && vehicleForm.spz.$dirty}">
+                        <input type="text" name="spz" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle['spz']"
+                               class="form-control" ng-pattern="/^[A-Z0-9 \t]{8,8}$/" maxlength="8" placeholder="spz vozidla" required/>
+                    </td>
                     <td class="bold">spotřeba</td>
                     <td class="left">{{vehicleDetailCtrl.vehicle['prumerna_spotreba']}}</td>
                 </tr>
                 <tr class="right">
                     <td class="bold">typ</td>
                     <td>
-                        <select name="selectState" ng-disabled="auth.user.role != 'jednatel'" class="form-control" ng-model="vehicleDetailCtrl.vehicle['vozidlo_typ']" required>
+                        <select name="selectState" ng-disabled="auth.user.role != 'jednatel'" class="form-control"
+                                ng-model="vehicleDetailCtrl.vehicle['vozidlo_typ']" required>
                             <option value="motorka">motocykl</option>
                             <option value="osobni">osobní automobil</option>
                             <option value="nakladni">nákladní automobil</option>
@@ -63,15 +77,24 @@
                         </select>
                     </td>
                     <td class="bold">příští stk</td>
-                    <td><input type="date" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle['datum_stk']" class="form-control" required/></td>
+                    <td>
+                        <input type="date" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle['datum_stk']"
+                               class="form-control" required/>
+                    </td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr class="right">
                     <td class="bold">vin</td>
-                    <td><input type="text" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle.vin" class="form-control" required/></td>
+                    <td ng-class="{'has-error': vehicleForm.vin.$invalid && vehicleForm.vin.$dirty}">
+                        <input type="text" name="vin" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle.vin"
+                               class="form-control" placeholder="vin vozidla" maxlength="17" ng-pattern="/^[A-Z0-9]{17,17}$/" required/>
+                    </td>
                     <td class="bold">poč. stav km</td>
-                    <td><input type="number" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle['pocatecni_stav_km']" class="form-control" required/></td>
+                    <td ng-class="{'has-error': vehicleForm.startKm.$invalid && vehicleForm.startKm.$dirty}">
+                        <input type="number" name="startKm" ng-disabled="auth.user.role != 'jednatel'" min="0" max="999999" placeholder="počáteční stav km"
+                               ng-model="vehicleDetailCtrl.vehicle['pocatecni_stav_km']" class="form-control" required/>
+                    </td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -133,10 +156,14 @@
                 <td>
                     <input type="time" ng-model="vehicleDetailCtrl.newRide['do']" class="form-control" required>
                 </td>
-                <td><input type="number" class="form-control" ng-model="vehicleDetailCtrl.newRide['najeto']"
-                           placeholder="vzdálenost" step="0.5" min="0" required></td>
-                <td><input type="number" class="form-control" ng-model="vehicleDetailCtrl.newRide['spotreba']"
-                           placeholder="spotřeba" step="0.1" min="0" required></td>
+                <td ng-class="{'has-error': rideForm.distance.$invalid && rideForm.distance.$dirty}">
+                    <input type="number" name="distance" class="form-control" ng-model="vehicleDetailCtrl.newRide['najeto']"
+                           placeholder="vzdálenost" step="0.5" min="0" max="200" ng-pattern="/^\d*\.?\d*$/" required>
+                </td>
+                <td ng-class="{'has-error': rideForm.consumption.$invalid && rideForm.consumption.$dirty}">
+                    <input type="number" name="consumption" class="form-control" ng-model="vehicleDetailCtrl.newRide['spotreba']"
+                           placeholder="spotřeba" step="0.1" min="0" max="100" ng-pattern="/^\d*\.?\d*$/" required>
+                </td>
                 <td>
                     <select name="selectTeachers" class="form-control" required>
                         <option ng-repeat="teacher in vehicleDetailCtrl.teachers">{{teacher.prijmeni}}</option>

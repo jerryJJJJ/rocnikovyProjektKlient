@@ -14,7 +14,7 @@ var app;
                 this.user = {
                     "uzivatelske_jmeno": "",
                     "heslo": "",
-                    "role": ""
+                    "role": "jednatel"
                 };
 
                 this.drivingSchool = {
@@ -30,9 +30,11 @@ var app;
                 var _this = this;
                 this.api.createUser(user).then(function (response) {
                     _this.drivingSchool['uzivatel_id'] = response.data['uzivatel_id'];
+                    _this.user = response.data;
                     _this.api.createDrivingSchool(drivingSchool).then(function () {
                         _this.$location.path("/autoskoly");
                     }, function (reason) {
+                        _this.api.deleteUser(_this.user);
                         alert('chyba: ' + reason);
                     });
                 }, function (reason) {

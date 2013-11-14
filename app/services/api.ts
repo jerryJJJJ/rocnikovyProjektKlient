@@ -129,6 +129,10 @@ module app.service {
     public deleteStudent(student) {
       return this.$http.delete(this.url + "/studenti/" + student.student_id);
     }
+
+    public deleteUser(user) {
+      return this.$http.delete(this.url + "/uzivatele/", user.uzivatel_id);
+    }
   }
 }
 

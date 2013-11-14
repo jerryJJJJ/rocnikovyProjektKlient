@@ -165,10 +165,14 @@
                     </td>
                 </tr>
                 <tr ng-if="auth.user.role == 'jednatel'">
-                    <td><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['prijmeni']"
-                               placeholder="příjmení" required></td>
-                    <td><input type="text" class="form-control" ng-model="courseDetailCtrl.newStudent['jmeno']"
-                               placeholder="jméno" required name="jmeno"></td>
+                    <td ng-class="{'has-error': studentForm.surname.$invalid && studentForm.surname.$dirty}">
+                        <input type="text" name="surname" class="form-control" ng-model="courseDetailCtrl.newStudent['prijmeni']"
+                               placeholder="příjmení" ng-pattern="/^[Á-Žá-žA-Za-z]{2,30}$/" required>
+                    </td>
+                    <td ng-class="{'has-error': studentForm.firstname.$invalid && studentForm.firstname.$dirty}">
+                        <input type="text" name="firstname" class="form-control" ng-model="courseDetailCtrl.newStudent['jmeno']"
+                               placeholder="jméno" ng-pattern="/^[Á-Žá-žA-Za-z]{2,30}$/" required>
+                    </td>
                     <td colspan="2" ng-class="{'has-error': studentForm.matricniCislo.$invalid && studentForm.matricniCislo.$dirty}">
                         <input type="text" class="form-control" ng-pattern="/^[0-9]*$/" name="matricniCislo" maxlength="6"
                                            ng-model="courseDetailCtrl.newStudent['matricni_cislo']"

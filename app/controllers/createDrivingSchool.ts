@@ -17,7 +17,7 @@ module app.controller {
       this.user = {
         "uzivatelske_jmeno": "",
         "heslo": "",
-        "role": ""
+        "role": "jednatel"
       }
 
       this.drivingSchool = {
@@ -33,9 +33,11 @@ module app.controller {
     public saveDrivingSchool(drivingSchool, user) {
       this.api.createUser(user).then((response) => {
           this.drivingSchool['uzivatel_id'] = response.data['uzivatel_id'];
+          this.user = response.data;
           this.api.createDrivingSchool(drivingSchool).then(() => {
             this.$location.path( "/autoskoly");
           }, (reason) => {
+            this.api.deleteUser(this.user);
             alert('chyba: ' + reason);
           })
         }, (reason) => {
