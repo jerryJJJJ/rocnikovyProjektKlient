@@ -2,11 +2,21 @@ var app;
 (function (app) {
     (function (service) {
         var Api = (function () {
-            function Api($http, $rootScope) {
+            function Api($http, $rootScope, $q) {
                 this.$http = $http;
+                this.$q = $q;
                 this.url = "http://ronkovprojektapi.apiary.io";
                 $rootScope.serverUrl = this.url;
             }
+            Api.prototype.login = function (userName, password) {
+                var deferred = this.$q.defer();
+                deferred.resolve({
+                    name: userName,
+                    role: userName
+                });
+                return deferred.promise;
+            };
+
             Api.prototype.getDrivingSchool = function (drivingSchoolId) {
                 return this.$http.get(this.url + "/autoskoly/" + drivingSchoolId);
             };

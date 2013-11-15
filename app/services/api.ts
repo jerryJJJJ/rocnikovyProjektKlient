@@ -6,8 +6,17 @@ module app.service {
     private url : string = "http://ronkovprojektapi.apiary.io";
 
 
-    constructor(private $http:ng.IHttpService, $rootScope:ng.IRootScopeService) {
+    constructor(private $http:ng.IHttpService, $rootScope:ng.IRootScopeService,  private $q:ng.IQService) {
       $rootScope.serverUrl = this.url;
+    }
+
+    public login(userName, password):ng.IPromise<app.lib.IUser> {
+      var deferred = this.$q.defer();
+      deferred.resolve({
+        name: userName,
+        role: userName
+      });
+      return deferred.promise;
     }
 
     public getDrivingSchool(drivingSchoolId) {

@@ -3,20 +3,22 @@ var app;
     (function (service) {
         var Auth = (function () {
             //TODO prihlasovaci logika
-            function Auth($rootScope, $cookieStore) {
+            function Auth($rootScope, $cookieStore, api) {
                 this.$rootScope = $rootScope;
                 this.$cookieStore = $cookieStore;
+                this.api = api;
                 this.user = {
                     name: "user1",
                     role: "jednatel"
                 };
                 $rootScope.auth = this;
             }
-            Auth.prototype.login = function (role) {
-                this.user = {
-                    name: "user1",
-                    role: role
-                };
+            Auth.prototype.login = function (userName, password) {
+                var _this = this;
+                return this.api.login(userName, password).then(function (user) {
+                    _this.user = user;
+                    return user;
+                });
             };
 
             Auth.prototype.logout = function () {

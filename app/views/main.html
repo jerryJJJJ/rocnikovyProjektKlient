@@ -6,15 +6,16 @@
             <table>
                 <tr>
                     <td>uživ. jméno</td>
-                    <td><input type="text" placeholder="uživatelské jméno" class="form-control"></td>
+                    <td><input type="text" placeholder="uživatelské jméno" class="form-control"
+                            ng-model="mainCtrl.username"></td>
                 </tr>
                 <tr>
                     <td>heslo</td>
-                    <td><input type="password" placeholder="heslo" class="form-control"></td>
+                    <td><input type="password" placeholder="heslo" class="form-control" ng-model="mainCtrl.password"></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="right">
-                        <button ng-click="" class="btn btn-primary">
+                        <button ng-click="mainCtrl.login()" class="btn btn-primary">
                             <span class="glyphicon glyphicon-floppy-save"></span> Přihlásit
                         </button>
                     </td>
@@ -24,8 +25,8 @@
     </div>
 
     <div>
-        <a href="/#/autoskola/1" ng-click="auth.login('jednatel')">přihlášení jako jednatel autoškoly</a><br>
-        <a href="/#/autoskoly" ng-click="auth.login('urednik')">přihlášení jako úředník</a><br>
-        <a href="/#/autoskoly" ng-click="auth.login('spravce')">přihlášení jako správce</a>
+        <a href="/#/autoskola/1" ng-click="auth.login('jednatel', '')">přihlášení jako jednatel autoškoly</a><br>
+        <a href="/#/autoskoly" ng-click="auth.login('urednik', '')">přihlášení jako úředník</a><br>
+        <a href="/#/autoskoly" ng-click="auth.login('spravce', '')">přihlášení jako správce</a>
     </div>
 </div>

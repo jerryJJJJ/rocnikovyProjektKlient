@@ -10,15 +10,15 @@ module app.service {
 
     //TODO prihlasovaci logika
 
-    constructor(private $rootScope:ng.IScope, private $cookieStore:ng.ICookieStoreService) {
+    constructor(private $rootScope:ng.IScope, private $cookieStore:ng.ICookieStoreService, private api:app.service.Api) {
       $rootScope.auth = this;
     }
 
-    public login(role:string) {
-      this.user = {
-        name: "user1",
-        role: role
-      };
+    public login(userName:string, password:string) : ng.IPromise<app.lib.IUser> {
+      return this.api.login(userName, password).then((user) => {
+        this.user = user;
+        return user;
+      });
     }
 
     public logout() {
