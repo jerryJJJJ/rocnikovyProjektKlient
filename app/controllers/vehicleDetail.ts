@@ -5,6 +5,7 @@ module app.controller {
 
     public newRide;
     public isNew;
+    public activeStudents: app.lib.IndexedArray;
 
     public static resolve : any = {
       'drivingSchool': (api:app.service.Api, $route:ng.IRoute) => {
@@ -18,6 +19,11 @@ module app.controller {
       'students': (api:app.service.Api, $route:ng.IRoute) => {
         return api.getStudents($route.current.params.id).then((response) => {
           return new app.lib.IndexedArray('student_id', response.data['studenti']);
+        });
+      },
+      'courses': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getCourses($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('kurz_id', response.data['kurzy']);
         });
       },
       'teachers': (api:app.service.Api, $route:ng.IRoute) => {
@@ -40,10 +46,18 @@ module app.controller {
     constructor(private $http:ng.IHttpService, $routeParams:RouteParamsVehicleDetail,
                 private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
                 public vehicle:Object, public students:app.lib.IndexedArray,  public teachers:app.lib.IndexedArray,
-                public rides:app.lib.IndexedArray, public documents:app.lib.IndexedArray) {
+                public rides:app.lib.IndexedArray, public documents:app.lib.IndexedArray, public courses:app.lib.IndexedArray) {
 
       if($routeParams.id) {
         this.isNew = false;
+
+        //this.activeStudents = new app.lib.IndexedArray;
+        students.forEach((student) => {
+          var state = courses.find(student['kurz_id'])['stav'];
+          if (state == 'probihajici' || state == 'jde_ke_zkousce') {
+            this.activeStudents.add(student);
+          }
+        });
       } else {
         this.isNew = true;
         this.vehicle = {

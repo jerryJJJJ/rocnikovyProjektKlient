@@ -2,7 +2,8 @@ var app;
 (function (app) {
     (function (controller) {
         var VehicleDetail = (function () {
-            function VehicleDetail($http, $routeParams, api, $location, drivingSchool, vehicle, students, teachers, rides, documents) {
+            function VehicleDetail($http, $routeParams, api, $location, drivingSchool, vehicle, students, teachers, rides, documents, courses) {
+                var _this = this;
                 this.$http = $http;
                 this.api = api;
                 this.$location = $location;
@@ -12,8 +13,17 @@ var app;
                 this.teachers = teachers;
                 this.rides = rides;
                 this.documents = documents;
+                this.courses = courses;
                 if ($routeParams.id) {
                     this.isNew = false;
+
+                    //this.activeStudents = new app.lib.IndexedArray;
+                    students.forEach(function (student) {
+                        var state = courses.find(student['kurz_id'])['stav'];
+                        if (state == 'probihajici' || state == 'jde_ke_zkousce') {
+                            _this.activeStudents.add(student);
+                        }
+                    });
                 } else {
                     this.isNew = true;
                     this.vehicle = {
@@ -114,6 +124,11 @@ var app;
                 'students': function (api, $route) {
                     return api.getStudents($route.current.params.id).then(function (response) {
                         return new app.lib.IndexedArray('student_id', response.data['studenti']);
+                    });
+                },
+                'courses': function (api, $route) {
+                    return api.getCourses($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('kurz_id', response.data['kurzy']);
                     });
                 },
                 'teachers': function (api, $route) {
