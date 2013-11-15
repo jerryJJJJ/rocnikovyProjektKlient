@@ -17,11 +17,12 @@ var app;
                 if ($routeParams.id) {
                     this.isNew = false;
 
-                    //this.activeStudents = new app.lib.IndexedArray;
+                    this.activeStudents = new app.lib.IndexedArray();
                     students.forEach(function (student) {
                         var state = courses.find(student['kurz_id'])['stav'];
+                        alert(state);
                         if (state == 'probihajici' || state == 'jde_ke_zkousce') {
-                            _this.activeStudents.add(student);
+                            _this.activeStudents.push(student);
                         }
                     });
                 } else {
