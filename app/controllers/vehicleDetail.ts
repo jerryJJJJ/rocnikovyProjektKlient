@@ -5,7 +5,6 @@ module app.controller {
 
     public newRide;
     public isNew;
-    public activeStudents: app.lib.IndexedArray;
 
     public static resolve : any = {
       'drivingSchool': (api:app.service.Api, $route:ng.IRoute) => {
@@ -50,15 +49,6 @@ module app.controller {
 
       if($routeParams.id) {
         this.isNew = false;
-
-        this.activeStudents = new app.lib.IndexedArray;
-        students.forEach((student) => {
-          var state = courses.find(student['kurz_id'])['stav'];
-          alert(state);
-          if (state == 'probihajici' || state == 'jde_ke_zkousce') {
-            this.activeStudents.push(student);
-          }
-        });
       } else {
         this.isNew = true;
         this.vehicle = {

@@ -146,7 +146,9 @@ var app;
     */
     function registerFilter(className) {
         var filter = className.charAt(0).toLowerCase() + className.substr(1);
-        angular.module('app.filter').filter(filter, app.filter[className]);
+        angular.module('app.filter').filter(filter, function () {
+            return app.filter[className].filter;
+        });
     }
     app.registerFilter = registerFilter;
 
