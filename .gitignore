@@ -1,9 +1,7 @@
-node_modules
 dist
 .tmp
 .sass-cache
 .idea
-app/components
 npm-debug.log
 
 
