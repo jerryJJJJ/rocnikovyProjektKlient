@@ -5,7 +5,8 @@ var app;
             function Api($http, $rootScope, $q) {
                 this.$http = $http;
                 this.$q = $q;
-                this.url = "http://ronkovprojektapi.apiary.io";
+                //private url : string = "http://ronkovprojektapi.apiary.io";
+                this.url = "http://localhost:49684/api";
                 $rootScope.serverUrl = this.url;
             }
             Api.prototype.login = function (userName, password) {
