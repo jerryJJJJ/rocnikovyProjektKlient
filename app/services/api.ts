@@ -3,8 +3,8 @@ module app.service {
 
   export class Api {
 
-    private url : string = "http://ronkovprojektapi.apiary.io";
-    //private url : string = "http://localhost:49684/api";
+    //private url : string = "http://ronkovprojektapi.apiary.io";
+    private url : string = "http://localhost:49684/api";
 
 
     constructor(private $http:ng.IHttpService, $rootScope:ng.IRootScopeService,  private $q:ng.IQService) {
