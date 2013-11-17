@@ -59,7 +59,7 @@ var app;
             };
 
             Api.prototype.getVehicleDocuments = function (vehicleId) {
-                return this.$http.get(this.url + "/dumentyvozidla?vozidlo_id=" + vehicleId);
+                return this.$http.get(this.url + "/dokumentyvozidla?vozidlo_id=" + vehicleId);
             };
 
             Api.prototype.getLessons = function (courseId) {
