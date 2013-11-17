@@ -81,7 +81,7 @@ module app.controller {
         "datum": nowDate.getFullYear() + "-" + month + "-" + day,
         "cas_od": hours + ":" + minutes,
         "cas_do": hoursTo + ":" + minutes,
-        "kurz_id": this.course.id
+        "kurz_id": this.$routeParams.id
       };
     }
 

@@ -165,19 +165,19 @@
                            placeholder="spotřeba" step="0.1" min="0" max="100" ng-pattern="/^\d*\.?\d*$/" required>
                 </td>
                 <td>
-                    <select name="selectTeachers" class="form-control" required>
-                        <option ng-repeat="teacher in vehicleDetailCtrl.teachers">{{teacher.prijmeni}}</option>
+                    <select name="selectTeachers" class="form-control" required ng-model="vehicleDetailCtrl.newRide.ucitel_id">
+                        <option ng-repeat="id in vehicleDetailCtrl.teachers | ids:'ucitel_id'" ng-value="id">{{vehicleDetailCtrl.teachers.find(id).prijmeni}}</option>
                     </select>
                 </td>
                 <td colspan="2">
-                    <select name="selectStudents" class="form-control" required>
-                        <option ng-repeat="student in vehicleDetailCtrl.students | activeStudents:vehicleDetailCtrl.courses">{{student.prijmeni}} ({{student['matricni_cislo']}})</option>
+                    <select name="selectStudents" class="form-control" required ng-model="vehicleDetailCtrl.newRide.student_id">
+                        <option ng-repeat="id in vehicleDetailCtrl.students | activeStudents:vehicleDetailCtrl.courses | ids:'student_id'" ng-value="id">{{vehicleDetailCtrl.students.find(id).prijmeni}} ({{vehicleDetailCtrl.students.find(id)['matricni_cislo']}})</option>
                     </select>
                 </td>
             </tr>
             <tr ng-if="auth.user.role == 'jednatel'">
                 <td colspan="8" class="right">
-                    <button ng-click="vehicleDetailCtrl.createRide(ride)" class="btn btn-primary" ng-disabled="!rideForm.$valid">
+                    <button ng-click="vehicleDetailCtrl.createRide(vehicleDetailCtrl.newRide)" class="btn btn-primary" ng-disabled="!rideForm.$valid">
                         <span class="glyphicon glyphicon-floppy-save"></span> Uložit jízdu</button>
                 </td>
             </tr>
