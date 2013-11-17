@@ -61,7 +61,7 @@ module app.service {
     }
 
     public getVehicleDocuments(vehicleId) {
-      return this.$http.get(this.url + "/dumenty-vozidla?vozidlo_id=" + vehicleId);
+      return this.$http.get(this.url + "/dumentyvozidla?vozidlo_id=" + vehicleId);
     }
 
     public getLessons(courseId) {
@@ -125,7 +125,7 @@ module app.service {
     }
 
     public deleteVehicleDocument(document) {
-      return this.$http.delete(this.url + "/dokumenty-vozidla/" + document.dokument_id);
+      return this.$http.delete(this.url + "/dokumentyvozidla/" + document.dokument_id);
     }
 
     public deleteCourse(course) {

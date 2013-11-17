@@ -59,7 +59,7 @@ var app;
             };
 
             Api.prototype.getVehicleDocuments = function (vehicleId) {
-                return this.$http.get(this.url + "/dumenty-vozidla?vozidlo_id=" + vehicleId);
+                return this.$http.get(this.url + "/dumentyvozidla?vozidlo_id=" + vehicleId);
             };
 
             Api.prototype.getLessons = function (courseId) {
@@ -123,7 +123,7 @@ var app;
             };
 
             Api.prototype.deleteVehicleDocument = function (document) {
-                return this.$http.delete(this.url + "/dokumenty-vozidla/" + document.dokument_id);
+                return this.$http.delete(this.url + "/dokumentyvozidla/" + document.dokument_id);
             };
 
             Api.prototype.deleteCourse = function (course) {
