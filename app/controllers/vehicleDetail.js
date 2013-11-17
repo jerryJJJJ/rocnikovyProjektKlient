@@ -27,17 +27,21 @@ var app;
                     };
                 }
 
+                this.initNewRide();
+            }
+            VehicleDetail.prototype.initNewRide = function () {
                 var nowDate = new Date();
                 var month = (nowDate.getMonth() + 1 < 10 ? '0' : '') + (nowDate.getMonth() + 1);
                 var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
 
                 this.newRide = {
                     "datum": nowDate.getFullYear() + "-" + month + "-" + day,
-                    "vozidlo_id": $routeParams.id,
+                    "vozidlo_id": this.$routeParams.id,
                     "od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
                     "do": (((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
                 };
-            }
+            };
+
             VehicleDetail.prototype.saveVehicle = function (vehicle) {
                 var _this = this;
                 if (this.isNew) {
@@ -59,8 +63,10 @@ var app;
 
             VehicleDetail.prototype.createRide = function (ride) {
                 var _this = this;
+                ride.kurz_id = this.students.find(ride.student_id).kurz_id;
                 this.api.createRide(ride).then(function (response) {
                     _this.rides.push(response.data);
+                    _this.initNewRide();
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
