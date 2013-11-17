@@ -41,7 +41,7 @@ module app.controller {
       }
     };
 
-    constructor(private $http:ng.IHttpService, $routeParams:RouteParamsCourseDetail, private auth:app.service.Auth,
+    constructor(private $http:ng.IHttpService, private $routeParams:RouteParamsCourseDetail, private auth:app.service.Auth,
                 private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
                 public course:Object, public students:app.lib.IndexedArray,  public teachers:app.lib.IndexedArray,
                 public lessons:app.lib.IndexedArray) {
@@ -56,6 +56,7 @@ module app.controller {
         var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
 
         this.course = {
+          "autoskola_id": $routeParams.autoskolaId,
           "datum_od": nowDate.getFullYear() + "-" + month + "-" + day,
           "datum_do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
         };
@@ -84,6 +85,12 @@ module app.controller {
       };
     }
 
+    private setUpNewStudent() {
+      this.newStudent = {
+        "kurz_id": this.$routeParams.id
+      };
+    }
+
     public saveCourse(course) {
       if(this.isNew) {
         this.api.createCourse(course).then((response) => {
@@ -103,6 +110,7 @@ module app.controller {
     public createLesson(lesson) {
       this.api.createLesson(lesson).then((response) => {
         this.lessons.push(response.data);
+        this.setUpNewLesson();
       }, (reason) => {
         alert('Chyba: ' + reason);
       });
@@ -111,6 +119,7 @@ module app.controller {
     public createStudent(student) {
       this.api.createStudent(student).then((response) => {
         this.students.push(response.data);
+        this.setUpNewStudent();
       }, (reason) => {
         alert('Chyba: ' + reason);
       });

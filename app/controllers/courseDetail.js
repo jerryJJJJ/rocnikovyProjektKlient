@@ -5,6 +5,7 @@ var app;
             function CourseDetail($http, $routeParams, auth, api, $location, drivingSchool, course, students, teachers, lessons) {
                 var _this = this;
                 this.$http = $http;
+                this.$routeParams = $routeParams;
                 this.auth = auth;
                 this.api = api;
                 this.$location = $location;
@@ -24,6 +25,7 @@ var app;
                     var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
 
                     this.course = {
+                        "autoskola_id": $routeParams.autoskolaId,
                         "datum_od": nowDate.getFullYear() + "-" + month + "-" + day,
                         "datum_do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
                     };
@@ -51,6 +53,12 @@ var app;
                 };
             };
 
+            CourseDetail.prototype.setUpNewStudent = function () {
+                this.newStudent = {
+                    "kurz_id": this.$routeParams.id
+                };
+            };
+
             CourseDetail.prototype.saveCourse = function (course) {
                 var _this = this;
                 if (this.isNew) {
@@ -72,6 +80,7 @@ var app;
                 var _this = this;
                 this.api.createLesson(lesson).then(function (response) {
                     _this.lessons.push(response.data);
+                    _this.setUpNewLesson();
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
@@ -81,6 +90,7 @@ var app;
                 var _this = this;
                 this.api.createStudent(student).then(function (response) {
                     _this.students.push(response.data);
+                    _this.setUpNewStudent();
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });

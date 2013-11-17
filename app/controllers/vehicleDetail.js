@@ -4,6 +4,7 @@ var app;
         var VehicleDetail = (function () {
             function VehicleDetail($http, $routeParams, auth, api, $location, drivingSchool, vehicle, students, teachers, rides, documents, courses) {
                 this.$http = $http;
+                this.$routeParams = $routeParams;
                 this.auth = auth;
                 this.api = api;
                 this.$location = $location;
@@ -21,7 +22,8 @@ var app;
                     this.vehicle = {
                         "pocatecni-stav-km": 0,
                         "prumerna-spotreba": 0,
-                        "pocet-km": 0
+                        "pocet-km": 0,
+                        "autoskola_id": $routeParams.autoskolaId
                     };
                 }
 
@@ -31,6 +33,7 @@ var app;
 
                 this.newRide = {
                     "datum": nowDate.getFullYear() + "-" + month + "-" + day,
+                    "vozidlo_id": $routeParams.id,
                     "od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
                     "do": (((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
                 };
@@ -41,6 +44,7 @@ var app;
                     this.api.createVehicle(vehicle).then(function (response) {
                         _this.vehicle = response.data;
                         _this.isNew = false;
+                        _this.$location.path("/autoskola/" + _this.$routeParams.autoskolaId + "/vozidla/" + response.data.vozidlo_id);
                     }, function (reason) {
                         alert('Chyba: ' + reason);
                     });

@@ -50,7 +50,7 @@ module app.controller {
       }
     };
 
-    constructor(private $http:ng.IHttpService, $routeParams:RouteParamsVehicleDetail, private auth:app.service.Auth,
+    constructor(private $http:ng.IHttpService, private $routeParams, private auth:app.service.Auth,
                 private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
                 public vehicle:Object, public students:app.lib.IndexedArray,  public teachers:app.lib.IndexedArray,
                 public rides:app.lib.IndexedArray, public documents:app.lib.IndexedArray, public courses:app.lib.IndexedArray) {
@@ -62,7 +62,8 @@ module app.controller {
         this.vehicle = {
           "pocatecni-stav-km": 0,
           "prumerna-spotreba": 0,
-          "pocet-km": 0
+          "pocet-km": 0,
+          "autoskola_id": $routeParams.autoskolaId
         };
       }
 
@@ -73,6 +74,7 @@ module app.controller {
 
       this.newRide = {
         "datum": nowDate.getFullYear() + "-" + month + "-" + day,
+        "vozidlo_id": $routeParams.id,
         "od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
         "do": (((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
       };
@@ -82,6 +84,7 @@ module app.controller {
       if(this.isNew) {
         this.api.createVehicle(vehicle).then((response) => {
           this.vehicle = response.data; this.isNew = false;
+          this.$location.path("/autoskola/"+this.$routeParams.autoskolaId+"/vozidla/"+response.data.vozidlo_id);
         }, (reason) => {
           alert('Chyba: ' + reason);
         });
