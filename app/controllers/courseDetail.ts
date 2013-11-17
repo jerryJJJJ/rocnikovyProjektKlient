@@ -49,6 +49,7 @@ module app.controller {
       if($routeParams.id) {
         this.isNew = false;
         this.setUpNewLesson();
+        this.setUpNewStudent();
       } else {
         this.isNew = true;
         var nowDate = new Date();
