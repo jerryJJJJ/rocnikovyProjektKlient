@@ -92,7 +92,7 @@ var app;
                 var _this = this;
                 if (completed && content.length > 0) {
                     this.api.getVehicleDocuments($routeParams.id).then(function (response) {
-                        _this.documents = new app.lib.IndexedArray('stk_id', response.data.dokumenty);
+                        _this.documents = new app.lib.IndexedArray('dokument_id', response.data.dokumenty);
                     }, function (reason) {
                         alert('Nepodarilo se nacist dokumenty: ' + reason);
                     });
@@ -103,14 +103,18 @@ var app;
             };
             VehicleDetail.resolve = {
                 'drivingSchool': function (api, $route) {
-                    return api.getDrivingSchool($route.current.params.id).then(function (response) {
+                    return api.getDrivingSchool($route.current.params.autoskolaId).then(function (response) {
                         return response.data;
                     });
                 },
                 'vehicle': function (api, $route) {
-                    return api.getVehicle($route.current.params.id).then(function (response) {
-                        return response.data;
-                    });
+                    if ($route.current.params.id) {
+                        return api.getVehicle($route.current.params.id).then(function (response) {
+                            return response.data;
+                        });
+                    } else {
+                        return {};
+                    }
                 },
                 'students': function (api, $route) {
                     return api.getStudents($route.current.params.id).then(function (response) {
@@ -128,14 +132,20 @@ var app;
                     });
                 },
                 'rides': function (api, $route) {
-                    return api.getRides($route.current.params.id).then(function (response) {
-                        return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
-                    });
+                    if ($route.current.params.id) {
+                        return api.getRides($route.current.params.id).then(function (response) {
+                            return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
+                        });
+                    } else
+                        return new app.lib.IndexedArray('jizda_id');
                 },
                 'documents': function (api, $route) {
-                    return api.getVehicleDocuments($route.current.params.id).then(function (response) {
-                        return new app.lib.IndexedArray('stk_id', response.data['dokumenty']);
-                    });
+                    if ($route.current.params.id) {
+                        return api.getVehicleDocuments($route.current.params.id).then(function (response) {
+                            return new app.lib.IndexedArray('dokument_id', response.data['dokumenty']);
+                        });
+                    } else
+                        return new app.lib.IndexedArray('dokument_id');
                 }
             };
             return VehicleDetail;

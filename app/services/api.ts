@@ -68,8 +68,8 @@ module app.service {
       return this.$http.get(this.url + "/teorie?kurz_id=" + courseId);
     }
 
-    public getStudents(courseId) {
-      return this.$http.get(this.url + "/studenti?kurz_id=" + courseId);
+    public getStudents(autoskolaId) {
+      return this.$http.get(this.url + "/studenti?autoskola_id=" + autoskolaId);
     }
 
     public getStudent(studentId) {
@@ -125,7 +125,7 @@ module app.service {
     }
 
     public deleteVehicleDocument(document) {
-      return this.$http.delete(this.url + "/dokumenty-vozidla/" + document.stk_id);
+      return this.$http.delete(this.url + "/dokumenty-vozidla/" + document.dokument_id);
     }
 
     public deleteCourse(course) {

@@ -66,8 +66,8 @@ var app;
                 return this.$http.get(this.url + "/teorie?kurz_id=" + courseId);
             };
 
-            Api.prototype.getStudents = function (courseId) {
-                return this.$http.get(this.url + "/studenti?kurz_id=" + courseId);
+            Api.prototype.getStudents = function (autoskolaId) {
+                return this.$http.get(this.url + "/studenti?autoskola_id=" + autoskolaId);
             };
 
             Api.prototype.getStudent = function (studentId) {
@@ -123,7 +123,7 @@ var app;
             };
 
             Api.prototype.deleteVehicleDocument = function (document) {
-                return this.$http.delete(this.url + "/dokumenty-vozidla/" + document.stk_id);
+                return this.$http.delete(this.url + "/dokumenty-vozidla/" + document.dokument_id);
             };
 
             Api.prototype.deleteCourse = function (course) {

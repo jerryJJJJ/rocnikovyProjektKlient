@@ -8,27 +8,36 @@ module app.controller {
 
     public static resolve : any = {
       'drivingSchool': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getDrivingSchool($route.current.params.id).then((response) => response.data);
+        return api.getDrivingSchool($route.current.params.autoskolaId).then((response) => response.data);
       },
       'course': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getCourse($route.current.params.id).then((response) => {
-          return response.data;
-        });
+        if($route.current.params.id) {
+          return api.getCourse($route.current.params.id).then((response) => {
+            return response.data;
+          });
+        } else return {};
       },
       'students': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getStudents($route.current.params.id).then((response) => {
-          return new app.lib.IndexedArray('student_id', response.data['studenti']);
-        });
+        if($route.current.params.id) {
+          return api.getStudents($route.current.params.autoskolaId).then((response) => {
+            return new app.lib.IndexedArray('student_id', response.data['studenti'].filter((student) => {
+              return student.kurz_id == $route.current.params.id; //vyfiltrujeme ze vsech studentu jen ty co patri do
+              //naseho kurzu
+            }));
+          });
+        } else return {};
       },
       'teachers': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getTeachers($route.current.params.id).then((response) => {
+        return api.getTeachers($route.current.params.autoskolaId).then((response) => {
           return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
         });
       },
       'lessons': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getLessons($route.current.params.id).then((response) => {
-          return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
-        });
+        if($route.current.params.id) {
+          return api.getLessons($route.current.params.id).then((response) => {
+            return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
+          });
+        } else return {};
       }
     };
 

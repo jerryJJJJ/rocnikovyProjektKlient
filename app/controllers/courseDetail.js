@@ -113,29 +113,41 @@ var app;
             };
             CourseDetail.resolve = {
                 'drivingSchool': function (api, $route) {
-                    return api.getDrivingSchool($route.current.params.id).then(function (response) {
+                    return api.getDrivingSchool($route.current.params.autoskolaId).then(function (response) {
                         return response.data;
                     });
                 },
                 'course': function (api, $route) {
-                    return api.getCourse($route.current.params.id).then(function (response) {
-                        return response.data;
-                    });
+                    if ($route.current.params.id) {
+                        return api.getCourse($route.current.params.id).then(function (response) {
+                            return response.data;
+                        });
+                    } else
+                        return {};
                 },
                 'students': function (api, $route) {
-                    return api.getStudents($route.current.params.id).then(function (response) {
-                        return new app.lib.IndexedArray('student_id', response.data['studenti']);
-                    });
+                    if ($route.current.params.id) {
+                        return api.getStudents($route.current.params.autoskolaId).then(function (response) {
+                            return new app.lib.IndexedArray('student_id', response.data['studenti'].filter(function (student) {
+                                return student.kurz_id == $route.current.params.id;
+                                //naseho kurzu
+                            }));
+                        });
+                    } else
+                        return {};
                 },
                 'teachers': function (api, $route) {
-                    return api.getTeachers($route.current.params.id).then(function (response) {
+                    return api.getTeachers($route.current.params.autoskolaId).then(function (response) {
                         return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
                     });
                 },
                 'lessons': function (api, $route) {
-                    return api.getLessons($route.current.params.id).then(function (response) {
-                        return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
-                    });
+                    if ($route.current.params.id) {
+                        return api.getLessons($route.current.params.id).then(function (response) {
+                            return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
+                        });
+                    } else
+                        return {};
                 }
             };
             return CourseDetail;

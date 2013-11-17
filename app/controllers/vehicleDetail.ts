@@ -8,12 +8,16 @@ module app.controller {
 
     public static resolve : any = {
       'drivingSchool': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getDrivingSchool($route.current.params.id).then((response) => response.data);
+        return api.getDrivingSchool($route.current.params.autoskolaId).then((response) => response.data);
       },
       'vehicle': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getVehicle($route.current.params.id).then((response) => {
-          return response.data;
-        });
+        if($route.current.params.id) {
+          return api.getVehicle($route.current.params.id).then((response) => {
+            return response.data;
+          });
+        } else {
+          return {};
+        }
       },
       'students': (api:app.service.Api, $route:ng.IRoute) => {
         return api.getStudents($route.current.params.id).then((response) => {
@@ -31,14 +35,18 @@ module app.controller {
         });
       },
       'rides': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getRides($route.current.params.id).then((response) => {
-          return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
-        });
+        if($route.current.params.id) {
+          return api.getRides($route.current.params.id).then((response) => {
+            return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
+          });
+        } else return new app.lib.IndexedArray('jizda_id');
       },
       'documents': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getVehicleDocuments($route.current.params.id).then((response) => {
-          return new app.lib.IndexedArray('stk_id', response.data['dokumenty']);
-        });
+        if($route.current.params.id) {
+          return api.getVehicleDocuments($route.current.params.id).then((response) => {
+            return new app.lib.IndexedArray('dokument_id', response.data['dokumenty']);
+          });
+        } else return new app.lib.IndexedArray('dokument_id');
       }
     };
 
@@ -119,7 +127,7 @@ module app.controller {
     public uploadResults(content, completed) {
       if (completed && content.length > 0) {
         this.api.getVehicleDocuments($routeParams.id).then((response:ng.IHttpPromiseCallbackArg) => {
-          this.documents = new app.lib.IndexedArray('stk_id', response.data.dokumenty);
+          this.documents = new app.lib.IndexedArray('dokument_id', response.data.dokumenty);
         }, (reason) => {
           alert('Nepodarilo se nacist dokumenty: ' + reason);
         });
