@@ -22,6 +22,7 @@ module app.service {
     }
 
     public logout() {
+      location.replace("/#/");
       this.user = null;
     }
 

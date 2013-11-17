@@ -10,7 +10,7 @@
     </span>
         <div id="logout">
             <a href="/#/autoskola/{{vehicleDetailCtrl.drivingSchool.autoskola_id}}/vozidla">Zpět na výpis  |</a>
-            <a href="">Odhlásit</a>
+            <a href="" ng-click="auth.logout()">Odhlásit</a>
         </div>
         <div class="documents" ng-if="!vehicleDetailCtrl.isNew">
             <h3>Dokumenty</h3>

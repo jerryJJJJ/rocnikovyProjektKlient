@@ -1,5 +1,5 @@
 /// <reference path="../components/types/angularjs/angular.d.ts"/>
-/// <reference path="../services/api.ts"/>
+/// <reference path="../../../../download/klient/services/api.ts"/>
 /// <reference path="../lib/indexedArray.ts"/>
 /// <reference path="../app.ts"/>
 
@@ -11,7 +11,7 @@ module app.controller {
     public drivingSchool;
     public user;
 
-    constructor(private $http:ng.IHttpService, private $routeParams,
+    constructor(private $http:ng.IHttpService, private $routeParams, private auth:app.service.Auth,
                 private api:app.service.Api, private $location:ng.ILocationService) {
 
       this.user = {

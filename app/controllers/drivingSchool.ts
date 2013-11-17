@@ -1,5 +1,5 @@
 /// <reference path="../components/types/angularjs/angular.d.ts"/>
-/// <reference path="../services/api.ts"/>
+/// <reference path="../../../../download/klient/services/api.ts"/>
 /// <reference path="../lib/indexedArray.ts"/>
 /// <reference path="../app.ts"/>
 
@@ -37,7 +37,7 @@ module app.controller {
 
     public listType:string;
 
-    constructor(private $http:ng.IHttpService, $routeParams:RouteParamsDrivingSchool,
+    constructor(private $http:ng.IHttpService, $routeParams:RouteParamsDrivingSchool, private auth:app.service.Auth,
                 private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
                 public teachers:app.lib.IndexedArray, public courses:app.lib.IndexedArray,
                 public vehicles:app.lib.IndexedArray) {

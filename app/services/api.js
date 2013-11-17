@@ -2,11 +2,11 @@ var app;
 (function (app) {
     (function (service) {
         var Api = (function () {
+            //private url : string = "http://localhost:49684/api";
             function Api($http, $rootScope, $q) {
                 this.$http = $http;
                 this.$q = $q;
-                //private url : string = "http://ronkovprojektapi.apiary.io";
-                this.url = "http://localhost:49684/api";
+                this.url = "http://ronkovprojektapi.apiary.io";
                 $rootScope.serverUrl = this.url;
             }
             Api.prototype.login = function (userName, password) {

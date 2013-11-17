@@ -12,7 +12,7 @@
                 Zpět na kurzy  |</a>
             <a ng-if="studentDetailCtrl.vehicleId" href="/#/autoskola/{{studentDetailCtrl.drivingSchool.autoskola_id}}/vozidla/{{studentDetailCtrl.vehicleId}}">
                 Zpět na vozidla  |</a>
-            <a href="">Odhlásit</a>
+            <a href="" ng-click="auth.logout()">Odhlásit</a>
         </div>
         <form name="studentForm">
             <table class="detail-table">

@@ -41,7 +41,7 @@ module app.controller {
       }
     };
 
-    constructor(private $http:ng.IHttpService, $routeParams:RouteParamsCourseDetail,
+    constructor(private $http:ng.IHttpService, $routeParams:RouteParamsCourseDetail, private auth:app.service.Auth,
                 private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
                 public course:Object, public students:app.lib.IndexedArray,  public teachers:app.lib.IndexedArray,
                 public lessons:app.lib.IndexedArray) {

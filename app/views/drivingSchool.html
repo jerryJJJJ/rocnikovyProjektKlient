@@ -3,8 +3,9 @@
         <div class="container">
             <h1>{{drivingSchoolCtrl.drivingSchool.nazev}}</h1>
             <div id="logoutMainPage">
-                <a href="">Nastavení  |</a>
-                <a href="">Odhlásit</a>
+                <a ng-if="auth.user.role == 'jednatel'" href="">Nastavení  | </a>
+                <a ng-if="auth.user.role != 'jednatel'" href="/#/autoskoly">Zpět na autoškoly  | </a>
+                <a href="" ng-click="auth.logout()">Odhlásit</a>
             </div>
             <table class="detail-table">
                 <tr>

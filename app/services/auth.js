@@ -22,6 +22,7 @@ var app;
             };
 
             Auth.prototype.logout = function () {
+                location.replace("/#/");
                 this.user = null;
             };
             return Auth;

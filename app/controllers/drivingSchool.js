@@ -1,13 +1,14 @@
 var app;
 (function (app) {
     /// <reference path="../components/types/angularjs/angular.d.ts"/>
-    /// <reference path="../services/api.ts"/>
+    /// <reference path="../../../../download/klient/services/api.ts"/>
     /// <reference path="../lib/indexedArray.ts"/>
     /// <reference path="../app.ts"/>
     (function (controller) {
         var DrivingSchool = (function () {
-            function DrivingSchool($http, $routeParams, api, $location, drivingSchool, teachers, courses, vehicles) {
+            function DrivingSchool($http, $routeParams, auth, api, $location, drivingSchool, teachers, courses, vehicles) {
                 this.$http = $http;
+                this.auth = auth;
                 this.api = api;
                 this.$location = $location;
                 this.drivingSchool = drivingSchool;

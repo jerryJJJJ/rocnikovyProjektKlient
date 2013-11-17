@@ -2,8 +2,9 @@ var app;
 (function (app) {
     (function (controller) {
         var VehicleDetail = (function () {
-            function VehicleDetail($http, $routeParams, api, $location, drivingSchool, vehicle, students, teachers, rides, documents, courses) {
+            function VehicleDetail($http, $routeParams, auth, api, $location, drivingSchool, vehicle, students, teachers, rides, documents, courses) {
                 this.$http = $http;
+                this.auth = auth;
                 this.api = api;
                 this.$location = $location;
                 this.drivingSchool = drivingSchool;
