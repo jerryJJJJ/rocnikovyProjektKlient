@@ -117,17 +117,17 @@ var app;
                     }
                 },
                 'students': function (api, $route) {
-                    return api.getStudents($route.current.params.id).then(function (response) {
+                    return api.getStudents($route.current.params.autoskolaId).then(function (response) {
                         return new app.lib.IndexedArray('student_id', response.data['studenti']);
                     });
                 },
                 'courses': function (api, $route) {
-                    return api.getCourses($route.current.params.id).then(function (response) {
+                    return api.getCourses($route.current.params.autoskolaId).then(function (response) {
                         return new app.lib.IndexedArray('kurz_id', response.data['kurzy']);
                     });
                 },
                 'teachers': function (api, $route) {
-                    return api.getTeachers($route.current.params.id).then(function (response) {
+                    return api.getTeachers($route.current.params.autoskolaId).then(function (response) {
                         return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
                     });
                 },

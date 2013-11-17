@@ -20,17 +20,17 @@ module app.controller {
         }
       },
       'students': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getStudents($route.current.params.id).then((response) => {
+        return api.getStudents($route.current.params.autoskolaId).then((response) => {
           return new app.lib.IndexedArray('student_id', response.data['studenti']);
         });
       },
       'courses': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getCourses($route.current.params.id).then((response) => {
+        return api.getCourses($route.current.params.autoskolaId).then((response) => {
           return new app.lib.IndexedArray('kurz_id', response.data['kurzy']);
         });
       },
       'teachers': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getTeachers($route.current.params.id).then((response) => {
+        return api.getTeachers($route.current.params.autoskolaId).then((response) => {
           return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
         });
       },
