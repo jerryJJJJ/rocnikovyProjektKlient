@@ -9,6 +9,53 @@ var app;
                 this.url = "http://localhost:49684/api";
                 $rootScope.serverUrl = this.url;
             }
+            Api.prototype.treatVozidlo = function (vozidlo) {
+                this.trimDate(vozidlo, 'datum_stk');
+            };
+
+            Api.prototype.treatJizda = function (jizda) {
+                jizda['datum'] = jizda['cas_od'].slice(0, 10);
+                this.trimHours(jizda, 'cas_od');
+                this.trimHours(jizda, 'cas_do');
+            };
+
+            Api.prototype.treatDokument = function (dokument) {
+                this.trimDate(dokument, 'datum_vlozeni');
+            };
+
+            Api.prototype.treatTeorie = function (teorie) {
+                teorie['datum'] = teorie['cas_od'].slice(0, 10);
+                this.trimHours(teorie, 'cas_od');
+                this.trimHours(teorie, 'cas_do');
+            };
+
+            Api.prototype.treatTeorieSave = function (teorie) {
+                teorie.cas_od = teorie.datum + "T" + teorie.cas_od + ":00";
+                teorie.cas_do = teorie.datum + "T" + teorie.cas_do + ":00";
+            };
+
+            Api.prototype.treatRideSave = function (ride) {
+                ride.od = ride.datum + "T" + ride.od + ":00";
+                ride.do = ride.datum + "T" + ride.do + ":00";
+            };
+
+            Api.prototype.treatKurz = function (kurz) {
+                this.trimDate(kurz, 'datum_od');
+                this.trimDate(kurz, 'datum_do');
+            };
+
+            Api.prototype.trimDate = function (entity, prop) {
+                if (typeof entity[prop] == "string") {
+                    entity[prop] = entity[prop].slice(0, 10);
+                }
+            };
+
+            Api.prototype.trimHours = function (entity, prop) {
+                if (typeof entity[prop] == "string") {
+                    entity[prop] = entity[prop].slice(11, 16);
+                }
+            };
+
             Api.prototype.login = function (userName, password) {
                 var deferred = this.$q.defer();
                 deferred.resolve({
@@ -31,39 +78,89 @@ var app;
             };
 
             Api.prototype.getVehicles = function (drivingSchoolId) {
-                return this.$http.get(this.url + "/vozidla?autoskola_id=" + drivingSchoolId);
+                var _this = this;
+                return this.$http.get(this.url + "/vozidla?autoskola_id=" + drivingSchoolId).then(function (response) {
+                    response.data.vozidla.forEach(function (vozidlo) {
+                        return _this.treatVozidlo(vozidlo);
+                    });
+                    return response;
+                });
             };
 
             Api.prototype.getVehicle = function (vehicleId) {
-                return this.$http.get(this.url + "/vozidla/" + vehicleId);
+                var _this = this;
+                return this.$http.get(this.url + "/vozidla/" + vehicleId).then(function (response) {
+                    _this.treatVozidlo(response.data);
+                    return response;
+                });
             };
 
             Api.prototype.getCourse = function (courseId) {
-                return this.$http.get(this.url + "/kurzy/" + courseId);
+                var _this = this;
+                return this.$http.get(this.url + "/kurzy/" + courseId).then(function (response) {
+                    _this.treatKurz(response.data);
+                    return response;
+                });
             };
 
             Api.prototype.getCourses = function (drivingSchoolId) {
-                return this.$http.get(this.url + "/kurzy?autoskola_id=" + drivingSchoolId);
+                var _this = this;
+                return this.$http.get(this.url + "/kurzy?autoskola_id=" + drivingSchoolId).then(function (response) {
+                    response.data.kurzy.forEach(function (kurz) {
+                        return _this.treatKurz(kurz);
+                    });
+                    return response;
+                });
             };
 
             Api.prototype.getRides = function (vehicleId) {
-                return this.$http.get(this.url + "/jizdy?vozidlo_id=" + vehicleId);
+                var _this = this;
+                return this.$http.get(this.url + "/jizdy?vozidlo_id=" + vehicleId).then(function (response) {
+                    response.data.jizdy.forEach(function (jidza) {
+                        return _this.treatJizda(jidza);
+                    });
+                    return response;
+                });
             };
 
             Api.prototype.getStudentRides = function (studentId) {
-                return this.$http.get(this.url + "/jizdy?student_id=" + studentId);
+                var _this = this;
+                return this.$http.get(this.url + "/jizdy?student_id=" + studentId).then(function (response) {
+                    response.data.jizdy.forEach(function (jidza) {
+                        return _this.treatJizda(jidza);
+                    });
+                    return response;
+                });
             };
 
             Api.prototype.getStudentLessons = function (studentId) {
-                return this.$http.get(this.url + "/teorie?student_id=" + studentId);
+                var _this = this;
+                return this.$http.get(this.url + "/teorie?student_id=" + studentId).then(function (response) {
+                    response.data.teorie.forEach(function (teorie) {
+                        return _this.treatTeorie(teorie);
+                    });
+                    return response;
+                });
             };
 
             Api.prototype.getVehicleDocuments = function (vehicleId) {
-                return this.$http.get(this.url + "/dokumentyvozidla?vozidlo_id=" + vehicleId);
+                var _this = this;
+                return this.$http.get(this.url + "/dokumentyvozidla?vozidlo_id=" + vehicleId).then(function (response) {
+                    response.data.dokumenty.forEach(function (dokument) {
+                        return _this.treatDokument(dokument);
+                    });
+                    return response;
+                });
             };
 
             Api.prototype.getLessons = function (courseId) {
-                return this.$http.get(this.url + "/teorie?kurz_id=" + courseId);
+                var _this = this;
+                return this.$http.get(this.url + "/teorie?kurz_id=" + courseId).then(function (response) {
+                    response.data.teorie.forEach(function (teorie) {
+                        return _this.treatTeorie(teorie);
+                    });
+                    return response;
+                });
             };
 
             Api.prototype.getStudents = function (autoskolaId) {
@@ -79,10 +176,12 @@ var app;
             };
 
             Api.prototype.createRide = function (ride) {
+                this.treatRideSave(ride);
                 return this.$http.post(this.url + "/jizdy", ride);
             };
 
             Api.prototype.createLesson = function (lesson) {
+                this.treatTeorieSave(lesson);
                 return this.$http.post(this.url + "/teorie", lesson);
             };
 
@@ -103,11 +202,19 @@ var app;
             };
 
             Api.prototype.updateVehicle = function (vehicle) {
-                return this.$http.put(this.url + "/vozidla/" + vehicle.vozidlo_id, vehicle);
+                var _this = this;
+                return this.$http.put(this.url + "/vozidla/" + vehicle.vozidlo_id, vehicle).then(function (response) {
+                    _this.treatVozidlo(response.data);
+                    return response;
+                });
             };
 
             Api.prototype.updateCourse = function (course) {
-                return this.$http.put(this.url + "/kurzy/" + course.kurz_id, course);
+                var _this = this;
+                return this.$http.put(this.url + "/kurzy/" + course.kurz_id, course).then(function (response) {
+                    _this.treatKurz(response.data);
+                    return response;
+                });
             };
 
             Api.prototype.updateStudent = function (student) {

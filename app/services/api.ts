@@ -11,6 +11,53 @@ module app.service {
       $rootScope.serverUrl = this.url;
     }
 
+    private treatVozidlo(vozidlo:Object) {
+      this.trimDate(vozidlo, 'datum_stk');
+    }
+
+    private treatJizda(jizda:Object) {
+      jizda['datum'] = jizda['cas_od'].slice(0,10);
+      this.trimHours(jizda, 'cas_od');
+      this.trimHours(jizda, 'cas_do');
+    }
+
+    private treatDokument(dokument:Object) {
+      this.trimDate(dokument, 'datum_vlozeni');
+    }
+
+    private treatTeorie(teorie:Object) {
+      teorie['datum'] = teorie['cas_od'].slice(0,10);
+      this.trimHours(teorie, 'cas_od');
+      this.trimHours(teorie, 'cas_do');
+    }
+
+    private treatTeorieSave(teorie:Object) {
+      teorie.cas_od = teorie.datum+"T"+teorie.cas_od+":00";
+      teorie.cas_do = teorie.datum+"T"+teorie.cas_do+":00";
+    }
+
+    private treatRideSave(ride:Object) {
+      ride.od = ride.datum+"T"+ride.od+":00";
+      ride.do = ride.datum+"T"+ride.do+":00";
+    }
+
+    private treatKurz(kurz:Object) {
+      this.trimDate(kurz, 'datum_od');
+      this.trimDate(kurz, 'datum_do');
+    }
+
+    private trimDate(entity:Object, prop:string) {
+      if(typeof entity[prop] == "string") {
+        entity[prop] = entity[prop].slice(0,10);
+      }
+    }
+
+    private trimHours(entity:Object, prop:string) {
+      if(typeof entity[prop] == "string") {
+        entity[prop] = entity[prop].slice(11,16);
+      }
+    }
+
     public login(userName, password):ng.IPromise<app.lib.IUser> {
       var deferred = this.$q.defer();
       deferred.resolve({
@@ -33,39 +80,66 @@ module app.service {
     }
 
     public getVehicles(drivingSchoolId) {
-      return this.$http.get(this.url + "/vozidla?autoskola_id=" + drivingSchoolId);
+      return this.$http.get(this.url + "/vozidla?autoskola_id=" + drivingSchoolId).then((response) => {
+        response.data.vozidla.forEach((vozidlo) => this.treatVozidlo(vozidlo));
+        return response;
+      });
     }
 
     public getVehicle(vehicleId) {
-      return this.$http.get(this.url + "/vozidla/" + vehicleId);
+      return this.$http.get(this.url + "/vozidla/" + vehicleId).then((response) => {
+        this.treatVozidlo(response.data);
+        return response;
+      });
     }
 
     public getCourse(courseId) {
-      return this.$http.get(this.url + "/kurzy/" + courseId);
+      return this.$http.get(this.url + "/kurzy/" + courseId).then((response) => {
+        this.treatKurz(response.data);
+        return response;
+      });
     }
 
     public getCourses(drivingSchoolId) {
-      return this.$http.get(this.url + "/kurzy?autoskola_id=" + drivingSchoolId);
+      return this.$http.get(this.url + "/kurzy?autoskola_id=" + drivingSchoolId).then((response) => {
+        response.data.kurzy.forEach((kurz) => this.treatKurz(kurz));
+        return response;
+      });
     }
 
     public getRides(vehicleId) {
-      return this.$http.get(this.url + "/jizdy?vozidlo_id=" + vehicleId);
+      return this.$http.get(this.url + "/jizdy?vozidlo_id=" + vehicleId).then((response) => {
+        response.data.jizdy.forEach((jidza) => this.treatJizda(jidza));
+        return response;
+      });
     }
 
     public getStudentRides(studentId) {
-      return this.$http.get(this.url + "/jizdy?student_id=" + studentId);
+      return this.$http.get(this.url + "/jizdy?student_id=" + studentId).then((response) => {
+        response.data.jizdy.forEach((jidza) => this.treatJizda(jidza));
+        return response;
+      });
     }
 
     public getStudentLessons(studentId) {
-      return this.$http.get(this.url + "/teorie?student_id=" + studentId);
+      return this.$http.get(this.url + "/teorie?student_id=" + studentId).then((response) => {
+        response.data.teorie.forEach((teorie) => this.treatTeorie(teorie));
+        return response;
+      });
     }
 
     public getVehicleDocuments(vehicleId) {
-      return this.$http.get(this.url + "/dokumentyvozidla?vozidlo_id=" + vehicleId);
+      return this.$http.get(this.url + "/dokumentyvozidla?vozidlo_id=" + vehicleId).then((response) => {
+        response.data.dokumenty.forEach((dokument) => this.treatDokument(dokument));
+        return response;
+      });
     }
 
     public getLessons(courseId) {
-      return this.$http.get(this.url + "/teorie?kurz_id=" + courseId);
+      return this.$http.get(this.url + "/teorie?kurz_id=" + courseId).then((response) => {
+        response.data.teorie.forEach((teorie) => this.treatTeorie(teorie));
+        return response;
+      });
     }
 
     public getStudents(autoskolaId) {
@@ -81,10 +155,12 @@ module app.service {
     }
 
     public createRide(ride) {
+      this.treatRideSave(ride);
       return this.$http.post(this.url + "/jizdy", ride);
     }
 
     public createLesson(lesson) {
+      this.treatTeorieSave(lesson);
       return this.$http.post(this.url + "/teorie", lesson);
     }
 
@@ -105,11 +181,17 @@ module app.service {
     }
 
     public updateVehicle(vehicle) {
-      return this.$http.put(this.url + "/vozidla/" + vehicle.vozidlo_id, vehicle);
+      return this.$http.put(this.url + "/vozidla/" + vehicle.vozidlo_id, vehicle).then((response) => {
+        this.treatVozidlo(response.data);
+        return response;
+      });
     }
 
     public updateCourse(course) {
-      return this.$http.put(this.url + "/kurzy/" + course.kurz_id, course);
+      return this.$http.put(this.url + "/kurzy/" + course.kurz_id, course).then((response) => {
+        this.treatKurz(response.data);
+        return response;
+      });
     }
 
     public updateStudent(student) {
