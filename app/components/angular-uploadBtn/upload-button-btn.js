@@ -20,17 +20,50 @@ angular.module('upload.button', [])
       transclude: true,
       template: btnTemplate(),
       link: function(scope, element, attrs) {
-        element.find('input').bind('change', function() {
+        element.find('input')[0].addEventListener('change', function() {
 
-          var fd = new FormData();
+          var formData = new FormData();
+
+          var file = this.files[0];
+          if ( window.FileReader ) {
+            var reader = new FileReader();
+            reader.onloadend = function (e) {
+              //showUploadedItem(e.target.result, file.fileName);
+            };
+            reader.readAsDataURL(file);
+          }
+          if (formData) {
+            formData.append("file", file);
+          }
           // send to server as uploadFile field
-          fd.append('uploadFile', this.files[0]);
 
+          $.ajax({
+            url: attrs.action,
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              scope.$apply(function() {
+                var fn = $parse(attrs.complete);
+                if(fn) { fn(scope, { $data: response.data, $status: response.status }); }
+              });
+            }
+          });
 
-          $http.post(attrs.action, this.files[0]).then(function (response) {
+          /*
+          $http(attrs.action, fd, {
+            url: attrs.action,
+            method: "POST",
+            headers: {
+              "Content-Type": "multipart/form-data"
+            },
+            data: formData
+          }).then(function (response) {
             var fn = $parse(attrs.complete);
             if(fn) { fn(scope, { $data: response.data, $status: response.status }); }
           });
+          //*/
 
 /*
           // create xhr
