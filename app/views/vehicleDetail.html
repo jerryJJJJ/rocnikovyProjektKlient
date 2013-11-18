@@ -20,7 +20,7 @@
                     <th colspan="2">datum vložení</th>
                 </tr>
                 <tr ng-repeat="document in vehicleDetailCtrl.documents">
-                    <td>{{document.dokument_nazev}}</td>
+                    <td><a target="_blank" href="{{serverUrl}}/dokumentyvozidla/{{document.dokument_id}}">{{document.dokument_nazev}}</a></td>
                     <td>{{document['datum_vlozeni']}}</td>
                     <td><button ng-click="vehicleDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
                         <span class="glyphicon glyphicon-remove"></span></button></td>
