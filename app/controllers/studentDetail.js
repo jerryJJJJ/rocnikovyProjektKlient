@@ -41,7 +41,7 @@ var app;
             };
             StudentDetail.resolve = {
                 'drivingSchool': function (api, $route) {
-                    return api.getDrivingSchool($route.current.params.id).then(function (response) {
+                    return api.getDrivingSchool($route.current.params.autoskolaId).then(function (response) {
                         return response.data;
                     });
                 },

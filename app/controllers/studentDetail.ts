@@ -7,7 +7,7 @@ module app.controller {
 
     public static resolve : any = {
       'drivingSchool': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getDrivingSchool($route.current.params.id).then((response) => response.data);
+        return api.getDrivingSchool($route.current.params.autoskolaId).then((response) => response.data);
       },
       'lessons': (api:app.service.Api, $route:ng.IRoute) => {
         return api.getLessons($route.current.params.id).then((response) => {
