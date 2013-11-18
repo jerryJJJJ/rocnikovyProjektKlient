@@ -106,23 +106,23 @@
             </tr>
             <tr ng-if="auth.user.role == 'jednatel'">
                 <td>
-                    <input type="date" ng-model="courseDetailCtrl.newLesson['datum']" class="form-control" required>
+                    <input type="date" name="datum" ng-model="courseDetailCtrl.newLesson['datum']" class="form-control" required>
                 </td>
                 <td>
-                    <input type="time" ng-model="courseDetailCtrl.newLesson['cas_od']" class="form-control" required>
+                    <input type="time" name="cas_od" ng-model="courseDetailCtrl.newLesson['cas_od']" class="form-control" required>
                 </td>
                 <td>
-                    <input type="time" ng-model="courseDetailCtrl.newLesson['cas_do']" class="form-control" required>
+                    <input type="time" name="cas_do" ng-model="courseDetailCtrl.newLesson['cas_do']" class="form-control" required>
                 </td>
                 <td>
-                    <select name="selectTeachers" class="form-control" ng-model="courseDetailCtrl.newLesson.ucitel_id" required>
+                    <select name="teacher_id" class="form-control" ng-model="courseDetailCtrl.newLesson.ucitel_id" required>
                         <option ng-repeat="teacher in courseDetailCtrl.teachers" ng-value="teacher.ucitel_id">
                             {{teacher.prijmeni}}
                         </option>
                     </select>
                 </td>
                 <td colspan="2">
-                    <select name="selectKind" class="form-control" ng-model="courseDetailCtrl.newLesson['typ']" required>
+                    <select name="type" class="form-control" ng-model="courseDetailCtrl.newLesson['typ']" required>
                         <option value="pravidla_provozu">pravidla provozu</option>
                         <option value="udrzba">údržba vozidla</option>
                         <option value="zdravoveda">zdravověda</option>
