@@ -37,8 +37,8 @@ module app.service {
     }
 
     private treatRideSave(ride:Object) {
-      ride.od = ride.datum+" "+(ride.od.length == 4 ? '0' : '') + ride.od;
-      ride.do = ride.datum+" "+(ride.do.length == 4 ? '0' : '') + ride.do;
+      ride.cas_od = ride.datum+" "+(ride.cas_od.length == 4 ? '0' : '') + ride.cas_od;
+      ride.cas_do = ride.datum+" "+(ride.cas_do.length == 4 ? '0' : '') + ride.cas_do;
     }
 
     private treatKurz(kurz:Object) {

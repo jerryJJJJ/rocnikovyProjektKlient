@@ -148,29 +148,29 @@
             </tr>
             <tr ng-if="auth.user.role == 'jednatel'">
                 <td>
-                    <input type="date" ng-model="vehicleDetailCtrl.newRide['datum']" class="form-control" required>
+                    <input type="date" name="datum" ng-model="vehicleDetailCtrl.newRide['datum']" class="form-control" required>
                 </td>
                 <td>
-                    <input type="time" ng-model="vehicleDetailCtrl.newRide['od']" class="form-control" required>
+                    <input type="time" name="cas_od" ng-model="vehicleDetailCtrl.newRide['cas_od']" class="form-control" required>
                 </td>
                 <td>
-                    <input type="time" ng-model="vehicleDetailCtrl.newRide['do']" class="form-control" required>
+                    <input type="time" name="cas_do" ng-model="vehicleDetailCtrl.newRide['cas_do']" class="form-control" required>
                 </td>
                 <td ng-class="{'has-error': rideForm.distance.$invalid && rideForm.distance.$dirty}">
-                    <input type="number" name="distance" class="form-control" ng-model="vehicleDetailCtrl.newRide['najeto']"
+                    <input  name="najeto" type="number" name="distance" class="form-control" ng-model="vehicleDetailCtrl.newRide['najeto']"
                            placeholder="vzdálenost" step="0.5" min="0" max="200" ng-pattern="/^\d*\.?\d*$/" required>
                 </td>
                 <td ng-class="{'has-error': rideForm.consumption.$invalid && rideForm.consumption.$dirty}">
-                    <input type="number" name="consumption" class="form-control" ng-model="vehicleDetailCtrl.newRide['spotreba']"
+                    <input  name="spotreba" type="number" name="consumption" class="form-control" ng-model="vehicleDetailCtrl.newRide['spotreba']"
                            placeholder="spotřeba" step="0.1" min="0" max="100" ng-pattern="/^\d*\.?\d*$/" required>
                 </td>
                 <td>
-                    <select name="selectTeachers" class="form-control" required ng-model="vehicleDetailCtrl.newRide.ucitel_id">
+                    <select name="ucitel_id" name="selectTeachers" class="form-control" required ng-model="vehicleDetailCtrl.newRide.ucitel_id">
                         <option ng-repeat="id in vehicleDetailCtrl.teachers | ids:'ucitel_id'" ng-value="id">{{vehicleDetailCtrl.teachers.find(id).prijmeni}}</option>
                     </select>
                 </td>
                 <td colspan="2">
-                    <select name="selectStudents" class="form-control" required ng-model="vehicleDetailCtrl.newRide.student_id">
+                    <select name="student_id" name="selectStudents" class="form-control" required ng-model="vehicleDetailCtrl.newRide.student_id">
                         <option ng-repeat="id in vehicleDetailCtrl.students | activeStudents:vehicleDetailCtrl.courses | ids:'student_id'" ng-value="id">{{vehicleDetailCtrl.students.find(id).prijmeni}} ({{vehicleDetailCtrl.students.find(id)['matricni_cislo']}})</option>
                     </select>
                 </td>

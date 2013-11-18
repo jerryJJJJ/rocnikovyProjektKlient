@@ -79,8 +79,8 @@ module app.controller {
       this.newRide = {
         "datum": nowDate.getFullYear() + "-" + month + "-" + day,
         "vozidlo_id": this.$routeParams.id,
-        "od": (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-        "do": (((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
+        "cas_od": ""+(nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
+        "cas_do": ""+(((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
       };
     }
 
