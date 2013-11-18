@@ -32,13 +32,13 @@ module app.service {
     }
 
     private treatTeorieSave(teorie:Object) {
-      teorie.cas_od = teorie.datum+"T"+teorie.cas_od+":00";
-      teorie.cas_do = teorie.datum+"T"+teorie.cas_do+":00";
+      teorie.cas_od = teorie.datum+" "+(teorie.cas_od.length == 4 ? '0' : '') + teorie.cas_od;
+      teorie.cas_do = teorie.datum+" "+(teorie.cas_do.length == 4 ? '0' : '') + teorie.cas_do;
     }
 
     private treatRideSave(ride:Object) {
-      ride.od = ride.datum+"T"+ride.od+":00";
-      ride.do = ride.datum+"T"+ride.do+":00";
+      ride.od = ride.datum+" "+(ride.od.length == 4 ? '0' : '') + ride.od;
+      ride.do = ride.datum+" "+(ride.do.length == 4 ? '0' : '') + ride.do;
     }
 
     private treatKurz(kurz:Object) {
@@ -156,12 +156,18 @@ module app.service {
 
     public createRide(ride) {
       this.treatRideSave(ride);
-      return this.$http.post(this.url + "/jizdy", ride);
+      return this.$http.post(this.url + "/jizdy", ride).then((response) => {
+        this.treatJizda(response.data);
+        return response;
+      });
     }
 
     public createLesson(lesson) {
       this.treatTeorieSave(lesson);
-      return this.$http.post(this.url + "/teorie", lesson);
+      return this.$http.post(this.url + "/teorie", lesson).then((response) => {
+        this.treatTeorie(response.data);
+        return response;
+      });
     }
 
     public createStudent(student) {
@@ -169,7 +175,10 @@ module app.service {
     }
 
     public createCourse(course) {
-      return this.$http.post(this.url + "/kurzy", course);
+      return this.$http.post(this.url + "/kurzy", course).then((response) => {
+        this.treatKurz(response.data);
+        return response;
+      });
     }
 
     public createDrivingSchool(drivingSchool) {

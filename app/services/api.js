@@ -30,13 +30,13 @@ var app;
             };
 
             Api.prototype.treatTeorieSave = function (teorie) {
-                teorie.cas_od = teorie.datum + "T" + teorie.cas_od + ":00";
-                teorie.cas_do = teorie.datum + "T" + teorie.cas_do + ":00";
+                teorie.cas_od = teorie.datum + " " + (teorie.cas_od.length == 4 ? '0' : '') + teorie.cas_od;
+                teorie.cas_do = teorie.datum + " " + (teorie.cas_do.length == 4 ? '0' : '') + teorie.cas_do;
             };
 
             Api.prototype.treatRideSave = function (ride) {
-                ride.od = ride.datum + "T" + ride.od + ":00";
-                ride.do = ride.datum + "T" + ride.do + ":00";
+                ride.od = ride.datum + " " + (ride.od.length == 4 ? '0' : '') + ride.od;
+                ride.do = ride.datum + " " + (ride.do.length == 4 ? '0' : '') + ride.do;
             };
 
             Api.prototype.treatKurz = function (kurz) {
@@ -176,13 +176,21 @@ var app;
             };
 
             Api.prototype.createRide = function (ride) {
+                var _this = this;
                 this.treatRideSave(ride);
-                return this.$http.post(this.url + "/jizdy", ride);
+                return this.$http.post(this.url + "/jizdy", ride).then(function (response) {
+                    _this.treatJizda(response.data);
+                    return response;
+                });
             };
 
             Api.prototype.createLesson = function (lesson) {
+                var _this = this;
                 this.treatTeorieSave(lesson);
-                return this.$http.post(this.url + "/teorie", lesson);
+                return this.$http.post(this.url + "/teorie", lesson).then(function (response) {
+                    _this.treatTeorie(response.data);
+                    return response;
+                });
             };
 
             Api.prototype.createStudent = function (student) {
@@ -190,7 +198,11 @@ var app;
             };
 
             Api.prototype.createCourse = function (course) {
-                return this.$http.post(this.url + "/kurzy", course);
+                var _this = this;
+                return this.$http.post(this.url + "/kurzy", course).then(function (response) {
+                    _this.treatKurz(response.data);
+                    return response;
+                });
             };
 
             Api.prototype.createDrivingSchool = function (drivingSchool) {
