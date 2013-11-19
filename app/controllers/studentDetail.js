@@ -47,7 +47,7 @@ var app;
                     });
                 },
                 'lessons': function (api, $route) {
-                    return api.getLessons($route.current.params.id).then(function (response) {
+                    return api.getLessons($route.current.params.kurzId).then(function (response) {
                         return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
                     });
                 },
@@ -57,7 +57,7 @@ var app;
                     });
                 },
                 'teachers': function (api, $route) {
-                    return api.getTeachers($route.current.params.id).then(function (response) {
+                    return api.getTeachers($route.current.params.autoskolaId).then(function (response) {
                         return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
                     });
                 },

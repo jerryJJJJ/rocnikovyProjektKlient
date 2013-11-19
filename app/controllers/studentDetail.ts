@@ -10,7 +10,7 @@ module app.controller {
         return api.getDrivingSchool($route.current.params.autoskolaId).then((response) => response.data);
       },
       'lessons': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getLessons($route.current.params.id).then((response) => {
+        return api.getLessons($route.current.params.kurzId).then((response) => {
           return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
         });
       },
@@ -18,7 +18,7 @@ module app.controller {
         return api.getStudent($route.current.params.id).then((response) => response.data);
       },
       'teachers': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getTeachers($route.current.params.id).then((response) => {
+        return api.getTeachers($route.current.params.autoskolaId).then((response) => {
           return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
         });
       },
