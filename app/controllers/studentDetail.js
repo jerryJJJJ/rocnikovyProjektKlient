@@ -2,13 +2,14 @@ var app;
 (function (app) {
     (function (controller) {
         var StudentDetail = (function () {
-            function StudentDetail($http, $routeParams, auth, api, $location, drivingSchool, student, teachers, rides, lessons) {
+            function StudentDetail($http, $routeParams, auth, api, $location, drivingSchool, $scope, student, teachers, rides, lessons) {
                 this.$http = $http;
                 this.$routeParams = $routeParams;
                 this.auth = auth;
                 this.api = api;
                 this.$location = $location;
                 this.drivingSchool = drivingSchool;
+                this.$scope = $scope;
                 this.student = student;
                 this.teachers = teachers;
                 this.rides = rides;

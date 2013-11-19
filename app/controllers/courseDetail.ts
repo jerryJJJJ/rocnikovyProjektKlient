@@ -90,6 +90,15 @@ module app.controller {
       this.newStudent = {
         "kurz_id": this.$routeParams.id
       };
+
+      var lastNumber: number = 0;
+
+      for (var i = 0; i < this.students.length; i++) {
+        var num = +this.students[i]['matricni_cislo'];
+        if(lastNumber < num)  lastNumber = num;
+      }
+
+      this.newStudent['matricni_cislo'] = ++lastNumber;
     }
 
     public saveCourse(course) {

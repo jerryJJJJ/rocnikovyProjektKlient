@@ -59,6 +59,16 @@ var app;
                 this.newStudent = {
                     "kurz_id": this.$routeParams.id
                 };
+
+                var lastNumber = 0;
+
+                for (var i = 0; i < this.students.length; i++) {
+                    var num = +this.students[i]['matricni_cislo'];
+                    if (lastNumber < num)
+                        lastNumber = num;
+                }
+
+                this.newStudent['matricni_cislo'] = ++lastNumber;
             };
 
             CourseDetail.prototype.saveCourse = function (course) {
