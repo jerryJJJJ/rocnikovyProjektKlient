@@ -121,6 +121,13 @@ module app.service {
       });
     }
 
+    public getStudentRides(studentId) {
+      return this.$http.get(this.url + "/jizdy?student_id=" + studentId).then((response) => {
+        response.data.jizdy.forEach((jidza) => this.treatJizda(jidza));
+        return response;
+      });
+    }
+
     public getStudentLessons(studentId) {
       return this.$http.get(this.url + "/teorie?student_id=" + studentId).then((response) => {
         response.data.teorie.forEach((teorie) => this.treatTeorie(teorie));

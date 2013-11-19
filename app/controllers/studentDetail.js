@@ -62,7 +62,7 @@ var app;
                     });
                 },
                 'rides': function (api, $route) {
-                    return api.getRides($route.current.params.id).then(function (response) {
+                    return api.getStudentRides($route.current.params.id).then(function (response) {
                         return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
                     });
                 }

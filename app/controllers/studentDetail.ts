@@ -23,7 +23,7 @@ module app.controller {
         });
       },
       'rides': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getRides($route.current.params.id).then((response) => {
+        return api.getStudentRides($route.current.params.id).then((response) => {
           return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
         });
       }

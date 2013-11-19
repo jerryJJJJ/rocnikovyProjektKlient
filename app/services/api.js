@@ -133,6 +133,16 @@ var app;
                 });
             };
 
+            Api.prototype.getStudentRides = function (studentId) {
+                var _this = this;
+                return this.$http.get(this.url + "/jizdy?student_id=" + studentId).then(function (response) {
+                    response.data.jizdy.forEach(function (jidza) {
+                        return _this.treatJizda(jidza);
+                    });
+                    return response;
+                });
+            };
+
             Api.prototype.getStudentLessons = function (studentId) {
                 var _this = this;
                 return this.$http.get(this.url + "/teorie?student_id=" + studentId).then(function (response) {
