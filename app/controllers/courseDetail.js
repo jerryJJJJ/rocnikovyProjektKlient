@@ -2,7 +2,7 @@ var app;
 (function (app) {
     (function (controller) {
         var CourseDetail = (function () {
-            function CourseDetail($http, $routeParams, auth, api, $location, drivingSchool, course, students, teachers, lessons) {
+            function CourseDetail($http, $routeParams, auth, api, $location, drivingSchool, $scope, course, students, teachers, lessons) {
                 var _this = this;
                 this.$http = $http;
                 this.$routeParams = $routeParams;
@@ -10,6 +10,7 @@ var app;
                 this.api = api;
                 this.$location = $location;
                 this.drivingSchool = drivingSchool;
+                this.$scope = $scope;
                 this.course = course;
                 this.students = students;
                 this.teachers = teachers;
@@ -71,6 +72,7 @@ var app;
                 } else {
                     this.api.updateCourse(course).then(function (response) {
                         _this.course = response.data;
+                        _this.$scope.courseForm.$setPristine();
                     }, function (reason) {
                         alert("Chyba: " + reason);
                     });

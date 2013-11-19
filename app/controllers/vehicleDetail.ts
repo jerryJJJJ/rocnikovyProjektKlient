@@ -89,7 +89,6 @@ module app.controller {
     }
 
     public saveVehicle(vehicle) {
-      debugger;
       if(this.isNew) {
         this.api.createVehicle(vehicle).then((response) => {
           this.vehicle = response.data; this.isNew = false;

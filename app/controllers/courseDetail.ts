@@ -42,7 +42,7 @@ module app.controller {
     };
 
     constructor(private $http:ng.IHttpService, private $routeParams:RouteParamsCourseDetail, private auth:app.service.Auth,
-                private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
+                private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object, private $scope,
                 public course:Object, public students:app.lib.IndexedArray,  public teachers:app.lib.IndexedArray,
                 public lessons:app.lib.IndexedArray) {
 
@@ -102,6 +102,7 @@ module app.controller {
       } else {
         this.api.updateCourse(course).then((response) => {
           this.course = response.data;
+          this.$scope.courseForm.$setPristine();
         }, (reason) => {
           alert("Chyba: " + reason);
         });

@@ -49,7 +49,6 @@ var app;
 
             VehicleDetail.prototype.saveVehicle = function (vehicle) {
                 var _this = this;
-                debugger;
                 if (this.isNew) {
                     this.api.createVehicle(vehicle).then(function (response) {
                         _this.vehicle = response.data;
