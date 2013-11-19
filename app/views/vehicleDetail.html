@@ -39,7 +39,7 @@
                 <tr class="right">
                     <td class="bold">značka</td>
                     <td ng-class="{'has-error': vehicleForm.mark.$invalid && vehicleForm.mark.$dirty}">
-                        <input type="text" name="mark" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control" ng-pattern="/^[A-Za-z0-9]*$/"
+                        <input type="text" name="mark" ng-model="vehicleDetailCtrl.vehicle.znacka" class="form-control" ng-pattern="/^[Á-Žá-žA-Za-z0-9]*$/"
                                ng-disabled="auth.user.role != 'jednatel'" maxlength="15" placeholder="značka vozidla" required/>
                     </td>
                     <td class="bold">rok výroby</td>
@@ -55,7 +55,7 @@
                     <td class="bold">model</td>
                     <td ng-class="{'has-error': vehicleForm.model.$invalid && vehicleForm.model.$dirty}">
                         <input type="text" name="model" ng-disabled="auth.user.role != 'jednatel'" ng-model="vehicleDetailCtrl.vehicle.model"
-                               class="form-control" placeholder="model vozidla" maxlength="15" ng-pattern="/^[A-Za-z0-9]*$/" required/>
+                               class="form-control" placeholder="model vozidla" maxlength="15" ng-pattern="/^[Á-Žá-žA-Za-z0-9]*$/" required/>
                     </td>
                     <td class="bold">spz</td>
                     <td ng-class="{'has-error': vehicleForm.spz.$invalid && vehicleForm.spz.$dirty}">

@@ -50,7 +50,7 @@ module app.controller {
       }
     };
 
-    constructor(private $http:ng.IHttpService, private $routeParams, private auth:app.service.Auth,
+    constructor(private $http:ng.IHttpService, private $routeParams, private auth:app.service.Auth, private $scope,
                 private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
                 public vehicle:Object, public students:app.lib.IndexedArray,  public teachers:app.lib.IndexedArray,
                 public rides:app.lib.IndexedArray, public documents:app.lib.IndexedArray, public courses:app.lib.IndexedArray) {
@@ -76,15 +76,20 @@ module app.controller {
       var month = (nowDate.getMonth() + 1 < 10 ? '0' : '') + (nowDate.getMonth() + 1);
       var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
 
+      var hours = (nowDate.getHours() < 10 ? '0' : '') + nowDate.getHours();
+      var hours2 = (nowDate.getHours() + 2 > 23) ? 23 : ((nowDate.getHours() + 2 < 10 ? '0' : '') + (nowDate.getHours() + 2));
+      var minutes = (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes();
+
       this.newRide = {
         "datum": nowDate.getFullYear() + "-" + month + "-" + day,
         "vozidlo_id": this.$routeParams.id,
-        "cas_od": ""+(nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-        "cas_do": ""+(((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
+        "cas_od": ""+(hours + ":" + minutes),
+        "cas_do": ""+(hours2 + ":" + minutes)
       };
     }
 
     public saveVehicle(vehicle) {
+      debugger;
       if(this.isNew) {
         this.api.createVehicle(vehicle).then((response) => {
           this.vehicle = response.data; this.isNew = false;
@@ -95,6 +100,7 @@ module app.controller {
       } else {
         this.api.updateVehicle(vehicle).then((response) => {
           this.vehicle = response.data;
+          this.$scope.vehicleForm.$setPristine();
         }, (reason) => {
           alert("Chyba: " + reason);
         });

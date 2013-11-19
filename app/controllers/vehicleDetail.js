@@ -2,10 +2,11 @@ var app;
 (function (app) {
     (function (controller) {
         var VehicleDetail = (function () {
-            function VehicleDetail($http, $routeParams, auth, api, $location, drivingSchool, vehicle, students, teachers, rides, documents, courses) {
+            function VehicleDetail($http, $routeParams, auth, $scope, api, $location, drivingSchool, vehicle, students, teachers, rides, documents, courses) {
                 this.$http = $http;
                 this.$routeParams = $routeParams;
                 this.auth = auth;
+                this.$scope = $scope;
                 this.api = api;
                 this.$location = $location;
                 this.drivingSchool = drivingSchool;
@@ -34,16 +35,21 @@ var app;
                 var month = (nowDate.getMonth() + 1 < 10 ? '0' : '') + (nowDate.getMonth() + 1);
                 var day = (nowDate.getDate() < 10 ? '0' : '') + nowDate.getDate();
 
+                var hours = (nowDate.getHours() < 10 ? '0' : '') + nowDate.getHours();
+                var hours2 = (nowDate.getHours() + 2 > 23) ? 23 : ((nowDate.getHours() + 2 < 10 ? '0' : '') + (nowDate.getHours() + 2));
+                var minutes = (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes();
+
                 this.newRide = {
                     "datum": nowDate.getFullYear() + "-" + month + "-" + day,
                     "vozidlo_id": this.$routeParams.id,
-                    "cas_od": "" + (nowDate.getHours() + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes()),
-                    "cas_do": "" + (((nowDate.getHours() + 2 > 23) ? 23 : nowDate.getHours() + 2) + ":" + (nowDate.getMinutes() < 10 ? '0' : '') + nowDate.getMinutes())
+                    "cas_od": "" + (hours + ":" + minutes),
+                    "cas_do": "" + (hours2 + ":" + minutes)
                 };
             };
 
             VehicleDetail.prototype.saveVehicle = function (vehicle) {
                 var _this = this;
+                debugger;
                 if (this.isNew) {
                     this.api.createVehicle(vehicle).then(function (response) {
                         _this.vehicle = response.data;
@@ -55,6 +61,7 @@ var app;
                 } else {
                     this.api.updateVehicle(vehicle).then(function (response) {
                         _this.vehicle = response.data;
+                        _this.$scope.vehicleForm.$setPristine();
                     }, function (reason) {
                         alert("Chyba: " + reason);
                     });
