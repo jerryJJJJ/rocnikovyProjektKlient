@@ -10,7 +10,7 @@ var app;
                 $rootScope.serverUrl = this.url;
             }
             Api.prototype.treatVozidlo = function (vozidlo) {
-                this.trimDate(vozidlo, 'datum_stk');
+                this.trimDate(vozidlo, 'posledni_stk');
             };
 
             Api.prototype.treatJizda = function (jizda) {

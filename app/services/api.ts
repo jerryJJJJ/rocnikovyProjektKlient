@@ -12,7 +12,7 @@ module app.service {
     }
 
     private treatVozidlo(vozidlo:Object) {
-      this.trimDate(vozidlo, 'datum_stk');
+      this.trimDate(vozidlo, 'posledni_stk');
     }
 
     private treatJizda(jizda:Object) {
