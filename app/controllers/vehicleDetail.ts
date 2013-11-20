@@ -111,6 +111,10 @@ module app.controller {
       this.api.createRide(ride).then((response) => {
         this.rides.push(response.data);
         this.initNewRide();
+        if(this.$scope.vehicleForm.$pristine) {
+          this.api.getVehicle(this.$routeParams.id).then((response) => this.vehicle = response.data);
+        }
+
       }, (reason) => {
         alert('Chyba: ' + reason);
       });

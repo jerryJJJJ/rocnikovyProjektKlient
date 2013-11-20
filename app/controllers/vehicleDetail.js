@@ -73,6 +73,11 @@ var app;
                 this.api.createRide(ride).then(function (response) {
                     _this.rides.push(response.data);
                     _this.initNewRide();
+                    if (_this.$scope.vehicleForm.$pristine) {
+                        _this.api.getVehicle(_this.$routeParams.id).then(function (response) {
+                            return _this.vehicle = response.data;
+                        });
+                    }
                 }, function (reason) {
                     alert('Chyba: ' + reason);
                 });
