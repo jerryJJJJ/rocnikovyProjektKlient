@@ -73,7 +73,7 @@ declare module JQueryUI {
     }
 
     interface Autocomplete extends Widget, AutocompleteOptions, AutocompleteEvents {
-        escapeRegex: (string) => string;
+        escapeRegex: (value: string) => string;
     }
 
 
@@ -154,7 +154,7 @@ declare module JQueryUI {
 
     interface Datepicker extends Widget, DatepickerOptions {
         regional: { [languageCod3: string]: any; };
-        setDefaults(defaults: DatepickerOptions);
+        setDefaults(defaults: DatepickerOptions): void;
         formatDate(format: string, date: Date, settings?: DatepickerFormatDateOptions): string;
         parseDate(format: string, date: string, settings?: DatepickerFormatDateOptions): Date;
         iso8601Week(date: Date): void;
@@ -463,8 +463,8 @@ declare module JQueryUI {
     interface SortableOptions {
         appendTo?: any; // jQuery, Element, Selector or string
         axis?: string;
-        cancel?: string;
-        connectWith?: string;
+        cancel?: any; // Selector
+        connectWith?: any; // Selector
         containment?: any; // Element, Selector or string
         cursor?: string;
         cursorAt?: any;
@@ -849,11 +849,11 @@ interface JQuery {
 
     dialog(): JQuery;
     dialog(methodName: string): JQuery;
-    dialog(methodName: 'close'): void;
-    dialog(methodName: 'destroy'): void;
+    dialog(methodName: 'close'): JQuery;
+    dialog(methodName: 'destroy'): JQuery;
     dialog(methodName: 'isOpen'): boolean;
-    dialog(methodName: 'moveToTop'): void;
-    dialog(methodName: 'open'): void;
+    dialog(methodName: 'moveToTop'): JQuery;
+    dialog(methodName: 'open'): JQuery;
     dialog(methodName: 'widget'): JQuery;
     dialog(options: JQueryUI.DialogOptions): JQuery;
     dialog(optionLiteral: string, optionName: string): any;
