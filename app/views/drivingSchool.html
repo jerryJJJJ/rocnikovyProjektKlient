@@ -33,9 +33,15 @@
             </table>
             <div id="headerTab">
                 <ul class="nav nav-tabs">
-                    <li ng-class="{active: drivingSchoolCtrl.listType == 'vozidla'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla">Vozidla</a></li>
-                    <li ng-class="{active: drivingSchoolCtrl.listType == 'ucitele'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele">Učitelé</a></li>
-                    <li ng-class="{active: drivingSchoolCtrl.listType == 'kurzy'}"><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy">Kurzy</a></li>
+                    <li ng-class="{active: drivingSchoolCtrl.listType == 'vozidla'}">
+                        <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla">Vozidla</a>
+                    </li>
+                    <li ng-class="{active: drivingSchoolCtrl.listType == 'ucitele'}">
+                        <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele">Učitelé</a>
+                    </li>
+                    <li ng-class="{active: drivingSchoolCtrl.listType == 'kurzy'}">
+                        <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy">Kurzy</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -43,10 +49,11 @@
 
     <div class="container">
         <h3 ng-if="drivingSchoolCtrl.listType == 'vozidla'">Seznam vozidel</h3>
-        <button id="createObject" ng-click="$parent.drivingSchoolCtrl.createVehicle()" class="btn btn-primary"
-                ng-if="drivingSchoolCtrl.listType == 'vozidla' && auth.user.role == 'jednatel'">
+        <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla/nove"
+           id="createObject" class="btn btn-primary"
+           ng-if="drivingSchoolCtrl.listType == 'vozidla' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat vozidlo
-        </button>
+        </a>
         <table class="table" ng-if="drivingSchoolCtrl.listType == 'vozidla'">
             <tr>
                 <th>značka</th>
@@ -70,26 +77,44 @@
         </table>
 
         <h3 ng-if="drivingSchoolCtrl.listType == 'ucitele'">Seznam učitelů</h3>
-        <button id="createObject" ng-click="$parent.drivingSchoolCtrl.createTeacher()" class="btn btn-primary"
-                ng-if="drivingSchoolCtrl.listType == 'ucitele' && auth.user.role == 'jednatel'">
+        <a id="createObject" href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele/nove"
+           class="btn btn-primary" ng-if="drivingSchoolCtrl.listType == 'ucitele' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat učitele
-        </button>
+        </a>
         <table class="table" ng-if="drivingSchoolCtrl.listType == 'ucitele'">
+            <tr>
+                <th colspan="3"></th>
+                <th colspan="3">Profesní oprávnění</th>
+                <th ></th>
+            </tr>
             <tr>
                 <th>jméno</th>
                 <th>příjmení</th>
+                <th>poslední lékařská prohlídka</th>
+                <th>platnost</th>
+                <th>teorie</th>
+                <th>jízdy</th>
+                <th></th>
             </tr>
             <tr ng-repeat="teacher in drivingSchoolCtrl.teachers">
-                <td>{{teacher.jmeno}}</td>
+                <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele/{{teacher.ucitel_id}}">{{teacher.jmeno}}</a></td>
                 <td>{{teacher.prijmeni}}</td>
+                <td>{{teacher.posledni_prohlidka}}</td>
+                <td>{{teacher.platnost_opravneni}}</td>
+                <td>{{teacher | vypisOpravneniTeorie}}</td>
+                <td>{{teacher | vypisOpravneniJizdy}}</td>
+                <td class="right">
+                    <button ng-click="drivingSchoolCtrl.deleteTeacher(teacher)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
+                        <span class="glyphicon glyphicon-remove"></span></button>
+                </td>
             </tr>
         </table>
 
         <h3 ng-if="drivingSchoolCtrl.listType == 'kurzy'">Seznam kurzů</h3>
-        <button id="createObject" ng-click="$parent.drivingSchoolCtrl.createCourse()" class="btn btn-primary"
-                ng-if="drivingSchoolCtrl.listType == 'kurzy' && auth.user.role == 'jednatel'">
+        <a id="createObject" href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/nove"
+           class="btn btn-primary" ng-if="drivingSchoolCtrl.listType == 'kurzy' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat kurz
-        </button>
+        </a>
         <table class="table" ng-if="drivingSchoolCtrl.listType == 'kurzy'">
             <tr>
                 <th>id</th>

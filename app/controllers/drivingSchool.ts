@@ -1,7 +1,3 @@
-/// <reference path="../components/types/angularjs/angular.d.ts"/>
-/// <reference path="../../../../download/klient/services/api.ts"/>
-/// <reference path="../lib/indexedArray.ts"/>
-/// <reference path="../app.ts"/>
 
 
 module app.controller {
@@ -54,16 +50,12 @@ module app.controller {
       });
     }
 
-    public createVehicle() {
-      this.$location.path( "/autoskola/" + this.drivingSchool.autoskola_id + "/vozidla/nove" );
-    }
-
-    public createTeacher() {
-      this.$location.path( "/autoskola/" + this.drivingSchool.autoskola_id + "/ucitele/nove" );
-    }
-
-    public createCourse() {
-      this.$location.path( "/autoskola/" + this.drivingSchool.autoskola_id + "/kurzy/nove" );
+    public deleteTeacher(teacher) {
+      this.api.deleteTeacher(teacher).then(() => {
+        this.teachers.remove(teacher);
+      }, (reason) => {
+        alert('Chyba: ' + reason);
+      });
     }
 
     public deleteCourse(course) {

@@ -67,6 +67,18 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
     controllerAs: "vehicleDetailCtrl",
     resolve: app.controller.VehicleDetail.resolve
   });
+  $routeProvider.when('/autoskola/:autoskolaId/ucitele/nove', {
+    templateUrl:  'views/teacherDetail.html',
+    controller:   'app.controller.TeacherDetail',
+    controllerAs: "teacherDetailCtrl",
+    resolve: app.controller.TeacherDetail.resolve
+  });
+  $routeProvider.when('/autoskola/:autoskolaId/ucitele/:id', {
+    templateUrl:  'views/teacherDetail.html',
+    controller:   'app.controller.TeacherDetail',
+    controllerAs: "teacherDetailCtrl",
+    resolve: app.controller.TeacherDetail.resolve
+  });
   $routeProvider.when('/autoskola/:autoskolaId/kurzy/nove', {
     templateUrl:  'views/courseDetail.html',
     controller:   'app.controller.CourseDetail',
@@ -86,6 +98,12 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
     resolve: app.controller.StudentDetail.resolve
   });
   $routeProvider.when('/autoskola/:autoskolaId/kurzy/:kurzId/studenti/:id', {
+    templateUrl:  'views/studentDetail.html',
+    controller:   'app.controller.StudentDetail',
+    controllerAs: "studentDetailCtrl",
+    resolve: app.controller.StudentDetail.resolve
+  });
+  $routeProvider.when('/autoskola/:autoskolaId/ucitele/:ucitelId/studenti/:id', {
     templateUrl:  'views/studentDetail.html',
     controller:   'app.controller.StudentDetail',
     controllerAs: "studentDetailCtrl",

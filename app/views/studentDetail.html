@@ -9,10 +9,12 @@
     </span>
         <div id="logout">
             <a ng-if="studentDetailCtrl.courseId" href="/#/autoskola/{{studentDetailCtrl.drivingSchool.autoskola_id}}/kurzy/{{studentDetailCtrl.courseId}}">
-                Zpět na kurzy  |</a>
+                Zpět na kurz</a>
             <a ng-if="studentDetailCtrl.vehicleId" href="/#/autoskola/{{studentDetailCtrl.drivingSchool.autoskola_id}}/vozidla/{{studentDetailCtrl.vehicleId}}">
-                Zpět na vozidla  |</a>
-            <a href="" ng-click="auth.logout()">Odhlásit</a>
+                Zpět na vozidlo</a>
+            <a ng-if="studentDetailCtrl.teacherId" href="/#/autoskola/{{studentDetailCtrl.drivingSchool.autoskola_id}}/ucitele/{{studentDetailCtrl.teacherId}}">
+                Zpět na učitele</a>
+            | <a href="" ng-click="auth.logout()">Odhlásit</a>
         </div>
         <form name="studentForm">
             <table class="detail-table">

@@ -1,9 +1,5 @@
 var app;
 (function (app) {
-    /// <reference path="../components/types/angularjs/angular.d.ts"/>
-    /// <reference path="../../../../download/klient/services/api.ts"/>
-    /// <reference path="../lib/indexedArray.ts"/>
-    /// <reference path="../app.ts"/>
     (function (controller) {
         var DrivingSchool = (function () {
             function DrivingSchool($http, $routeParams, auth, api, $location, drivingSchool, teachers, courses, vehicles) {
@@ -27,16 +23,13 @@ var app;
                 });
             };
 
-            DrivingSchool.prototype.createVehicle = function () {
-                this.$location.path("/autoskola/" + this.drivingSchool.autoskola_id + "/vozidla/nove");
-            };
-
-            DrivingSchool.prototype.createTeacher = function () {
-                this.$location.path("/autoskola/" + this.drivingSchool.autoskola_id + "/ucitele/nove");
-            };
-
-            DrivingSchool.prototype.createCourse = function () {
-                this.$location.path("/autoskola/" + this.drivingSchool.autoskola_id + "/kurzy/nove");
+            DrivingSchool.prototype.deleteTeacher = function (teacher) {
+                var _this = this;
+                this.api.deleteTeacher(teacher).then(function () {
+                    _this.teachers.remove(teacher);
+                }, function (reason) {
+                    alert('Chyba: ' + reason);
+                });
             };
 
             DrivingSchool.prototype.deleteCourse = function (course) {

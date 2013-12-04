@@ -150,7 +150,7 @@ var app;
                 },
                 'rides': function (api, $route) {
                     if ($route.current.params.id) {
-                        return api.getRides($route.current.params.id).then(function (response) {
+                        return api.getVehicleRides($route.current.params.id).then(function (response) {
                             return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
                         });
                     } else

@@ -2,8 +2,9 @@ module app.controller {
 
   export class StudentDetail {
 
-    public courseId=this.$routeParams.kurzId;
-    public vehicleId=this.$routeParams.vozidloId;
+    public courseId = this.$routeParams.kurzId;
+    public vehicleId = this.$routeParams.vozidloId;
+    public teacherId = this.$routeParams.ucitelId;
 
     public static resolve : any = {
       'drivingSchool': (api:app.service.Api, $route:ng.IRoute) => {
@@ -48,8 +49,10 @@ module app.controller {
         var path;
         if(this.courseId) {
           path = "/autoskola/" + this.drivingSchool.autoskola_id + "/kurzy/" + this.courseId;
-        } else {
+        } else if(this.vehicleId) {
           path = "/autoskola/" + this.drivingSchool.autoskola_id + "/vozidla/" + this.vehicleId;
+        } else {
+          path = "/autoskola/" + this.drivingSchool.autoskola_id + "/ucitele/" + this.teacherId;
         }
         this.$location.path( path );
       }, (reason) => {

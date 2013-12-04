@@ -16,6 +16,7 @@ var app;
                 this.lessons = lessons;
                 this.courseId = this.$routeParams.kurzId;
                 this.vehicleId = this.$routeParams.vozidloId;
+                this.teacherId = this.$routeParams.ucitelId;
             }
             StudentDetail.prototype.saveStudent = function (student) {
                 var _this = this;
@@ -32,8 +33,10 @@ var app;
                     var path;
                     if (_this.courseId) {
                         path = "/autoskola/" + _this.drivingSchool.autoskola_id + "/kurzy/" + _this.courseId;
-                    } else {
+                    } else if (_this.vehicleId) {
                         path = "/autoskola/" + _this.drivingSchool.autoskola_id + "/vozidla/" + _this.vehicleId;
+                    } else {
+                        path = "/autoskola/" + _this.drivingSchool.autoskola_id + "/ucitele/" + _this.teacherId;
                     }
                     _this.$location.path(path);
                 }, function (reason) {

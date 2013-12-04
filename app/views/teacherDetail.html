@@ -1,0 +1,233 @@
+<div>
+
+    <div id="header">
+        <div class="container teacher-detail">
+            <h1 ng-if="!teacherDetailCtrl.isNew">{{teacherDetailCtrl.teacher.jmeno}} {{teacherDetailCtrl.teacher.prijmeni}}</h1>
+            <h1 ng-if="teacherDetailCtrl.isNew">Nový učitel</h1>
+            <h3>{{teacherDetailCtrl.drivingSchool.nazev}}</h3>
+        <span class="delete-object" ng-if="auth.user.role == 'jednatel'">
+        <button ng-click="teacherDetailCtrl.deleteteacher(teacherDetailCtrl.teacher)"
+                ng-if="!teacherDetailCtrl.isNew" class="btn btn-danger btn-xs">
+            <span class="glyphicon glyphicon-remove"></span> Smazat učitele</button>
+        </span>
+            <div id="logout">
+                <a href="/#/autoskola/{{teacherDetailCtrl.drivingSchool.autoskola_id}}/ucitele">Zpět na výpis  |</a>
+                <a href="" ng-click="auth.logout()">Odhlásit</a>
+            </div>
+            <div class="documents" ng-if="!teacherDetailCtrl.isNew">
+                <h3>Dokumenty</h3>
+                <table class="table">
+                    <tr>
+                        <th>název</th>
+                        <th colspan="2">datum vložení</th>
+                    </tr>
+                    <tr ng-repeat="document in teacherDetailCtrl.documents">
+                        <td><a target="_blank" href="{{serverUrl}}/dokumentyucitele/{{document.dokument_id}}">{{document.dokument_nazev}}</a></td>
+                        <td>{{document['datum_vlozeni']}}</td>
+                        <td><button ng-click="teacherDetailCtrl.deleteDocument(document)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
+                            <span class="glyphicon glyphicon-remove"></span></button></td>
+                    </tr>
+                </table>
+
+                <upload-button class="btn btn-default" complete="teacherDetailCtrl.uploadResults($data, $status)" ng-disabled="auth.user.role != 'jednatel'"
+                               action="{{serverUrl}}/dokumentyucitele?ucitel_id={{teacherDetailCtrl.teacher.ucitel_id}}">
+                    Nahrát soubor
+                </upload-button>
+
+
+            </div>
+            <form novalidate class="css-form" name="teacherForm">
+                <table class="detail-table">
+                    <tr class="right">
+                        <td class="bold">osobní číslo</td>
+                        <td class="left" class="wider">{{teacherDetailCtrl.teacher['osobni_cislo']}}</td>
+
+                        <td class="bold">poslední prohlídka</td>
+                        <td>
+                            <input type="date" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['posledni_prohlidka']"
+                                   class="form-control" required/>
+                        </td>
+                    </tr>
+                    <tr class="right">
+                        <td class="bold">jméno</td>
+                        <td ng-class="{'has-error': teacherForm.jmeno.$invalid && teacherForm.jmeno.$dirty}">
+                            <input type="text" name="jmeno" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['jmeno']"
+                                   class="form-control" placeholder="jméno" required/>
+                        </td>
+
+                        <td class="bold">platnost osvědčení</td>
+                        <td>
+                            <input type="date" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['platnost_opravneni']"
+                                   class="form-control" required/>
+                        </td>
+                    </tr>
+                    <tr class="right">
+                        <td class="bold">příjmení</td>
+                        <td ng-class="{'has-error': teacherForm.prijmeni.$invalid && teacherForm.prijmeni.$dirty}">
+                            <input type="text" name="prijmeni" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['prijmeni']"
+                                   class="form-control" placeholder="příjmení" required/>
+                        </td>
+
+                        <td class="bold">osvědčení</td>
+                        <td class="left">
+                            <label><input type="checkbox" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['opravneni_pravidla']"
+                                    /> pravidla silničního provozu</label>
+                        </td>
+                    </tr>
+                    <tr class="right">
+                        <td class="bold">město</td>
+                        <td ng-class="{'has-error': teacherForm.mesto.$invalid && teacherForm.mesto.$dirty}">
+                            <input type="text" name="mesto" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['adresa_mesto']"
+                                   class="form-control" placeholder="město" required/>
+                        </td>
+
+                        <td class="bold"></td>
+                        <td class="left">
+                            <label> <input type="checkbox" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['opravneni_zdravoveda']"
+                                   /> zdravověda</label>
+                        </td>
+                    </tr>
+                    <tr class="right">
+                        <td class="bold">ulice</td>
+                        <td ng-class="{'has-error': teacherForm.ulice.$invalid && teacherForm.ulice.$dirty}">
+                            <input type="text" name="ulice" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['adresa_ulice']"
+                                   class="form-control" placeholder="ulice" required/>
+                        </td>
+
+                        <td class="bold"></td>
+                        <td class="left">
+                            <label> <input type="checkbox" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['opravneni_udrzba']"
+                                           /> údržba</label>
+                        </td>
+                    </tr>
+                    <tr class="right">
+                        <td class="bold">č. p.</td>
+                        <td ng-class="{'has-error': teacherForm.cp.$invalid && teacherForm.cp.$dirty}">
+                            <input type="text" name="cp" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['adresa_cp']"
+                                   class="form-control" ng-pattern="/^[0-9]{1,7}$/" maxlength="7" placeholder="č. p." required/>
+                        </td>
+
+                        <td class="bold"></td>
+                        <td class="left">
+                            <label> <input type="checkbox" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['opravneni_jizdy_a']"
+                                           /> jízdy (skupina A)</label>
+                        </td>
+                    </tr>
+                    <tr class="right">
+                        <td class="bold">psč</td>
+                        <td ng-class="{'has-error': teacherForm.psc.$invalid && teacherForm.psc.$dirty}">
+                            <input type="text" name="psc" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['adresa_psc']"
+                                   class="form-control" ng-pattern="/^[0-9]{5}$/" maxlength="5" placeholder="psč" required/>
+                        </td>
+
+                        <td class="bold"></td>
+                        <td class="left">
+                            <label> <input type="checkbox" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['opravneni_jizdy_b']"
+                                           /> jízdy (skupina B)</label>
+                        </td>
+                    </tr>
+                    <tr class="right">
+                        <td class="bold">počet dětí</td>
+                        <td ng-class="{'has-error': teacherForm.pocet_deti.$invalid && teacherForm.pocet_deti.$dirty}">
+                            <input type="number" name="pocet_deti" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['pocet_deti']"
+                                   class="form-control" placeholder="počet dětí" required/>
+                        </td>
+
+                        <td class="bold"></td>
+                        <td class="left">
+                            <label> <input type="checkbox" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['opravneni_jizdy_c']"
+                                           /> jízdy (skupina C)</label>
+                        </td>
+                    </tr>
+                    <tr class="right">
+                        <td class="bold">mzda (Kč/h)</td>
+                        <td ng-class="{'has-error': teacherForm.hodinova_mzda.$invalid && teacherForm.hodinova_mzda.$dirty}">
+                            <input type="number" name="hodinova_mzda" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['hodinova_mzda']"
+                                   class="form-control" placeholder="mzda (Kč/h)" required/>
+                        </td>
+
+                        <td class="bold"></td>
+                        <td class="left">
+                            <label> <input type="checkbox" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['opravneni_jizdy_d']"
+                                           /> jízdy (skupina D)</label>
+                        </td>
+                    </tr>
+                    <tr class="right">
+                        <td class="bold"></td>
+                        <td></td>
+
+                        <td class="bold"></td>
+                        <td class="left">
+                            <label> <input type="checkbox" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['opravneni_jizdy_t']"
+                                           /> jízdy (skupina T)</label>
+                        </td>
+                    </tr>
+                    <tr class="left">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button ng-click="teacherDetailCtrl.saveTeacher(teacherDetailCtrl.teacher)"
+                                    class="btn btn-primary" ng-disabled="!teacherForm.$dirty || !teacherForm.$valid">
+                                <span class="glyphicon glyphicon-floppy-save"></span> {{teacherDetailCtrl.isNew ? 'Vytvořit' : 'Uložit změny'}}
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <div id="headerTab">
+                <ul class="nav nav-tabs">
+                    <li ng-class="{active: teacherDetailCtrl.tab == 'lessons'}" ng-click="teacherDetailCtrl.tab = 'lessons'">
+                        <a>Teorie</a>
+                    </li>
+                    <li ng-class="{active: teacherDetailCtrl.tab == 'rides'}" ng-click="teacherDetailCtrl.tab = 'rides'">
+                        <a>Jízdy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container teacher-detail" ng-if="!teacherDetailCtrl.isNew">
+
+        <table class="table" ng-show="teacherDetailCtrl.tab == 'lessons'">
+            <tr>
+                <th>datum</th>
+                <th>od<span class="value">[hh:mm]</span></th>
+                <th>do<span class="value">[hh:mm]</span></th>
+                <th>typ výuky</th>
+            </tr>
+            <tr ng-repeat="lesson in teacherDetailCtrl.lessons">
+                <td>{{lesson.datum}}</td>
+                <td>{{lesson['cas_od']}}</td>
+                <td>{{lesson['cas_do']}}</td>
+                <td>{{lesson['typ']}}</td>
+            </tr>
+        </table>
+
+        <table class="table" ng-show="teacherDetailCtrl.tab == 'rides'">
+            <tr>
+                <th class="date">datum</th>
+                <th>od<span class="value">[hh:mm]</span></th>
+                <th>do<span class="value">[hh:mm]</span></th>
+                <th class="distance">ujetá vzdálenost<span class="value">[km]</span></th>
+                <th>žák</th>
+            </tr>
+            <tr ng-repeat="ride in teacherDetailCtrl.rides">
+                <td>{{ride.datum}}</td>
+                <td>{{ride['cas_od']}}</td>
+                <td>{{ride['cas_do']}}</td>
+                <td>{{ride['najeto']}}</td>
+                <td>
+                    <a href="#/autoskola/{{teacherDetailCtrl.drivingSchool.autoskola_id}}/ucitele/{{teacherDetailCtrl.teacher.ucitel_id}}/studenti/{{teacherDetailCtrl.students.find(ride['student_id']).student_id}}">
+                        {{teacherDetailCtrl.students.find(ride['student_id']).prijmeni}} ( {{teacherDetailCtrl.students.find(ride['student_id'])['matricni_cislo']}} )</a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>

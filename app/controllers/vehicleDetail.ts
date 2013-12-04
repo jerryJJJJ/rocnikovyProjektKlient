@@ -36,7 +36,7 @@ module app.controller {
       },
       'rides': (api:app.service.Api, $route:ng.IRoute) => {
         if($route.current.params.id) {
-          return api.getRides($route.current.params.id).then((response) => {
+          return api.getVehicleRides($route.current.params.id).then((response) => {
             return new app.lib.IndexedArray('jizda_id', response.data['jizdy']);
           });
         } else return new app.lib.IndexedArray('jizda_id');

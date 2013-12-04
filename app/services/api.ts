@@ -15,6 +15,11 @@ module app.service {
       this.trimDate(vozidlo, 'posledni_stk');
     }
 
+    private treatUcitel(ucitel:Object) {
+      this.trimDate(ucitel, 'platnost_opravneni');
+      this.trimDate(ucitel, 'posledni_prohlidka');
+    }
+
     private treatJizda(jizda:Object) {
       jizda['datum'] = jizda['cas_od'].slice(0,10);
       this.trimHours(jizda, 'cas_od');
@@ -76,7 +81,17 @@ module app.service {
     }
 
     public getTeachers(drivingSchoolId) {
-      return this.$http.get(this.url + "/ucitele?autoskola_id=" + drivingSchoolId);
+      return this.$http.get(this.url + "/ucitele?autoskola_id=" + drivingSchoolId).then((response) => {
+        response.data.ucitele.forEach((ucitel) => this.treatUcitel(ucitel));
+        return response;
+      });
+    }
+
+    public getTeacher(teacherId) {
+      return this.$http.get(this.url + "/ucitele/" + teacherId).then((response) => {
+        this.treatUcitel(response.data);
+        return response;
+      });
     }
 
     public getVehicles(drivingSchoolId) {
@@ -107,7 +122,7 @@ module app.service {
       });
     }
 
-    public getRides(vehicleId) {
+    public getVehicleRides(vehicleId) {
       return this.$http.get(this.url + "/jizdy?vozidlo_id=" + vehicleId).then((response) => {
         response.data.jizdy.forEach((jidza) => this.treatJizda(jidza));
         return response;
@@ -121,15 +136,15 @@ module app.service {
       });
     }
 
-    public getStudentRides(studentId) {
-      return this.$http.get(this.url + "/jizdy?student_id=" + studentId).then((response) => {
+    public getTeacherRides(teacherId) {
+      return this.$http.get(this.url + "/jizdy?teacher_id=" + teacherId).then((response) => {
         response.data.jizdy.forEach((jidza) => this.treatJizda(jidza));
         return response;
       });
     }
 
-    public getStudentLessons(studentId) {
-      return this.$http.get(this.url + "/teorie?student_id=" + studentId).then((response) => {
+    public getTeacherLessons(teacherId) {
+      return this.$http.get(this.url + "/teorie?ucitel_id=" + teacherId).then((response) => {
         response.data.teorie.forEach((teorie) => this.treatTeorie(teorie));
         return response;
       });
@@ -137,6 +152,13 @@ module app.service {
 
     public getVehicleDocuments(vehicleId) {
       return this.$http.get(this.url + "/dokumentyvozidla?vozidlo_id=" + vehicleId).then((response) => {
+        response.data.dokumenty.forEach((dokument) => this.treatDokument(dokument));
+        return response;
+      });
+    }
+
+    public getTeacherDocuments(teacherId) {
+      return this.$http.get(this.url + "/dokumentyucitele?ucitel_id=" + teacherId).then((response) => {
         response.data.dokumenty.forEach((dokument) => this.treatDokument(dokument));
         return response;
       });
@@ -159,6 +181,10 @@ module app.service {
 
     public createVehicle(vehicle) {
       return this.$http.post(this.url + "/vozidla", vehicle);
+    }
+
+    public createTeacher(teacher) {
+      return this.$http.post(this.url + "/ucitele", teacher);
     }
 
     public createRide(ride) {
@@ -203,6 +229,13 @@ module app.service {
       });
     }
 
+    public updateTeacher(teacher) {
+      return this.$http.put(this.url + "/ucitele/" + teacher.ucitel_id, teacher).then((response) => {
+        this.treatUcitel(response.data);
+        return response;
+      });
+    }
+
     public updateCourse(course) {
       return this.$http.put(this.url + "/kurzy/" + course.kurz_id, course).then((response) => {
         this.treatKurz(response.data);
@@ -218,12 +251,20 @@ module app.service {
        return this.$http.delete(this.url + "/vozidla/" + vehicle.vozidlo_id);
     }
 
+    public deleteTeacher(teacher) {
+       return this.$http.delete(this.url + "/ucitele/" + teacher.ucitel_id);
+    }
+
     public deleteRide(ride) {
       return this.$http.delete(this.url + "/jizdy/" + ride.jizda_id);
     }
 
     public deleteVehicleDocument(document) {
       return this.$http.delete(this.url + "/dokumentyvozidla/" + document.dokument_id);
+    }
+
+    public deleteTeacherDocument(document) {
+      return this.$http.delete(this.url + "/dokumentyucitele/" + document.dokument_id);
     }
 
     public deleteCourse(course) {
