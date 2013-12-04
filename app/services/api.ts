@@ -101,6 +101,10 @@ module app.service {
       });
     }
 
+    public getWageSheets(drivingSchoolId) {
+      return this.$http.get(this.url + "/vyplatnice?autoskola_id=" + drivingSchoolId);
+    }
+
     public getVehicle(vehicleId) {
       return this.$http.get(this.url + "/vozidla/" + vehicleId).then((response) => {
         this.treatVozidlo(response.data);

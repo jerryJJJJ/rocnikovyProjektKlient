@@ -106,6 +106,10 @@ var app;
                 });
             };
 
+            Api.prototype.getWageSheets = function (drivingSchoolId) {
+                return this.$http.get(this.url + "/vyplatnice?autoskola_id=" + drivingSchoolId);
+            };
+
             Api.prototype.getVehicle = function (vehicleId) {
                 var _this = this;
                 return this.$http.get(this.url + "/vozidla/" + vehicleId).then(function (response) {

@@ -6,7 +6,7 @@
             <h1 ng-if="teacherDetailCtrl.isNew">Nový učitel</h1>
             <h3>{{teacherDetailCtrl.drivingSchool.nazev}}</h3>
         <span class="delete-object" ng-if="auth.user.role == 'jednatel'">
-        <button ng-click="teacherDetailCtrl.deleteteacher(teacherDetailCtrl.teacher)"
+        <button ng-click="teacherDetailCtrl.deleteTeacher(teacherDetailCtrl.teacher)"
                 ng-if="!teacherDetailCtrl.isNew" class="btn btn-danger btn-xs">
             <span class="glyphicon glyphicon-remove"></span> Smazat učitele</button>
         </span>

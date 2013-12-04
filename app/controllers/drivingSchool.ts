@@ -2,7 +2,7 @@
 
 module app.controller {
 
-  export interface RouteParamsDrivingSchool extends ng.IRouteParamsService{
+  export interface RouteParamsDrivingSchool extends ng.IRouteParamsService {
     listType: string;
     id: string;
   }
@@ -27,16 +27,23 @@ module app.controller {
         return api.getTeachers($route.current.params.id).then((response) => {
           return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
         });
+      },
+      'wageSheets': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getWageSheets($route.current.params.id).then((response) => {
+          return response.data['vyplatnice'];
+        });
       }
     };
 
 
     public listType:string;
 
+    public lastMonthDate = new Date((new Date).getFullYear(), (new Date()).getMonth() - 1, 1);
+
     constructor(private $http:ng.IHttpService, $routeParams:RouteParamsDrivingSchool, private auth:app.service.Auth,
                 private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
                 public teachers:app.lib.IndexedArray, public courses:app.lib.IndexedArray,
-                public vehicles:app.lib.IndexedArray) {
+                public vehicles:app.lib.IndexedArray, private wageSheets:Array) {
 
       var autoskolaId:string = $routeParams.id;
       this.listType = $routeParams.listType ? $routeParams.listType : 'vozidla';

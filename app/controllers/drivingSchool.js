@@ -2,7 +2,7 @@ var app;
 (function (app) {
     (function (controller) {
         var DrivingSchool = (function () {
-            function DrivingSchool($http, $routeParams, auth, api, $location, drivingSchool, teachers, courses, vehicles) {
+            function DrivingSchool($http, $routeParams, auth, api, $location, drivingSchool, teachers, courses, vehicles, wageSheets) {
                 this.$http = $http;
                 this.auth = auth;
                 this.api = api;
@@ -11,6 +11,8 @@ var app;
                 this.teachers = teachers;
                 this.courses = courses;
                 this.vehicles = vehicles;
+                this.wageSheets = wageSheets;
+                this.lastMonthDate = new Date((new Date()).getFullYear(), (new Date()).getMonth() - 1, 1);
                 var autoskolaId = $routeParams.id;
                 this.listType = $routeParams.listType ? $routeParams.listType : 'vozidla';
             }
@@ -59,6 +61,11 @@ var app;
                 'teachers': function (api, $route) {
                     return api.getTeachers($route.current.params.id).then(function (response) {
                         return new app.lib.IndexedArray('ucitel_id', response.data['ucitele']);
+                    });
+                },
+                'wageSheets': function (api, $route) {
+                    return api.getWageSheets($route.current.params.id).then(function (response) {
+                        return response.data['vyplatnice'];
                     });
                 }
             };

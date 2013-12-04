@@ -53,7 +53,7 @@
     <div class="container">
         <h3 ng-show="drivingSchoolCtrl.listType == 'vozidla'">Seznam vozidel</h3>
         <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla/nove"
-           id="createObject" class="btn btn-primary"
+           class="createObject" class="btn btn-primary"
            ng-show="drivingSchoolCtrl.listType == 'vozidla' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat vozidlo
         </a>
@@ -80,8 +80,8 @@
         </table>
 
         <h3 ng-show="drivingSchoolCtrl.listType == 'ucitele'">Seznam učitelů</h3>
-        <a id="createObject" href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele/nove"
-           class="btn btn-primary" ng-show="drivingSchoolCtrl.listType == 'ucitele' && auth.user.role == 'jednatel'">
+        <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/ucitele/nove"
+           class="btn btn-primary createObject" ng-show="drivingSchoolCtrl.listType == 'ucitele' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat učitele
         </a>
         <table class="table" ng-show="drivingSchoolCtrl.listType == 'ucitele'">
@@ -113,9 +113,28 @@
             </tr>
         </table>
 
+
+        <h3 ng-show="drivingSchoolCtrl.listType == 'vyplatnice'">Seznam výplatnic</h3>
+        <a href="{{serverUrl}}/vyplatnice/?autoskola_id={{drivingSchoolCtrl.drivingSchool.autoskola_id}}&rok={{drivingSchoolCtrl.lastMonthDate.getFullYear()}}&mesic={{drivingSchoolCtrl.lastMonthDate.getMonth() + 1}}&pregenerovat=1"
+           class="btn btn-primary createObject"
+           ng-show="drivingSchoolCtrl.listType == 'vyplatnice'">
+            <span class="glyphicon glyphicon-floppy-save"></span> Vypočítat mzdy za uplynulý měsíc
+        </a>
+        <table class="table wage-sheets" ng-show="drivingSchoolCtrl.listType == 'vyplatnice'">
+            <tr ng-repeat="wageSheet in drivingSchoolCtrl.wageSheets">
+                <td>
+                    <a href="{{serverUrl}}/vyplatnice/?autoskola_id={{drivingSchoolCtrl.drivingSchool.autoskola_id}}&rok={{wageSheet.rok}}&mesic={{wageSheet.mesic}}">
+                        <span class="glyphicon glyphicon-file"></span>
+                        {{wageSheet.rok}} {{$locale.DATETIME_FORMATS.MONTH1P[wageSheet.mesic - 1]}}
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+        
         <h3 ng-show="drivingSchoolCtrl.listType == 'kurzy'">Seznam kurzů</h3>
-        <a id="createObject" href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/nove"
-           class="btn btn-primary" ng-show="drivingSchoolCtrl.listType == 'kurzy' && auth.user.role == 'jednatel'">
+        <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/nove"
+           class="btn btn-primary createObject" ng-show="drivingSchoolCtrl.listType == 'kurzy' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat kurz
         </a>
         <table class="table" ng-show="drivingSchoolCtrl.listType == 'kurzy'">
@@ -125,12 +144,13 @@
                 <th colspan="2">stav</th>
             </tr>
             <tr ng-repeat="course in drivingSchoolCtrl.courses">
-                <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/{{course.kurz_id}}">{{course['identifikacni_cislo']}}</a></td>
-                <td>{{course['datum_od']}}</td>
+                <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/kurzy/{{course.kurz_id}}">{{course.identifikacni_cislo}}</a></td>
+                <td>{{course.datum_od}}</td>
                 <td>{{course.stav}}</td>
                 <td class="right">
                     <button ng-click="$parent.$parent.drivingSchoolCtrl.deleteCourse(course)" class="btn btn-danger btn-xs" ng-show="auth.user.role == 'jednatel'">
-                        <span class="glyphicon glyphicon-remove"></span></button>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
                 </td>
             </tr>
         </table>

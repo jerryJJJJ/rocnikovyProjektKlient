@@ -10,7 +10,8 @@
     "angular-uploadBtn": "~0.0.9",
     "angular": "1.2.3",
     "angular-route": "1.2.3",
-    "angular-cookies": "1.2.3"
+    "angular-cookies": "1.2.3",
+    "angular-i18n": "1.2.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",

@@ -8,6 +8,7 @@ angular.module('app', [
     'app.controller',
     'app.directive',
     'ngRoute',
+    'ngLocale',
     'ngCookies',
     'app.filter',
     'app.service',
@@ -105,7 +106,23 @@ angular.module('app').config(function ($routeProvider, $httpProvider) {
     $routeProvider.otherwise({ redirectTo: '/' });
 });
 
-angular.module('app').run(function ($httpBackend, auth) {
+angular.module('app').run(function ($httpBackend, auth, $locale, $rootScope) {
+    $locale.DATETIME_FORMATS.MONTH1P = [
+        "leden",
+        "únor",
+        "březen",
+        "duben",
+        "květen",
+        "červen",
+        "červenec",
+        "srpen",
+        "září",
+        "říjen",
+        "listopad",
+        "prosinec"
+    ];
+
+    $rootScope.$locale = $locale;
     /*
     apiary.forEach(function (section) {
     var resources = section.resources;

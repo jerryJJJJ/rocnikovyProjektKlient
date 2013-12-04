@@ -11,6 +11,7 @@ angular.module('app', [
   'app.controller',
   'app.directive',
   'ngRoute',
+  'ngLocale',
   //'ngMockE2E',
   'ngCookies',
   'app.filter',
@@ -114,7 +115,18 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
 });
 
 
-angular.module('app').run(($httpBackend:ng.IHttpBackendService, auth) => {
+angular.module('app').run(($httpBackend:ng.IHttpBackendService, auth, $locale, $rootScope) => {
+
+  $locale.DATETIME_FORMATS.MONTH1P = [
+    "leden", "únor", "březen"
+    , "duben", "květen", "červen"
+    , "červenec", "srpen", "září"
+    , "říjen",  "listopad",  "prosinec"
+  ];
+
+  $rootScope.$locale = $locale;
+
+
   /*
   apiary.forEach(function (section) {
     var resources = section.resources;
