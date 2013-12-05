@@ -3,7 +3,6 @@ var app;
     (function (controller) {
         var CourseDetail = (function () {
             function CourseDetail($http, $routeParams, auth, api, $location, drivingSchool, $scope, course, students, teachers, lessons) {
-                var _this = this;
                 this.$http = $http;
                 this.$routeParams = $routeParams;
                 this.auth = auth;
@@ -32,12 +31,6 @@ var app;
                         "datum_do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
                     };
                 }
-
-                this.api.getDrivingSchool($routeParams.autoskolaId).then(function (response) {
-                    _this.drivingSchool = response.data;
-                }, function (reason) {
-                    alert('Nepodarilo se nacist autoskolu: ' + reason);
-                });
             }
             CourseDetail.prototype.setUpNewLesson = function () {
                 var nowDate = new Date();

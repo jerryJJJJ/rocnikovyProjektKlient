@@ -6155,3 +6155,6 @@ button {
 table.wage-sheets {
   width: 150px;
 }
+.container.course-attendance table.detail-table {
+  margin-bottom: 50px;
+}

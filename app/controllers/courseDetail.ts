@@ -62,12 +62,6 @@ module app.controller {
           "datum_do": nowDate.getFullYear() + "-" + ((month + 3 > 12) ? 12 : month + 3) + "-" + day
         };
       }
-
-      this.api.getDrivingSchool($routeParams.autoskolaId).then((response:ng.IHttpPromiseCallbackArg) => {
-        this.drivingSchool = response.data;
-      }, (reason) => {
-        alert('Nepodarilo se nacist autoskolu: ' + reason);
-      });
     }
 
     private setUpNewLesson() {

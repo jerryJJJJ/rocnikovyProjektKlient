@@ -1,0 +1,83 @@
+<div>
+    <div id="header">
+        <div class="container course-attendance">
+            <h1 ng-if="!courseAttendanceCtrl.isNew">Kurz {{courseAttendanceCtrl.course['identifikacni_cislo']}} <br>
+                <span ng-if="courseAttendanceCtrl.lesson['typ'] == 'pravidla_provozu'">pravidla provozu</span>
+                <span ng-if="courseAttendanceCtrl.lesson['typ'] == 'udrzba'">údržba vozidla</span>
+                <span ng-if="courseAttendanceCtrl.lesson['typ'] == 'zdravoveda'">zdravověda</span>
+            </h1>
+
+            <h3>{{courseAttendanceCtrl.drivingSchool['nazev']}}</h3>
+
+            <span class="delete-object">
+                <button ng-click="courseAttendanceCtrl.deleteLesson(courseAttendanceCtrl.lesson)"
+                        class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
+                    <span class="glyphicon glyphicon-remove"></span> Smazat lekci
+                </button>
+            </span>
+
+            <div id="logout">
+                <a href="/#/autoskola/{{courseAttendanceCtrl.drivingSchool.autoskola_id}}/kurzy/{{courseAttendanceCtrl.course.kurz_id}}">Zpět na kurz |</a>
+                <a href="" ng-click="auth.logout()">Odhlásit</a>
+            </div>
+
+            <table class="detail-table">
+                <tr>
+                    <td class="bold">datum</td>
+                    <td>{{courseAttendanceCtrl.lesson.datum}}</td>
+                    <td class="bold right">vyučující</td>
+                    <td>{{courseAttendanceCtrl.teachers.find(courseAttendanceCtrl.lesson.ucitel_id).prijmeni}}</td>
+                </tr>
+                <tr>
+                    <td class="bold">od</td>
+                    <td>{{courseAttendanceCtrl.lesson.cas_od}}</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="bold">do</td>
+                    <td>{{courseAttendanceCtrl.lesson.cas_do}}</td>
+                    <td colspan="2"></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="container course-attendance">
+        <h3>Docházka</h3>
+
+        <form novalidate class="css-form" name="attendanceForm">
+            <table class="table">
+                <tr>
+                    <th>příjmení</th>
+                    <th>jméno</th>
+                    <th>matriční číslo</th>
+                    <th>účast</th>
+                </tr>
+                <tr ng-repeat="student in courseAttendanceCtrl.students">
+                    <td>
+                        <a href="#/autoskola/{{courseAttendanceCtrl.drivingSchool.autoskola_id}}/kurzy/{{courseAttendanceCtrl.course.kurz_id}}/studenti/{{student.student_id}}">
+                            {{student.prijmeni}}
+                        </a>
+                    </td>
+                    <td>{{student.jmeno}}</td>
+                    <td>{{student.matricni_cislo}}</td>
+                    <td class="left">
+                        <input type="checkbox" name="{{student.student_id}}" ng-model="courseAttendanceCtrl.attendance[student.student_id]"
+                                ng-readonly="auth.user.role != 'jednatel'">
+                    </td>
+                </tr>
+                <tr ng-if="auth.user.role == 'jednatel'">
+                    <td colspan="6" class="right">
+                        <button ng-click="courseAttendanceCtrl.saveAttendance()"
+                                class="btn btn-primary" ng-disabled="attendanceForm.$pristine">
+                            <span class="glyphicon glyphicon-floppy-save"></span> Uložit docházku
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+</div>

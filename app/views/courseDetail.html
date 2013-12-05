@@ -90,7 +90,7 @@
                     <th>do<span class="value">[hh:mm]</span></th>
                     <th>učitel</th>
                     <th>typ výuky</th>
-                    <th></th>
+                    <th colspan="2"></th>
                 </tr>
                 <tr ng-repeat="lesson in courseDetailCtrl.lessons">
                     <td>{{lesson.datum}}</td>
@@ -100,9 +100,11 @@
                     <td ng-if="lesson['typ'] == 'pravidla_provozu'">pravidla provozu</td>
                     <td ng-if="lesson['typ'] == 'udrzba'">údržba vozidla</td>
                     <td ng-if="lesson['typ'] == 'zdravoveda'">zdravověda</td>
+                    <td><a href="/#/autoskola/{{courseDetailCtrl.drivingSchool.autoskola_id}}/kurzy/{{courseDetailCtrl.course.kurz_id}}/dochazka/{{lesson.teorie_id}}">docházka</a></td>
                     <td class="right">
                         <button ng-click="courseDetailCtrl.deleteLesson(lesson)" class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
-                            <span class="glyphicon glyphicon-remove"></span></button>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
                     </td>
                 </tr>
                 <tr ng-if="auth.user.role == 'jednatel'">
@@ -122,7 +124,7 @@
                             </option>
                         </select>
                     </td>
-                    <td colspan="2">
+                    <td colspan="3">
                         <select name="type" class="form-control" ng-model="courseDetailCtrl.newLesson['typ']" required>
                             <option value="pravidla_provozu">pravidla provozu</option>
                             <option value="udrzba">údržba vozidla</option>
@@ -131,7 +133,7 @@
                     </td>
                 </tr>
                 <tr ng-if="auth.user.role == 'jednatel'">
-                    <td colspan="6" class="right">
+                    <td colspan="7" class="right">
                         <button ng-click="courseDetailCtrl.createLesson(courseDetailCtrl.newLesson)"
                                 class="btn btn-primary" ng-disabled="!lessonForm.$valid">
                             <span class="glyphicon glyphicon-floppy-save"></span> Uložit hodinu

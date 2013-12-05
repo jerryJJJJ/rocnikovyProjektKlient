@@ -126,6 +126,14 @@ var app;
                 });
             };
 
+            Api.prototype.getAttendance = function (lessonId) {
+                return this.$http.get(this.url + "/dochazka/" + lessonId);
+            };
+
+            Api.prototype.updateAttendance = function (lessonId, attendance) {
+                return this.$http.put(this.url + "/dochazka/" + lessonId, attendance);
+            };
+
             Api.prototype.getCourses = function (drivingSchoolId) {
                 var _this = this;
                 return this.$http.get(this.url + "/kurzy?autoskola_id=" + drivingSchoolId).then(function (response) {

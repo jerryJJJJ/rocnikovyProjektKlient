@@ -119,6 +119,14 @@ module app.service {
       });
     }
 
+    public getAttendance(lessonId) {
+      return this.$http.get(this.url + "/dochazka/" + lessonId);
+    }
+
+    public updateAttendance(lessonId, attendance) {
+      return this.$http.put(this.url + "/dochazka/" + lessonId, attendance);
+    }
+
     public getCourses(drivingSchoolId) {
       return this.$http.get(this.url + "/kurzy?autoskola_id=" + drivingSchoolId).then((response) => {
         response.data.kurzy.forEach((kurz) => this.treatKurz(kurz));

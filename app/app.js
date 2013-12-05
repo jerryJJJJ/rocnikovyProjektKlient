@@ -85,6 +85,12 @@ angular.module('app').config(function ($routeProvider, $httpProvider) {
         controllerAs: "courseDetailCtrl",
         resolve: app.controller.CourseDetail.resolve
     });
+    $routeProvider.when('/autoskola/:autoskolaId/kurzy/:kurzId/dochazka/:id', {
+        templateUrl: 'views/courseAttendance.html',
+        controller: 'app.controller.CourseAttendance',
+        controllerAs: "courseAttendanceCtrl",
+        resolve: app.controller.CourseAttendance.resolve
+    });
     $routeProvider.when('/autoskola/:autoskolaId/vozidla/:vozidloId/studenti/:id', {
         templateUrl: 'views/studentDetail.html',
         controller: 'app.controller.StudentDetail',
