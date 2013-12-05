@@ -5,8 +5,8 @@ module app.service {
 
     public user: app.lib.IUser = {
       name: "user1",
-      //role: "jednatel"
-      role: "urednik"
+      role: "jednatel"
+      //role: "urednik"
     };
 
     //TODO prihlasovaci logika
