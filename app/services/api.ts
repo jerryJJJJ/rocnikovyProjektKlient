@@ -67,7 +67,7 @@ module app.service {
       var deferred = this.$q.defer();
       deferred.resolve({
         name: userName,
-        role: userName
+        role: userName || 'jednatel'
       });
       return deferred.promise;
     }

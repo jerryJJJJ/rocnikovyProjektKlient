@@ -138,27 +138,27 @@ button {
   text-decoration: none;
 }
 
+#headerTab li {
+  margin: 0 30px 0 0;
+}
+
 #headerTab a {
   color: #ffffff;
   font-size: 17pt;
-  padding: 4px;
-  margin: 0 30px 0 0;
+  padding: 4px 15px;
   font-family: 'Segoe UI Light', Arial, sans-serif;
+
+  &:hover {
+    font-size: 17pt;
+    color: #438cca;
+    text-decoration: none;
+  }
 }
 
 #headerTab .nav-tabs > li.active > a,
 #headerTab .nav-tabs > li.active > a:hover,
 #headerTab .nav-tabs > li.active > a:focus {
   color: #438cca;
-}
-
-#headerTab a:hover {
-  color: #438cca;
-  font-size: 17pt;
-  padding: 4px;
-  margin: 0 30px 0 0;
-  font-family: 'Segoe UI Light', Arial, sans-serif;
-  text-decoration: none;
 }
 
 #logoutMainPage {
@@ -214,4 +214,14 @@ table.wage-sheets {
 
 .container.course-attendance table.detail-table {
   margin-bottom: 50px;
+}
+
+#header .container.settings {
+  padding-bottom: 70px;
+}
+
+#import-btn {
+  float: right;
+  position: relative;
+  top: -7px;
 }

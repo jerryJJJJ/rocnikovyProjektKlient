@@ -43,6 +43,12 @@ angular.module('app').config(function ($routeProvider, $httpProvider) {
         controllerAs: "drivingSchoolCtrl",
         resolve: app.controller.DrivingSchool.resolve
     });
+    $routeProvider.when('/autoskola/:id/nastaveni', {
+        templateUrl: 'views/settings.html',
+        controller: 'app.controller.Settings',
+        controllerAs: "settingsCtrl",
+        resolve: app.controller.Settings.resolve
+    });
     $routeProvider.when('/autoskola/:id/:listType', {
         templateUrl: 'views/drivingSchool.html',
         controller: 'app.controller.DrivingSchool',
@@ -129,6 +135,8 @@ angular.module('app').run(function ($httpBackend, auth, $locale, $rootScope) {
     ];
 
     $rootScope.$locale = $locale;
+
+    auth.tryCookieLogin();
     /*
     apiary.forEach(function (section) {
     var resources = section.resources;
@@ -178,7 +186,9 @@ var app;
     */
     function registerDirective(className) {
         var directive = className.charAt(0).toLowerCase() + className.substr(1);
-        angular.module('app.directive').directive(directive, app.directive[className]);
+        angular.module('app.directive').directive(directive, function () {
+            return new app.directive[className]();
+        });
     }
     app.registerDirective = registerDirective;
 

@@ -3,7 +3,7 @@
         <div class="container">
             <h1>{{drivingSchoolCtrl.drivingSchool.nazev}}</h1>
             <div id="logoutMainPage">
-                <a ng-if="auth.user.role == 'jednatel'" href="">Nastavení  | </a>
+                <a ng-show="auth.user.role == 'jednatel'" href="/#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/nastaveni">Nastavení  | </a>
                 <a ng-show="auth.user.role != 'jednatel'" href="/#/autoskoly">Zpět na autoškoly  | </a>
                 <a href="" ng-click="auth.logout()">Odhlásit</a>
             </div>
@@ -53,7 +53,7 @@
     <div class="container">
         <h3 ng-show="drivingSchoolCtrl.listType == 'vozidla'">Seznam vozidel</h3>
         <a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla/nove"
-           class="createObject" class="btn btn-primary"
+           class="btn btn-primary createObject"
            ng-show="drivingSchoolCtrl.listType == 'vozidla' && auth.user.role == 'jednatel'">
             <span class="glyphicon glyphicon-floppy-save"></span> Přidat vozidlo
         </a>

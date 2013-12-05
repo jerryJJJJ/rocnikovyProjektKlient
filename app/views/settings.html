@@ -1,0 +1,24 @@
+<div>
+    <div id="header">
+        <div class="container settings">
+            <h1>Nastavení</h1>
+            <h3>{{settingsCtrl.drivingSchool['nazev']}}</h3>
+
+            <div id="logoutMainPage">
+                <a href="/#/autoskola/{{settingsCtrl.drivingSchool.autoskola_id}}">Zpět na výpis</a> |
+                <a href="" ng-click="auth.logout()">Odhlásit</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Import dat</h3>
+        <p class="alert alert-warning">
+            Nevratný import dat, uploadováním souboru budou přepsána veškerá dosavadní data autoškoly!
+            <upload-button id="import-btn" class="btn btn-warning" complete="settingsCtrl.uploadResults($data, $status)"
+                           action="{{serverUrl}}/import?autoskola_id={{settingsCtrl.drivingSchool.autoskola_id}}">
+                Importovat soubor (.json)
+            </upload-button>
+        </p>
+    </div>
+</div>

@@ -6,7 +6,6 @@ angular.module('app.directive', []);
 angular.module('app.filter', []);
 angular.module('app.service', []);
 
-
 angular.module('app', [
   'app.controller',
   'app.directive',
@@ -22,7 +21,6 @@ angular.module('app', [
 
 
 angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng.IHttpProvider) => {
-
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
@@ -49,6 +47,12 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
     controller:   'app.controller.DrivingSchool',
     controllerAs: "drivingSchoolCtrl",
     resolve: app.controller.DrivingSchool.resolve
+  });
+  $routeProvider.when('/autoskola/:id/nastaveni', {
+    templateUrl:  'views/settings.html',
+    controller:   'app.controller.Settings',
+    controllerAs: "settingsCtrl",
+    resolve: app.controller.Settings.resolve
   });
   $routeProvider.when('/autoskola/:id/:listType', {
     templateUrl:  'views/drivingSchool.html',
@@ -121,7 +125,7 @@ angular.module('app').config(($routeProvider:ng.IRouteProvider, $httpProvider:ng
 });
 
 
-angular.module('app').run(($httpBackend:ng.IHttpBackendService, auth, $locale, $rootScope) => {
+angular.module('app').run(($httpBackend:ng.IHttpBackendService, auth:app.service.Auth, $locale, $rootScope) => {
 
   $locale.DATETIME_FORMATS.MONTH1P = [
     "leden", "únor", "březen"
@@ -132,6 +136,7 @@ angular.module('app').run(($httpBackend:ng.IHttpBackendService, auth, $locale, $
 
   $rootScope.$locale = $locale;
 
+  auth.tryCookieLogin();
 
   /*
   apiary.forEach(function (section) {
@@ -194,7 +199,7 @@ module app {
    */
   export function registerDirective(className:string) {
     var directive = className.charAt(0).toLowerCase() + className.substr(1);
-    angular.module('app.directive').directive(directive, app.directive[className]);
+    angular.module('app.directive').directive(directive, () => new app.directive[className]());
   }
 
   /**
