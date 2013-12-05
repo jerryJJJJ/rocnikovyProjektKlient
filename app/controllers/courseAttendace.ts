@@ -29,7 +29,7 @@ module app.controller {
         });
       },
       'attendance': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getAttendance($route.current.params.id).then((response) => {
+        return api.getLessonAttendance($route.current.params.id).then((response) => {
           return CourseAttendance.attendanceToObject(response.data);
         });
       }
@@ -57,7 +57,7 @@ module app.controller {
     }
 
     public saveAttendance() {
-      this.api.updateAttendance(this.lesson.teorie_id, CourseAttendance.objectToAttendance(this.attendance)).error((reason) => {
+      this.api.updateLessonAttendance(this.lesson.teorie_id, CourseAttendance.objectToAttendance(this.attendance)).error((reason) => {
         alert('Chyba: ' + reason);
       });
       this.$scope.attendanceForm.$setPristine();

@@ -33,7 +33,7 @@ var app;
             };
 
             CourseAttendance.prototype.saveAttendance = function () {
-                this.api.updateAttendance(this.lesson.teorie_id, CourseAttendance.objectToAttendance(this.attendance)).error(function (reason) {
+                this.api.updateLessonAttendance(this.lesson.teorie_id, CourseAttendance.objectToAttendance(this.attendance)).error(function (reason) {
                     alert('Chyba: ' + reason);
                 });
                 this.$scope.attendanceForm.$setPristine();
@@ -78,7 +78,7 @@ var app;
                     });
                 },
                 'attendance': function (api, $route) {
-                    return api.getAttendance($route.current.params.id).then(function (response) {
+                    return api.getLessonAttendance($route.current.params.id).then(function (response) {
                         return CourseAttendance.attendanceToObject(response.data);
                     });
                 }

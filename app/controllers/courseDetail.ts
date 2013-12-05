@@ -38,13 +38,21 @@ module app.controller {
             return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
           });
         } else return {};
+      },
+      'attendance': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getCourseAttendance($route.current.params.id).then((response) => {
+          return new app.lib.IndexedArray('student_id', response.data['dochazka']);
+        });
       }
     };
 
-    constructor(private $http:ng.IHttpService, private $routeParams:RouteParamsCourseDetail, private auth:app.service.Auth,
-                private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object, private $scope,
+    constructor(private $routeParams:RouteParamsCourseDetail, private auth:app.service.Auth, private $scope,
+                private api:app.service.Api, private $location:ng.ILocationService, public drivingSchool:Object,
                 public course:Object, public students:app.lib.IndexedArray,  public teachers:app.lib.IndexedArray,
-                public lessons:app.lib.IndexedArray) {
+                public lessons:app.lib.IndexedArray, public attendance:app.lib.IndexedArray) {
+
+      //ulehcime si praci ve view, prednaplnime si studenty
+      this.attendance.forEach((stats) => stats.student = this.students.find(stats.student_id));
 
       if($routeParams.id) {
         this.isNew = false;

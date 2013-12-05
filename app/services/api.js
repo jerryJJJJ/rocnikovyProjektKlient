@@ -2,11 +2,11 @@ var app;
 (function (app) {
     (function (service) {
         var Api = (function () {
-            //private url : string = "http://localhost:49684/api";
             function Api($http, $rootScope, $q) {
                 this.$http = $http;
                 this.$q = $q;
-                this.url = "http://ronkovprojektapi.apiary.io";
+                //private url : string = "http://ronkovprojektapi.apiary.io";
+                this.url = "http://localhost:49684/api";
                 $rootScope.serverUrl = this.url;
             }
             Api.prototype.treatVozidlo = function (vozidlo) {
@@ -126,11 +126,15 @@ var app;
                 });
             };
 
-            Api.prototype.getAttendance = function (lessonId) {
+            Api.prototype.getLessonAttendance = function (lessonId) {
                 return this.$http.get(this.url + "/dochazka/" + lessonId);
             };
 
-            Api.prototype.updateAttendance = function (lessonId, attendance) {
+            Api.prototype.getCourseAttendance = function (courseId) {
+                return this.$http.get(this.url + "/dochazka?kurz_id=" + courseId);
+            };
+
+            Api.prototype.updateLessonAttendance = function (lessonId, attendance) {
                 return this.$http.put(this.url + "/dochazka/" + lessonId, attendance);
             };
 

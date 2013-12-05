@@ -9,7 +9,8 @@ var app;
                 this.api = api;
                 this.user = {
                     name: "user1",
-                    role: "jednatel"
+                    //role: "jednatel"
+                    role: "urednik"
                 };
                 $rootScope.auth = this;
             }

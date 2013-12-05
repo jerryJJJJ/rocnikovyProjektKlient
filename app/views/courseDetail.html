@@ -6,12 +6,12 @@
             <h1 ng-if="courseDetailCtrl.isNew">Nový kurz</h1>
 
             <h3>{{courseDetailCtrl.drivingSchool['nazev']}}</h3>
-<span class="delete-object" ng-if="!courseDetailCtrl.isNew">
-    <button ng-click="courseDetailCtrl.deleteCourse(courseDetailCtrl.course)"
-            class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
-        <span class="glyphicon glyphicon-remove"></span> Smazat kurz
-    </button>
-</span>
+            <span class="delete-object" ng-if="!courseDetailCtrl.isNew">
+                <button ng-click="courseDetailCtrl.deleteCourse(courseDetailCtrl.course)"
+                        class="btn btn-danger btn-xs" ng-if="auth.user.role == 'jednatel'">
+                    <span class="glyphicon glyphicon-remove"></span> Smazat kurz
+                </button>
+            </span>
 
             <div id="logout">
                 <a href="/#/autoskola/{{courseDetailCtrl.drivingSchool.autoskola_id}}/kurzy">Zpět na výpis |</a>
@@ -79,7 +79,7 @@
         </div>
     </div>
 
-    <div ng-if="!courseDetailCtrl.isNew" class="container">
+    <div ng-if="!courseDetailCtrl.isNew && auth.user.role == 'jednatel'" class="container">
         <h3>Hodiny teorie</h3>
 
         <form novalidate class="css-form" name="lessonForm">
@@ -193,5 +193,42 @@
                 </tbody>
             </table>
         </form>
+    </div>
+
+    <div ng-if="!courseDetailCtrl.isNew && auth.user.role == 'urednik'" class="container">
+        <h3>Přehled kurzu</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="3"></th>
+                    <th colspan="4">docházka</th>
+                </tr>
+                <tr>
+                    <th>příjmení</th>
+                    <th>jméno</th>
+                    <th>matriční číslo</th>
+                    <th>pravidla silničního provozu</th>
+                    <th>zdravověda</th>
+                    <th>údržba</th>
+                    <th>jízdy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="detail in courseDetailCtrl.attendance">
+                    <td>
+                        <a href="#/autoskola/{{courseDetailCtrl.drivingSchool.autoskola_id}}/kurzy/{{courseDetailCtrl.course.kurz_id}}/studenti/{{student.student_id}}">
+                            {{detail.student.prijmeni}}
+                        </a>
+                    </td>
+                    <td>{{detail.student.jmeno}}</td>
+                    <td>{{detail.student.matricni_cislo}}</td>
+                    <td>{{detail.pravidla_provozu}}</td>
+                    <td>{{detail.zdravoveda}}</td>
+                    <td>{{detail.udrzba}}</td>
+                    <td>{{detail.jizdy}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

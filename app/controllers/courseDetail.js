@@ -2,19 +2,25 @@ var app;
 (function (app) {
     (function (controller) {
         var CourseDetail = (function () {
-            function CourseDetail($http, $routeParams, auth, api, $location, drivingSchool, $scope, course, students, teachers, lessons) {
-                this.$http = $http;
+            function CourseDetail($routeParams, auth, $scope, api, $location, drivingSchool, course, students, teachers, lessons, attendance) {
+                var _this = this;
                 this.$routeParams = $routeParams;
                 this.auth = auth;
+                this.$scope = $scope;
                 this.api = api;
                 this.$location = $location;
                 this.drivingSchool = drivingSchool;
-                this.$scope = $scope;
                 this.course = course;
                 this.students = students;
                 this.teachers = teachers;
                 this.lessons = lessons;
+                this.attendance = attendance;
                 this.newStudent = {};
+                //ulehcime si praci ve view, prednaplnime si studenty
+                this.attendance.forEach(function (stats) {
+                    return stats.student = _this.students.find(stats.student_id);
+                });
+
                 if ($routeParams.id) {
                     this.isNew = false;
                     this.setUpNewLesson();
@@ -165,6 +171,11 @@ var app;
                         });
                     } else
                         return {};
+                },
+                'attendance': function (api, $route) {
+                    return api.getCourseAttendance($route.current.params.id).then(function (response) {
+                        return new app.lib.IndexedArray('student_id', response.data['dochazka']);
+                    });
                 }
             };
             return CourseDetail;
