@@ -2,7 +2,7 @@ var app;
 (function (app) {
     (function (controller) {
         var TeacherDetail = (function () {
-            function TeacherDetail($routeParams, $scope, api, $location, drivingSchool, teacher, students, rides, documents, lessons) {
+            function TeacherDetail($routeParams, $scope, api, $location, drivingSchool, teacher, students, rides, documents, lessons, courses) {
                 this.$routeParams = $routeParams;
                 this.$scope = $scope;
                 this.api = api;
@@ -13,6 +13,7 @@ var app;
                 this.rides = rides;
                 this.documents = documents;
                 this.lessons = lessons;
+                this.courses = courses;
                 this.tab = "lessons";
                 if ($routeParams.id) {
                     this.isNew = false;
@@ -115,6 +116,11 @@ var app;
                 'students': function (api, $route) {
                     return api.getStudents($route.current.params.autoskolaId).then(function (response) {
                         return new app.lib.IndexedArray('student_id', response.data['studenti']);
+                    });
+                },
+                'courses': function (api, $route) {
+                    return api.getCourses($route.current.params.autoskolaId).then(function (response) {
+                        return new app.lib.IndexedArray('kurz_id', response.data['kurzy']);
                     });
                 }
             };

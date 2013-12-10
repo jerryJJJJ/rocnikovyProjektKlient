@@ -42,13 +42,19 @@ module app.controller {
       'students': (api:app.service.Api, $route:ng.IRoute) => {
         return api.getStudents($route.current.params.autoskolaId).then((response) => {
           return new app.lib.IndexedArray('student_id', response.data['studenti']);
+        })
+      },
+      'courses': (api:app.service.Api, $route:ng.IRoute) => {
+        return api.getCourses($route.current.params.autoskolaId).then((response) => {
+          return new app.lib.IndexedArray('kurz_id', response.data['kurzy']);
         });
       }
     };
 
     constructor(private $routeParams, private $scope, private api:app.service.Api, private $location:ng.ILocationService,
                 public drivingSchool:Object, public teacher:Object, public students:app.lib.IndexedArray,
-                public rides:app.lib.IndexedArray, public documents:app.lib.IndexedArray, public lessons:app.lib.IndexedArray) {
+                public rides:app.lib.IndexedArray, public documents:app.lib.IndexedArray, public lessons:app.lib.IndexedArray,
+                public courses:app.lib.IndexedArray) {
 
       if($routeParams.id) {
         this.isNew = false;

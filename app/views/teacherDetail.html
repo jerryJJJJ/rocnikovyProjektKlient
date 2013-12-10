@@ -127,8 +127,8 @@
                         </td>
                     </tr>
                     <tr class="right">
-                        <td class="bold">počet dětí</td>
-                        <td ng-class="{'has-error': teacherForm.pocet_deti.$invalid && teacherForm.pocet_deti.$dirty}">
+                        <td class="bold" ng-class="{'inner-hidden': auth.user.role == 'urednik'}"><span>počet dětí</span></td>
+                        <td ng-class="{'has-error': teacherForm.pocet_deti.$invalid && teacherForm.pocet_deti.$dirty, 'inner-hidden': auth.user.role == 'urednik'}">
                             <input type="number" name="pocet_deti" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['pocet_deti']"
                                    class="form-control" placeholder="počet dětí" required/>
                         </td>
@@ -140,8 +140,8 @@
                         </td>
                     </tr>
                     <tr class="right">
-                        <td class="bold">mzda (Kč/h)</td>
-                        <td ng-class="{'has-error': teacherForm.hodinova_mzda.$invalid && teacherForm.hodinova_mzda.$dirty}">
+                        <td class="bold" ng-class="{'inner-hidden': auth.user.role == 'urednik'}"><span>mzda (Kč/h)</span></td>
+                        <td ng-class="{'has-error': teacherForm.hodinova_mzda.$invalid && teacherForm.hodinova_mzda.$dirty, 'inner-hidden': auth.user.role == 'urednik'}">
                             <input type="number" name="hodinova_mzda" ng-disabled="auth.user.role != 'jednatel'" ng-model="teacherDetailCtrl.teacher['hodinova_mzda']"
                                    class="form-control" placeholder="mzda (Kč/h)" required/>
                         </td>
@@ -199,12 +199,14 @@
                 <th>od<span class="value">[hh:mm]</span></th>
                 <th>do<span class="value">[hh:mm]</span></th>
                 <th>typ výuky</th>
+                <th>kurz</th>
             </tr>
             <tr ng-repeat="lesson in teacherDetailCtrl.lessons">
                 <td>{{lesson.datum}}</td>
                 <td>{{lesson['cas_od']}}</td>
                 <td>{{lesson['cas_do']}}</td>
                 <td>{{lesson['typ']}}</td>
+                <td>{{teacherDetailCtrl.courses.find(lesson['kurz_id']).identifikacni_cislo}}</td>
             </tr>
         </table>
 

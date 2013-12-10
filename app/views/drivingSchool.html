@@ -70,7 +70,7 @@
                 <td><a href="#/autoskola/{{drivingSchoolCtrl.drivingSchool.autoskola_id}}/vozidla/{{vehicle.vozidlo_id}}">{{vehicle.znacka}}</a></td>
                 <td>{{vehicle.model}}</td>
                 <td>{{vehicle.spz}}</td>
-                <td ng-if="auth.user.role == 'urednik'">{{vehicle['datum_stk']}}</td>
+                <td ng-if="auth.user.role == 'urednik'">{{vehicle['posledni_stk']}}</td>
                 <td>{{vehicle.vin}}</td>
                 <td class="right">
                     <button ng-click="drivingSchoolCtrl.deleteVehicle(vehicle)" class="btn btn-danger btn-xs" ng-show="auth.user.role == 'jednatel'">

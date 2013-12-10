@@ -6165,3 +6165,6 @@ table.wage-sheets {
   position: relative;
   top: -7px;
 }
+.inner-hidden * {
+  display: none;
+}
