@@ -12,7 +12,7 @@ var app;
                 this.courses = courses;
                 this.vehicles = vehicles;
                 this.wageSheets = wageSheets;
-                this.lastMonthDate = new Date((new Date()).getFullYear(), (new Date()).getMonth() - 1, 1);
+                this.lastMonthDate = new Date((new Date).getFullYear(), (new Date()).getMonth() - 1, 1);
                 var autoskolaId = $routeParams.id;
                 this.listType = $routeParams.listType ? $routeParams.listType : 'vozidla';
             }

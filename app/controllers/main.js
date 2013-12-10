@@ -3,17 +3,26 @@ var app;
 (function (app) {
     (function (controller) {
         var Main = (function () {
-            function Main($scope, auth, $location) {
+            function Main($scope, $rootScope, auth, $location, $http) {
                 this.$scope = $scope;
                 this.auth = auth;
                 this.$location = $location;
+                /*$http({
+                method: "PATCH",
+                url: $rootScope.serverUrl + "/test/10",
+                
+                // These accept multiple types, so let's define them as any
+                data: {
+                "aaa": "bbb"
+                }
+                });*/
             }
             Main.prototype.login = function () {
                 var _this = this;
                 this.auth.login(this.username, this.password).then(function (user) {
                     if (user.role == "jednatel")
                         _this.$location.path('/autoskola/' + user.autoskola_id);
-else
+                    else
                         _this.$location.path('/autoskoly');
                 });
             };

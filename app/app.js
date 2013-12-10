@@ -120,18 +120,10 @@ angular.module('app').config(function ($routeProvider, $httpProvider) {
 
 angular.module('app').run(function ($httpBackend, auth, $locale, $rootScope) {
     $locale.DATETIME_FORMATS.MONTH1P = [
-        "leden",
-        "únor",
-        "březen",
-        "duben",
-        "květen",
-        "červen",
-        "červenec",
-        "srpen",
-        "září",
-        "říjen",
-        "listopad",
-        "prosinec"
+        "leden", "únor", "březen",
+        "duben", "květen", "červen",
+        "červenec", "srpen", "září",
+        "říjen", "listopad", "prosinec"
     ];
 
     $rootScope.$locale = $locale;

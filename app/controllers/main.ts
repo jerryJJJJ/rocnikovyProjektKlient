@@ -8,8 +8,16 @@ module app.controller {
 
     public password:string;
 
-    constructor (private $scope:ng.IScope, private auth:app.service.Auth, private $location:ng.ILocationService) {
+    constructor (private $scope:ng.IScope, $rootScope, private auth:app.service.Auth, private $location:ng.ILocationService, $http:ng.IHttpService) {
+      /*$http({
+        method: "PATCH",
+        url: $rootScope.serverUrl + "/test/10",
 
+        // These accept multiple types, so let's define them as any
+        data: {
+          "aaa": "bbb"
+        }
+      });*/
     }
 
     public login() {

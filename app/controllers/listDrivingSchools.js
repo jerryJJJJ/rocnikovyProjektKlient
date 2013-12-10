@@ -1,9 +1,9 @@
+/// <reference path="../components/types/angularjs/angular.d.ts"/>
+/// <reference path="../../../../download/klient/services/api.ts"/>
+/// <reference path="../lib/indexedArray.ts"/>
+/// <reference path="../app.ts"/>
 var app;
 (function (app) {
-    /// <reference path="../components/types/angularjs/angular.d.ts"/>
-    /// <reference path="../../../../download/klient/services/api.ts"/>
-    /// <reference path="../lib/indexedArray.ts"/>
-    /// <reference path="../app.ts"/>
     (function (controller) {
         var ListDrivingSchools = (function () {
             function ListDrivingSchools($http, $routeParams, api, listSchools, $location, auth) {

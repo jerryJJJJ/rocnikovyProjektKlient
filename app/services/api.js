@@ -170,7 +170,7 @@ var app;
 
             Api.prototype.getTeacherRides = function (teacherId) {
                 var _this = this;
-                return this.$http.get(this.url + "/jizdy?teacher_id=" + teacherId).then(function (response) {
+                return this.$http.get(this.url + "/jizdy?ucitel_id=" + teacherId).then(function (response) {
                     response.data.jizdy.forEach(function (jidza) {
                         return _this.treatJizda(jidza);
                     });

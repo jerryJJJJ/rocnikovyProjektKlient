@@ -118,6 +118,7 @@ var app;
                     delete this.index[removed[i][this.prop]];
                 }
 
+                //zaindexujeme pridavane a zkontrolujeme unikatnost
                 if (toAdd.length) {
                     for (var i = toAdd.length - 1; i >= 0; i--) {
                         if (!this.index[toAdd[i][this.prop]]) {
@@ -219,9 +220,9 @@ var app;
 
             IndexedArray.prototype.concatIndexed = function () {
                 var newArray = new app.lib.IndexedArray();
-                Array.prototype.unshift.call(arguments, this);
+                Array.prototype.unshift.call(arguments, this); //pridame sebe na zacatek pole
                 for (var i = 0; i < arguments.length; i++) {
-                    newArray.push.apply(newArray, Array.prototype.slice.call(arguments[i], 0));
+                    newArray.push.apply(newArray, Array.prototype.slice.call(arguments[i], 0)); //nemusi byt pole, ale indexedArray!
                 }
                 return newArray;
             };
@@ -270,7 +271,7 @@ var app;
 
         IndexedArray.prototype.constructor = [].constructor;
         IndexedArray.prototype.callee = function () {
-        };
+        }; // HACK for angularJS 1.1.5
     })(app.lib || (app.lib = {}));
     var lib = app.lib;
 })(app || (app = {}));

@@ -153,7 +153,7 @@ module app.service {
     }
 
     public getTeacherRides(teacherId) {
-      return this.$http.get(this.url + "/jizdy?teacher_id=" + teacherId).then((response) => {
+      return this.$http.get(this.url + "/jizdy?ucitel_id=" + teacherId).then((response) => {
         response.data.jizdy.forEach((jidza) => this.treatJizda(jidza));
         return response;
       });
