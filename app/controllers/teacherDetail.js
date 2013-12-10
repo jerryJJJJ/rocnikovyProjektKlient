@@ -92,7 +92,7 @@ var app;
                     }
                 },
                 'lessons': function (api, $route) {
-                    return api.getTeacherLessons($route.current.params.autoskolaId).then(function (response) {
+                    return api.getTeacherLessons($route.current.params.id).then(function (response) {
                         return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
                     });
                 },

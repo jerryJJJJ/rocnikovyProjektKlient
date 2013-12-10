@@ -21,7 +21,7 @@ module app.controller {
         }
       },
       'lessons': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getTeacherLessons($route.current.params.autoskolaId).then((response) => {
+        return api.getTeacherLessons($route.current.params.id).then((response) => {
           return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
         });
       },
