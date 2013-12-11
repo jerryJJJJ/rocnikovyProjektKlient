@@ -54,7 +54,7 @@ var app;
                     });
                 },
                 'course': function (api, $route) {
-                    return api.getCourse($route.current.params.id).then(function (response) {
+                    return api.getCourse($route.current.params.kurzId).then(function (response) {
                         return response.data;
                     });
                 },

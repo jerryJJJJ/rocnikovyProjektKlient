@@ -7,7 +7,7 @@ module app.controller {
         return api.getDrivingSchool($route.current.params.autoskolaId).then((response) => response.data);
       },
       'course': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getCourse($route.current.params.id).then((response) => response.data);
+        return api.getCourse($route.current.params.kurzId).then((response) => response.data);
       },
       'students': (api:app.service.Api, $route:ng.IRoute) => {
         return api.getStudents($route.current.params.autoskolaId).then((response) => {
