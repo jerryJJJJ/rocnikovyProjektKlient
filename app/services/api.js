@@ -188,6 +188,16 @@ var app;
                 });
             };
 
+            Api.prototype.getStudentLessons = function (studentId) {
+                var _this = this;
+                return this.$http.get(this.url + "/teorie?student_id=" + studentId).then(function (response) {
+                    response.data.teorie.forEach(function (teorie) {
+                        return _this.treatTeorie(teorie);
+                    });
+                    return response;
+                });
+            };
+
             Api.prototype.getVehicleDocuments = function (vehicleId) {
                 var _this = this;
                 return this.$http.get(this.url + "/dokumentyvozidla?vozidlo_id=" + vehicleId).then(function (response) {

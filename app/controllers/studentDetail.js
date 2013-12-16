@@ -50,7 +50,7 @@ var app;
                     });
                 },
                 'lessons': function (api, $route) {
-                    return api.getLessons($route.current.params.kurzId).then(function (response) {
+                    return api.getStudentLessons($route.current.params.id).then(function (response) {
                         return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
                     });
                 },

@@ -11,7 +11,7 @@ module app.controller {
         return api.getDrivingSchool($route.current.params.autoskolaId).then((response) => response.data);
       },
       'lessons': (api:app.service.Api, $route:ng.IRoute) => {
-        return api.getLessons($route.current.params.kurzId).then((response) => {
+        return api.getStudentLessons($route.current.params.id).then((response) => {
           return new app.lib.IndexedArray('teorie_id', response.data['teorie']);
         });
       },

@@ -166,6 +166,13 @@ module app.service {
       });
     }
 
+    public getStudentLessons(studentId) {
+      return this.$http.get(this.url + "/teorie?student_id=" + studentId).then((response) => {
+        response.data.teorie.forEach((teorie) => this.treatTeorie(teorie));
+        return response;
+      });
+    }
+
     public getVehicleDocuments(vehicleId) {
       return this.$http.get(this.url + "/dokumentyvozidla?vozidlo_id=" + vehicleId).then((response) => {
         response.data.dokumenty.forEach((dokument) => this.treatDokument(dokument));
