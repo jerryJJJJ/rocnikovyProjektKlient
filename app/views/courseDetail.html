@@ -217,7 +217,7 @@
             <tbody>
                 <tr ng-repeat="detail in courseDetailCtrl.attendance">
                     <td>
-                        <a href="#/autoskola/{{courseDetailCtrl.drivingSchool.autoskola_id}}/kurzy/{{courseDetailCtrl.course.kurz_id}}/studenti/{{student.student_id}}">
+                        <a href="#/autoskola/{{courseDetailCtrl.drivingSchool.autoskola_id}}/kurzy/{{courseDetailCtrl.course.kurz_id}}/studenti/{{detail.student.student_id}}">
                             {{detail.student.prijmeni}}
                         </a>
                     </td>

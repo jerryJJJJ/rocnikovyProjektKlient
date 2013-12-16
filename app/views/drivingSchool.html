@@ -148,7 +148,7 @@
                 <td>{{course.datum_od}}</td>
                 <td>{{course.stav}}</td>
                 <td class="right">
-                    <button ng-click="$parent.$parent.drivingSchoolCtrl.deleteCourse(course)" class="btn btn-danger btn-xs" ng-show="auth.user.role == 'jednatel'">
+                    <button ng-click="drivingSchoolCtrl.deleteCourse(course)" class="btn btn-danger btn-xs" ng-show="auth.user.role == 'jednatel'">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </td>
