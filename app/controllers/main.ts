@@ -22,7 +22,8 @@ module app.controller {
 
     public login() {
       this.auth.login(this.username, this.password).then((user:app.lib.IUser) =>{
-        if(user.role == "jednatel") this.$location.path('/autoskola/'+user.autoskola_id);
+        debugger;
+        if(user.role.match("jednatel")) this.$location.path('/autoskola/'+user.autoskola_id);
         else this.$location.path('/autoskoly');
       });
     }

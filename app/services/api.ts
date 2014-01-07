@@ -67,7 +67,8 @@ module app.service {
       var deferred = this.$q.defer();
       deferred.resolve({
         name: userName,
-        role: userName || 'jednatel'
+        role: userName || 'jednatel',
+        'autoskola_id': (userName.match(/\d+$/) || [1])[0]
       });
       return deferred.promise;
     }
