@@ -20,7 +20,6 @@ var app;
             Main.prototype.login = function () {
                 var _this = this;
                 this.auth.login(this.username, this.password).then(function (user) {
-                    debugger;
                     if (user.role.match("jednatel"))
                         _this.$location.path('/autoskola/' + user.autoskola_id);
                     else
